@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ui="http://schema.smallplanet.com/PlanetSwift" targetNamespace="http://schema.smallplanet.com/PlanetSwift">
+
+	<element name="Object" type="ui:Object"/>
+	<complexType name="Object">
+		<sequence>
+			<element ref="ui:Object" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="title" type="string"/>
+	</complexType>
+
+	<element name="View" type="ui:View"/>
+	<complexType name="View">
+		<complexContent>
+			<extension base="ui:Object">
+				<sequence>
+					<element ref="ui:View" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute name="frame" type="ui:rect"/>
+				<attribute name="color" type="ui:color"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="rect">
+		<annotation>
+			<appinfo>CGRect</appinfo>
+		</annotation>
+		<restriction base="string"/>
+	</simpleType>
+
+	<simpleType name="color">
+		<!-- A color, represented in #rrggbbaa format. Remember the # is required! -->
+		<annotation>
+			<appinfo>UIColor</appinfo>
+		</annotation>
+		<restriction base="string"/>
+	</simpleType>
+
+</schema>

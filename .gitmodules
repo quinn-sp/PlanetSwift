@@ -1,0 +1,6 @@
+[submodule "gaxb"]
+	path = gaxb
+	url = https://github.com/SmallPlanet/gaxb.git
+[submodule "AEXML"]
+	path = AEXML
+	url = https://github.com/tadija/AEXML.git

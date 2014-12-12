@@ -1,0 +1,5 @@
+#!/bin/sh
+
+GAXB_ROOT="$PROJECT_DIR/../PlanetCore/gaxb"
+mkdir -p $1/Generated
+"$GAXB_ROOT/build/gaxb" swift "$1/XMLSchema/$2" -t "$GAXB_ROOT/templates" -o "$1/Generated"
