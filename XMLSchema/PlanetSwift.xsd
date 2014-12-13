@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ui="http://schema.smallplanet.com/PlanetSwift" targetNamespace="http://schema.smallplanet.com/PlanetSwift">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://schema.smallplanet.com/PlanetSwift" targetNamespace="http://schema.smallplanet.com/PlanetSwift">
 
-	<element name="Object" type="ui:Object"/>
+	<element name="Object" type="ps:Object"/>
 	<complexType name="Object">
 		<sequence>
-			<element ref="ui:Object" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="ps:Object" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 		<attribute name="title" type="string"/>
 	</complexType>
 
-	<element name="View" type="ui:View"/>
+	<element name="View" type="ps:View"/>
 	<complexType name="View">
 		<complexContent>
-			<extension base="ui:Object">
+			<extension base="ps:Object">
 				<sequence>
-					<element ref="ui:View" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="ps:View" minOccurs="0" maxOccurs="unbounded"/>
 				</sequence>
-				<attribute name="frame" type="ui:rect"/>
-				<attribute name="color" type="ui:color"/>
+				<attribute name="frame" type="ps:rect"/>
+				<attribute name="color" type="ps:color"/>
+				<!-- <attribute name="clipsToBounds" type="boolean"/> -->
 			</extension>
 		</complexContent>
 	</complexType>
