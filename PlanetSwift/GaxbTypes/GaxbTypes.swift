@@ -1,10 +1,29 @@
 //
-//  Gaxb.swift
+//  GaxbTypes.swift
 //  Copyright (c) 2014 Small Planet. All rights reserved.
 //
 
 import UIKit
 
+// MARK: XSD datatypes
+
+extension Bool: GaxbType {
+    public init(gaxbString: String) {
+        self.init()
+        self.setWithGaxbString(gaxbString)
+    }
+    public mutating func setWithGaxbString(gaxbString: String) {
+        switch gaxbString {
+        case "true": self = true
+        default: self = false
+        }
+    }
+    public func toGaxbString() -> String {
+        return self ? "true" : "false"
+    }
+}
+
+// MARK: GAXB-defined types
 
 extension CGRect: GaxbType {
     public init(gaxbString withGaxbString: String) {
@@ -34,6 +53,8 @@ extension CGRect: GaxbType {
     }
 }
 
+// MARK: UIKit data types
+
 extension UIImage {
     convenience init?(validateAndLoad name: String!) {
         self.init(named: name)
@@ -42,25 +63,8 @@ extension UIImage {
     }
 }
 
-extension Bool: GaxbType {
-    public init(gaxbString: String) {
-        self.init()
-        self.setWithGaxbString(gaxbString)
-    }
-    public mutating func setWithGaxbString(gaxbString: String) {
-        switch gaxbString {
-            case "true": self = true
-            default: self = false
-        }
-    }
-    public func toGaxbString() -> String {
-        return self ? "true" : "false"
-    }
-}
-
 extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int)
-    {
+    convenience init(red: Int, green: Int, blue: Int) {
         let newRed   = CGFloat(Double(red) / 255.0)
         let newGreen = CGFloat(Double(green) / 255.0)
         let newBlue  = CGFloat(Double(blue) / 255.0)
@@ -102,6 +106,11 @@ extension UIColor {
     }
     
     public func toGaxbString() -> String {
+        var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
+        if self.getRed(&r, green:&g , blue: &b, alpha: &a) {
+            let hexNumber = Int(r*255) << 24 + Int(g*255) << 16 + Int(b*255) << 8 + Int(a*255)
+            return NSString(format:"#%08X", hexNumber)
+        }
         return ""
     }
 }
