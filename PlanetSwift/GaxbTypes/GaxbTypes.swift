@@ -40,6 +40,32 @@ extension Int: GaxbType {
     }
 }
 
+extension Float: GaxbType {
+    public init(gaxbString: String) {
+        self.init()
+        self.setWithGaxbString(gaxbString)
+    }
+    public mutating func setWithGaxbString(gaxbString: String) {
+        self = (gaxbString as NSString).floatValue
+    }
+    public func toGaxbString() -> String {
+        return String(format: "%.5f", self)
+    }
+}
+
+extension Double: GaxbType {
+    public init(gaxbString: String) {
+        self.init()
+        self.setWithGaxbString(gaxbString)
+    }
+    public mutating func setWithGaxbString(gaxbString: String) {
+        self = (gaxbString as NSString).doubleValue
+    }
+    public func toGaxbString() -> String {
+        return String(format: "%.5f", self)
+    }
+}
+
 // MARK: GAXB-defined types
 
 extension CGRect: GaxbType {

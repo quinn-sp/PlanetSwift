@@ -15,6 +15,8 @@ public class View: ViewBase {
             if let newColor = color {
                 view.backgroundColor = newColor
             }
+        case "alpha":
+            view.alpha = CGFloat(alpha!)
         case "clipsToBounds":
             if clipsToBounds != nil {
                 view.clipsToBounds = clipsToBounds!

@@ -18,6 +18,7 @@
 				</sequence>
 				<attribute name="frame" type="ps:rect"/>
 				<attribute name="color" type="ps:color"/>
+				<attribute name="alpha" type="decimal"/>
 				<attribute name="hidden" type="boolean"/>
 				<attribute name="clipsToBounds" type="boolean"/>
 				<attribute name="tag" type="integer"/>
