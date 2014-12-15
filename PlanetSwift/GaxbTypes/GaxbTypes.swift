@@ -23,6 +23,23 @@ extension Bool: GaxbType {
     }
 }
 
+extension Int: GaxbType {
+    public init(gaxbString: String) {
+        self.init()
+        self.setWithGaxbString(gaxbString)
+    }
+    public mutating func setWithGaxbString(gaxbString: String) {
+        if let tmp = gaxbString.toInt() as Int? {
+            self = tmp
+        } else {
+            self = 0
+        }
+    }
+    public func toGaxbString() -> String {
+        return String(self)
+    }
+}
+
 // MARK: GAXB-defined types
 
 extension CGRect: GaxbType {
