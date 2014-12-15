@@ -12,9 +12,7 @@ public class View: ViewBase {
         case "frame":
             view.frame = frame!
         case "color":
-            if let newColor = color {
-                view.backgroundColor = newColor
-            }
+            view.backgroundColor = color
         case "alpha":
             view.alpha = CGFloat(alpha!)
         case "clipsToBounds":
