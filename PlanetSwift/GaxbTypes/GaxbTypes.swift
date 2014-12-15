@@ -69,14 +69,32 @@ extension UIColor {
     }
 
     convenience init(gaxbString: String) {
-        var (r,g,b,a): (Float, Float, Float, Float) = (0.0, 0.0, 0.0, 1.0)
-        switch gaxbString {
-            case "red": r = 1.0
-            case "green": g = 1.0
-            case "blue": b = 1.0
-            default: break // handle "#rrggbbaa" here
+        var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
+        if gaxbString.hasPrefix("#") {
+            let substring = gaxbString.substringFromIndex(advance(gaxbString.startIndex, 1))
+            var hexNumber:UInt32 = 0;
+            let hexScanner = NSScanner(string: substring).scanHexInt(&hexNumber)
+            switch countElements(substring) {
+            case 8:
+                r = CGFloat((hexNumber & 0xFF000000) >> 24) / 255.0
+                g = CGFloat((hexNumber & 0x00FF0000) >> 16) / 255.0
+                b = CGFloat((hexNumber & 0x0000FF00) >> 8) / 255.0
+                a = CGFloat(hexNumber & 0x000000FF) / 255.0
+            case 6:
+                r = CGFloat((hexNumber & 0xFF0000) >> 16) / 255.0
+                g = CGFloat((hexNumber & 0x00FF00) >> 8) / 255.0
+                b = CGFloat(hexNumber & 0x0000FF) / 255.0
+            default: break
+            }
+        } else {
+            switch gaxbString {
+                case "red": r = 1.0
+                case "green": g = 1.0
+                case "blue": b = 1.0
+                default: break
+            }
         }
-        self.init(red: CGFloat(r), green:CGFloat(g), blue:CGFloat(b), alpha:CGFloat(a))
+        self.init(red: r, green:g, blue:b, alpha:a)
     }
 
     public func setWithGaxbString(GaxbString: String) {

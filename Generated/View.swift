@@ -14,8 +14,8 @@ public class View: ViewBase {
         case "color":
             let newColor = color as UIColor!
             view.backgroundColor = newColor
-//        case "clipsToBounds":
-//            view.clipsToBounds = clipsToBounds!
+        case "clipsToBounds":
+            view.clipsToBounds = clipsToBounds!
         default:
             break
         }
