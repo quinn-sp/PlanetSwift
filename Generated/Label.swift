@@ -27,6 +27,12 @@ public class Label: LabelBase {
             label.text = text!
         case "textColor":
             label.textColor = textColor
+        case "adjustsFontSizeToFitWidth":
+            label.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth!
+        case "minimumScaleFactor":
+            label.minimumScaleFactor = CGFloat(minimumScaleFactor)
+        case "numberOfLines":
+            label.numberOfLines = numberOfLines!
         case "fontSize":
             fontChanged = true
         case "fontName":
