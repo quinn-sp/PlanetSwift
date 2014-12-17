@@ -11,12 +11,18 @@ import XCTest
 import PlanetSwift
 
 class PlanetSwiftTests: XCTestCase {
-    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='100.0,66.5,200.0,190.0' color='#FF8040FF' clipsToBounds='true' title='something'><View frame='120.0,100.0,30.0,30.0' color='#C8EA00FF' alpha='1.00000' clipsToBounds='false'/><View frame='-50.0,10.0,80.0,80.0' color='#2266FF88' hidden='false' clipsToBounds='false' tag='3'/></View>"
+    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='100.0,66.5,200.0,190.0' color='#FF8040F8' clipsToBounds='true' title='something'><View frame='120.0,100.0,30.0,30.0' color='#C8EA00FF' alpha='0.9' clipsToBounds='false'/><View frame='-50.0,10.0,80.0,80.0' color='#2266FF88' hidden='false' clipsToBounds='false' tag='3'/></View>"
     var element: GaxbElement?
+    var subview0: View?
+    var subview1: View?
     
     override func setUp() {
         super.setUp()
         element = PlanetSwift.readFromString(testXMLString)
+        if let view = element as View? {
+            subview0 = view.views[0]
+            subview1 = view.views[1]
+        }
     }
     
     override func tearDown() {
@@ -35,6 +41,8 @@ class PlanetSwiftTests: XCTestCase {
     func testUIView() {
         if let view = element as? View {
             XCTAssert(view.view.isKindOfClass(UIView), "element.view is not a UIView")
+            XCTAssert(subview0!.view.isKindOfClass(UIView), "element subview0 is not a UIView")
+            XCTAssert(subview1!.view.isKindOfClass(UIView), "element subview0 is not a UIView")
         }
     }
 
@@ -62,8 +70,22 @@ class PlanetSwiftTests: XCTestCase {
                 XCTAssertEqual(r, CGFloat(1.0), "Color's red is incorrect")
                 XCTAssertEqual(g, CGFloat(0x80/255.0), "Color's green is incorrect")
                 XCTAssertEqual(b, CGFloat(0x40/255.0), "Color's blue is incorrect")
-                XCTAssertEqual(a, CGFloat(1.0), "Color's alpha is incorrect")
+                XCTAssertEqual(a, CGFloat(0xF8/255.0), "Color's alpha is incorrect")
             }
+        }
+    }
+    
+    func testViewAlpha() {
+        if let view = element as? View {
+            XCTAssert(view.alpha == nil, "elements alpha should be nil")
+            // when set with color and not with setAlpha, UIView's alpha = 1.0
+            XCTAssertEqual(view.view.alpha, CGFloat(1.0), "UIView alpha is incorrect")
+            
+            XCTAssertEqual(subview0!.alpha!, 0.9, "subview0 alpha is incorrect")
+            
+            let x = subview0!.view.alpha
+            let y = CGFloat(0.9)
+            XCTAssertTrue(fabs(x-y) < CGFloat(FLT_EPSILON) * fabs(x+y), "subview0 UIView alpha is incorrect")
         }
     }
     
