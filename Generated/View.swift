@@ -5,7 +5,7 @@
 import UIKit
 
 public class View: ViewBase {
-    var view = UIView()
+    public var view = UIView()
     
     override func gaxbValueDidChange(name: String) {
         switch name {
