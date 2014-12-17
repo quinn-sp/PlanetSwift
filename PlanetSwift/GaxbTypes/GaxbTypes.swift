@@ -78,21 +78,21 @@ extension CGRect: GaxbType {
         origin = newOrigin
         size = newSize
     }
-    public func toGaxbString() -> String {
-        return "\(origin.x),\(origin.y),\(size.width),\(size.height)"
-    }
     public static func componentsFromString(string: String) -> (CGPoint, CGSize) {
-        var x=0, y=0, w=0, h=0
+        var x:Float=0.0, y:Float=0.0, w:Float=0.0, h:Float=0.0
         var components = string.componentsSeparatedByString(",")
         if components.count == 4 {
-            x = components[0].toInt()!
-            y = components[1].toInt()!
-            w = components[2].toInt()!
-            h = components[3].toInt()!
+            x = (components[0] as NSString).floatValue
+            y = (components[1] as NSString).floatValue
+            w = (components[2] as NSString).floatValue
+            h = (components[3] as NSString).floatValue
         }
-        let origin = CGPoint(x: x, y: y)
-        let size = CGSize(width: w, height: h)
+        let origin = CGPoint(x: CGFloat(x), y: CGFloat(y))
+        let size = CGSize(width: CGFloat(w), height: CGFloat(h))
         return (origin, size)
+    }
+    public func toGaxbString() -> String {
+        return "\(origin.x),\(origin.y),\(size.width),\(size.height)"
     }
 }
 
@@ -143,11 +143,9 @@ extension UIColor {
         }
         self.init(red: r, green:g, blue:b, alpha:a)
     }
-
     public func setWithGaxbString(GaxbString: String) {
         // immutable
     }
-    
     public func toGaxbString() -> String {
         var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
         if self.getRed(&r, green:&g , blue: &b, alpha: &a) {
