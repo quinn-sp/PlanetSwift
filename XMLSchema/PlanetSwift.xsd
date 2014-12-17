@@ -35,7 +35,7 @@
 				<attribute name="fontName" type="string"/>
 				<attribute name="fontSize" type="decimal"/>
 				<attribute name="textColor" type="ps:color"/>
-				<!-- <attribute name="textAlignment" type="enums_tbd"/> -->
+				<attribute name="textAlignment" type="ps:textAlignment"/>
 				<!-- <attribute name="lineBreakMode" type="enums_tbd"/> -->
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
@@ -45,6 +45,21 @@
 			</extension>
 		</complexContent>
 	</complexType>
+
+<!-- enumerations -->
+
+	<simpleType name="textAlignment">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Left" />
+			<enumeration value="Center" />
+			<enumeration value="Right" />
+			<enumeration value="Justified" />
+			<enumeration value="Natural" />
+		</restriction>
+	</simpleType>
 
 	<!-- types -->
 

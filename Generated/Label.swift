@@ -33,6 +33,19 @@ public class Label: LabelBase {
             label.minimumScaleFactor = CGFloat(minimumScaleFactor)
         case "numberOfLines":
             label.numberOfLines = numberOfLines!
+        case "textAlignment":
+            switch textAlignment! {
+            case PlanetSwift.textAlignment.Center:
+                label.textAlignment = .Center
+            case PlanetSwift.textAlignment.Right:
+                label.textAlignment = .Right
+            case PlanetSwift.textAlignment.Left:
+                label.textAlignment = .Left
+            case PlanetSwift.textAlignment.Justified:
+                label.textAlignment = .Justified
+            case PlanetSwift.textAlignment.Natural:
+                label.textAlignment = .Natural
+            }
         case "fontSize":
             fontChanged = true
         case "fontName":
