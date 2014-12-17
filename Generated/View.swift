@@ -8,6 +8,8 @@ public class View: ViewBase {
     public var view = UIView()
     
     override func gaxbValueDidChange(name: String) {
+        super.gaxbValueDidChange(name)
+
         switch name {
         case "frame":
             view.frame = frame!

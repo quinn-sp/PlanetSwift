@@ -26,6 +26,26 @@
 		</complexContent>
 	</complexType>
 
+	<element name="Label" type="ps:Label"/>
+	<complexType name="Label">
+		<complexContent>
+			<extension base="ps:View">
+				<attribute name="text" type="string"/>
+				<!-- <attribute name="attributedString" type=""/> -->
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal"/>
+				<attribute name="textColor" type="ps:color"/>
+				<!-- <attribute name="textAlignment" type="enums_tbd"/> -->
+				<!-- <attribute name="lineBreakMode" type="enums_tbd"/> -->
+				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
+				<attribute name="minimumScaleFactor" type="decimal" default="1.0"/>
+				<attribute name="numberOfLines" type="integer"/>
+				<!-- <attribute name="shadowColor" type="ps:color"/> -->
+				<!-- <attribute name="shadowOffset" type="ps:size"/> -->
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<!-- types -->
 
 	<simpleType name="rect">
