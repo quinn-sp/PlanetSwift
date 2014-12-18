@@ -10,6 +10,7 @@
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
 		A92E73821A4212B200B22884 /* LabelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73801A4212B200B22884 /* LabelBase.swift */; };
 		A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */; };
+		A96D92AB1A4358F800119036 /* PlanetSwiftViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */; };
 		A9B439741A3A53C70052690A /* PlanetSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B439731A3A53C70052690A /* PlanetSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B4397A1A3A53C70052690A /* PlanetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B4396E1A3A53C70052690A /* PlanetSwift.framework */; };
 		A9B439811A3A53C70052690A /* PlanetSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439801A3A53C70052690A /* PlanetSwiftTests.swift */; };
@@ -53,6 +54,7 @@
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A92E73801A4212B200B22884 /* LabelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelBase.swift; sourceTree = "<group>"; };
 		A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftLabelTests.swift; sourceTree = "<group>"; };
+		A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftViewTests.swift; sourceTree = "<group>"; };
 		A9B4396E1A3A53C70052690A /* PlanetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlanetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B439721A3A53C70052690A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9B439731A3A53C70052690A /* PlanetSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanetSwift.h; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */,
 				A9B439801A3A53C70052690A /* PlanetSwiftTests.swift */,
+				A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */,
 				A9B4397E1A3A53C70052690A /* Supporting Files */,
 			);
 			path = PlanetSwiftTests;
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96D92AB1A4358F800119036 /* PlanetSwiftViewTests.swift in Sources */,
 				A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */,
 				A9B439811A3A53C70052690A /* PlanetSwiftTests.swift in Sources */,
 			);

@@ -114,7 +114,6 @@ extension UIColor {
         
         self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
     }
-
     convenience init(gaxbString: String) {
         var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
         if gaxbString.hasPrefix("#") {
@@ -153,6 +152,11 @@ extension UIColor {
             return NSString(format:"#%08X", hexNumber)
         }
         return ""
+    }
+    public func getRGBA() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
+        var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (-1.0, -1.0, -1.0,-1.0)
+        self.getRed(&r, green:&g , blue: &b, alpha: &a)
+        return (r, g, b, a)
     }
 }
 
