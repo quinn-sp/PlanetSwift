@@ -39,5 +39,18 @@ class PlanetSwiftLabelTests: XCTestCase {
         XCTAssert(label0 != nil, "Label #0 is nil")
         XCTAssert(label1 != nil, "Label #1 is nil")
     }
+    
+    func testLabelViews() {
+        XCTAssert(label0!.label.isKindOfClass(UILabel), "label0 does not have a UILabel")
+        XCTAssert(label1!.label.isKindOfClass(UILabel), "label1 does not have a UILabel")
+    }
+    
+    func testLabelTextAlignmentEnum() {
+        XCTAssertEqual(PlanetSwift.textAlignment.Center.rawValue, "Center", "TextAlignment enum Center invalid")
+        XCTAssertEqual(PlanetSwift.textAlignment.Left.rawValue, "Left", "TextAlignment enum Left invalid")
+        XCTAssertEqual(PlanetSwift.textAlignment.Right.rawValue, "Right", "TextAlignment enum Right invalid")
+        XCTAssertEqual(PlanetSwift.textAlignment.Justified.rawValue, "Justified", "TextAlignment enum Justified invalid")
+        XCTAssertEqual(PlanetSwift.textAlignment.Natural.rawValue, "Natural", "TextAlignment enum Natural invalid")
+    }
 
 }
