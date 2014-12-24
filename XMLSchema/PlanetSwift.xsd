@@ -18,10 +18,50 @@
 				</sequence>
 				<attribute name="frame" type="ps:rect"/>
 				<attribute name="color" type="ps:color"/>
-				<!-- <attribute name="clipsToBounds" type="boolean"/> -->
+				<attribute name="alpha" type="decimal"/>
+				<attribute name="hidden" type="boolean"/>
+				<attribute name="clipsToBounds" type="boolean"/>
+				<attribute name="tag" type="integer"/>
 			</extension>
 		</complexContent>
 	</complexType>
+
+	<element name="Label" type="ps:Label"/>
+	<complexType name="Label">
+		<complexContent>
+			<extension base="ps:View">
+				<attribute name="text" type="string"/>
+				<!-- <attribute name="attributedString" type=""/> -->
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal"/>
+				<attribute name="textColor" type="ps:color"/>
+				<attribute name="textAlignment" type="ps:textAlignment"/>
+				<!-- <attribute name="lineBreakMode" type="enums_tbd"/> -->
+				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
+				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
+				<attribute name="numberOfLines" type="integer"/>
+				<!-- <attribute name="shadowColor" type="ps:color"/> -->
+				<!-- <attribute name="shadowOffset" type="ps:size"/> -->
+			</extension>
+		</complexContent>
+	</complexType>
+
+<!-- enumerations -->
+
+	<simpleType name="textAlignment">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Left" />
+			<enumeration value="Center" />
+			<enumeration value="Right" />
+			<enumeration value="Justified" />
+			<enumeration value="Natural" />
+		</restriction>
+	</simpleType>
+
+	<!-- types -->
 
 	<simpleType name="rect">
 		<annotation>
