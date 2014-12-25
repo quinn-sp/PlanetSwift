@@ -37,4 +37,20 @@ public class GaxbFactory: NSObject {
         }
         return nil
     }
+    
+    public class func element(namespace: String, name: String) -> GaxbElement? {
+        if let factory = self.factory(namespace) as? GaxbFactory
+        {
+            return factory.classWithName(name)
+        }
+        return nil
+    }
+    
+    public class func element(fullname: String) -> GaxbElement? {
+        let components = fullname.componentsSeparatedByString(".")
+        if (components.count == 2) {
+            return self.element(components[0], name: components[1])
+        }
+        return nil
+    }
 }

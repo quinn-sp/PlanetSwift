@@ -4,18 +4,4 @@
 
 extension PlanetSwift {
 
-    @objc(PlanetSwiftGaxbFactory) public class PlanetSwiftGaxbFactory : GaxbFactory {
-        public override func classWithName(name : String) -> GaxbElement? {
-            switch name {
-            case "View":
-                return View()
-            case "Object":
-                return Object()
-            default:
-                return nil
-            }
-        }
-    }
-    
-
 }
