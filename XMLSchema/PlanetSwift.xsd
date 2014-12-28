@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ps="http://schema.smallplanet.com/PlanetSwift" targetNamespace="http://schema.smallplanet.com/PlanetSwift">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ui="http://schema.smallplanet.com/PlanetUI" targetNamespace="http://schema.smallplanet.com/PlanetUI">
 
-	<element name="Object" type="ps:Object"/>
+	<element name="Object" type="ui:Object"/>
 	<complexType name="Object">
 		<sequence>
-			<element ref="ps:Object" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="ui:Object" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 		<attribute name="title" type="string"/>
 	</complexType>
 
-	<element name="View" type="ps:View"/>
+	<element name="View" type="ui:View"/>
 	<complexType name="View">
 		<complexContent>
-			<extension base="ps:Object">
+			<extension base="ui:Object">
 				<sequence>
-					<element ref="ps:View" minOccurs="0" maxOccurs="unbounded"/>
+					<element ref="ui:View" minOccurs="0" maxOccurs="unbounded"/>
 				</sequence>
-				<attribute name="frame" type="ps:rect"/>
-				<attribute name="color" type="ps:color"/>
+				<attribute name="frame" type="ui:rect"/>
+				<attribute name="color" type="ui:color"/>
 				<attribute name="alpha" type="decimal"/>
 				<attribute name="hidden" type="boolean"/>
 				<attribute name="clipsToBounds" type="boolean"/>
@@ -26,22 +26,22 @@
 		</complexContent>
 	</complexType>
 
-	<element name="Label" type="ps:Label"/>
+	<element name="Label" type="ui:Label"/>
 	<complexType name="Label">
 		<complexContent>
-			<extension base="ps:View">
+			<extension base="ui:View">
 				<attribute name="text" type="string"/>
 				<!-- <attribute name="attributedString" type=""/> -->
 				<attribute name="fontName" type="string"/>
 				<attribute name="fontSize" type="decimal"/>
-				<attribute name="textColor" type="ps:color"/>
-				<attribute name="textAlignment" type="ps:textAlignment"/>
+				<attribute name="textColor" type="ui:color"/>
+				<attribute name="textAlignment" type="ui:textAlignment"/>
 				<!-- <attribute name="lineBreakMode" type="enums_tbd"/> -->
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
 				<attribute name="numberOfLines" type="integer"/>
-				<!-- <attribute name="shadowColor" type="ps:color"/> -->
-				<!-- <attribute name="shadowOffset" type="ps:size"/> -->
+				<!-- <attribute name="shadowColor" type="ui:color"/> -->
+				<!-- <attribute name="shadowOffset" type="ui:size"/> -->
 			</extension>
 		</complexContent>
 	</complexType>

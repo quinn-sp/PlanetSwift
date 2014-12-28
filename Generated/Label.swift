@@ -35,15 +35,15 @@ public class Label: LabelBase {
             label.numberOfLines = numberOfLines!
         case "textAlignment":
             switch textAlignment! {
-            case PlanetSwift.textAlignment.Center:
+            case PlanetUI.textAlignment.Center:
                 label.textAlignment = .Center
-            case PlanetSwift.textAlignment.Right:
+            case PlanetUI.textAlignment.Right:
                 label.textAlignment = .Right
-            case PlanetSwift.textAlignment.Left:
+            case PlanetUI.textAlignment.Left:
                 label.textAlignment = .Left
-            case PlanetSwift.textAlignment.Justified:
+            case PlanetUI.textAlignment.Justified:
                 label.textAlignment = .Justified
-            case PlanetSwift.textAlignment.Natural:
+            case PlanetUI.textAlignment.Natural:
                 label.textAlignment = .Natural
             }
         case "fontSize":
