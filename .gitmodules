@@ -3,4 +3,4 @@
 	url = https://github.com/SmallPlanet/gaxb.git
 [submodule "AEXML"]
 	path = AEXML
-	url = https://github.com/tadija/AEXML.git
+	url = https://github.com/SmallPlanetSwift/AEXML.git
