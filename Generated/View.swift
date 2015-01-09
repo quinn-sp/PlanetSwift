@@ -35,8 +35,10 @@ public class View: ViewBase {
     }
     
     public func loadInto(parentView: UIView) {
-        for child in views {
-            child.loadInto(view)
+        for child in anys {
+            if let childView = child as? View {
+                childView.loadInto(view)
+            }
         }
         parentView.addSubview(view)
     }

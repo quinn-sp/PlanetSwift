@@ -4,7 +4,7 @@
 	<element name="Object" type="ui:Object"/>
 	<complexType name="Object">
 		<sequence>
-			<element ref="ui:Object" minOccurs="0" maxOccurs="unbounded"/>
+			<any minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 		<attribute name="title" type="string"/>
 	</complexType>
@@ -13,9 +13,6 @@
 	<complexType name="View">
 		<complexContent>
 			<extension base="ui:Object">
-				<sequence>
-					<element ref="ui:View" minOccurs="0" maxOccurs="unbounded"/>
-				</sequence>
 				<attribute name="frame" type="ui:rect"/>
 				<attribute name="color" type="ui:color"/>
 				<attribute name="alpha" type="decimal"/>
