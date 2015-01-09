@@ -18,10 +18,10 @@ class PlanetSwiftViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        element = PlanetSwift.readFromString(testXMLString)
+        element = PlanetUI.readFromString(testXMLString)
         if let view = element as View? {
-            subview0 = view.views[0]
-            subview1 = view.views[1]
+            subview0 = view.anys[0] as? View
+            subview1 = view.anys[1] as? View
         }
     }
     
@@ -44,7 +44,7 @@ class PlanetSwiftViewTests: XCTestCase {
 
     func testSubviews() {
         if let view = element as? View {
-            XCTAssertEqual(view.views.count, 2, "Subviews count should be 2")
+            XCTAssertEqual(view.anys.count, 2, "Subviews count should be 2")
         }
     }
     

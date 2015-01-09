@@ -16,7 +16,7 @@ class PlanetSwiftTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        element = PlanetSwift.readFromString(testXMLString)
+        element = PlanetUI.readFromString(testXMLString)
     }
     
     override func tearDown() {
