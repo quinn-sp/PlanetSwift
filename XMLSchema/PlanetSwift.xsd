@@ -43,6 +43,24 @@
 		</complexContent>
 	</complexType>
 
+	<element name="Notification" type="ui:Notification" />
+	<complexType name="Notification">
+		<attribute name="name" type="string" use="required" />
+	</complexType>
+
+	<element name="Code" type="ui:Code" />
+	<complexType name="Code">
+		<complexContent>
+			<extension base="ui:Object">
+				<sequence>
+					<element ref="ui:Notification" minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+				<attribute name="class" type="string" use="required" />
+				<!-- <attribute name="singleton" type="boolean" use="optional" default="false" /> -->
+			</extension>
+		</complexContent>
+	</complexType>
+
 <!-- enumerations -->
 
 	<simpleType name="textAlignment">
