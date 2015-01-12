@@ -43,6 +43,15 @@
 		</complexContent>
 	</complexType>
 
+	<element name="Button" type="ui:Button"/>
+	<complexType name="Button">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="onTouchUp" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
 		<attribute name="name" type="string" use="required" />

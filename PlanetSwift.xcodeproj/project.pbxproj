@@ -26,6 +26,8 @@
 		C4AA9CDA1A60D9290094F56A /* CodeBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD61A60D9290094F56A /* CodeBase.swift */; };
 		C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD71A60D9290094F56A /* Notification.swift */; };
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
+		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
+		C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */; };
 		C4C5DCE41A4F7B0600BE7271 /* PlanetSwift.xsd in Resources */ = {isa = PBXBuildFile; fileRef = C4C5DCE31A4F7B0600BE7271 /* PlanetSwift.xsd */; };
 		C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */; };
 		C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */; };
@@ -79,6 +81,8 @@
 		C4AA9CD61A60D9290094F56A /* CodeBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeBase.swift; sourceTree = "<group>"; };
 		C4AA9CD71A60D9290094F56A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C4AA9CD81A60D9290094F56A /* NotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBase.swift; sourceTree = "<group>"; };
+		C4AA9CE81A6383ED0094F56A /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBase.swift; sourceTree = "<group>"; };
 		C4C5DCE31A4F7B0600BE7271 /* PlanetSwift.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PlanetSwift.xsd; sourceTree = "<group>"; };
 		C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUI.swift; sourceTree = "<group>"; };
 		C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUIBase.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		A9B439961A3B40B70052690A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				C4AA9CE81A6383ED0094F56A /* Button.swift */,
+				C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */,
 				C4AA9CD51A60D9290094F56A /* Code.swift */,
 				C4AA9CD61A60D9290094F56A /* CodeBase.swift */,
 				A92E737F1A4212B200B22884 /* Label.swift */,
@@ -354,6 +360,8 @@
 				A9B4399F1A3B40B70052690A /* View.swift in Sources */,
 				C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */,
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
+				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
+				C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */,
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				C4AA9CD91A60D9290094F56A /* Code.swift in Sources */,
