@@ -4,4 +4,14 @@
 
 public class Notification: NotificationBase {
 
+    public var selector: Selector? {
+        get {
+            if name != nil {
+                return Selector(name! + ":")
+            } else {
+                return nil
+            }
+        }
+    }
+    
 }

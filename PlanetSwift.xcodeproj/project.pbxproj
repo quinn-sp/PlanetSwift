@@ -176,14 +176,14 @@
 			children = (
 				C4AA9CD51A60D9290094F56A /* Code.swift */,
 				C4AA9CD61A60D9290094F56A /* CodeBase.swift */,
-				C4AA9CD71A60D9290094F56A /* Notification.swift */,
-				C4AA9CD81A60D9290094F56A /* NotificationBase.swift */,
-				C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */,
-				C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */,
 				A92E737F1A4212B200B22884 /* Label.swift */,
 				A92E73801A4212B200B22884 /* LabelBase.swift */,
+				C4AA9CD71A60D9290094F56A /* Notification.swift */,
+				C4AA9CD81A60D9290094F56A /* NotificationBase.swift */,
 				A9B439971A3B40B70052690A /* Object.swift */,
 				A9B439981A3B40B70052690A /* ObjectBase.swift */,
+				C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */,
+				C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */,
 				A9B4399A1A3B40B70052690A /* View.swift */,
 				A9B4399B1A3B40B70052690A /* ViewBase.swift */,
 			);

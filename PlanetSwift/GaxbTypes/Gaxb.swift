@@ -9,15 +9,18 @@
 import UIKit
 
 public protocol GaxbElement {
-    var parent: GaxbElement? { get }
     var xmlns: String { get }
-    func setParent(GaxbElement)
+    var parent: GaxbElement? { get }
+    func gaxbInit()
     func setElement(element: GaxbElement, key:String)
+    func setParent(GaxbElement)
+    func isKindOfClass(className: String) -> Bool
     func setAttribute(value: String, key:String)
     func attributesXML(useOriginalValues:Bool) -> String
     func sequencesXML(useOriginalValues:Bool) -> String
     func toXML(useOriginalValues:Bool) -> String
     func toXML() -> String
+    func description() -> String
 }
 
 public protocol GaxbType {
