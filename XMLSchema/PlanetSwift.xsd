@@ -23,6 +23,14 @@
 		</complexContent>
 	</complexType>
 
+	<element name="Scene" type="ui:Scene"/>
+	<complexType name="Scene">
+		<complexContent>
+			<extension base="ui:View">
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="Label" type="ui:Label"/>
 	<complexType name="Label">
 		<complexContent>
@@ -54,7 +62,11 @@
 
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
-		<attribute name="name" type="string" use="required" />
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="scopedName" type="string" use="required" />
+			</extension>
+		</complexContent>
 	</complexType>
 
 	<element name="Code" type="ui:Code" />

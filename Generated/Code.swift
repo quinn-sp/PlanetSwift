@@ -31,9 +31,4 @@ public class Code: CodeBase {
         }
     }
     
-    public func scope() -> AnyObject? {
-        // todo
-        return nil
-    }
-
 }

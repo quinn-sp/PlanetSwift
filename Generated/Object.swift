@@ -4,5 +4,18 @@
 
 public class Object: ObjectBase {
 
-
+    public func isScopeContainer() -> Bool {
+        return false
+    }
+    
+    public func scope() -> AnyObject? {
+        if self.isScopeContainer() {
+            return self
+        }
+        if let object = parent as? Object {
+            return object.scope()
+        }
+        return nil
+    }
+    
 }
