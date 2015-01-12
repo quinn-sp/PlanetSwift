@@ -32,7 +32,10 @@ public class Button: ButtonBase {
     @objc func buttonOnTouchUp(sender:UIButton!)
     {
         if onTouchUp != nil {
-            NSNotificationCenter.defaultCenter().postNotificationName(onTouchUp!, object: nil);  // todo scope
+            let (scopeObject: AnyObject?, name) = self.parseNotification(onTouchUp)
+            if name != nil {
+                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject);  // todo scope
+            }
         }
     }
 

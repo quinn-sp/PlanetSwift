@@ -18,4 +18,35 @@ public class Object: ObjectBase {
         return nil
     }
     
+    // notification strings are one of the following:
+    //  LOCAL::handleSomething  (local scope)
+    //  handleSomething (same as above, local scope)
+    //  GLOBAL::handleSomething (global scope)
+    //  MyScope::handleSomething (custom scope "MyScope")
+    public func parseNotification(scopedName: String?) -> (scope: AnyObject?, name: String? ) {
+        var scopeObject: AnyObject? = nil
+        var name: String? = nil
+        
+        if let components = scopedName?.componentsSeparatedByString("::") {
+            switch components.count {
+            case 1:
+                scopeObject = self.scope()
+                name = components[0]
+            case 2:
+                switch components[0] {
+                case "GLOBAL":
+                    scopeObject = nil
+                case "LOCAL":
+                    scopeObject = self.scope()
+                default:
+                    scopeObject = components[0]
+                }
+                name = components[1]
+            default:
+                break
+            }
+        }
+        return (scopeObject, name)
+    }
+
 }

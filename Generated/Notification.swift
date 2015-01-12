@@ -3,7 +3,7 @@
 //
 
 public class Notification: NotificationBase {
-    public var scopeObject: AnyObject?
+    public weak var scopeObject: AnyObject?
     public var name: String?
     
     public var selector: Selector? {
@@ -21,29 +21,10 @@ public class Notification: NotificationBase {
         
         switch _name {
         case "scopedName":
-            if let components = scopedName?.componentsSeparatedByString("::") {
-                switch components.count {
-                case 1:
-                    scopeObject = self.scope()
-                    name = components[0]
-                case 2:
-                    switch components[0] {
-                        case "GLOBAL":
-                            scopeObject = nil
-                        case "LOCAL":
-                            scopeObject = self.scope()
-                        default:
-                            scopeObject = components[0]
-                    }
-                    name = components[1]
-                default:
-                    scopeObject = nil
-                    name = nil
-                }
-            }
-
+            (scopeObject, name) = self.parseNotification(scopedName)
         default:
             break
         }
     }
+    
 }
