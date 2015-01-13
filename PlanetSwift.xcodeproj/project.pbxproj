@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D185B1A6576D500AF0083 /* PlanetView.swift */; };
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
 		A92E73821A4212B200B22884 /* LabelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73801A4212B200B22884 /* LabelBase.swift */; };
 		A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B9D185B1A6576D500AF0083 /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A92E73801A4212B200B22884 /* LabelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelBase.swift; sourceTree = "<group>"; };
 		A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftLabelTests.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				C4C5DCE21A4F7B0600BE7271 /* XMLSchema */,
 				A9B439731A3A53C70052690A /* PlanetSwift.h */,
+				9B9D185B1A6576D500AF0083 /* PlanetView.swift */,
 				A9B439711A3A53C70052690A /* Supporting Files */,
 				A9B439CC1A3B5AA20052690A /* PlanetSwift-Bridging-Header.h */,
 			);
@@ -377,6 +380,7 @@
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
+				9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
 				C4AA9CDA1A60D9290094F56A /* CodeBase.swift in Sources */,
 				A9639EF71A643A0D009C818F /* SceneBase.swift in Sources */,
