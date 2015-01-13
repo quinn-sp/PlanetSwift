@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D185B1A6576D500AF0083 /* PlanetView.swift */; };
+		9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB342E51A65AC80004C12B7 /* String+Bundle.swift */; };
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
 		A92E73821A4212B200B22884 /* LabelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73801A4212B200B22884 /* LabelBase.swift */; };
 		A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		9B9D185B1A6576D500AF0083 /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
+		9BB342E51A65AC80004C12B7 /* String+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Bundle.swift"; sourceTree = "<group>"; };
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A92E73801A4212B200B22884 /* LabelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelBase.swift; sourceTree = "<group>"; };
 		A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftLabelTests.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */,
 				A9B439A31A3B40F70052690A /* Gaxb.swift */,
+				9BB342E51A65AC80004C12B7 /* String+Bundle.swift */,
 			);
 			name = GaxbTypes;
 			path = PlanetSwift/GaxbTypes;
@@ -371,6 +374,7 @@
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
 				C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */,
+				9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */,
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				C4AA9CD91A60D9290094F56A /* Code.swift in Sources */,
