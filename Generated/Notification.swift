@@ -21,7 +21,7 @@ public class Notification: NotificationBase {
         
         switch _name {
         case "scopedName":
-            (scopeObject, name) = self.parseNotification(scopedName)
+            (self.scopeObject, self.name) = self.parseNotification(scopedName)
         default:
             break
         }

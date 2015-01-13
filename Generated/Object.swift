@@ -39,7 +39,7 @@ public class Object: ObjectBase {
                 case "LOCAL":
                     scopeObject = self.scope()
                 default:
-                    scopeObject = components[0]
+                    scopeObject = String(components[0])
                 }
                 name = components[1]
             default:

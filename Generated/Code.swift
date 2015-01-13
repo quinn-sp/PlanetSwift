@@ -28,7 +28,7 @@ public class Code: CodeBase {
             for notification in self.notifications {
                 let (scopeObject: AnyObject?, name) = self.parseNotification(notification.scopedName)
                 if name != nil {
-                    NSNotificationCenter.defaultCenter().removeObserver(codeObject!, name: name?, object: scopeObject)
+                    NSNotificationCenter.defaultCenter().removeObserver(codeObject!, name: notification.name?, object: notification.scopeObject)
                 }
             }
         }
