@@ -3,7 +3,9 @@
 //
 
 public class Object: ObjectBase {
-
+	
+	//MARK: - scoping
+	
     public func isScopeContainer() -> Bool {
         return false
     }
@@ -17,7 +19,9 @@ public class Object: ObjectBase {
         }
         return nil
     }
-    
+	
+	//MARK: - notification
+	
     // notification strings are one of the following:
     //  LOCAL::handleSomething  (local scope)
     //  handleSomething (same as above, local scope)

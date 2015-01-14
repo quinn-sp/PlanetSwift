@@ -24,7 +24,10 @@ class PlanetView: UIView {
 		if xmlView == nil && bundlePath != nil {
 			
 			xmlView = PlanetSwift.PlanetUI.readFromFile(String(bundlePath: self.bundlePath!)) as View?
-			xmlView?.loadInto(self)
+			xmlView?.visitLoad(nil)
+			if let loadedView = xmlView?.view {
+				self.addSubview(loadedView)
+			}
 		}
 	}
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B851A66D52200BD0CC5 /* Constraint.swift */; };
+		9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */; };
 		9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D185B1A6576D500AF0083 /* PlanetView.swift */; };
 		9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB342E51A65AC80004C12B7 /* String+Bundle.swift */; };
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B972B851A66D52200BD0CC5 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintBase.swift; sourceTree = "<group>"; };
 		9B9D185B1A6576D500AF0083 /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		9BB342E51A65AC80004C12B7 /* String+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Bundle.swift"; sourceTree = "<group>"; };
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */,
 				C4AA9CD51A60D9290094F56A /* Code.swift */,
 				C4AA9CD61A60D9290094F56A /* CodeBase.swift */,
+				9B972B851A66D52200BD0CC5 /* Constraint.swift */,
+				9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */,
 				A92E737F1A4212B200B22884 /* Label.swift */,
 				A92E73801A4212B200B22884 /* LabelBase.swift */,
 				C4AA9CD71A60D9290094F56A /* Notification.swift */,
@@ -387,6 +393,8 @@
 				9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
 				C4AA9CDA1A60D9290094F56A /* CodeBase.swift in Sources */,
+				9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */,
+				9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */,
 				A9639EF71A643A0D009C818F /* SceneBase.swift in Sources */,
 				A92E73811A4212B200B22884 /* Label.swift in Sources */,
 				C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */,
