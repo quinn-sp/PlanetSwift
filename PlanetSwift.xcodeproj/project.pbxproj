@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79B6A4D51A67069E00564FA2 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B6A4D31A67069E00564FA2 /* Image.swift */; };
+		79B6A4D61A67069E00564FA2 /* ImageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B6A4D41A67069E00564FA2 /* ImageBase.swift */; };
 		9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9D185B1A6576D500AF0083 /* PlanetView.swift */; };
 		9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB342E51A65AC80004C12B7 /* String+Bundle.swift */; };
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79B6A4D31A67069E00564FA2 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		79B6A4D41A67069E00564FA2 /* ImageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBase.swift; sourceTree = "<group>"; };
 		9B9D185B1A6576D500AF0083 /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
 		9BB342E51A65AC80004C12B7 /* String+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Bundle.swift"; sourceTree = "<group>"; };
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */,
 				C4AA9CD51A60D9290094F56A /* Code.swift */,
 				C4AA9CD61A60D9290094F56A /* CodeBase.swift */,
+				79B6A4D31A67069E00564FA2 /* Image.swift */,
+				79B6A4D41A67069E00564FA2 /* ImageBase.swift */,
 				A92E737F1A4212B200B22884 /* Label.swift */,
 				A92E73801A4212B200B22884 /* LabelBase.swift */,
 				C4AA9CD71A60D9290094F56A /* Notification.swift */,
@@ -378,11 +384,13 @@
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				C4AA9CD91A60D9290094F56A /* Code.swift in Sources */,
+				79B6A4D51A67069E00564FA2 /* Image.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,
 				A92E73821A4212B200B22884 /* LabelBase.swift in Sources */,
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
+				79B6A4D61A67069E00564FA2 /* ImageBase.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
 				9B9D185C1A6576D500AF0083 /* PlanetView.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,

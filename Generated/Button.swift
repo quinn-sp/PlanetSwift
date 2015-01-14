@@ -18,11 +18,20 @@ public class Button: ButtonBase {
 
     override func gaxbValueDidChange(name: String) {
         super.gaxbValueDidChange(name)
-        button.setTitle("ohai!", forState: .Normal)
+        button.setTitle("Normal", forState: .Normal)
+        button.setTitle("Highlighted", forState: .Highlighted)
+        button.setTitle("Selected", forState: .Selected)
+        button.setTitle("Selected-Highlighted", forState: .Selected | .Highlighted)
         button.tintColor = UIColor.redColor()
         switch name {
         case "onTouchUp":
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
+            break
+        case "onTouchDown":
+            button.addTarget(self, action: Selector("buttonOnTouchDown:"), forControlEvents: .TouchDown)
+            break
+        case "tintColor":
+            button.tintColor = tintColor!
             break
         default:
             break
@@ -34,9 +43,22 @@ public class Button: ButtonBase {
         if onTouchUp != nil {
             let (scopeObject: AnyObject?, name) = self.parseNotification(onTouchUp)
             if name != nil {
-                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject);  // todo scope
+                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
+            }
+        }
+        
+        if isSelectable {
+            sender.selected = !sender.selected;
+        }
+    }
+    
+    @objc func buttonOnTouchDown(sender:UIButton!)
+    {
+        if onTouchDown != nil {
+            let (scopeObject: AnyObject?, name) = self.parseNotification(onTouchDown)
+            if name != nil {
+                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
             }
         }
     }
-
 }

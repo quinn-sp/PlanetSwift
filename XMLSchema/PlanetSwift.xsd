@@ -56,6 +56,18 @@
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="onTouchUp" type="string" />
+				<attribute name="onTouchDown" type="string" />
+				<attribute name="isSelectable" type="boolean" default="false"/>
+				<attribute name="tintColor" type="ui:color" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Image" type="ui:Image"/>
+	<complexType name="Image">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="urlPath" type="string" />
 			</extension>
 		</complexContent>
 	</complexType>
