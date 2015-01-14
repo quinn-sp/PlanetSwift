@@ -10,16 +10,11 @@ import UIKit
 
 class PlanetView: UIView {
 	
-	@IBInspectable var bundlePath:String?
 	var xmlView:View?
-	
-	//MARK: - UIView override
-	
-	override func willMoveToSuperview(newSuperview: UIView?) {
-		
-		loadXMLView()
-		
-		super.willMoveToSuperview(newSuperview)
+	@IBInspectable var bundlePath:String? {
+		didSet {
+			loadXMLView()
+		}
 	}
 	
 	//MARK: - loading view
