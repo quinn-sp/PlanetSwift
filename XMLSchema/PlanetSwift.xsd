@@ -6,7 +6,7 @@
 		<sequence>
 			<any minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
-		<attribute name="title" type="string"/>
+		<attribute name="id" type="string"/>
 	</complexType>
 
 	<element name="View" type="ui:View"/>

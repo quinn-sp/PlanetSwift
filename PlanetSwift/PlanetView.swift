@@ -10,7 +10,7 @@ import UIKit
 
 class PlanetView: UIView {
 	
-	@IBInspectable var bundlePath:String = ""
+	@IBInspectable var bundlePath:String?
 	var xmlView:View?
 	
 	//MARK: - UIView override
@@ -26,9 +26,9 @@ class PlanetView: UIView {
 	
 	func loadXMLView() {
 		
-		if xmlView == nil {
+		if xmlView == nil && bundlePath != nil {
 			
-			xmlView = PlanetSwift.PlanetUI.readFromFile(String(bundlePath: self.bundlePath)) as View?
+			xmlView = PlanetSwift.PlanetUI.readFromFile(String(bundlePath: self.bundlePath!)) as View?
 			xmlView?.loadInto(self)
 		}
 	}
