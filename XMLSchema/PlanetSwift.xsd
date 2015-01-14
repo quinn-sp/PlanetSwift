@@ -144,17 +144,6 @@
 		</restriction>
 	</simpleType>
 
-	<simpleType name="LayoutDirection">
-		<annotation>
-			<appinfo>NAMED_ENUM</appinfo>
-		</annotation>
-		<restriction base="string">
-			<enumeration value="leadingToTrailing" />
-			<enumeration value="leftToRight" />
-			<enumeration value="rightToLeft" />
-		</restriction>
-	</simpleType>
-
 	<!-- types -->
 
 	<simpleType name="rect">
