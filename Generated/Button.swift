@@ -39,7 +39,7 @@ public class Button: ButtonBase {
         if onTouchUp != nil {
             let (scopeObject: GaxbElement?, name) = self.parseNotification(onTouchUp)
             if name != nil {
-                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject as? AnyObject?)  // todo scope
+                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
             }
         }
         
@@ -53,7 +53,7 @@ public class Button: ButtonBase {
         if onTouchDown != nil {
             let (scopeObject: GaxbElement?, name) = self.parseNotification(onTouchDown)
             if name != nil {
-                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject as AnyObject?)  // todo scope
+                NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
             }
         }
     }
