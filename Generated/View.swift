@@ -9,26 +9,6 @@ public class View: ViewBase {
 
     public override func gaxbInit() {
         super.gaxbInit()
-
-        if frame != nil {
-            view.frame = frame!
-        }
-        if color != nil {
-            view.backgroundColor = color
-        }
-        if alpha != nil {
-            view.alpha = CGFloat(alpha!)
-        }
-        if clipsToBounds != nil {
-            view.clipsToBounds = clipsToBounds!
-        }
-        if hidden != nil {
-            view.hidden = hidden!
-        }
-        if tag != nil {
-            view.tag = tag!
-        }
-        
     }
 	
 	internal func findParentView() -> View? {
@@ -45,6 +25,28 @@ public class View: ViewBase {
 	}
 	
 	public override func load(context: AnyObject?) {
+		super.load(context)
+		
+		if frame != nil {
+			view.bounds = CGRectMake(0, 0, frame!.size.width, frame!.size.height)
+			view.center = CGPointMake(CGRectGetMidX(frame!), CGRectGetMidY(frame!))
+		}
+		if color != nil {
+			view.backgroundColor = color
+		}
+		if alpha != nil {
+			view.alpha = CGFloat(alpha!)
+		}
+		if clipsToBounds != nil {
+			view.clipsToBounds = clipsToBounds!
+		}
+		if hidden != nil {
+			view.hidden = hidden!
+		}
+		if tag != nil {
+			view.tag = tag!
+		}
+		
 		findParentView()?.view.addSubview(view)
 	}
 	

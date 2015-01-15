@@ -3,7 +3,7 @@
 //
 
 public class Notification: NotificationBase {
-    public weak var scopeObject: GaxbElement?
+    public weak var scopeObject: AnyObject?
     public var name: String?
     
     public override func gaxbInit() {

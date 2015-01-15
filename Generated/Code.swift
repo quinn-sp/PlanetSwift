@@ -26,7 +26,7 @@ public class Code: CodeBase {
     deinit {
         if codeObject != nil {
             for notification in self.notifications {
-                let (scopeObject: GaxbElement?, name) = self.parseNotification(notification.scopedName)
+                let (scopeObject: AnyObject?, name) = self.parseNotification(notification.scopedName)
                 if name != nil {
                     NSNotificationCenter.defaultCenter().removeObserver(codeObject!, name: notification.name?, object: notification.scopeObject)
                 }

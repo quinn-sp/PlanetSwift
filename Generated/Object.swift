@@ -6,7 +6,7 @@ public class Object: ObjectBase {
 	
 	//MARK: - ID mappings
 	
-	lazy var idMappings:Dictionary<String,GaxbElement> = Dictionary<String,GaxbElement>()
+	lazy var idMappings:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
 	
 	//MARK: - scoping
 	
@@ -14,7 +14,7 @@ public class Object: ObjectBase {
         return false
     }
     
-    public func scope() -> GaxbElement? {
+    public func scope() -> AnyObject? {
         if self.isScopeContainer() {
             return self
         }
@@ -30,8 +30,8 @@ public class Object: ObjectBase {
     //  LOCAL::handleSomething  (local scope)
     //  handleSomething (same as above, local scope)
     //  GLOBAL::handleSomething (global scope)
-    public func parseNotification(scopedName: String?) -> (scope: GaxbElement?, name: String? ) {
-        var scopeObject: GaxbElement? = nil
+    public func parseNotification(scopedName: String?) -> (scope: AnyObject?, name: String? ) {
+        var scopeObject: AnyObject? = nil
         var name: String? = nil
         
         if let components = scopedName?.componentsSeparatedByString("::") {
