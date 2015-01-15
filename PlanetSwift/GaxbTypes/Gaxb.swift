@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol GaxbElement {
+public protocol GaxbElement {
     var xmlns: String { get }
     var parent: GaxbElement? { get }
     func gaxbInit()
