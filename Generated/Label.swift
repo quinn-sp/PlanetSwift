@@ -18,22 +18,21 @@ public class Label: LabelBase {
         }
     }
     
-    override func gaxbValueDidChange(name: String) {
-        super.gaxbValueDidChange(name)
-        
-        var fontChanged = false
-        switch name {
-        case "text":
+    public override func gaxbInit() {
+        if text != nil {
             label.text = text!
-        case "textColor":
+        }
+        if textColor != nil {
             label.textColor = textColor
-        case "adjustsFontSizeToFitWidth":
+        }
+        if adjustsFontSizeToFitWidth != nil {
             label.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth!
-        case "minimumScaleFactor":
-            label.minimumScaleFactor = CGFloat(minimumScaleFactor)
-        case "numberOfLines":
+        }
+        label.minimumScaleFactor = CGFloat(minimumScaleFactor)
+        if numberOfLines != nil {
             label.numberOfLines = numberOfLines!
-        case "textAlignment":
+        }
+        if textAlignment != nil {
             switch textAlignment! {
             case PlanetUI.textAlignment.Center:
                 label.textAlignment = .Center
@@ -46,15 +45,10 @@ public class Label: LabelBase {
             case PlanetUI.textAlignment.Natural:
                 label.textAlignment = .Natural
             }
-        case "fontSize":
-            fontChanged = true
-        case "fontName":
-            fontChanged = true
-        default:
-            break
         }
-        if fontChanged && fontName != nil && fontSize != nil {
+        if fontName != nil && fontSize != nil {
             label.font = UIFont(name: fontName!, size: CGFloat(fontSize!))
         }
     }
+    
 }

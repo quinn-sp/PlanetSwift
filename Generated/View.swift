@@ -6,32 +6,29 @@ import UIKit
 
 public class View: ViewBase {
     public var view = UIView()
-    
-    override func gaxbValueDidChange(name: String) {
-        super.gaxbValueDidChange(name)
 
-        switch name {
-        case "frame":
+    public override func gaxbInit() {
+        super.gaxbInit()
+
+        if frame != nil {
             view.frame = frame!
-        case "color":
-            view.backgroundColor = color
-        case "alpha":
-            view.alpha = CGFloat(alpha!)
-        case "clipsToBounds":
-            if clipsToBounds != nil {
-                view.clipsToBounds = clipsToBounds!
-            }
-        case "hidden":
-            if hidden != nil {
-                view.hidden = hidden!
-            }
-        case "tag":
-            if tag != nil {
-                view.tag = tag!
-            }
-        default:
-            break
         }
+        if color != nil {
+            view.backgroundColor = color
+        }
+        if alpha != nil {
+            view.alpha = CGFloat(alpha!)
+        }
+        if clipsToBounds != nil {
+            view.clipsToBounds = clipsToBounds!
+        }
+        if hidden != nil {
+            view.hidden = hidden!
+        }
+        if tag != nil {
+            view.tag = tag!
+        }
+        
     }
 	
 	internal func findParentView() -> View? {

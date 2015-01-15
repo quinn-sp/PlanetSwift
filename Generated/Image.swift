@@ -16,15 +16,11 @@ public class Image: ImageBase {
         }
     }
     
-    override func gaxbValueDidChange(name: String) {
-        super.gaxbValueDidChange(name)
-        switch name {
-        case "urlPath":
+    public override func gaxbInit() {
+        if urlPath != nil {
             let img: UIImage? = UIImage(named: String(bundlePath: urlPath!))
             imageView.image = img
-            break
-        default:
-            break
         }
     }
+    
 }

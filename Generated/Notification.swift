@@ -6,6 +6,13 @@ public class Notification: NotificationBase {
     public weak var scopeObject: AnyObject?
     public var name: String?
     
+    public override func gaxbInit() {
+        super.gaxbInit()
+        if scopedName != nil {
+            (self.scopeObject, self.name) = self.parseNotification(scopedName)
+        }
+    }
+    
     public var selector: Selector? {
         get {
             if name != nil {
@@ -15,16 +22,5 @@ public class Notification: NotificationBase {
             }
         }
     }
-    
-    override func gaxbValueDidChange(_name: String) {
-        super.gaxbValueDidChange(_name)
         
-        switch _name {
-        case "scopedName":
-            (self.scopeObject, self.name) = self.parseNotification(scopedName)
-        default:
-            break
-        }
-    }
-    
 }

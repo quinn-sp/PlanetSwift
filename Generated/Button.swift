@@ -15,26 +15,22 @@ public class Button: ButtonBase {
             }
         }
     }
-
-    override func gaxbValueDidChange(name: String) {
-        super.gaxbValueDidChange(name)
+    
+    public override func gaxbInit() {
+        super.gaxbInit()
         button.setTitle("Normal", forState: .Normal)
         button.setTitle("Highlighted", forState: .Highlighted)
         button.setTitle("Selected", forState: .Selected)
         button.setTitle("Selected-Highlighted", forState: .Selected | .Highlighted)
         button.tintColor = UIColor.redColor()
-        switch name {
-        case "onTouchUp":
+        if onTouchUp != nil {
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
-            break
-        case "onTouchDown":
+        }
+        if onTouchDown != nil {
             button.addTarget(self, action: Selector("buttonOnTouchDown:"), forControlEvents: .TouchDown)
-            break
-        case "tintColor":
+        }
+        if tintColor != nil {
             button.tintColor = tintColor!
-            break
-        default:
-            break
         }
     }
     
