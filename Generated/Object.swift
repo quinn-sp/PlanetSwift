@@ -4,13 +4,17 @@
 
 public class Object: ObjectBase {
 	
+	//MARK: - ID mappings
+	
+	lazy var idMappings:Dictionary<String,GaxbElement> = Dictionary<String,GaxbElement>()
+	
 	//MARK: - scoping
 	
     public func isScopeContainer() -> Bool {
         return false
     }
     
-    public func scope() -> AnyObject? {
+    public func scope() -> GaxbElement? {
         if self.isScopeContainer() {
             return self
         }
@@ -26,9 +30,8 @@ public class Object: ObjectBase {
     //  LOCAL::handleSomething  (local scope)
     //  handleSomething (same as above, local scope)
     //  GLOBAL::handleSomething (global scope)
-    //  MyScope::handleSomething (custom scope "MyScope")
-    public func parseNotification(scopedName: String?) -> (scope: AnyObject?, name: String? ) {
-        var scopeObject: AnyObject? = nil
+    public func parseNotification(scopedName: String?) -> (scope: GaxbElement?, name: String? ) {
+        var scopeObject: GaxbElement? = nil
         var name: String? = nil
         
         if let components = scopedName?.componentsSeparatedByString("::") {
@@ -43,7 +46,7 @@ public class Object: ObjectBase {
                 case "LOCAL":
                     scopeObject = self.scope()
                 default:
-                    scopeObject = String(components[0])
+					break;
                 }
                 name = components[1]
             default:
