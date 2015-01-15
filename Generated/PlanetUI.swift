@@ -4,4 +4,8 @@
 
 extension PlanetUI {
 
+    public class func processExpressions(string: String) -> String {
+        return string
+    }
+    
 }
