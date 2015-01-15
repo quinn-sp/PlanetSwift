@@ -19,6 +19,8 @@ public class Label: LabelBase {
     }
     
     public override func gaxbInit() {
+        super.gaxbInit()
+        
         if text != nil {
             label.text = text!
         }
