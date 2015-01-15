@@ -21,6 +21,10 @@ public protocol GaxbElement {
     func toXML(useOriginalValues:Bool) -> String
     func toXML() -> String
     func description() -> String
+	func load(context:AnyObject?)
+	func unload(context:AnyObject?)
+	func visitLoad(context:AnyObject?)
+	func visitUnload(context:AnyObject?)
 }
 
 public protocol GaxbType {

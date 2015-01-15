@@ -33,14 +33,22 @@ public class View: ViewBase {
             break
         }
     }
-    
-    public func loadInto(parentView: UIView) {
-        for child in anys {
-            if let childView = child as? View {
-                childView.loadInto(view)
-            }
-        }
-        parentView.addSubview(view)
-    }
-    
+	
+	internal func findParentView() -> View? {
+		var parent:GaxbElement? = self.parent
+		while parent != nil {
+			
+			if let view = parent as? View {
+				return view
+			}
+			
+			parent = parent!.parent
+		}
+		return nil
+	}
+	
+	public override func load(context: AnyObject?) {
+		findParentView()?.view.addSubview(view)
+	}
+	
 }

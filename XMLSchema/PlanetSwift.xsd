@@ -94,6 +94,22 @@
 		</complexContent>
 	</complexType>
 
+	<element name="Constraint" type="ui:Constraint" />
+	<complexType name="Constraint">
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="priority" type="int" default="1000" />
+				<attribute name="firstItem" type="string" use="required" />
+				<attribute name="secondItem" type="string" use="optional" />
+				<attribute name="firstAttribute" type="ui:LayoutAttribute" default="notAnAttribute" />
+				<attribute name="secondAttribute" type="ui:LayoutAttribute" default="notAnAttribute" />
+				<attribute name="relation" type="ui:LayoutRelation" default="equal" />
+				<attribute name="multiplier" type="float" default="1" />
+				<attribute name="constant" type="float" default="0" />
+			</extension>
+		</complexContent>
+	</complexType>
+
 <!-- enumerations -->
 
 	<simpleType name="textAlignment">
@@ -106,6 +122,37 @@
 			<enumeration value="Right" />
 			<enumeration value="Justified" />
 			<enumeration value="Natural" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LayoutAttribute">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="left" />
+			<enumeration value="right" />
+			<enumeration value="top" />
+			<enumeration value="bottom" />
+			<enumeration value="leading" />
+			<enumeration value="trailing" />
+			<enumeration value="width" />
+			<enumeration value="height" />
+			<enumeration value="centerX" />
+			<enumeration value="centerY" />
+			<enumeration value="baseline" />
+			<enumeration value="notAnAttribute" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LayoutRelation">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="lessThanOrEqual" />
+			<enumeration value="equal" />
+			<enumeration value="greaterThanOrEqual" />
 		</restriction>
 	</simpleType>
 
