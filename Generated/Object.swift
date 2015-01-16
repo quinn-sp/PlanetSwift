@@ -6,22 +6,25 @@ public class Object: ObjectBase {
 	
 	//MARK: - ID mappings
 	
-	private lazy var idMappings:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+	private lazy var idMappings:Dictionary<String,NSValue> = Dictionary<String,NSValue>()
 	
 	public func objectForId(identifier:String) -> AnyObject? {
 		
-//		if idMappings != nil {
-			return idMappings[identifier]
-//		}
-//		return nil
+		if let value = idMappings[identifier] {
+			
+			//clean out this object if the weak reference was zeroed
+			if value.nonretainedObjectValue == nil {
+				idMappings.removeValueForKey(identifier)
+			}
+			
+			return value.nonretainedObjectValue
+		}
+		return nil
 	}
 	
 	public func setObjectForId(identifier:String, object:AnyObject) {
 		
-//		if idMappings == nil {
-//			idMappings = NSMapTable.strongToWeakObjectsMapTable()
-//		}
-		idMappings[identifier] = object
+		idMappings[identifier] = NSValue(nonretainedObject: object)
 	}
 	
 	//MARK: - scoping
