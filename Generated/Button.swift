@@ -17,12 +17,8 @@ public class Button: ButtonBase {
     }
     
     public override func gaxbInit() {
-        super.gaxbInit()
-        button.setTitle("Normal", forState: .Normal)
-        button.setTitle("Highlighted", forState: .Highlighted)
-        button.setTitle("Selected", forState: .Selected)
-        button.setTitle("Selected-Highlighted", forState: .Selected | .Highlighted)
-        button.tintColor = UIColor.redColor()
+        super.gaxbInit()        
+        
         if onTouchUp != nil {
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
         }
@@ -32,6 +28,111 @@ public class Button: ButtonBase {
         if tintColor != nil {
             button.tintColor = tintColor!
         }
+        
+        if titleNormal != nil {
+            button.setTitle(titleNormal, forState: .Normal)
+        }
+        if titleHighlighted != nil {
+            button.setTitle(titleHighlighted, forState: .Highlighted)
+        }
+        if titleSelected != nil {
+            button.setTitle(titleSelected, forState: .Selected)
+        }
+        if titleSelectedHighlighted != nil {
+            button.setTitle(titleSelectedHighlighted, forState: .Selected | .Highlighted)
+        }
+        if titleDisabled != nil {
+            button.setTitle(titleDisabled, forState: .Disabled)
+        }
+        
+        if backgroundImageNormal != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageNormal!))
+            button.setBackgroundImage(img, forState: .Normal)
+        }
+        if backgroundImageHighlighted != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageHighlighted!))
+            button.setBackgroundImage(img, forState: .Highlighted)
+        }
+        if backgroundImageSelected != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageSelected!))
+            button.setBackgroundImage(img, forState: .Selected)
+        }
+        if backgroundImageSelectedHighlighted != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageSelectedHighlighted!))
+            button.setBackgroundImage(img, forState: .Selected | .Highlighted)
+        }
+        if backgroundImageDisabled != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageDisabled!))
+            button.setBackgroundImage(img, forState: .Disabled)
+        }
+        
+        if imageNormal != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: imageNormal!))
+            button.setImage(img, forState: .Normal)
+        }
+        if imageHighlighted != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: imageHighlighted!))
+            button.setImage(img, forState: .Highlighted)
+        }
+        if imageSelected != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: imageSelected!))
+            button.setImage(img, forState: .Selected)
+        }
+        if imageSelectedHighlighted != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: imageSelectedHighlighted!))
+            button.setImage(img, forState: .Selected | .Highlighted)
+        }
+        if imageDisabled != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: imageDisabled!))
+            button.setImage(img, forState: .Disabled)
+        }
+        
+        if imageSet != nil {
+            let pathLength: Int = countElements(imageSet!)
+            let extensionLength: Int = countElements(imageSet!.componentsSeparatedByString(".").last!)
+            let insertPosition:Int = pathLength - extensionLength - 1
+            
+            let normalPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_normal" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let highlightedPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let selectedPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let selectedHighlightedPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let disabledPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_disabled" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            
+            var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
+            button.setImage(img, forState: .Normal)
+            img = UIImage(named: String(bundlePath: highlightedPath))
+            button.setImage(img, forState: .Highlighted)
+            img = UIImage(named: String(bundlePath: selectedPath))
+            button.setImage(img, forState: .Selected)
+            img = UIImage(named: String(bundlePath: selectedHighlightedPath))
+            button.setImage(img, forState: .Selected | .Highlighted)
+            img = UIImage(named: String(bundlePath: disabledPath))
+            button.setImage(img, forState: .Disabled)
+        }
+        
+        if backgroundImageSet != nil {
+            let pathLength: Int = countElements(backgroundImageSet!)
+            let extensionLength: Int = countElements(backgroundImageSet!.componentsSeparatedByString(".").last!)
+            let insertPosition:Int = pathLength - extensionLength - 1
+            
+            let normalPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_normal" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let highlightedPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let selectedPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let selectedHighlightedPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let disabledPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_disabled" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            
+            var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
+            button.setBackgroundImage(img, forState: .Normal)
+            img = UIImage(named: String(bundlePath: highlightedPath))
+            button.setBackgroundImage(img, forState: .Highlighted)
+            img = UIImage(named: String(bundlePath: selectedPath))
+            button.setBackgroundImage(img, forState: .Selected)
+            img = UIImage(named: String(bundlePath: selectedHighlightedPath))
+            button.setBackgroundImage(img, forState: .Selected | .Highlighted)
+            img = UIImage(named: String(bundlePath: disabledPath))
+            button.setBackgroundImage(img, forState: .Disabled)
+        }
+        
     }
     
     @objc func buttonOnTouchUp(sender:UIButton!)
@@ -43,7 +144,7 @@ public class Button: ButtonBase {
             }
         }
         
-        if isSelectable {
+        if isToggle {
             sender.selected = !sender.selected;
         }
     }
