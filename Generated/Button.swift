@@ -17,7 +17,15 @@ public class Button: ButtonBase {
     }
     
     public override func gaxbInit() {
-        super.gaxbInit()        
+        super.gaxbInit()
+        
+        //Attributed String Test Stuff
+        /*var attr1: NSAttributedString = NSAttributedString(string: "Zip Zap", attributes: [NSForegroundColorAttributeName: UIColor(red: 255, green: 255, blue: 0)])
+        var attr2: NSAttributedString = NSAttributedString(string: "Zip Zap", attributes: [NSForegroundColorAttributeName: UIColor(red: 0, green: 255, blue: 255), NSFontAttributeName: UIFont(name: "Chalkduster", size: 20)!])
+        button.setAttributedTitle(attr1, forState: .Normal)
+        button.setAttributedTitle(attr2, forState: .Highlighted)
+        
+        button.titleLabel?.font = UIFont(name: "Zapfino", size: 20)*/
         
         if onTouchUp != nil {
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
@@ -29,8 +37,8 @@ public class Button: ButtonBase {
             button.tintColor = tintColor!
         }
         
-        if titleNormal != nil {
-            button.setTitle(titleNormal, forState: .Normal)
+        if title != nil {
+            button.setTitle(title, forState: .Normal)
         }
         if titleHighlighted != nil {
             button.setTitle(titleHighlighted, forState: .Highlighted)
@@ -45,8 +53,28 @@ public class Button: ButtonBase {
             button.setTitle(titleDisabled, forState: .Disabled)
         }
         
-        if backgroundImageNormal != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageNormal!))
+        if titleFontColor != nil {
+            button.setTitleColor(titleFontColor, forState: .Normal)
+        }
+        if titleFontColorHighlighted != nil {
+            button.setTitleColor(titleFontColorHighlighted, forState: .Highlighted)
+        }
+        if titleFontColorSelected != nil {
+            button.setTitleColor(titleFontColorSelected, forState: .Selected)
+        }
+        if titleFontColorSelectedHighlighted != nil {
+            button.setTitleColor(titleFontColorSelectedHighlighted, forState: .Selected | .Highlighted)
+        }
+        if titleFontColorDisabled != nil {
+            button.setTitleColor(titleFontColorDisabled, forState: .Disabled)
+        }
+        
+        if titleFont != nil {
+            button.titleLabel?.font = UIFont(name: titleFont!, size: CGFloat(titleFontSize))
+        }
+        
+        if backgroundImage != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImage!))
             button.setBackgroundImage(img, forState: .Normal)
         }
         if backgroundImageHighlighted != nil {
@@ -66,8 +94,8 @@ public class Button: ButtonBase {
             button.setBackgroundImage(img, forState: .Disabled)
         }
         
-        if imageNormal != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: imageNormal!))
+        if image != nil {
+            let img: UIImage? = UIImage(named: String(bundlePath: image!))
             button.setImage(img, forState: .Normal)
         }
         if imageHighlighted != nil {

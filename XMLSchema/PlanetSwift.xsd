@@ -59,17 +59,24 @@
 				<attribute name="onTouchDown" type="string" />
 				<attribute name="isToggle" type="boolean" default="false"/>
 				<attribute name="tintColor" type="ui:color" />
-				<attribute name="titleNormal" type="string" />
+				<attribute name="title" type="string" />
 				<attribute name="titleHighlighted" type="string" />
 				<attribute name="titleSelected" type="string" />
 				<attribute name="titleSelectedHighlighted" type="string" />
 				<attribute name="titleDisabled" type="string" />
-				<attribute name="backgroundImageNormal" type="string" />
+				<attribute name="titleFontColor" type="ui:color" />
+				<attribute name="titleFontColorHighlighted" type="ui:color" />
+				<attribute name="titleFontColorSelected" type="ui:color" />
+				<attribute name="titleFontColorSelectedHighlighted" type="ui:color" />
+				<attribute name="titleFontColorDisabled" type="ui:color" />
+				<attribute name="titleFont" type="string" />
+				<attribute name="titleFontSize" type="decimal" default="15" />
+				<attribute name="backgroundImage" type="string" />
 				<attribute name="backgroundImageHighlighted" type="string" />
 				<attribute name="backgroundImageSelected" type="string" />
 				<attribute name="backgroundImageSelectedHighlighted" type="string" />
 				<attribute name="backgroundImageDisabled" type="string" />
-				<attribute name="imageNormal" type="string" />
+				<attribute name="image" type="string" />
 				<attribute name="imageHighlighted" type="string" />
 				<attribute name="imageSelected" type="string" />
 				<attribute name="imageSelectedHighlighted" type="string" />
