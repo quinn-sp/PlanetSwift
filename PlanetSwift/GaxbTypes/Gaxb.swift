@@ -11,8 +11,11 @@ import UIKit
 public protocol GaxbElement {
     var xmlns: String { get }
     var parent: GaxbElement? { get }
-    func gaxbInit()
-    func setElement(element: GaxbElement, key:String)
+    func gaxbPrepare()
+	func visitGaxbPrepare()
+	func gaxbDidPrepare()
+	func visitGaxbDidPrepare()
+	func setElement(element: GaxbElement, key:String)
     func setParent(GaxbElement)
     func isKindOfClass(className: String) -> Bool
     func setAttribute(value: String, key:String)
@@ -21,10 +24,6 @@ public protocol GaxbElement {
     func toXML(useOriginalValues:Bool) -> String
     func toXML() -> String
     func description() -> String
-	func load(context:AnyObject?)
-	func unload(context:AnyObject?)
-	func visitLoad(context:AnyObject?)
-	func visitUnload(context:AnyObject?)
 }
 
 public protocol GaxbType {

@@ -6,6 +6,8 @@ private let Constraint_parentKeyword = "parent"
 
 public class Constraint: ConstraintBase {
 
+	internal(set) public var constraint:NSLayoutConstraint?
+	
 	//MARK: - enum conversion
 	
 	public class func layoutAttributeFromEnum(attribute:PlanetUI.LayoutAttribute) -> NSLayoutAttribute {
@@ -48,6 +50,89 @@ public class Constraint: ConstraintBase {
 		default:
 			return .Equal
 		}
+	}
+	
+	//MARK: - convenience view accessors
+	
+	internal func firstView() -> UIView? {
+		if let item = self.firstItem {
+			if item == Constraint_parentKeyword {
+				
+				//avoid an infinite loop if both are looking for super view
+				if self.secondItem != nil && self.secondItem! == Constraint_parentKeyword {
+					return nil
+				}
+				return secondView()?.superview
+			}
+			else {
+				let itemObj:AnyObject? = (scope() as? Object)?.objectForId(item)
+				if let itemView = itemObj as? View {
+					return itemView.view
+				}
+			}
+		}
+		return nil
+	}
+	
+	internal func secondView() -> UIView? {
+		if let item = self.secondItem {
+			if item == Constraint_parentKeyword {
+				
+				//avoid an infinite loop if both are looking for super view
+				if self.firstItem != nil && self.firstItem! == Constraint_parentKeyword {
+					return nil
+				}
+				return firstView()?.superview
+			}
+			else {
+				let itemObj:AnyObject? = (scope() as? Object)?.objectForId(item)
+				if let itemView = itemObj as? View {
+					return itemView.view
+				}
+			}
+		}
+		return nil
+	}
+	
+	//MARK: - loading
+	
+	public override func gaxbDidPrepare() {
+		super.gaxbDidPrepare()
+		
+		if constraint == nil {
+			
+			let first = firstView()
+			let second = secondView()
+			
+			if first != nil && second != nil {
+				constraint = NSLayoutConstraint(item: first!,
+					attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
+					relatedBy: Constraint.layoutRelationFromEnum(relation),
+					toItem: second!,
+					attribute: Constraint.layoutAttributeFromEnum(secondAttribute),
+					multiplier: CGFloat(multiplier),
+					constant: CGFloat(constant))
+			}
+		}
+
+		if constraint != nil {
+			
+			let first = firstView()
+			let second = secondView()
+			if first != nil && second != nil {
+				
+				first?.setTranslatesAutoresizingMaskIntoConstraints(false)
+				second?.setTranslatesAutoresizingMaskIntoConstraints(false)
+				
+				if first!.isDescendantOfView(second!) {
+					second!.addConstraint(constraint!)
+				}
+				else {
+					first!.addConstraint(constraint!)
+				}
+			}
+		}
+		
 	}
 	
 }

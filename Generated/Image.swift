@@ -16,8 +16,8 @@ public class Image: ImageBase {
         }
     }
     
-    public override func gaxbInit() {
-        super.gaxbInit()
+    public override func gaxbPrepare() {
+        super.gaxbPrepare()
         if urlPath != nil {
             let img: UIImage? = UIImage(named: String(bundlePath: urlPath!))
             imageView.image = img

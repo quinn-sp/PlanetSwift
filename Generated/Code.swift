@@ -5,8 +5,8 @@
 public class Code: CodeBase {
     public var codeObject: NSObject?
     
-    public override func gaxbInit() {
-        super.gaxbInit()
+    public override func gaxbPrepare() {
+        super.gaxbPrepare()
         
         let appName = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as String
         if className != nil {

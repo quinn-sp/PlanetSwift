@@ -16,8 +16,8 @@ public class Button: ButtonBase {
         }
     }
     
-    public override func gaxbInit() {
-        super.gaxbInit()
+    public override func gaxbPrepare() {
+        super.gaxbPrepare()
         button.setTitle("Normal", forState: .Normal)
         button.setTitle("Highlighted", forState: .Highlighted)
         button.setTitle("Selected", forState: .Selected)

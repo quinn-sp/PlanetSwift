@@ -6,22 +6,22 @@ public class Object: ObjectBase {
 	
 	//MARK: - ID mappings
 	
-	private var idMappings:Dictionary<String,AnyObject>?
+	private lazy var idMappings:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
 	
 	public func objectForId(identifier:String) -> AnyObject? {
 		
-		if idMappings != nil {
-			return idMappings![identifier]
-		}
-		return nil
+//		if idMappings != nil {
+			return idMappings[identifier]
+//		}
+//		return nil
 	}
 	
 	public func setObjectForId(identifier:String, object:AnyObject) {
 		
-		if idMappings == nil {
-			idMappings = Dictionary<String,AnyObject>()
-		}
-		idMappings![identifier] = object
+//		if idMappings == nil {
+//			idMappings = NSMapTable.strongToWeakObjectsMapTable()
+//		}
+		idMappings[identifier] = object
 	}
 	
 	//MARK: - scoping
@@ -72,21 +72,13 @@ public class Object: ObjectBase {
         return (scopeObject, name)
     }
 	
-	public override func load(context: AnyObject?) {
-		super.load(context)
+	public override func gaxbPrepare() {
+		super.gaxbPrepare()
 		
 		if self.id != nil {
 			if let scopeObj  = scope() as? Object {
 				scopeObj.setObjectForId(self.id!, object: self)
 			}
-		}
-	}
-	
-	public override func unload(context: AnyObject?) {
-		super.unload(context)
-		
-		if idMappings != nil {
-			idMappings!.removeAll(keepCapacity: false)
 		}
 	}
 }

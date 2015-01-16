@@ -18,8 +18,8 @@ public class Label: LabelBase {
         }
     }
     
-    public override func gaxbInit() {
-        super.gaxbInit()
+    public override func gaxbPrepare() {
+        super.gaxbPrepare()
         
         if text != nil {
             label.text = text!

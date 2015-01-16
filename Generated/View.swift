@@ -7,8 +7,9 @@ import UIKit
 public class View: ViewBase {
     public var view = UIView()
 
-    public override func gaxbInit() {
-        super.gaxbInit()
+    public override func gaxbPrepare() {
+		super.gaxbPrepare()
+		
         if frame != nil {
             view.bounds = CGRectMake(0, 0, frame!.size.width, frame!.size.height)
             view.center = CGPointMake(CGRectGetMidX(frame!), CGRectGetMidY(frame!))
@@ -28,6 +29,8 @@ public class View: ViewBase {
         if tag != nil {
             view.tag = tag!
         }
+		
+		findParentView()?.view.addSubview(view)
     }
 	
 	internal func findParentView() -> View? {
@@ -41,12 +44,6 @@ public class View: ViewBase {
 			parent = parent!.parent
 		}
 		return nil
-	}
-	
-	public override func load(context: AnyObject?) {
-		super.load(context)
-		
-		findParentView()?.view.addSubview(view)
 	}
 	
 }
