@@ -17,7 +17,7 @@ class PlanetView: UIView {
 		}
 	}
 	
-	//MARK: - loading view
+	//MARK: - loading / unloading view
 	
 	func loadXMLView() {
 		
@@ -28,6 +28,12 @@ class PlanetView: UIView {
 			if let loadedView = xmlView?.view {
 				self.addSubview(loadedView)
 			}
+		}
+	}
+	
+	deinit {
+		if xmlView != nil {
+			xmlView!.visitUnload(nil)
 		}
 	}
 }

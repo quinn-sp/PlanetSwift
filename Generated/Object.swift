@@ -6,7 +6,23 @@ public class Object: ObjectBase {
 	
 	//MARK: - ID mappings
 	
-	lazy var idMappings:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+	private var idMappings:Dictionary<String,AnyObject>?
+	
+	public func objectForId(identifier:String) -> AnyObject? {
+		
+		if idMappings != nil {
+			return idMappings![identifier]
+		}
+		return nil
+	}
+	
+	public func setObjectForId(identifier:String, object:AnyObject) {
+		
+		if idMappings == nil {
+			idMappings = Dictionary<String,AnyObject>()
+		}
+		idMappings![identifier] = object
+	}
 	
 	//MARK: - scoping
 	
@@ -55,5 +71,22 @@ public class Object: ObjectBase {
         }
         return (scopeObject, name)
     }
-
+	
+	public override func load(context: AnyObject?) {
+		super.load(context)
+		
+		if self.id != nil {
+			if let scopeObj  = scope() as? Object {
+				scopeObj.setObjectForId(self.id!, object: self)
+			}
+		}
+	}
+	
+	public override func unload(context: AnyObject?) {
+		super.unload(context)
+		
+		if idMappings != nil {
+			idMappings!.removeAll(keepCapacity: false)
+		}
+	}
 }

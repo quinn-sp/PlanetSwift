@@ -36,7 +36,6 @@
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
 		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
 		C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */; };
-		C4C5DCE41A4F7B0600BE7271 /* PlanetSwift.xsd in Resources */ = {isa = PBXBuildFile; fileRef = C4C5DCE31A4F7B0600BE7271 /* PlanetSwift.xsd */; };
 		C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */; };
 		C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */; };
 /* End PBXBuildFile section */
@@ -99,7 +98,6 @@
 		C4AA9CD81A60D9290094F56A /* NotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBase.swift; sourceTree = "<group>"; };
 		C4AA9CE81A6383ED0094F56A /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBase.swift; sourceTree = "<group>"; };
-		C4C5DCE31A4F7B0600BE7271 /* PlanetSwift.xsd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PlanetSwift.xsd; sourceTree = "<group>"; };
 		C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUI.swift; sourceTree = "<group>"; };
 		C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUIBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,7 +146,6 @@
 		A9B439701A3A53C70052690A /* PlanetSwift */ = {
 			isa = PBXGroup;
 			children = (
-				C4C5DCE21A4F7B0600BE7271 /* XMLSchema */,
 				A9B439731A3A53C70052690A /* PlanetSwift.h */,
 				9B9D185B1A6576D500AF0083 /* PlanetView.swift */,
 				A9B439711A3A53C70052690A /* Supporting Files */,
@@ -229,14 +226,6 @@
 			name = GaxbTypes;
 			path = PlanetSwift/GaxbTypes;
 			sourceTree = "<group>";
-		};
-		C4C5DCE21A4F7B0600BE7271 /* XMLSchema */ = {
-			isa = PBXGroup;
-			children = (
-				C4C5DCE31A4F7B0600BE7271 /* PlanetSwift.xsd */,
-			);
-			path = XMLSchema;
-			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -347,7 +336,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4C5DCE41A4F7B0600BE7271 /* PlanetSwift.xsd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
