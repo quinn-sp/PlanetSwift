@@ -104,11 +104,11 @@ public class Constraint: ConstraintBase {
 			let first = firstView()
 			let second = secondView()
 			
-			if first != nil && second != nil {
+			if first != nil {
 				constraint = NSLayoutConstraint(item: first!,
 					attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
 					relatedBy: Constraint.layoutRelationFromEnum(relation),
-					toItem: second!,
+					toItem: second,
 					attribute: Constraint.layoutAttributeFromEnum(secondAttribute),
 					multiplier: CGFloat(multiplier),
 					constant: CGFloat(constant))
@@ -119,12 +119,12 @@ public class Constraint: ConstraintBase {
 			
 			let first = firstView()
 			let second = secondView()
-			if first != nil && second != nil {
+			if first != nil {
 				
 				first?.setTranslatesAutoresizingMaskIntoConstraints(false)
 				second?.setTranslatesAutoresizingMaskIntoConstraints(false)
 				
-				if first!.isDescendantOfView(second!) {
+				if second != nil && first!.isDescendantOfView(second!) {
 					second!.addConstraint(constraint!)
 				}
 				else {
