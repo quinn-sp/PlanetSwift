@@ -101,34 +101,27 @@ public class Constraint: ConstraintBase {
 		
 		if constraint == nil {
 			
-			let first = firstView()
-			let second = secondView()
-			
-			if first != nil {
-				constraint = NSLayoutConstraint(item: first!,
+			if let first = firstView() {
+				
+				let second = secondView()
+				
+				constraint = NSLayoutConstraint(item: first,
 					attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
 					relatedBy: Constraint.layoutRelationFromEnum(relation),
 					toItem: second,
 					attribute: Constraint.layoutAttributeFromEnum(secondAttribute),
 					multiplier: CGFloat(multiplier),
 					constant: CGFloat(constant))
-			}
-		}
-
-		if constraint != nil {
-			
-			let first = firstView()
-			let second = secondView()
-			if first != nil {
 				
-				first?.setTranslatesAutoresizingMaskIntoConstraints(false)
+				first.setTranslatesAutoresizingMaskIntoConstraints(false)
 				second?.setTranslatesAutoresizingMaskIntoConstraints(false)
 				
-				if second != nil && first!.isDescendantOfView(second!) {
+				//attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
+				if second != nil && first.isDescendantOfView(second!) {
 					second!.addConstraint(constraint!)
 				}
 				else {
-					first!.addConstraint(constraint!)
+					first.superview?.addConstraint(constraint!)
 				}
 			}
 		}
