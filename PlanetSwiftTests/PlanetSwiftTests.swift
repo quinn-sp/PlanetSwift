@@ -28,5 +28,21 @@ class PlanetSwiftTests: XCTestCase {
         XCTAssert(element != nil, "Parsed element is nil")
     }
 
+    func testImprintAttributes() {
+        if let stamp = GaxbFactory.element("PlanetUI.View") as? View {
+            stamp.id="coolview"
+            stamp.hidden=true
+            stamp.color=UIColor.redColor()
+            var receiver = GaxbFactory.element("PlanetUI.Label") as Label
+            stamp.imprintAttributes(receiver)
+            XCTAssertNotNil(receiver.color, "receiver.color is nil")
+            if let color = receiver.color {
+                var (r,g,b,a) = color.getRGBA()
+                XCTAssertEqual(r, CGFloat(1.0), "Color is incorrect")
+            }
+            XCTAssertEqual(receiver.id!, "coolview", "id does not match")
+            XCTAssertEqual(receiver.hidden!, true, "hidden is not true")
+        }
+    }
     
 }
