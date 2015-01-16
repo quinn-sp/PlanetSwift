@@ -30,13 +30,13 @@ public class View: ViewBase {
             view.tag = tag!
         }
 		if contentMode != nil {
-            view.contentMode = contentModeFromEnum(contentMode!)
+            view.contentMode = View.contentModeFromEnum(contentMode!)
         }
 
 		findParentView()?.view.addSubview(view)
     }
     
-    internal func contentModeFromEnum(mode:PlanetUI.ContentMode) -> UIViewContentMode {
+    public class func contentModeFromEnum(mode:PlanetUI.ContentMode) -> UIViewContentMode {
         
         switch(mode) {
         case .scaleToFill:
