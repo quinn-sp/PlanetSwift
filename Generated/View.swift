@@ -29,8 +29,45 @@ public class View: ViewBase {
         if tag != nil {
             view.tag = tag!
         }
-		
+		if contentMode != nil {
+            view.contentMode = contentModeFromEnum(contentMode!)
+        }
+
 		findParentView()?.view.addSubview(view)
+    }
+    
+    internal func contentModeFromEnum(mode:PlanetUI.ContentMode) -> UIViewContentMode {
+        
+        switch(mode) {
+        case .scaleToFill:
+            return .ScaleToFill
+        case .scaleAspectFit:
+            return .ScaleAspectFit
+        case .scaleAspectFill:
+            return .ScaleAspectFill
+        case .redraw:
+            return .Redraw
+        case .center:
+            return .Center
+        case .top:
+            return .Top
+        case .bottom:
+            return .Bottom
+        case .left:
+            return .Left
+        case .right:
+            return .Right
+        case .topLeft:
+            return .TopLeft
+        case .topRight:
+            return .TopRight
+        case .bottomLeft:
+            return .BottomLeft
+        case .bottomRight:
+            return .BottomRight
+        default:
+            return .ScaleToFill
+        }
     }
 	
 	internal func findParentView() -> View? {

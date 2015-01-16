@@ -19,6 +19,7 @@
 				<attribute name="hidden" type="boolean"/>
 				<attribute name="clipsToBounds" type="boolean"/>
 				<attribute name="tag" type="integer"/>
+				<attribute name="contentMode" type="ui:ContentMode"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -195,6 +196,27 @@
 			<appinfo>UIColor</appinfo>
 		</annotation>
 		<restriction base="string"/>
+	</simpleType>
+
+	<simpleType name="ContentMode">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="scaleToFill" />
+			<enumeration value="scaleAspectFit" />
+			<enumeration value="scaleAspectFill" />
+			<enumeration value="redraw" />
+			<enumeration value="center" />
+			<enumeration value="top" />
+			<enumeration value="bottom" />
+			<enumeration value="left" />
+			<enumeration value="right" />
+			<enumeration value="topLeft" />
+			<enumeration value="topRight" />
+			<enumeration value="bottomLeft" />
+			<enumeration value="bottomRight" />
+		</restriction>
 	</simpleType>
 
 </schema>
