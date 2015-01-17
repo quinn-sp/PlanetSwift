@@ -27,7 +27,9 @@ class PlanetView: UIView {
 			if let loadedView = xmlView?.view {
 				self.addSubview(loadedView)
 			}
-			xmlView?.visitGaxbDidPrepare()
+			xmlView?.visit({ (element) -> () in
+                element.gaxbDidPrepare()
+            })
 		}
 	}
 }

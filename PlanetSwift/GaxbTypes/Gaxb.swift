@@ -12,9 +12,8 @@ public protocol GaxbElement {
     var xmlns: String { get }
     var parent: GaxbElement? { get }
     func gaxbPrepare()
-	func visitGaxbPrepare()
+    func visit(visitor: (GaxbElement) -> ())
 	func gaxbDidPrepare()
-	func visitGaxbDidPrepare()
 	func setElement(element: GaxbElement, key:String)
     func setParent(GaxbElement)
     func isKindOfClass(className: String) -> Bool
