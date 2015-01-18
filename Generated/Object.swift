@@ -4,6 +4,14 @@
 
 public class Object: ObjectBase {
 	
+    lazy var styles: Object? = {
+        [weak self] in
+        if let file = self?.styleFile {
+            return PlanetUI.readFromFile(String(bundlePath: file)) as? Object
+            }
+            return nil
+        }()
+    
 	//MARK: - ID mappings
 	
 	private lazy var idMappings:Dictionary<String,NSValue> = Dictionary<String,NSValue>()
@@ -78,10 +86,34 @@ public class Object: ObjectBase {
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
-		if self.id != nil {
+        if styleId != nil {
+            if let styleElement = self.styleForId(styleId!) {
+                styleElement.imprintAttributes(self)
+            }
+        }
+        
+		if id != nil {
 			if let scopeObj  = scope() as? Object {
-				scopeObj.setObjectForId(self.id!, object: self)
+				scopeObj.setObjectForId(id!, object: self)
 			}
 		}
 	}
+    
+    //MARK: - style handling
+    
+    public func styleForId(_id: String) -> GaxbElement? {
+        if styles != nil {
+            for child in styles!.anys {
+                if let childObject = child as? Object {
+                    if childObject.styleId == _id {
+                        return childObject
+                    }
+                }
+            }
+        }
+        if let parentObject = parent as? Object {
+            return parentObject.styleForId(_id)
+        }
+        return nil
+    }
 }

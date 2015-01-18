@@ -18,6 +18,7 @@ public protocol GaxbElement {
     func setParent(GaxbElement)
     func isKindOfClass(className: String) -> Bool
     func setAttribute(value: String, key:String)
+    func imprintAttributes(receiver: GaxbElement?) -> GaxbElement?
     func attributesXML(useOriginalValues:Bool) -> String
     func sequencesXML(useOriginalValues:Bool) -> String
     func toXML(useOriginalValues:Bool) -> String

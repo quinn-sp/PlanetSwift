@@ -7,6 +7,8 @@
 			<any minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 		<attribute name="id" type="string"/>
+		<attribute name="styleFile" type="string"/>
+		<attribute name="styleId" type="string"/>
 	</complexType>
 
 	<element name="View" type="ui:View"/>
@@ -82,7 +84,7 @@
 				<attribute name="imageSelected" type="string" />
 				<attribute name="imageSelectedHighlighted" type="string" />
 				<attribute name="imageDisabled" type="string" />
-				<attribute name="backgroundImageSet" type="string" /> 
+				<attribute name="backgroundImageSet" type="string" />
 				<attribute name="imageSet" type="string" /> <!-- "Quality of life" attribute that, given a path, will fill out all the image states for the button using the naming convention: "path"_normal, "path"_highlighted, "path"_selected, "path"_selected_highlighted, "path"_disabled -->
 			</extension>
 		</complexContent>
