@@ -20,7 +20,10 @@ public class NetworkImageView: NetworkImageViewBase {
 		
 		if let url = NSURL(string: path) {
 			
-			let placeholder = UIImage(named: path)
+			var placeholder:UIImage?
+			if placeholderPath != nil {
+				placeholder = UIImage(named: String(bundlePath: placeholderPath!))
+			}
 			networkImageView.setImage(url, placeholder: placeholder)
 		}
 		else {
