@@ -58,11 +58,22 @@ public class ImageCache {
 						}
 					}
 					
+					var index = 0
+					for request in self.activeNetworkRequests {
+						
+						if request === cacheRequest {
+							break
+						}
+						index++
+					}
+					self.activeNetworkRequests.removeAtIndex(index)
+					
 					//call all completion blocks
 					for block in cacheRequest.completionBlocks {
 						block(image)
 					}
 				})
+				activeNetworkRequests.append(cacheRequest)
 			}
 			
 			//append our completion block to this already-in-progress request
