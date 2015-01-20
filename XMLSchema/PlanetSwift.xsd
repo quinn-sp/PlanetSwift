@@ -89,6 +89,26 @@
 			</extension>
 		</complexContent>
 	</complexType>
+	
+	<element name="TextField" type="ui:TextField"/>
+	<complexType name="TextField">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="text" type="string"/>
+				<attribute name="placeholder" type="string"/>
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal" default="12" />
+				<attribute name="textColor" type="ui:color"/>
+				<attribute name="textAlignment" type="ui:textAlignment"/>
+				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
+				<attribute name="minimumFontSize" type="decimal" default="0.0"/>
+				<attribute name="onBeginEditing" type="string"/>
+				<attribute name="onEndEditing" type="string"/>
+				<attribute name="onReturnPressed" type="string"/>
+				<attribute name="borderStyle" type="ui:textFieldBorderStyle"/>
+			</extension>
+		</complexContent>
+	</complexType>
 
 	<element name="ImageView" type="ui:ImageView"/>
 	<complexType name="ImageView">
@@ -159,6 +179,18 @@
 			<enumeration value="Right" />
 			<enumeration value="Justified" />
 			<enumeration value="Natural" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="textFieldBorderStyle">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="none" />
+			<enumeration value="line" />
+			<enumeration value="bezel" />
+			<enumeration value="roundedRect" />
 		</restriction>
 	</simpleType>
 
