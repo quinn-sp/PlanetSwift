@@ -172,9 +172,9 @@ public class Button: ButtonBase {
             }
         }
         
-        if isToggle {
+        /*if isToggle {
             sender.selected = !sender.selected;
-        }
+        }*/
     }
     
     @objc func buttonOnTouchDown(sender:UIButton!)

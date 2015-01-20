@@ -60,7 +60,7 @@
 			<extension base="ui:View">
 				<attribute name="onTouchUp" type="string" />
 				<attribute name="onTouchDown" type="string" />
-				<attribute name="isToggle" type="boolean" default="false"/>
+				<!-- <attribute name="isToggle" type="boolean" default="false"/> -->
 				<attribute name="tintColor" type="ui:color" />
 				<attribute name="title" type="string" />
 				<attribute name="titleHighlighted" type="string" />
@@ -89,7 +89,7 @@
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<element name="TextField" type="ui:TextField"/>
 	<complexType name="TextField">
 		<complexContent>
