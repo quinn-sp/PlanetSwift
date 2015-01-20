@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		79B6A4D51A67069E00564FA2 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B6A4D31A67069E00564FA2 /* Image.swift */; };
-		79B6A4D61A67069E00564FA2 /* ImageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B6A4D41A67069E00564FA2 /* ImageBase.swift */; };
 		9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B851A66D52200BD0CC5 /* Constraint.swift */; };
 		9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */; };
 		9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */; };
-		9B9AC0951A6EB5D00098F7E4 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0941A6EB5D00098F7E4 /* NetworkImageView.swift */; };
+		9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0941A6EB5D00098F7E4 /* PlanetNetworkImageView.swift */; };
 		9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0971A6EBA190098F7E4 /* ImageCache.swift */; };
 		9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB342E51A65AC80004C12B7 /* String+Bundle.swift */; };
+		9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35EF1A6EE7AF00E8418B /* ImageView.swift */; };
+		9BCF35F21A6EE7AF00E8418B /* ImageViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */; };
+		9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F31A6EE7BB00E8418B /* NetworkImageView.swift */; };
+		9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F41A6EE7BB00E8418B /* NetworkImageViewBase.swift */; };
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
 		A92E73821A4212B200B22884 /* LabelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73801A4212B200B22884 /* LabelBase.swift */; };
 		A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */; };
@@ -67,14 +69,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		79B6A4D31A67069E00564FA2 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		79B6A4D41A67069E00564FA2 /* ImageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBase.swift; sourceTree = "<group>"; };
 		9B972B851A66D52200BD0CC5 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintBase.swift; sourceTree = "<group>"; };
 		9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
-		9B9AC0941A6EB5D00098F7E4 /* NetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
+		9B9AC0941A6EB5D00098F7E4 /* PlanetNetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetNetworkImageView.swift; sourceTree = "<group>"; };
 		9B9AC0971A6EBA190098F7E4 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		9BB342E51A65AC80004C12B7 /* String+Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Bundle.swift"; sourceTree = "<group>"; };
+		9BCF35EF1A6EE7AF00E8418B /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewBase.swift; sourceTree = "<group>"; };
+		9BCF35F31A6EE7BB00E8418B /* NetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
+		9BCF35F41A6EE7BB00E8418B /* NetworkImageViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageViewBase.swift; sourceTree = "<group>"; };
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A92E73801A4212B200B22884 /* LabelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelBase.swift; sourceTree = "<group>"; };
 		A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftLabelTests.swift; sourceTree = "<group>"; };
@@ -129,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */,
-				9B9AC0941A6EB5D00098F7E4 /* NetworkImageView.swift */,
+				9B9AC0941A6EB5D00098F7E4 /* PlanetNetworkImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,12 +214,14 @@
 				C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */,
 				C4AA9CD51A60D9290094F56A /* Code.swift */,
 				C4AA9CD61A60D9290094F56A /* CodeBase.swift */,
-				79B6A4D31A67069E00564FA2 /* Image.swift */,
-				79B6A4D41A67069E00564FA2 /* ImageBase.swift */,
 				9B972B851A66D52200BD0CC5 /* Constraint.swift */,
 				9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */,
+				9BCF35EF1A6EE7AF00E8418B /* ImageView.swift */,
+				9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */,
 				A92E737F1A4212B200B22884 /* Label.swift */,
 				A92E73801A4212B200B22884 /* LabelBase.swift */,
+				9BCF35F31A6EE7BB00E8418B /* NetworkImageView.swift */,
+				9BCF35F41A6EE7BB00E8418B /* NetworkImageViewBase.swift */,
 				C4AA9CD71A60D9290094F56A /* Notification.swift */,
 				C4AA9CD81A60D9290094F56A /* NotificationBase.swift */,
 				A9B439971A3B40B70052690A /* Object.swift */,
@@ -386,24 +392,26 @@
 				A9B4399F1A3B40B70052690A /* View.swift in Sources */,
 				C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */,
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
-				9B9AC0951A6EB5D00098F7E4 /* NetworkImageView.swift in Sources */,
+				9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */,
+				9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
 				9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */,
 				C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */,
 				9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */,
+				9BCF35F21A6EE7AF00E8418B /* ImageViewBase.swift in Sources */,
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
+				9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */,
 				C4AA9CD91A60D9290094F56A /* Code.swift in Sources */,
-				79B6A4D51A67069E00564FA2 /* Image.swift in Sources */,
 				9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,
 				A92E73821A4212B200B22884 /* LabelBase.swift in Sources */,
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
-				79B6A4D61A67069E00564FA2 /* ImageBase.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
+				9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */,
 				C4AA9CDA1A60D9290094F56A /* CodeBase.swift in Sources */,
 				9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */,
 				9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */,

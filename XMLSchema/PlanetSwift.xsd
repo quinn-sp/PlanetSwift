@@ -90,11 +90,21 @@
 		</complexContent>
 	</complexType>
 
-	<element name="Image" type="ui:Image"/>
-	<complexType name="Image">
+	<element name="ImageView" type="ui:ImageView"/>
+	<complexType name="ImageView">
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="urlPath" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="NetworkImageView" type="ui:NetworkImageView"/>
+	<complexType name="NetworkImageView">
+		<complexContent>
+			<extension base="ui:ImageView">
+				<attribute name="placeholderPath" type="string" />
+				<attribute name="placeholderContentMode" type="ui:ContentMode"/>
 			</extension>
 		</complexContent>
 	</complexType>
