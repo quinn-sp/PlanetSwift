@@ -8,17 +8,15 @@
 
 import UIKit
 
-public class NetworkImageView: UIImageView {
+public class PlanetNetworkImageView: UIImageView {
 
 	public var placeholderContentMode:UIViewContentMode = .ScaleToFill
 	public var downloadedContentMode:UIViewContentMode = .ScaleToFill
 	
 	func setImage(url:NSURL, placeholder:UIImage?) {
 		
-		if placeholder != nil {
-			self.contentMode = placeholderContentMode
-			self.image = placeholder
-		}
+		self.contentMode = placeholderContentMode
+		self.image = placeholder
 		
 		ImageCache.sharedInstance.get(url) { [unowned self] (image:UIImage?) in
 			
