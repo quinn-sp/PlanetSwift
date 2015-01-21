@@ -138,15 +138,13 @@
 		</complexContent>
 	</complexType>
 
-	<element name="Code" type="ui:Code" />
-	<complexType name="Code">
+	<element name="Controller" type="ui:Controller" />
+	<complexType name="Controller">
 		<complexContent>
 			<extension base="ui:Object">
 				<sequence>
 					<element ref="ui:Notification" minOccurs="0" maxOccurs="unbounded" />
 				</sequence>
-				<attribute name="className" type="string" use="required" />
-				<!-- <attribute name="singleton" type="boolean" use="optional" default="false" /> -->
 			</extension>
 		</complexContent>
 	</complexType>
