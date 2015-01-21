@@ -10,6 +10,7 @@
 		796C6ACE1A6ED86300D87C38 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6ACC1A6ED86300D87C38 /* TextField.swift */; };
 		796C6ACF1A6ED86300D87C38 /* TextFieldBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */; };
 		9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E9A781A70036800D64615 /* PlanetViewController.swift */; };
+		796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AD91A70356D00D87C38 /* PlanetButton.swift */; };
 		9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B851A66D52200BD0CC5 /* Constraint.swift */; };
 		9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */; };
 		9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */; };
@@ -75,6 +76,7 @@
 		796C6ACC1A6ED86300D87C38 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBase.swift; sourceTree = "<group>"; };
 		9B8E9A781A70036800D64615 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
+		796C6AD91A70356D00D87C38 /* PlanetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButton.swift; sourceTree = "<group>"; };
 		9B972B851A66D52200BD0CC5 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintBase.swift; sourceTree = "<group>"; };
 		9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */,
 				9B9AC0941A6EB5D00098F7E4 /* PlanetNetworkImageView.swift */,
+				796C6AD91A70356D00D87C38 /* PlanetButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
+				796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */,
 				9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */,
 				9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,

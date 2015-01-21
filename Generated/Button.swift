@@ -3,15 +3,16 @@
 //
 
 public class Button: ButtonBase {
-    public var button = UIButton()
+    //public var button = UIButton()
+    public var button = PlanetButton()
     
     override public var view: UIView {
         get {
             return button
         }
         set {
-            if newValue is UIButton {
-                button = newValue as UIButton
+            if newValue is PlanetButton {
+                button = newValue as PlanetButton
             }
         }
     }
@@ -26,6 +27,9 @@ public class Button: ButtonBase {
         button.setAttributedTitle(attr2, forState: .Highlighted)
         
         button.titleLabel?.font = UIFont(name: "Zapfino", size: 20)*/
+        
+        
+        button.setupButton(self)
         
         if onTouchUp != nil {
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)

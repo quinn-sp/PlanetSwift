@@ -74,6 +74,12 @@
 				<attribute name="titleFontColorDisabled" type="ui:color" />
 				<attribute name="titleFont" type="string" />
 				<attribute name="titleFontSize" type="decimal" default="15" />
+				<attribute name="isToggle" type="boolean" default="false"/>
+				<attribute name="backgroundColor" type="ui:color" />
+				<attribute name="backgroundColorHighlighted" type="ui:color" />
+				<attribute name="backgroundColorSelected" type="ui:color" />
+				<attribute name="backgroundColorSelectedHighlighted" type="ui:color" />
+				<attribute name="backgroundColorDisabled" type="ui:color" />
 				<attribute name="backgroundImage" type="string" />
 				<attribute name="backgroundImageHighlighted" type="string" />
 				<attribute name="backgroundImageSelected" type="string" />
