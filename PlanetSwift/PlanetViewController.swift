@@ -28,8 +28,8 @@ public class PlanetViewController: UIViewController {
 					
 					if let xmlObject = element as? Object {
 						
-						if xmlObj.id != nil {
-							self.idMappings[xmlObj.id!] = xmlObj
+						if xmlObject.id != nil {
+							self.idMappings[xmlObject.id!] = xmlObject
 						}
 					}
 				})
@@ -46,7 +46,7 @@ public class PlanetViewController: UIViewController {
 		}
 	}
 	
-	public func objectForId<T>(id:String, type:T) -> T? {
+	public func objectForId<T>(id:String) -> T? {
 		if let foundObj = idMappings[id] as? T {
 			return foundObj
 		}
