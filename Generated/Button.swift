@@ -28,9 +28,6 @@ public class Button: ButtonBase {
         
         button.titleLabel?.font = UIFont(name: "Zapfino", size: 20)*/
         
-        
-        button.setupButton(self)
-        
         if onTouchUp != nil {
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
         }
@@ -164,6 +161,24 @@ public class Button: ButtonBase {
             img = UIImage(named: String(bundlePath: disabledPath))
             button.setBackgroundImage(img, forState: .Disabled)
         }
+        
+        if backgroundColor != nil {
+            button.backgroundColorNormal = backgroundColor!
+        }
+        if backgroundColorHighlighted != nil {
+            button.backgroundColorHighlighted = backgroundColorHighlighted!
+        }
+        if backgroundColorSelected != nil {
+            button.backgroundColorSelected = backgroundColorSelected!
+        }
+        if backgroundColorSelectedHighlighted != nil {
+            button.backgroundColorSelectedHighlighted = backgroundColorSelectedHighlighted!
+        }
+        if backgroundColorDisabled != nil {
+            button.backgroundColorDisabled = backgroundColorDisabled!
+        }
+        
+        button.isToggle = isToggle
         
     }
     

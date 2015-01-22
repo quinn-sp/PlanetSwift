@@ -10,62 +10,90 @@ import Foundation
 import UIKit
 
 public class PlanetButton: UIButton {
-    var button: Button?
     
-    func setupButton(button: Button) {
-        
-        self.button = button
-        
-        if button.backgroundColor != nil {
-            self.backgroundColor = button.backgroundColor
-        }
-        
-        self.addTarget(self, action: "handleTouchDown", forControlEvents: .TouchDown)
-        self.addTarget(self, action: "handleTouchUp", forControlEvents: .TouchUpInside)
+    override init() {
+        super.init()
     }
     
-    func handleTouchDown() {
-        if let tempButton = button {
-            var tempColor: UIColor?
-            
-            if tempButton.isToggle {
-                if backgroundColor == tempButton.backgroundColor {
-                    tempColor = tempButton.backgroundColorHighlighted
-                }
-                else {
-                    tempColor = tempButton.backgroundColorSelectedHighlighted
-                }
-            }
-            else {
-                tempColor = tempButton.backgroundColorHighlighted
-            }
-            
-            if tempColor != nil {
-                backgroundColor = tempColor
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    convenience init(bgColor: UIColor, bgColorHighlighted: UIColor, bgColorSelected: UIColor, bgColorSelectedHighlighted: UIColor, bgColorDisabled: UIColor, toggle: Bool)
+    {
+        self.init();
+        
+        backgroundColorNormal = bgColor
+        backgroundColorHighlighted = bgColorHighlighted
+        backgroundColorSelected = bgColorSelected
+        backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
+        isToggle = toggle
+    }
+    
+    var isToggle: Bool = false {
+        didSet {
+            if isToggle {
+                self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+            } else {
+                self.removeTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
             }
         }
     }
     
-    func handleTouchUp() {
-        if let tempButton = button {
-            var tempColor: UIColor?
-            if tempButton.isToggle {
-                selected = !selected
-                
-                if backgroundColor == tempButton.backgroundColorHighlighted {
-                    tempColor = tempButton.backgroundColorSelected
-                }
-                else {
-                    tempColor = tempButton.backgroundColor
-                }
-            }
-            else {
-                tempColor = tempButton.backgroundColor
-            }
-            
-            if tempColor != nil {
-                backgroundColor = tempColor
+    var backgroundColorNormal: UIColor? {
+        didSet {
+            backgroundColor = backgroundColorNormal
+        }
+    }
+    
+    var backgroundColorHighlighted: UIColor?
+    var _backgroundColorHighlighted: UIColor? {
+        return backgroundColorHighlighted != nil ? backgroundColorHighlighted : backgroundColorNormal
+    }
+    
+    var backgroundColorSelected: UIColor?
+    var _backgroundColorSelected: UIColor? {
+        return backgroundColorSelected != nil ? backgroundColorSelected : _backgroundColorHighlighted
+    }
+    
+    var backgroundColorSelectedHighlighted: UIColor?
+    var _backgroundColorSelectedHighlighted: UIColor? {
+        return backgroundColorSelectedHighlighted != nil ? backgroundColorSelectedHighlighted : _backgroundColorHighlighted
+    }
+    
+    var backgroundColorDisabled: UIColor?
+    var _backgroundColorDisabled: UIColor? {
+        return backgroundColorDisabled != nil ? backgroundColorDisabled : backgroundColorNormal
+    }
+    
+    public override var enabled: Bool {
+        didSet {
+            if enabled == false {
+                backgroundColor = _backgroundColorDisabled
             }
         }
+    }
+    
+    public override var highlighted: Bool {
+        didSet {
+            switch (highlighted, selected) {
+            case (true, false):
+                backgroundColor = _backgroundColorHighlighted
+            case (true, true):
+                backgroundColor = _backgroundColorSelectedHighlighted
+            case (false, true):
+                backgroundColor = _backgroundColorSelected
+            default:
+                backgroundColor = backgroundColorNormal
+            }
+        }
+    }
+    
+    func touchUpInside(sender: UIButton!) {
+        selected = ~selected
     }
 }
