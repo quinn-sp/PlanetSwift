@@ -135,6 +135,19 @@
 		</complexContent>
 	</complexType>
 
+	<element name="WebView" type="ui:WebView"/>
+	<complexType name="WebView">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="url" type="string" />
+				<attribute name="scalesToFit" type="boolean" />
+				<attribute name="suppressesIncrementalRendering" type="boolean" /> <!-- Whether the web view suppresses content rendering until it is fully loaded into memory -->
+				<attribute name="allowsInlineMediaPlayback" type="boolean" /> <!-- Determines whether HTML5 videos play inline or use the native full-screen controller -->
+				<attribute name="mediaPlaybackRequiresUserAction" type="boolean" /> <!-- Determines whether HTML5 videos can play automatically or require the user to start playing them -->
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
 		<complexContent>
