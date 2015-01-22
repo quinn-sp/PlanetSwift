@@ -134,10 +134,11 @@ extension UIColor {
             }
         } else {
             switch gaxbString {
-                case "red": r = 1.0
-                case "green": g = 1.0
-                case "blue": b = 1.0
-                default: break
+            case "red": r = 1.0
+            case "green": g = 1.0
+            case "blue": b = 1.0
+            case "white": r = 1.0; g = 1.0; b = 1.0
+            default: break
             }
         }
         self.init(red: r, green:g, blue:b, alpha:a)
