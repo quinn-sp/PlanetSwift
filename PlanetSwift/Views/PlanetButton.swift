@@ -82,14 +82,21 @@ public class PlanetButton: UIButton {
         didSet {
             switch (highlighted, selected) {
             case (true, false):
-                backgroundColor = _backgroundColorHighlighted
+               checkBackgroundColor(_backgroundColorHighlighted)
             case (true, true):
-                backgroundColor = _backgroundColorSelectedHighlighted
+                checkBackgroundColor(_backgroundColorSelectedHighlighted)
             case (false, true):
-                backgroundColor = _backgroundColorSelected
+                checkBackgroundColor(_backgroundColorSelected)
             default:
-                backgroundColor = backgroundColorNormal
+                checkBackgroundColor(backgroundColorNormal)
             }
+        }
+    }
+    
+    func checkBackgroundColor(color: UIColor?)
+    {
+        if color != nil {
+            backgroundColor = color!
         }
     }
     
