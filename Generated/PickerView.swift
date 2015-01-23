@@ -6,6 +6,17 @@ public class PickerView: PickerViewBase {
     var picker = UIPickerView()
     //var pickerWrapper: PickerViewWrapper?
     
+    public var delegate: UIPickerViewDelegate? {
+        didSet {
+            picker.delegate = delegate
+        }
+    }
+    public var datasource: UIPickerViewDataSource? {
+        didSet {
+            picker.dataSource = datasource
+        }
+    }
+    
     override public var view: UIView {
         get {
             return picker
@@ -20,8 +31,7 @@ public class PickerView: PickerViewBase {
     public override func gaxbPrepare() {
         super.gaxbPrepare()
         
-        println("Columns: \(numberOfColumns) Rows: \(numberOfRowsPerColumn)")
-        
+        //See below
         /*pickerWrapper = PickerViewWrapper(components: 2, rows: 2)
         
         picker.delegate = pickerWrapper
@@ -29,6 +39,7 @@ public class PickerView: PickerViewBase {
     }
 }
 
+//Delegate / Datasource wrapper --> Not used, instead whatever Controller has access to the picker should set itself as the delegate / datasource
 /*class PickerViewWrapper: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {
     var pickerComponents: Int = 0
     var pickerRows: Int = 0

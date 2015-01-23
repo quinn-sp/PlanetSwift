@@ -152,8 +152,6 @@
 	<complexType name="PickerView">
 		<complexContent>
 			<extension base="ui:View">
-				<attribute name="numberOfColumns" type="int" default="1" />
-				<attribute name="numberOfRowsPerColumn" type="int" default="1" />
 			</extension>
 		</complexContent>
 	</complexType>
