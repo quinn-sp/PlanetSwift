@@ -148,6 +148,16 @@
 		</complexContent>
 	</complexType>
 
+	<element name="PickerView" type="ui:PickerView"/>
+	<complexType name="PickerView">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="numberOfColumns" type="int" default="1" />
+				<attribute name="numberOfRowsPerColumn" type="int" default="1" />
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
 		<complexContent>
