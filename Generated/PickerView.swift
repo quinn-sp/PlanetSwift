@@ -37,6 +37,37 @@ public class PickerView: PickerViewBase {
         picker.delegate = pickerWrapper
         picker.dataSource = pickerWrapper*/
     }
+    
+    //Getting Dimensions
+    public func numberOfComponents() -> Int {
+        return picker.numberOfComponents
+    }
+    
+    public func numberOfRowsInComponent(component: Int) -> Int {
+        return picker.numberOfRowsInComponent(component)
+    }
+    
+    public func rowSizeForComponent(component: Int) -> CGSize {
+        return picker.rowSizeForComponent(component)
+    }
+    
+    //Reloading
+    public func reloadAll() {
+        picker.reloadAllComponents()
+    }
+    
+    public func reloadComponent(component: Int) {
+        picker.reloadComponent(component)
+    }
+    
+    //Selecting
+    public func selectRow(row: Int, inComponent component: Int, animated animates: Bool) {
+        picker.selectRow(row, inComponent: component, animated: animates)
+    }
+    
+    public func selectRow(row: Int, inComponent component: Int) {
+        selectRow(row, inComponent: component, animated: false)
+    }
 }
 
 //Delegate / Datasource wrapper --> Not used, instead whatever Controller has access to the picker should set itself as the delegate / datasource
