@@ -37,15 +37,15 @@ public class TextField: TextFieldBase {
         }
         if textAlignment != nil {
             switch textAlignment! {
-            case PlanetUI.textAlignment.Center:
+            case PlanetUI.TextAlignment.Center:
                 textField.textAlignment = .Center
-            case PlanetUI.textAlignment.Right:
+            case PlanetUI.TextAlignment.Right:
                 textField.textAlignment = .Right
-            case PlanetUI.textAlignment.Left:
+            case PlanetUI.TextAlignment.Left:
                 textField.textAlignment = .Left
-            case PlanetUI.textAlignment.Justified:
+            case PlanetUI.TextAlignment.Justified:
                 textField.textAlignment = .Justified
-            case PlanetUI.textAlignment.Natural:
+            case PlanetUI.TextAlignment.Natural:
                 textField.textAlignment = .Natural
             }
         }
@@ -54,11 +54,11 @@ public class TextField: TextFieldBase {
         }
         if borderStyle != nil {
             switch borderStyle! {
-            case PlanetUI.textFieldBorderStyle.line:
+            case PlanetUI.TextFieldBorderStyle.line:
                 textField.borderStyle = .Line
-            case PlanetUI.textFieldBorderStyle.bezel:
+            case PlanetUI.TextFieldBorderStyle.bezel:
                 textField.borderStyle = .Bezel
-            case PlanetUI.textFieldBorderStyle.roundedRect:
+            case PlanetUI.TextFieldBorderStyle.roundedRect:
                 textField.borderStyle = .RoundedRect
             default:
                 textField.borderStyle = .None

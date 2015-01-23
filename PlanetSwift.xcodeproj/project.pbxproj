@@ -14,6 +14,8 @@
 		796C6AE41A7063A100D87C38 /* WebViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AE21A7063A100D87C38 /* WebViewBase.swift */; };
 		796C6AF01A7188F900D87C38 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AEE1A7188F900D87C38 /* PickerView.swift */; };
 		796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */; };
+		79AEF3971A72E6A3006B76E4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */; };
+		79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */; };
 		9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E9A781A70036800D64615 /* PlanetViewController.swift */; };
 		9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B851A66D52200BD0CC5 /* Constraint.swift */; };
 		9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */; };
@@ -84,6 +86,8 @@
 		796C6AE21A7063A100D87C38 /* WebViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewBase.swift; sourceTree = "<group>"; };
 		796C6AEE1A7188F900D87C38 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewBase.swift; sourceTree = "<group>"; };
+		79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectViewBase.swift; sourceTree = "<group>"; };
 		9B8E9A781A70036800D64615 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
 		9B972B851A66D52200BD0CC5 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintBase.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */,
 				A9B4399A1A3B40B70052690A /* View.swift */,
 				A9B4399B1A3B40B70052690A /* ViewBase.swift */,
+				79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */,
+				79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */,
 				796C6AE11A7063A100D87C38 /* WebView.swift */,
 				796C6AE21A7063A100D87C38 /* WebViewBase.swift */,
 			);
@@ -415,6 +421,7 @@
 			files = (
 				A9B4399F1A3B40B70052690A /* View.swift in Sources */,
 				C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */,
+				79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */,
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
 				9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */,
 				9BC9743E1A7022FC002F0295 /* Controller.swift in Sources */,
@@ -430,6 +437,7 @@
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
 				796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */,
+				79AEF3971A72E6A3006B76E4 /* VisualEffectView.swift in Sources */,
 				9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */,
 				9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,

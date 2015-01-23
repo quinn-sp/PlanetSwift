@@ -43,7 +43,7 @@
 				<attribute name="fontName" type="string"/>
 				<attribute name="fontSize" type="decimal"/>
 				<attribute name="textColor" type="ui:color"/>
-				<attribute name="textAlignment" type="ui:textAlignment"/>
+				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<!-- <attribute name="lineBreakMode" type="enums_tbd"/> -->
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
@@ -105,13 +105,13 @@
 				<attribute name="fontName" type="string"/>
 				<attribute name="fontSize" type="decimal" default="12" />
 				<attribute name="textColor" type="ui:color"/>
-				<attribute name="textAlignment" type="ui:textAlignment"/>
+				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumFontSize" type="decimal" default="0.0"/>
 				<attribute name="onBeginEditing" type="string"/>
 				<attribute name="onEndEditing" type="string"/>
 				<attribute name="onReturnPressed" type="string"/>
-				<attribute name="borderStyle" type="ui:textFieldBorderStyle"/>
+				<attribute name="borderStyle" type="ui:TextFieldBorderStyle"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -156,6 +156,15 @@
 		</complexContent>
 	</complexType>
 
+	<element name="VisualEffectView" type="ui:VisualEffectView"/>
+	<complexType name="VisualEffectView">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="effect" type="ui:BlurEffect" />
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
 		<complexContent>
@@ -194,7 +203,18 @@
 
 <!-- enumerations -->
 
-	<simpleType name="textAlignment">
+	<simpleType name="BlurEffect">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="extraLight" />
+			<enumeration value="light" />
+			<enumeration value="dark" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextAlignment">
 		<annotation>
 			<appinfo>NAMED_ENUM</appinfo>
 		</annotation>
@@ -207,7 +227,7 @@
 		</restriction>
 	</simpleType>
 
-	<simpleType name="textFieldBorderStyle">
+	<simpleType name="TextFieldBorderStyle">
 		<annotation>
 			<appinfo>NAMED_ENUM</appinfo>
 		</annotation>
