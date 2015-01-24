@@ -5,8 +5,8 @@
 import UIKit
 
 public class Label: LabelBase {
-    public var label = UILabel()
     
+    lazy public var label = UILabel()
     override public var view: UIView {
         get {
             return label

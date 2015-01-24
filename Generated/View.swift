@@ -5,7 +5,7 @@
 import UIKit
 
 public class View: ViewBase {
-    public var view = UIView()
+    lazy public var view = UIView()
 
     public override func gaxbPrepare() {
 		super.gaxbPrepare()

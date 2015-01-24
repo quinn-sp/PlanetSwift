@@ -3,7 +3,7 @@
 //
 
 public class WebView: WebViewBase {
-    public var webview = UIWebView()
+    lazy public var webview = UIWebView()
     
     override public var view: UIView {
         get {

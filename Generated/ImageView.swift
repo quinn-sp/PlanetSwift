@@ -3,8 +3,7 @@
 //
 
 public class ImageView: ImageViewBase {
-	
-	public var imageView = UIImageView()
+	lazy public var imageView = UIImageView()
 	override public var view: UIView {
         get {
             return imageView

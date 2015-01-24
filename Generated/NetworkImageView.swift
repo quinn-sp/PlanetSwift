@@ -3,8 +3,8 @@
 //
 
 public class NetworkImageView: NetworkImageViewBase {
-	
-	public var networkImageView = PlanetNetworkImageView()
+    
+	lazy public var networkImageView = PlanetNetworkImageView()
 	override public var imageView : UIImageView {
 		get {
 			return networkImageView

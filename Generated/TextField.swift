@@ -3,8 +3,8 @@
 //
 
 public class TextField: TextFieldBase {
-    var textField = UITextField()
-    var textFieldWrapper = TextFieldWrapper()
+    lazy var textField = UITextField()
+    lazy var textFieldWrapper = TextFieldWrapper()
     
     override public var view: UIView {
         get {

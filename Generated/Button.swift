@@ -3,9 +3,8 @@
 //
 
 public class Button: ButtonBase {
-    //public var button = UIButton()
-    public var button = PlanetButton()
     
+    lazy public var button = PlanetButton()
     override public var view: UIView {
         get {
             return button
