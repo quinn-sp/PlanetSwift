@@ -270,23 +270,6 @@
 		</restriction>
 	</simpleType>
 
-	<!-- types -->
-
-	<simpleType name="rect">
-		<annotation>
-			<appinfo>CGRect</appinfo>
-		</annotation>
-		<restriction base="string"/>
-	</simpleType>
-
-	<simpleType name="color">
-		<!-- A color, represented in #rrggbbaa format. Remember the # is required! -->
-		<annotation>
-			<appinfo>UIColor</appinfo>
-		</annotation>
-		<restriction base="string"/>
-	</simpleType>
-
 	<simpleType name="ContentMode">
 		<annotation>
 			<appinfo>NAMED_ENUM</appinfo>
@@ -306,6 +289,23 @@
 			<enumeration value="bottomLeft" />
 			<enumeration value="bottomRight" />
 		</restriction>
+	</simpleType>
+
+	<!-- types -->
+
+	<simpleType name="rect">
+		<annotation>
+			<appinfo>CGRect</appinfo>
+		</annotation>
+		<restriction base="string"/>
+	</simpleType>
+
+	<simpleType name="color">
+		<!-- A color, represented in #rrggbbaa format. Remember the # is required! -->
+		<annotation>
+			<appinfo>UIColor</appinfo>
+		</annotation>
+		<restriction base="string"/>
 	</simpleType>
 
 </schema>
