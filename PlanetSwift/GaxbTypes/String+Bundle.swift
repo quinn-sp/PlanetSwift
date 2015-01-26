@@ -12,14 +12,20 @@ extension String {
 	
 	public init(bundlePath:String) {
 		self.init()
-		
-		if let resourcePath = NSBundle.mainBundle().resourcePath {
-			if bundlePath.hasPrefix("bundle:/") {
-				self = resourcePath.stringByAppendingPathComponent(bundlePath.substringFromIndex(advance(bundlePath.startIndex, 8)))
-				return
-			}
-		}
-		self = bundlePath
+        let pathComponents = bundlePath.componentsSeparatedByString("://")
+        switch pathComponents[0] {
+        case "bundle":
+            if let resourcePath = NSBundle.mainBundle().resourcePath {
+                self = resourcePath.stringByAppendingPathComponent(pathComponents[1])
+            }
+        case "documents":
+            if let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as? NSString {
+                self = documentsPath.stringByAppendingPathComponent(pathComponents[1])
+            }
+            break
+        default:
+            self = bundlePath
+        }
 	}
 	
 }
