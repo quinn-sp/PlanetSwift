@@ -3,7 +3,7 @@
 //
 
 public class TextField: TextFieldBase {
-    lazy var textField = UITextField()
+    lazy public var textField = UITextField()
     lazy var textFieldWrapper = TextFieldWrapper()
     
     override public var view: UIView {
