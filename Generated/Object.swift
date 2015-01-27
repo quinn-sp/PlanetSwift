@@ -7,7 +7,7 @@ public class Object: ObjectBase {
     lazy var styles: Object? = {
         [weak self] in
         if let file = self?.styleFile {
-            return PlanetUI.readFromFile(String(bundlePath: file)) as? Object
+            return PlanetUI.readFromFile(String(bundlePath: file), prepare:false) as? Object
             }
             return nil
         }()
