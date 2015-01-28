@@ -4,11 +4,11 @@
 
 public class TextField: TextFieldBase {
     lazy public var textField = UITextField()
-    lazy var textFieldWrapper = TextFieldWrapper()
+    lazy private var textFieldDelegate = TextFieldHelper()
     
     override public var view: UIView {
         get {
-            textField.delegate = textFieldWrapper
+            textField.delegate = textFieldDelegate
             return textField
         }
         set {
@@ -17,11 +17,26 @@ public class TextField: TextFieldBase {
             }
         }
     }
-    
+	
+	public class func textAlignmentToNSTextAlignment(alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
+		switch alignment {
+		case .Center:
+			return NSTextAlignment.Center
+		case .Right:
+			return NSTextAlignment.Right
+		case .Left:
+			return NSTextAlignment.Left
+		case .Justified:
+			return NSTextAlignment.Justified
+		case .Natural:
+			return NSTextAlignment.Natural
+		}
+	}
+	
     public override func gaxbPrepare() {
         super.gaxbPrepare()
-        
-        textFieldWrapper.textDelegate = self
+		
+        textFieldDelegate.textDelegate = self
         
         if text != nil {
             textField.text = text!
@@ -36,18 +51,7 @@ public class TextField: TextFieldBase {
             textField.textColor = textColor!
         }
         if textAlignment != nil {
-            switch textAlignment! {
-            case PlanetUI.TextAlignment.Center:
-                textField.textAlignment = .Center
-            case PlanetUI.TextAlignment.Right:
-                textField.textAlignment = .Right
-            case PlanetUI.TextAlignment.Left:
-                textField.textAlignment = .Left
-            case PlanetUI.TextAlignment.Justified:
-                textField.textAlignment = .Justified
-            case PlanetUI.TextAlignment.Natural:
-                textField.textAlignment = .Natural
-            }
+			textField.textAlignment = TextField.textAlignmentToNSTextAlignment(textAlignment!)
         }
         if adjustsFontSizeToFitWidth != nil {
             textField.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth!
@@ -94,28 +98,25 @@ public class TextField: TextFieldBase {
     }
 }
 
-class TextFieldWrapper: NSObject, UITextFieldDelegate {
-    var textDelegate: TextField?
+private class TextFieldHelper: NSObject, UITextFieldDelegate {
+    weak var textDelegate: TextField?
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        var test = 0
-        
+		
         if textDelegate != nil {
             textDelegate!.textFieldDidBeginEditing(textField)
         }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        var test = 0
-        
+		
         if textDelegate != nil {
             textDelegate!.textFieldDidEndEditing(textField)
         }
     }
     
     func textFieldShouldReturn(textField: UITextField) {
-        var test = 0
-        
+		
         if textDelegate != nil {
             textDelegate!.textFieldShouldReturn(textField)
         }

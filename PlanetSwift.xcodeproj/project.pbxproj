@@ -16,6 +16,8 @@
 		796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */; };
 		79AEF3971A72E6A3006B76E4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */; };
 		79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */; };
+		9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4BF1A7975DD001DF00B /* TextView.swift */; };
+		9B77E4C21A7975DD001DF00B /* TextViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4C01A7975DD001DF00B /* TextViewBase.swift */; };
 		9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E9A781A70036800D64615 /* PlanetViewController.swift */; };
 		9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B851A66D52200BD0CC5 /* Constraint.swift */; };
 		9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */; };
@@ -88,6 +90,8 @@
 		796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewBase.swift; sourceTree = "<group>"; };
 		79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectViewBase.swift; sourceTree = "<group>"; };
+		9B77E4BF1A7975DD001DF00B /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		9B77E4C01A7975DD001DF00B /* TextViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewBase.swift; sourceTree = "<group>"; };
 		9B8E9A781A70036800D64615 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
 		9B972B851A66D52200BD0CC5 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintBase.swift; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				A9639EF51A643A0D009C818F /* SceneBase.swift */,
 				796C6ACC1A6ED86300D87C38 /* TextField.swift */,
 				796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */,
+				9B77E4BF1A7975DD001DF00B /* TextView.swift */,
+				9B77E4C01A7975DD001DF00B /* TextViewBase.swift */,
 				A9B4399A1A3B40B70052690A /* View.swift */,
 				A9B4399B1A3B40B70052690A /* ViewBase.swift */,
 				79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */,
@@ -296,7 +302,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9B439841A3A53C70052690A /* Build configuration list for PBXNativeTarget "PlanetSwift" */;
 			buildPhases = (
-				A9B439951A3B3E300052690A /* ShellScript */,
+				A9B439951A3B3E300052690A /* Gaxb */,
 				A9B439691A3A53C70052690A /* Sources */,
 				A9B4396A1A3A53C70052690A /* Frameworks */,
 				A9B4396B1A3A53C70052690A /* Headers */,
@@ -399,13 +405,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A9B439951A3B3E300052690A /* ShellScript */ = {
+		A9B439951A3B3E300052690A /* Gaxb */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Gaxb;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,11 +430,13 @@
 				C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */,
 				79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */,
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
+				9B77E4C21A7975DD001DF00B /* TextViewBase.swift in Sources */,
 				9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */,
 				9BC9743E1A7022FC002F0295 /* Controller.swift in Sources */,
 				9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
 				9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */,
+				9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */,
 				C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */,
 				796C6ACE1A6ED86300D87C38 /* TextField.swift in Sources */,
 				9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */,
