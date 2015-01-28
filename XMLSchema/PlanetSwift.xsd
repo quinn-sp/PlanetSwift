@@ -116,6 +116,23 @@
 		</complexContent>
 	</complexType>
 
+	<element name="TextView" type="ui:TextView"/><!-- typically better than TextField only for multi-line text input -->
+	<complexType name="TextView">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="text" type="string"/>
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal" default="12" />
+				<attribute name="textColor" type="ui:color"/>
+				<attribute name="textAlignment" type="ui:TextAlignment"/>
+				<attribute name="selectable" type="boolean"/>
+				<attribute name="editable" type="boolean"/>
+				<attribute name="onChange" type="string"/>
+				<attribute name="onEndEditing" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="ImageView" type="ui:ImageView"/>
 	<complexType name="ImageView">
 		<complexContent>
