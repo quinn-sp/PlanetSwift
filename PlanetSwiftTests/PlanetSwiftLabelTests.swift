@@ -46,17 +46,17 @@ class PlanetSwiftLabelTests: XCTestCase {
     }
     
     func testLabelTextAlignmentEnum() {
-        XCTAssertEqual(PlanetUI.TextAlignment.Center.rawValue, "Center", "TextAlignment enum Center invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.Left.rawValue, "Left", "TextAlignment enum Left invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.Right.rawValue, "Right", "TextAlignment enum Right invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.Justified.rawValue, "Justified", "TextAlignment enum Justified invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.Natural.rawValue, "Natural", "TextAlignment enum Natural invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.center.rawValue, "Center", "TextAlignment enum Center invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.left.rawValue, "Left", "TextAlignment enum Left invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.right.rawValue, "Right", "TextAlignment enum Right invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.justified.rawValue, "Justified", "TextAlignment enum Justified invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.natural.rawValue, "Natural", "TextAlignment enum Natural invalid")
     }
     
     func testLabelTextAlignment() {
-        XCTAssertEqual(label0!.textAlignment!, PlanetUI.TextAlignment.Center, "Label element textAlignment not properly set");
+        XCTAssertEqual(label0!.textAlignment!, PlanetUI.TextAlignment.center, "Label element textAlignment not properly set");
         XCTAssert(label0!.label.textAlignment == .Center, "Label UIKit textAlignment not properly set");
-        XCTAssertEqual(label1!.textAlignment!, PlanetUI.TextAlignment.Right, "Label element textAlignment not properly set");
+        XCTAssertEqual(label1!.textAlignment!, PlanetUI.TextAlignment.right, "Label element textAlignment not properly set");
         XCTAssert(label1!.label.textAlignment == .Right, "Label UIKit textAlignment not properly set");
     }
     

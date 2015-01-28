@@ -36,15 +36,15 @@ public class Label: LabelBase {
         }
         if textAlignment != nil {
             switch textAlignment! {
-            case PlanetUI.TextAlignment.Center:
+            case PlanetUI.TextAlignment.center:
                 label.textAlignment = .Center
-            case PlanetUI.TextAlignment.Right:
+            case PlanetUI.TextAlignment.right:
                 label.textAlignment = .Right
-            case PlanetUI.TextAlignment.Left:
+            case PlanetUI.TextAlignment.left:
                 label.textAlignment = .Left
-            case PlanetUI.TextAlignment.Justified:
+            case PlanetUI.TextAlignment.justified:
                 label.textAlignment = .Justified
-            case PlanetUI.TextAlignment.Natural:
+            case PlanetUI.TextAlignment.natural:
                 label.textAlignment = .Natural
             }
         }

@@ -3,8 +3,7 @@
 //
 
 public class PickerView: PickerViewBase {
-    lazy var picker = UIPickerView()
-    //var pickerWrapper: PickerViewWrapper?
+    lazy public var picker = UIPickerView()
     
     public var delegate: UIPickerViewDelegate? {
         didSet {

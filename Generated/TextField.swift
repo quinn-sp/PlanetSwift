@@ -37,15 +37,15 @@ public class TextField: TextFieldBase {
         }
         if textAlignment != nil {
             switch textAlignment! {
-            case PlanetUI.TextAlignment.Center:
+            case PlanetUI.TextAlignment.center:
                 textField.textAlignment = .Center
-            case PlanetUI.TextAlignment.Right:
+            case PlanetUI.TextAlignment.right:
                 textField.textAlignment = .Right
-            case PlanetUI.TextAlignment.Left:
+            case PlanetUI.TextAlignment.left:
                 textField.textAlignment = .Left
-            case PlanetUI.TextAlignment.Justified:
+            case PlanetUI.TextAlignment.justified:
                 textField.textAlignment = .Justified
-            case PlanetUI.TextAlignment.Natural:
+            case PlanetUI.TextAlignment.natural:
                 textField.textAlignment = .Natural
             }
         }
