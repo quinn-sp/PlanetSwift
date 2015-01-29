@@ -12,29 +12,45 @@ public class PlanetViewController: UIViewController {
 	
 	var planetViews = Array<PlanetView>()
 	var idMappings = Dictionary<String, Object>()
+	@IBInspectable var titleBundlePath:String?
 	
 	public override func loadView() {
 		super.loadView()
+		
+		if titleBundlePath != nil {
+			let xmlView:View? = PlanetSwift.PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as View?
+			if xmlView != nil {
+				self.navigationItem.titleView = xmlView!.view
+				xmlView!.visit({ (element) -> () in
+					element.gaxbDidPrepare()
+				})
+				searchXMLObject(xmlView!)
+			}
+		}
 		
 		//overriding loadView because we need a function where the view exists, but child view controllers have not been loaded yet
 		searchForPlanetView(self.view)
 		for planetView in planetViews {
 			if let xmlObj = planetView.xmlView {
-				xmlObj.visit({ [unowned self] (element:GaxbElement) -> () in
-					
-					if let xmlController = element as? Controller {
-						xmlController.controllerObject = self
-					}
-					
-					if let xmlObject = element as? Object {
-						
-						if xmlObject.id != nil {
-							self.idMappings[xmlObject.id!] = xmlObject
-						}
-					}
-				})
+				searchXMLObject(xmlObj)
 			}
 		}
+	}
+	
+	func searchXMLObject(xmlObj:Object) {
+		xmlObj.visit({ [unowned self] (element:GaxbElement) -> () in
+			
+			if let xmlController = element as? Controller {
+				xmlController.controllerObject = self
+			}
+			
+			if let xmlObject = element as? Object {
+				
+				if xmlObject.id != nil {
+					self.idMappings[xmlObject.id!] = xmlObject
+				}
+			}
+		})
 	}
 	
 	func searchForPlanetView(searchedView:UIView) {
