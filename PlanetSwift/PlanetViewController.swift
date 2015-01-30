@@ -17,6 +17,10 @@ public class PlanetViewController: UIViewController {
 	public override func loadView() {
 		super.loadView()
 		
+		if let title = self.title {
+			self.navigationItem.title = title
+		}
+		
 		if titleBundlePath != nil {
 			let xmlView:View? = PlanetSwift.PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as View?
 			if xmlView != nil {
