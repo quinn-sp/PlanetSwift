@@ -32,6 +32,14 @@ public class View: ViewBase {
 		if contentMode != nil {
             view.contentMode = View.contentModeFromEnum(contentMode!)
         }
+		if contentHuggingPriority != nil {
+			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.x), forAxis: .Horizontal)
+			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.y), forAxis: .Vertical)
+		}
+		if contentCompressionResistancePriority != nil {
+			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.x), forAxis: .Horizontal)
+			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.y), forAxis: .Vertical)
+		}
 
 		findParentView()?.view.addSubview(view)
     }

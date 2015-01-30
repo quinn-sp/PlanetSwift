@@ -74,7 +74,7 @@ extension CGRect: GaxbType {
         self.init(origin: origin, size: size)
     }
     public mutating func setWithGaxbString(GaxbString: String) {
-        var (newOrigin, newSize) = CGRect.componentsFromString(GaxbString)
+        let (newOrigin, newSize) = CGRect.componentsFromString(GaxbString)
         origin = newOrigin
         size = newSize
     }
@@ -94,6 +94,30 @@ extension CGRect: GaxbType {
     public func toGaxbString() -> String {
         return "\(origin.x),\(origin.y),\(size.width),\(size.height)"
     }
+}
+
+extension CGPoint: GaxbType {
+	public init(gaxbString: String) {
+		let (x, y) = CGPoint.componentsFromString(gaxbString)
+		self.init(x: 0, y: 0)
+	}
+	mutating public func setWithGaxbString(GaxbString: String) {
+		let (newX, newY) = CGPoint.componentsFromString(GaxbString)
+		x = newX
+		y = newY
+	}
+	public static func componentsFromString(string: String) -> (CGFloat, CGFloat) {
+		var x:Float=0.0, y:Float=0.0
+		var components = string.componentsSeparatedByString(",")
+		if components.count == 2 {
+			x = (components[0] as NSString).floatValue
+			y = (components[1] as NSString).floatValue
+		}
+		return (CGFloat(x), CGFloat(y))
+	}
+	public func toGaxbString() -> String {
+		return "\(x),\(y)"
+	}
 }
 
 // MARK: UIKit data types

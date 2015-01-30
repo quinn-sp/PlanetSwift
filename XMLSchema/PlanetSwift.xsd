@@ -22,6 +22,8 @@
 				<attribute name="clipsToBounds" type="boolean"/>
 				<attribute name="tag" type="integer"/>
 				<attribute name="contentMode" type="ui:ContentMode"/>
+				<attribute name="contentHuggingPriority" type="ui:point"/>
+				<attribute name="contentCompressionResistancePriority" type="ui:point"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -313,6 +315,13 @@
 	<simpleType name="rect">
 		<annotation>
 			<appinfo>CGRect</appinfo>
+		</annotation>
+		<restriction base="string"/>
+	</simpleType>
+
+	<simpleType name="point">
+		<annotation>
+			<appinfo>CGPoint</appinfo>
 		</annotation>
 		<restriction base="string"/>
 	</simpleType>
