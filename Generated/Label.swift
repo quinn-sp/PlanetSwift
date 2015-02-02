@@ -17,7 +17,24 @@ public class Label: LabelBase {
             }
         }
     }
-    
+	
+	public class func lineBreakModeToNSLineBreakMode(mode:PlanetUI.LineBreakMode) -> NSLineBreakMode {
+		switch mode {
+		case .truncatingTail:
+			return .ByTruncatingTail
+		case .wordWrapping:
+			return .ByWordWrapping
+		case .charWrapping:
+			return .ByCharWrapping
+		case .truncatingHead:
+			return .ByTruncatingHead
+		case .clipping:
+			return .ByClipping
+		case .truncatingMiddle:
+			return .ByTruncatingMiddle
+		}
+	}
+	
     public override func gaxbPrepare() {
         super.gaxbPrepare()
         
@@ -35,22 +52,14 @@ public class Label: LabelBase {
             label.numberOfLines = numberOfLines!
         }
         if textAlignment != nil {
-            switch textAlignment! {
-            case PlanetUI.TextAlignment.center:
-                label.textAlignment = .Center
-            case PlanetUI.TextAlignment.right:
-                label.textAlignment = .Right
-            case PlanetUI.TextAlignment.left:
-                label.textAlignment = .Left
-            case PlanetUI.TextAlignment.justified:
-                label.textAlignment = .Justified
-            case PlanetUI.TextAlignment.natural:
-                label.textAlignment = .Natural
-            }
+			label.textAlignment = TextField.textAlignmentToNSTextAlignment(textAlignment!)
         }
         if fontName != nil && fontSize != nil {
             label.font = UIFont(name: fontName!, size: CGFloat(fontSize!))
         }
+		if lineBreakMode != nil {
+			label.lineBreakMode = Label.lineBreakModeToNSLineBreakMode(lineBreakMode!)
+		}
     }
     
 }

@@ -46,7 +46,7 @@
 				<attribute name="fontSize" type="decimal"/>
 				<attribute name="textColor" type="ui:color"/>
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
-				<!-- <attribute name="lineBreakMode" type="enums_tbd"/> -->
+				<attribute name="lineBreakMode" type="ui:LineBreakMode"/>
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
 				<attribute name="numberOfLines" type="integer"/>
@@ -255,6 +255,20 @@
 			<enumeration value="line" />
 			<enumeration value="bezel" />
 			<enumeration value="roundedRect" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LineBreakMode">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="wordWrapping" />
+			<enumeration value="charWrapping" />
+			<enumeration value="clipping" />
+			<enumeration value="truncatingHead" />
+			<enumeration value="truncatingTail" />
+			<enumeration value="truncatingMiddle" />
 		</restriction>
 	</simpleType>
 
