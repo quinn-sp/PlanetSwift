@@ -22,8 +22,8 @@
 				<attribute name="clipsToBounds" type="boolean"/>
 				<attribute name="tag" type="integer"/>
 				<attribute name="contentMode" type="ui:ContentMode"/>
-				<attribute name="contentHuggingPriority" type="ui:point"/>
-				<attribute name="contentCompressionResistancePriority" type="ui:point"/>
+				<attribute name="contentHuggingPriority" type="ui:point"/><!-- 250 -->
+				<attribute name="contentCompressionResistancePriority" type="ui:point"/><!-- 750 -->
 			</extension>
 		</complexContent>
 	</complexType>
