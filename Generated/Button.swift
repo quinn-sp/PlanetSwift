@@ -127,6 +127,9 @@ public class Button: ButtonBase {
             let disabledPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_disabled" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
             
             var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
+            if img == nil {
+                img = UIImage(named: String(bundlePath: imageSet!))
+            }
             button.setImage(img, forState: .Normal)
             img = UIImage(named: String(bundlePath: highlightedPath))
             button.setImage(img, forState: .Highlighted)
@@ -150,6 +153,9 @@ public class Button: ButtonBase {
             let disabledPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_disabled" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
             
             var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
+            if img == nil {
+                img = UIImage(named: String(bundlePath: backgroundImageSet!))
+            }
             button.setBackgroundImage(img, forState: .Normal)
             img = UIImage(named: String(bundlePath: highlightedPath))
             button.setBackgroundImage(img, forState: .Highlighted)
