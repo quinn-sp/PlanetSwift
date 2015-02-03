@@ -16,7 +16,7 @@
 		<complexContent>
 			<extension base="ui:Object">
 				<attribute name="frame" type="ui:rect"/>
-				<attribute name="color" type="ui:color"/>
+				<attribute name="color" type="ui:color"/><!-- todo: name does not match -->
 				<attribute name="alpha" type="decimal"/>
 				<attribute name="hidden" type="boolean"/>
 				<attribute name="clipsToBounds" type="boolean"/>
@@ -41,7 +41,6 @@
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
-				<!-- <attribute name="attributedString" type=""/> -->
 				<attribute name="fontName" type="string"/>
 				<attribute name="fontSize" type="decimal"/>
 				<attribute name="textColor" type="ui:color"/>
@@ -50,8 +49,6 @@
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
 				<attribute name="numberOfLines" type="integer"/>
-				<!-- <attribute name="shadowColor" type="ui:color"/> -->
-				<!-- <attribute name="shadowOffset" type="ui:size"/> -->
 			</extension>
 		</complexContent>
 	</complexType>
@@ -62,7 +59,6 @@
 			<extension base="ui:View">
 				<attribute name="onTouchUp" type="string" />
 				<attribute name="onTouchDown" type="string" />
-				<!-- <attribute name="isToggle" type="boolean" default="false"/> -->
 				<attribute name="tintColor" type="ui:color" />
 				<attribute name="title" type="string" />
 				<attribute name="titleHighlighted" type="string" />
@@ -139,7 +135,7 @@
 	<complexType name="ImageView">
 		<complexContent>
 			<extension base="ui:View">
-				<attribute name="urlPath" type="string" />
+				<attribute name="urlPath" type="string" /><!-- todo: name does not match -->
 			</extension>
 		</complexContent>
 	</complexType>

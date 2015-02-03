@@ -99,7 +99,7 @@ extension CGRect: GaxbType {
 extension CGPoint: GaxbType {
 	public init(gaxbString: String) {
 		let (x, y) = CGPoint.componentsFromString(gaxbString)
-		self.init(x: 0, y: 0)
+		self.init(x: x, y: y)
 	}
 	mutating public func setWithGaxbString(GaxbString: String) {
 		let (newX, newY) = CGPoint.componentsFromString(GaxbString)
