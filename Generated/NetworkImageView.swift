@@ -30,6 +30,10 @@ public class NetworkImageView: NetworkImageViewBase {
 			super.setImageWithPath(path)
 		}
 	}
+    
+    override public init() {
+        super.init()
+    }
 	
 	/*
 	public func setImageWithBundlePath(bundlePath:String) {
