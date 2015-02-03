@@ -11,7 +11,7 @@ import PlanetSwift
 import XCTest
 
 class PlanetSwiftLabelTests: XCTestCase {
-    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='0.0,0.0,768.0,1024.0' title='scene'><Label text='Some text' fontName='Avenir-Light' fontSize='20.00000' textColor='#FF0000FF' textAlignment='Center' minimumScaleFactor='0.5' numberOfLines='2' frame='0.0,300.0,320.0,100.0' color='#2266FF22'/><Label text='A very very very very Merry Swiftmas!' fontName='Avenir-Light' fontSize='20.00000' textColor='#FF0000FF' textAlignment='Right' adjustsFontSizeToFitWidth='true' minimumScaleFactor='0.00000' numberOfLines='1' frame='50.0,400.0,240.0,100.0'/></View>"
+    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='0.0,0.0,768.0,1024.0' title='scene'><Label text='Some text' fontName='Avenir-Light' fontSize='20.00000' textColor='#FF0000FF' textAlignment='center' minimumScaleFactor='0.5' numberOfLines='2' frame='0.0,300.0,320.0,100.0' color='#2266FF22'/><Label text='A very very very very Merry Swiftmas!' fontName='Avenir-Light' fontSize='20.00000' textColor='#FF0000FF' textAlignment='right' adjustsFontSizeToFitWidth='true' minimumScaleFactor='0.00000' numberOfLines='1' frame='50.0,400.0,240.0,100.0'/></View>"
     var element: GaxbElement?
     var label0: Label?
     var label1: Label?
@@ -46,11 +46,11 @@ class PlanetSwiftLabelTests: XCTestCase {
     }
     
     func testLabelTextAlignmentEnum() {
-        XCTAssertEqual(PlanetUI.TextAlignment.center.rawValue, "Center", "TextAlignment enum Center invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.left.rawValue, "Left", "TextAlignment enum Left invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.right.rawValue, "Right", "TextAlignment enum Right invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.justified.rawValue, "Justified", "TextAlignment enum Justified invalid")
-        XCTAssertEqual(PlanetUI.TextAlignment.natural.rawValue, "Natural", "TextAlignment enum Natural invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.center.rawValue, "center", "TextAlignment enum Center invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.left.rawValue, "left", "TextAlignment enum Left invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.right.rawValue, "right", "TextAlignment enum Right invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.justified.rawValue, "justified", "TextAlignment enum Justified invalid")
+        XCTAssertEqual(PlanetUI.TextAlignment.natural.rawValue, "natural", "TextAlignment enum Natural invalid")
     }
     
     func testLabelTextAlignment() {

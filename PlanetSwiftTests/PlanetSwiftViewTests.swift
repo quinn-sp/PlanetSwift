@@ -11,7 +11,7 @@ import XCTest
 import PlanetSwift
 
 class PlanetSwiftViewTests: XCTestCase {
-    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='100.0,66.5,200.0,190.0' color='#FF8040F8' clipsToBounds='true' id='something'><View frame='120.0,100.0,30.0,30.0' color='#C8EA00FF' alpha='0.9' clipsToBounds='false'/><View frame='-50.0,10.0,80.0,80.0' color='#2266FF88' hidden='false' clipsToBounds='false' tag='3'/></View>"
+    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='100.0,66.5,200.0,190.0' color='#FF8040F8' contentCompressionResistancePriority='1,2' contentHuggingPriority='3,4' clipsToBounds='true' id='something'><View frame='120.0,100.0,30.0,30.0' color='#C8EA00FF' alpha='0.9' clipsToBounds='false'/><View frame='-50.0,10.0,80.0,80.0' color='#2266FF88' hidden='false' clipsToBounds='false' tag='3'/></View>"
     var element: GaxbElement?
     var subview0: View?
     var subview1: View?
@@ -96,7 +96,21 @@ class PlanetSwiftViewTests: XCTestCase {
             XCTAssertEqual(view.id!, "something", "Object.id not correct")
         }
     }
-    
+	
+	func testViewCompressionResistance() {
+		if let view = element as? View {
+			XCTAssertEqual(view.view.contentCompressionResistancePriorityForAxis(.Horizontal), UILayoutPriority(1.0), "element.view horizontal content compression resistance should be 1")
+			XCTAssertEqual(view.view.contentCompressionResistancePriorityForAxis(.Vertical), UILayoutPriority(2.0), "element.view horizontal content compression resistance should be 2")
+		}
+	}
+	
+	func testViewContentHugging() {
+		if let view = element as? View {
+			XCTAssertEqual(view.view.contentHuggingPriorityForAxis(.Horizontal), UILayoutPriority(3.0), "element.view horizontal content hugging should be 3")
+			XCTAssertEqual(view.view.contentHuggingPriorityForAxis(.Vertical), UILayoutPriority(4.0), "element.view horizontal content hugging should be 4")
+		}
+	}
+	
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
 //        self.measureBlock() {
