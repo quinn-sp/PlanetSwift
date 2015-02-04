@@ -8,7 +8,9 @@ public class TextField: TextFieldBase {
 
     override public var view: UIView {
         get {
-            textField.delegate = textFieldDelegate
+            if textField.delegate == nil {
+                textField.delegate = textFieldDelegate
+            }
             return textField
         }
         set {

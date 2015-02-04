@@ -9,8 +9,10 @@ public class TextView: TextViewBase {
 	
 	override public var view: UIView {
 		get {
-			textView.delegate = textViewDelegate
-			return textView
+            if textView.delegate == nil {
+                textView.delegate = textViewDelegate
+            }
+            return textView
 		}
 		set {
 			if newValue is UITextView {
