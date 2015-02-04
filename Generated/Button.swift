@@ -167,8 +167,8 @@ public class Button: ButtonBase {
             button.setBackgroundImage(img, forState: .Disabled)
         }
         
-        if backgroundColor != nil {
-            button.backgroundColorNormal = backgroundColor!
+        if backgroundColorNormal != nil {
+            button.backgroundColorNormal = backgroundColorNormal!
         }
         if backgroundColorHighlighted != nil {
             button.backgroundColorHighlighted = backgroundColorHighlighted!

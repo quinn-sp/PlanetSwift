@@ -16,7 +16,7 @@
 		<complexContent>
 			<extension base="ui:Object">
 				<attribute name="frame" type="ui:rect"/>
-				<attribute name="color" type="ui:color"/><!-- todo: name does not match -->
+				<attribute name="backgroundColor" type="ui:color"/>
 				<attribute name="alpha" type="decimal"/>
 				<attribute name="hidden" type="boolean"/>
 				<attribute name="clipsToBounds" type="boolean"/>
@@ -73,7 +73,7 @@
 				<attribute name="titleFont" type="string" />
 				<attribute name="titleFontSize" type="decimal" default="15" />
 				<attribute name="isToggle" type="boolean" default="false"/>
-				<attribute name="backgroundColor" type="ui:color" />
+				<attribute name="backgroundColorNormal" type="ui:color" />
 				<attribute name="backgroundColorHighlighted" type="ui:color" />
 				<attribute name="backgroundColorSelected" type="ui:color" />
 				<attribute name="backgroundColorSelectedHighlighted" type="ui:color" />
@@ -135,7 +135,7 @@
 	<complexType name="ImageView">
 		<complexContent>
 			<extension base="ui:View">
-				<attribute name="urlPath" type="string" /><!-- todo: name does not match -->
+				<attribute name="image" type="string" />
 			</extension>
 		</complexContent>
 	</complexType>

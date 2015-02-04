@@ -30,17 +30,19 @@ public class NetworkImageView: NetworkImageViewBase {
 			super.setImageWithPath(path)
 		}
 	}
-    
+	
+	public override func gaxbPrepare() {
+		super.gaxbPrepare()
+		
+		if placeholderContentMode != nil {
+			networkImageView.placeholderContentMode = View.contentModeFromEnum(placeholderContentMode!)
+		}
+		if contentMode != nil {
+			networkImageView.downloadedContentMode = View.contentModeFromEnum(contentMode!)
+		}
+	}
+	
     override public init() {
         super.init()
     }
-	
-	/*
-	public func setImageWithBundlePath(bundlePath:String) {
-	if let img: UIImage = UIImage(named: String(bundlePath: bundlePath)) {
-	imageView.image = img
-	}
-	}
-*/
-	
 }

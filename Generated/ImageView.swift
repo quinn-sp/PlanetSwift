@@ -18,8 +18,8 @@ public class ImageView: ImageViewBase {
     public override func gaxbPrepare() {
         super.gaxbPrepare()
 		
-        if urlPath != nil {
-			setImageWithBundlePath(urlPath!)
+        if image != nil {
+			setImageWithBundlePath(image!)
         }
     }
 	
