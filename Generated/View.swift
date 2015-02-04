@@ -14,8 +14,8 @@ public class View: ViewBase {
             view.bounds = CGRectMake(0, 0, frame!.size.width, frame!.size.height)
             view.center = CGPointMake(CGRectGetMidX(frame!), CGRectGetMidY(frame!))
         }
-        if color != nil {
-            view.backgroundColor = color
+        if backgroundColor != nil {
+            view.backgroundColor = backgroundColor
         }
         if alpha != nil {
             view.alpha = CGFloat(alpha!)
