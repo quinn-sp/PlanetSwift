@@ -326,14 +326,18 @@
 		<annotation>
 			<appinfo>CGRect</appinfo>
 		</annotation>
-		<restriction base="string"/>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*(,\s*-?[0-9.]+\s*){3}"/>
+		</restriction>
 	</simpleType>
 
 	<simpleType name="point">
 		<annotation>
 			<appinfo>CGPoint</appinfo>
 		</annotation>
-		<restriction base="string"/>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*,\s*-?[0-9.]+\s*"/>
+		</restriction>
 	</simpleType>
 
 	<simpleType name="color">
@@ -341,7 +345,9 @@
 		<annotation>
 			<appinfo>UIColor</appinfo>
 		</annotation>
-		<restriction base="string"/>
+		<restriction base="string">
+			<pattern value="#[0-9a-fA-F]{8}|#[0-9a-fA-F]{6}|black|white|red|green|blue"/>
+		</restriction>
 	</simpleType>
 
 </schema>
