@@ -15,7 +15,7 @@ public class ImageCache {
 	
 	//MARK: - static shared instance
 	
-	class var sharedInstance: ImageCache {
+	public class var sharedInstance: ImageCache {
 		return ImageCache_shared
 	}
 	

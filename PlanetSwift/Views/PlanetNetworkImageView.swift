@@ -1,5 +1,5 @@
 //
-//  NetworkImageView.swift
+//  PlanetNetworkImageView.swift
 //  PlanetSwift
 //
 //  Created by Brad Bambara on 1/20/15.
