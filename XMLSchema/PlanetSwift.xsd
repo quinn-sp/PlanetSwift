@@ -204,7 +204,7 @@
 	<complexType name="Constraint">
 		<complexContent>
 			<extension base="ui:Object">
-				<attribute name="priority" type="int" default="1000" />
+				<attribute name="priority" type="float" default="1000" />
 				<attribute name="firstItem" type="string" use="required" />
 				<attribute name="secondItem" type="string" use="optional" />
 				<attribute name="firstAttribute" type="ui:LayoutAttribute" default="notAnAttribute" />

@@ -113,6 +113,8 @@ public class Constraint: ConstraintBase {
 					multiplier: CGFloat(multiplier),
 					constant: CGFloat(constant))
 				
+				constraint?.priority = priority
+				
 				first.setTranslatesAutoresizingMaskIntoConstraints(false)
 				second?.setTranslatesAutoresizingMaskIntoConstraints(false)
 				
