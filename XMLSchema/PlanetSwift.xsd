@@ -180,6 +180,32 @@
 		</complexContent>
 	</complexType>
 
+	<element name="SegmentedControl" type="ui:SegmentedControl"/>
+	<complexType name="SegmentedControl">
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="tintColor" type="ui:color" /> <!-- selected color -->
+				<attribute name="textColorNormal" type="ui:color" />
+				<attribute name="textColorHighlighted" type="ui:color" />
+				<attribute name="textColorSelected" type="ui:color" />
+				<attribute name="textColorSelectedHighlighted" type="ui:color" />
+				<attribute name="textColorDisabled" type="ui:color" />
+				<attribute name="fontNormal" type="string" />
+				<attribute name="fontHighlighted" type="string" />
+				<attribute name="fontSelected" type="string" />
+				<attribute name="fontSelectedHighlighted" type="string" />
+				<attribute name="fontDisabled" type="string" />
+				<attribute name="fontSizeNormal" type="decimal" default="15" />
+				<attribute name="fontSizeHighlighted" type="decimal" default="15" />
+				<attribute name="fontSizeSelectedHighlighted" type="decimal" default="15" />
+				<attribute name="fontSizeSelected" type="decimal" default="15" />
+				<attribute name="fontSizeDisabled" type="decimal" default="15" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Object descendents -->
+
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
 		<complexContent>

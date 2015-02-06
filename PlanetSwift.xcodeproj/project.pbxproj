@@ -48,6 +48,8 @@
 		A9B439CD1A3B5AA20052690A /* PlanetSwift-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B439CC1A3B5AA20052690A /* PlanetSwift-Bridging-Header.h */; };
 		A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439DB1A3B714E0052690A /* AEXML.swift */; };
 		A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */; };
+		A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332A1A85482F004969E1 /* SegmentedControl.swift */; };
+		A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */; };
 		C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD71A60D9290094F56A /* Notification.swift */; };
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
 		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
@@ -126,6 +128,8 @@
 		A9B439CC1A3B5AA20052690A /* PlanetSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlanetSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		A9B439DB1A3B714E0052690A /* AEXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AEXML.swift; path = AEXML/AEXML.swift; sourceTree = "<group>"; };
 		A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaxbTypes.swift; sourceTree = "<group>"; };
+		A9E8332A1A85482F004969E1 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlBase.swift; sourceTree = "<group>"; };
 		C4AA9CD71A60D9290094F56A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C4AA9CD81A60D9290094F56A /* NotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBase.swift; sourceTree = "<group>"; };
 		C4AA9CE81A6383ED0094F56A /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 				C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */,
 				A9639EF41A643A0D009C818F /* Scene.swift */,
 				A9639EF51A643A0D009C818F /* SceneBase.swift */,
+				A9E8332A1A85482F004969E1 /* SegmentedControl.swift */,
+				A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */,
 				796C6ACC1A6ED86300D87C38 /* TextField.swift */,
 				796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */,
 				9B77E4BF1A7975DD001DF00B /* TextView.swift */,
@@ -442,6 +448,7 @@
 				9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */,
 				796C6AE31A7063A100D87C38 /* WebView.swift in Sources */,
 				9BCF35F21A6EE7AF00E8418B /* ImageViewBase.swift in Sources */,
+				A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */,
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
@@ -451,6 +458,7 @@
 				9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,
 				796C6AF01A7188F900D87C38 /* PickerView.swift in Sources */,
+				A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */,
 				A92E73821A4212B200B22884 /* LabelBase.swift in Sources */,
 				796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */,
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,

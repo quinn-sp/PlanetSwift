@@ -33,41 +33,19 @@ public class Button: ButtonBase {
         if onTouchDown != nil {
             button.addTarget(self, action: Selector("buttonOnTouchDown:"), forControlEvents: .TouchDown)
         }
-        if tintColor != nil {
-            button.tintColor = tintColor!
-        }
+        button.tintColor = tintColor
         
-        if title != nil {
-            button.setTitle(title, forState: .Normal)
-        }
-        if titleHighlighted != nil {
-            button.setTitle(titleHighlighted, forState: .Highlighted)
-        }
-        if titleSelected != nil {
-            button.setTitle(titleSelected, forState: .Selected)
-        }
-        if titleSelectedHighlighted != nil {
-            button.setTitle(titleSelectedHighlighted, forState: .Selected | .Highlighted)
-        }
-        if titleDisabled != nil {
-            button.setTitle(titleDisabled, forState: .Disabled)
-        }
+        button.setTitle(title, forState: .Normal)
+        button.setTitle(titleHighlighted, forState: .Highlighted)
+        button.setTitle(titleSelected, forState: .Selected)
+        button.setTitle(titleSelectedHighlighted, forState: .Selected | .Highlighted)
+        button.setTitle(titleDisabled, forState: .Disabled)
         
-        if titleFontColor != nil {
-            button.setTitleColor(titleFontColor, forState: .Normal)
-        }
-        if titleFontColorHighlighted != nil {
-            button.setTitleColor(titleFontColorHighlighted, forState: .Highlighted)
-        }
-        if titleFontColorSelected != nil {
-            button.setTitleColor(titleFontColorSelected, forState: .Selected)
-        }
-        if titleFontColorSelectedHighlighted != nil {
-            button.setTitleColor(titleFontColorSelectedHighlighted, forState: .Selected | .Highlighted)
-        }
-        if titleFontColorDisabled != nil {
-            button.setTitleColor(titleFontColorDisabled, forState: .Disabled)
-        }
+        button.setTitleColor(titleFontColor, forState: .Normal)
+        button.setTitleColor(titleFontColorHighlighted, forState: .Highlighted)
+        button.setTitleColor(titleFontColorSelected, forState: .Selected)
+        button.setTitleColor(titleFontColorSelectedHighlighted, forState: .Selected | .Highlighted)
+        button.setTitleColor(titleFontColorDisabled, forState: .Disabled)
         
         if titleFont != nil {
             button.titleLabel?.font = UIFont(name: titleFont!, size: CGFloat(titleFontSize))
