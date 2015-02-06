@@ -32,7 +32,7 @@ public class SegmentedControl: SegmentedControlBase {
             }
             if fontNormal != nil {
                 let font = UIFont(name: fontNormal!, size: CGFloat(fontSizeNormal))
-                attributes.updateValue(font!, forKey: NSForegroundColorAttributeName)
+//                attributes.updateValue(font!, forKey: NSForegroundColorAttributeName)
             }
             return attributes
         }
