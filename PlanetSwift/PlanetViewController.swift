@@ -22,7 +22,7 @@ public class PlanetViewController: UIViewController {
 		}
 		
 		if titleBundlePath != nil {
-			let xmlView:View? = PlanetSwift.PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as View?
+			let xmlView:View? = PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as View?
 			if xmlView != nil {
 				self.navigationItem.titleView = xmlView!.view
 				xmlView!.visit({ (element) -> () in
