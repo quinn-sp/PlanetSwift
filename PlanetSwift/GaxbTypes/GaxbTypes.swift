@@ -96,28 +96,52 @@ extension CGRect: GaxbType {
     }
 }
 
-extension CGPoint: GaxbType {
+extension CGSize: GaxbType {
 	public init(gaxbString: String) {
-		let (x, y) = CGPoint.componentsFromString(gaxbString)
-		self.init(x: x, y: y)
+		let (width, height) = CGSize.componentsFromString(gaxbString)
+        self.init(width: width, height: height)
 	}
 	mutating public func setWithGaxbString(GaxbString: String) {
-		let (newX, newY) = CGPoint.componentsFromString(GaxbString)
-		x = newX
-		y = newY
+		let (newWidth, newHeight) = CGPoint.componentsFromString(GaxbString)
+		width = newWidth
+		height = newHeight
 	}
 	public static func componentsFromString(string: String) -> (CGFloat, CGFloat) {
-		var x:Float=0.0, y:Float=0.0
+		var width:Float=0.0, height:Float=0.0
 		var components = string.componentsSeparatedByString(",")
 		if components.count == 2 {
-			x = (components[0] as NSString).floatValue
-			y = (components[1] as NSString).floatValue
+			width = (components[0] as NSString).floatValue
+			height = (components[1] as NSString).floatValue
 		}
-		return (CGFloat(x), CGFloat(y))
+		return (CGFloat(width), CGFloat(height))
 	}
 	public func toGaxbString() -> String {
-		return "\(x),\(y)"
+		return "\(width),\(height)"
 	}
+}
+
+extension CGPoint: GaxbType {
+    public init(gaxbString: String) {
+        let (x, y) = CGPoint.componentsFromString(gaxbString)
+        self.init(x: x, y: y)
+    }
+    mutating public func setWithGaxbString(GaxbString: String) {
+        let (newX, newY) = CGPoint.componentsFromString(GaxbString)
+        x = newX
+        y = newY
+    }
+    public static func componentsFromString(string: String) -> (CGFloat, CGFloat) {
+        var x:Float=0.0, y:Float=0.0
+        var components = string.componentsSeparatedByString(",")
+        if components.count == 2 {
+            x = (components[0] as NSString).floatValue
+            y = (components[1] as NSString).floatValue
+        }
+        return (CGFloat(x), CGFloat(y))
+    }
+    public func toGaxbString() -> String {
+        return "\(x),\(y)"
+    }
 }
 
 // MARK: UIKit data types

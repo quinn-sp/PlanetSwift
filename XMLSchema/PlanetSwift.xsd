@@ -24,6 +24,14 @@
 				<attribute name="contentMode" type="ui:ContentMode"/>
 				<attribute name="contentHuggingPriority" type="ui:point"/><!-- 250 -->
 				<attribute name="contentCompressionResistancePriority" type="ui:point"/><!-- 750 -->
+				<!-- CALayer properties -->
+				<attribute name="borderColor" type="ui:color"/>
+				<attribute name="borderWidth" type="decimal"/>
+				<attribute name="cornerRadius" type="decimal"/>
+				<attribute name="shadowOffset" type="ui:size"/>
+				<attribute name="shadowOpacity" type="decimal"/>
+				<attribute name="shadowRadius" type="decimal"/>
+				<attribute name="shadowColor" type="ui:color"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -354,6 +362,15 @@
 		</annotation>
 		<restriction base="string">
 			<pattern value="\s*-?[0-9.]+\s*(,\s*-?[0-9.]+\s*){3}"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="size">
+		<annotation>
+			<appinfo>CGSize</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*,\s*-?[0-9.]+\s*"/>
 		</restriction>
 	</simpleType>
 

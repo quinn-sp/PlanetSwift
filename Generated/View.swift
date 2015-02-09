@@ -15,7 +15,7 @@ public class View: ViewBase {
             view.center = CGPointMake(CGRectGetMidX(frame!), CGRectGetMidY(frame!))
         }
         if backgroundColor != nil {
-            view.backgroundColor = backgroundColor
+            view.layer.backgroundColor = backgroundColor!.CGColor
         }
         if alpha != nil {
             view.alpha = CGFloat(alpha!)
@@ -40,6 +40,27 @@ public class View: ViewBase {
 			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.x), forAxis: .Horizontal)
 			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.y), forAxis: .Vertical)
 		}
+        if borderColor != nil {
+            view.layer.borderColor = borderColor!.CGColor
+        }
+        if borderWidth != nil {
+            view.layer.borderWidth = CGFloat(borderWidth!)
+        }
+        if cornerRadius != nil {
+            view.layer.cornerRadius = CGFloat(cornerRadius!)
+        }
+        if shadowOffset != nil {
+            view.layer.shadowOffset = shadowOffset!
+        }
+        if shadowRadius != nil {
+            view.layer.shadowRadius = CGFloat(shadowRadius!)
+        }
+        if shadowColor != nil {
+            view.layer.shadowColor = shadowColor!.CGColor
+        }
+        if shadowOpacity != nil {
+            view.layer.shadowOpacity = Float(shadowOpacity!)
+        }
 
 		findParentView()?.view.addSubview(view)
     }
