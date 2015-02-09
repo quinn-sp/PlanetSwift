@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Small Planet. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public class PlanetButton: UIButton {
