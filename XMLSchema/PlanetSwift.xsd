@@ -269,7 +269,7 @@
 	<element name="Controller" type="ui:Controller" />
 	<complexType name="Controller">
 		<annotation>
-			<appinfo><![CDATA[Controllers connect what happens in the XML to the app's code.]]></appinfo>
+			<appinfo><![CDATA[Controllers connect what happens in the XML to the apps code.]]></appinfo>
 		</annotation>
 		<complexContent>
 			<extension base="ui:Object">
