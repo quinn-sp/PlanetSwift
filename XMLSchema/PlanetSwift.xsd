@@ -13,6 +13,10 @@
 
 	<element name="View" type="ui:View"/>
 	<complexType name="View">
+		<annotation>
+			<appinfo><![CDATA[View attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/" target="_blank">UIView</a>]]></appinfo>
+			<appinfo><![CDATA[In addition, every view has a layer. Some of the attributes map to <a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CALayer_class/" target="_blank">CALayer</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:Object">
 				<attribute name="frame" type="ui:rect"/>
@@ -38,6 +42,9 @@
 
 	<element name="Scene" type="ui:Scene"/>
 	<complexType name="Scene">
+		<annotation>
+			<appinfo><![CDATA[Scene is the same as View. It can be useful to make the first XML element in a file a Scene.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 			</extension>
@@ -46,6 +53,9 @@
 
 	<element name="Label" type="ui:Label"/>
 	<complexType name="Label">
+		<annotation>
+			<appinfo><![CDATA[Label attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UILabel_Class/index.html" target="_blank">UILabel</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
@@ -63,6 +73,9 @@
 
 	<element name="Button" type="ui:Button"/>
 	<complexType name="Button">
+		<annotation>
+			<appinfo><![CDATA[Button attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIButton_Class/index.html" target="_blank">UIButton</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="onTouchUp" type="string" />
@@ -104,6 +117,10 @@
 
 	<element name="TextField" type="ui:TextField"/>
 	<complexType name="TextField">
+		<annotation>
+			<appinfo><![CDATA[TextField attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextField_Class/index.html" target="_blank">UITextField</a>]]></appinfo>
+			<appinfo><![CDATA[Use a TextField when your text input only requires one line.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
@@ -124,6 +141,10 @@
 
 	<element name="TextView" type="ui:TextView"/><!-- typically better than TextField only for multi-line text input -->
 	<complexType name="TextView">
+		<annotation>
+			<appinfo><![CDATA[TextView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextView_Class/index.html" target="_blank">UITextView</a>]]></appinfo>
+			<appinfo><![CDATA[Use a TextView when your text input might require multiple lines.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
@@ -141,6 +162,9 @@
 
 	<element name="ImageView" type="ui:ImageView"/>
 	<complexType name="ImageView">
+		<annotation>
+			<appinfo><![CDATA[ImageView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/index.html" target="_blank">UIImageView</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="image" type="string" />
@@ -150,6 +174,9 @@
 
 	<element name="NetworkImageView" type="ui:NetworkImageView"/>
 	<complexType name="NetworkImageView">
+		<annotation>
+			<appinfo><![CDATA[NetworkImageView show an image, similar to ImageView, but it also allows you to pull the image from the internet. It can show a local image as a placeholder until the remote image finishes loading.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:ImageView">
 				<attribute name="placeholderPath" type="string" />
@@ -160,6 +187,9 @@
 
 	<element name="WebView" type="ui:WebView"/>
 	<complexType name="WebView">
+		<annotation>
+			<appinfo><![CDATA[WebView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIWebView_Class/index.html" target="_blank">UIWebView</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="url" type="string" />
@@ -173,6 +203,9 @@
 
 	<element name="PickerView" type="ui:PickerView"/>
 	<complexType name="PickerView">
+		<annotation>
+			<appinfo><![CDATA[PickerView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIPickerView_Class/index.html" target="_blank">UIPickerView</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 			</extension>
@@ -181,6 +214,10 @@
 
 	<element name="VisualEffectView" type="ui:VisualEffectView"/>
 	<complexType name="VisualEffectView">
+		<annotation>
+			<appinfo><![CDATA[VisualEffectView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIVisualEffectView/index.html" target="_blank">UIVisualEffectView</a>]]></appinfo>
+			<appinfo><![CDATA[(iOS 8+ only))]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="effect" type="ui:BlurEffect" />
@@ -190,6 +227,9 @@
 
 	<element name="SegmentedControl" type="ui:SegmentedControl"/>
 	<complexType name="SegmentedControl">
+		<annotation>
+			<appinfo><![CDATA[SegmentedControl attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISegmentedControl_Class/" target="_blank">UISegmentedControl</a>]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:View">
 				<attribute name="tintColor" type="ui:color" /> <!-- selected color -->
@@ -216,6 +256,9 @@
 
 	<element name="Notification" type="ui:Notification" />
 	<complexType name="Notification">
+		<annotation>
+			<appinfo><![CDATA[Notifications are used to connect events from other tags to Controllers.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:Object">
 				<attribute name="scopedName" type="string" use="required" />
@@ -225,6 +268,9 @@
 
 	<element name="Controller" type="ui:Controller" />
 	<complexType name="Controller">
+		<annotation>
+			<appinfo><![CDATA[Controllers connect what happens in the XML to the app's code.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:Object">
 				<sequence>
@@ -236,6 +282,10 @@
 
 	<element name="Constraint" type="ui:Constraint" />
 	<complexType name="Constraint">
+		<annotation>
+			<appinfo><![CDATA[Constraint attributes map to <a href="https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/" target="_blank">NSLayoutConstraint</a>]]></appinfo>
+			<appinfo><![CDATA[Constraints are part of a system called Auto Layout. Auto Layout sets the position and size of all constrained views.]]></appinfo>
+		</annotation>
 		<complexContent>
 			<extension base="ui:Object">
 				<attribute name="priority" type="float" default="1000" />
