@@ -4,16 +4,11 @@
 
 import UIKit
 
+var styles: Object? = nil
+private var attemptedStylesLoad = false //workaround for inability to specify the XML load call inline here
+
 public class Object: ObjectBase {
 	
-    lazy var styles: Object? = {
-        [weak self] in
-        if let file = self?.styleFile {
-            return PlanetUI.readFromFile(String(bundlePath: file), prepare:false) as? Object
-            }
-            return nil
-        }()
-    
 	//MARK: - ID mappings
 	
 	private lazy var idMappings:Dictionary<String,NSValue> = Dictionary<String,NSValue>()
@@ -89,7 +84,7 @@ public class Object: ObjectBase {
 		super.gaxbPrepare()
 		
         if styleId != nil {
-            if let styleElement = self.styleForId(styleId!) {
+            if let styleElement = Object.styleForId(styleId!) {
                 styleElement.imprintAttributes(self)
             }
         }
@@ -103,7 +98,16 @@ public class Object: ObjectBase {
     
     //MARK: - style handling
     
-    public func styleForId(_id: String) -> GaxbElement? {
+    public class func styleForId(_id: String) -> GaxbElement? {
+		
+		if styles == nil && !attemptedStylesLoad {
+			
+			attemptedStylesLoad = true
+			if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_stylesheetPathKey) as? String {
+				styles = PlanetUI.readFromFile(String(bundlePath: path), prepare:false) as? Object
+			}
+		}
+		
         if styles != nil {
             for child in styles!.anys {
                 if let childObject = child as? Object {
@@ -112,9 +116,6 @@ public class Object: ObjectBase {
                     }
                 }
             }
-        }
-        if let parentObject = parent as? Object {
-            return parentObject.styleForId(_id)
         }
         return nil
     }

@@ -7,7 +7,6 @@
 			<any minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 		<attribute name="id" type="string"/>
-		<attribute name="styleFile" type="string"/>
 		<attribute name="styleId" type="string"/>
 	</complexType>
 
