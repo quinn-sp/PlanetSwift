@@ -22,6 +22,7 @@ public class SegmentedControl: SegmentedControlBase {
         super.gaxbPrepare()
         segmentedControl.tintColor = tintColor
         segmentedControl.setTitleTextAttributes(textAttributes(.Normal), forState: .Normal)
+        segmentedControl.setTitleTextAttributes(textAttributes(.Selected), forState: .Selected)
     }
 
     private func textAttributes(state: UIControlState) -> [NSObject : AnyObject]? {
@@ -31,8 +32,18 @@ public class SegmentedControl: SegmentedControlBase {
                 attributes.updateValue(textColorNormal!, forKey: NSForegroundColorAttributeName)
             }
             if fontNormal != nil {
-                let font = UIFont(name: fontNormal!, size: CGFloat(fontSizeNormal))
-//                attributes.updateValue(font!, forKey: NSForegroundColorAttributeName)
+                let font = UIFont(name: fontNormal!, size:CGFloat(fontSizeNormal))!
+                attributes.updateValue(font, forKey: NSFontAttributeName)
+            }
+            return attributes
+        }
+        if state == UIControlState.Selected {
+            if textColorSelected != nil {
+                attributes.updateValue(textColorSelected!, forKey: NSForegroundColorAttributeName)
+            }
+            if fontSelected != nil {
+                let font = UIFont(name: fontSelected!, size:CGFloat(fontSizeSelected))!
+                attributes.updateValue(font, forKey: NSFontAttributeName)
             }
             return attributes
         }
