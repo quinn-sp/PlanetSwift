@@ -29,7 +29,7 @@ extension PlanetUI {
         return processedString
     }
 	
-	private class func findAndReplaceExpressions(var stringToSearch:String, expressionName:String, expressionEvaluatorBlock:(String->AnyObject?)) -> String {
+	public class func findAndReplaceExpressions(var stringToSearch:String, expressionName:String, expressionEvaluatorBlock:(String->AnyObject?)) -> String {
 		
 		var expressionSearchString = "@\(expressionName)("
 		var searchRange = Range<String.Index>(start: stringToSearch.startIndex, end: stringToSearch.endIndex)
