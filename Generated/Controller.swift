@@ -6,7 +6,7 @@ import UIKit
 
 public class Controller: ControllerBase {
 
-	public var controllerObject: UIViewController? {
+	public weak var controllerObject: UIViewController? {
 		didSet {
 			
 			if oldValue != nil {
@@ -24,9 +24,5 @@ public class Controller: ControllerBase {
 				}
 			}
 		}
-	}
-	
-	deinit {
-		controllerObject = nil
 	}
 }
