@@ -38,7 +38,7 @@ public class TextView: TextViewBase {
 			textView.textColor = textColor!
 		}
 		if textAlignment != nil {
-			textView.textAlignment = TextField.textAlignmentToNSTextAlignment(textAlignment!)
+			textView.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
 		}
 		if selectable != nil {
 			textView.selectable = selectable!

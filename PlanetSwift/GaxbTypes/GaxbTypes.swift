@@ -5,7 +5,7 @@
 
 import UIKit
 
-// MARK: XSD datatypes
+// MARK: - XSD datatypes
 
 extension Bool: GaxbType {
     public init(gaxbString: String) {
@@ -66,7 +66,7 @@ extension Double: GaxbType {
     }
 }
 
-// MARK: GAXB-defined types
+// MARK: - GAXB-defined types
 
 extension CGRect: GaxbType {
     public init(gaxbString withGaxbString: String) {
@@ -144,7 +144,7 @@ extension CGPoint: GaxbType {
     }
 }
 
-// MARK: UIKit data types
+// MARK: - UIKit data types
 
 extension UIImage {
     convenience init?(validateAndLoad name: String!) {
@@ -209,3 +209,70 @@ extension UIColor {
     }
 }
 
+//MARK: - enum conversion
+
+extension NSTextAlignment {
+	public static func fromPlanetUITextAlignment(alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
+		switch alignment {
+		case .center:
+			return NSTextAlignment.Center
+		case .right:
+			return NSTextAlignment.Right
+		case .left:
+			return NSTextAlignment.Left
+		case .justified:
+			return NSTextAlignment.Justified
+		case .natural:
+			return NSTextAlignment.Natural
+		}
+	}
+}
+
+extension NSLineBreakMode {
+	public static func fromPlanetUILineBreakMode(mode:PlanetUI.LineBreakMode) -> NSLineBreakMode {
+		switch mode {
+		case .truncatingTail:
+			return .ByTruncatingTail
+		case .wordWrapping:
+			return .ByWordWrapping
+		case .charWrapping:
+			return .ByCharWrapping
+		case .truncatingHead:
+			return .ByTruncatingHead
+		case .clipping:
+			return .ByClipping
+		case .truncatingMiddle:
+			return .ByTruncatingMiddle
+		}
+	}
+}
+
+extension UITextBorderStyle {
+	public static func fromPlanetUITextFieldBorderStyle(style:PlanetUI.TextBorderStyle) -> UITextBorderStyle {
+		switch style {
+		case .line:
+			return .Line
+		case .bezel:
+			return .Bezel
+		case .roundedRect:
+			return .RoundedRect
+		default:
+			return .None
+		}
+	}
+}
+
+extension UITextFieldViewMode {
+	public static func fromPlanetUITextFieldViewMode(mode:PlanetUI.TextFieldViewMode) -> UITextFieldViewMode {
+		switch mode {
+		case .always:
+			return .Always
+		case .never:
+			return .Never
+		case .unlessEditing:
+			return .UnlessEditing
+		case .whileEditing:
+			return .WhileEditing
+		}
+	}
+}

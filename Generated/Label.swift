@@ -18,23 +18,6 @@ public class Label: LabelBase {
         }
     }
 	
-	public class func lineBreakModeToNSLineBreakMode(mode:PlanetUI.LineBreakMode) -> NSLineBreakMode {
-		switch mode {
-		case .truncatingTail:
-			return .ByTruncatingTail
-		case .wordWrapping:
-			return .ByWordWrapping
-		case .charWrapping:
-			return .ByCharWrapping
-		case .truncatingHead:
-			return .ByTruncatingHead
-		case .clipping:
-			return .ByClipping
-		case .truncatingMiddle:
-			return .ByTruncatingMiddle
-		}
-	}
-	
     public override func gaxbPrepare() {
         super.gaxbPrepare()
         
@@ -52,13 +35,13 @@ public class Label: LabelBase {
             label.numberOfLines = numberOfLines!
         }
         if textAlignment != nil {
-			label.textAlignment = TextField.textAlignmentToNSTextAlignment(textAlignment!)
+			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
         }
         if fontName != nil && fontSize != nil {
             label.font = UIFont(name: fontName!, size: CGFloat(fontSize!))
         }
 		if lineBreakMode != nil {
-			label.lineBreakMode = Label.lineBreakModeToNSLineBreakMode(lineBreakMode!)
+			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
 		}
     }
     

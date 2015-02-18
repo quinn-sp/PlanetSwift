@@ -22,21 +22,6 @@ public class TextField: TextFieldBase {
         }
     }
 
-	public class func textAlignmentToNSTextAlignment(alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
-		switch alignment {
-		case .center:
-			return NSTextAlignment.Center
-		case .right:
-			return NSTextAlignment.Right
-		case .left:
-			return NSTextAlignment.Left
-		case .justified:
-			return NSTextAlignment.Justified
-		case .natural:
-			return NSTextAlignment.Natural
-		}
-	}
-
     public override func gaxbPrepare() {
         super.gaxbPrepare()
 
@@ -55,27 +40,24 @@ public class TextField: TextFieldBase {
             textField.textColor = textColor!
         }
         if textAlignment != nil {
-			textField.textAlignment = TextField.textAlignmentToNSTextAlignment(textAlignment!)
+			textField.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
         }
         if adjustsFontSizeToFitWidth != nil {
             textField.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth!
         }
         if borderStyle != nil {
-            switch borderStyle! {
-            case PlanetUI.TextFieldBorderStyle.line:
-                textField.borderStyle = .Line
-            case PlanetUI.TextFieldBorderStyle.bezel:
-                textField.borderStyle = .Bezel
-            case PlanetUI.TextFieldBorderStyle.roundedRect:
-                textField.borderStyle = .RoundedRect
-            default:
-                textField.borderStyle = .None
-            }
+            textField.borderStyle = UITextBorderStyle.fromPlanetUITextFieldBorderStyle(borderStyle!)
         }
 		if secureTextEntry != nil {
 			textField.secureTextEntry = secureTextEntry!
 		}
-
+		if clearButtonMode != nil {
+			textField.clearButtonMode = UITextFieldViewMode.fromPlanetUITextFieldViewMode(clearButtonMode!)
+		}
+		if clearsOnBeginEditing != nil {
+			textField.clearsOnBeginEditing = clearsOnBeginEditing!
+		}
+		
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }
 
