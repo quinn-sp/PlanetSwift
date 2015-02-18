@@ -9,23 +9,28 @@ private var attemptedConfigLoad = false
 
 extension PlanetUI {
 	
+    public class func configForKey(key: String) -> AnyObject? {
+        checkLoadConfig()
+        return config?[key]
+    }
+    
+    private class func checkLoadConfig() {
+        if config == nil && !attemptedConfigLoad {
+            attemptedConfigLoad = true
+            if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_configPathKey) as? String {
+                config = NSDictionary(contentsOfFile: String(bundlePath: path)) as? Dictionary<String, AnyObject>
+            }
+        }
+    }
+    
     public class func processExpressions(string: String) -> String {
-		
-		if config == nil && !attemptedConfigLoad {
-			attemptedConfigLoad = true
-			
-			if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_configPathKey) as? String {
-				config = NSDictionary(contentsOfFile: String(bundlePath: path)) as? Dictionary<String, AnyObject>
-			}
-		}
-		
+        checkLoadConfig()
 		var processedString = string
 		if config != nil {
 			processedString = findAndReplaceExpressions(processedString, expressionName:"config") { (expressionValue:String) in
 				return config![expressionValue]
 			}
 		}
-		
         return processedString
     }
 	
