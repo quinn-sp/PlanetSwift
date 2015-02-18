@@ -130,10 +130,11 @@
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumFontSize" type="decimal" default="0.0"/>
+				<attribute name="secureTextEntry" type="boolean"/>
+				<attribute name="borderStyle" type="ui:TextFieldBorderStyle"/>
 				<attribute name="onBeginEditing" type="string"/>
 				<attribute name="onEndEditing" type="string"/>
 				<attribute name="onReturnPressed" type="string"/>
-				<attribute name="borderStyle" type="ui:TextFieldBorderStyle"/>
 			</extension>
 		</complexContent>
 	</complexType>

@@ -41,7 +41,7 @@ public class TextField: TextFieldBase {
         super.gaxbPrepare()
 
         textFieldDelegate.textDelegate = self
-
+		
         if text != nil {
             textField.text = text!
         }
@@ -72,6 +72,9 @@ public class TextField: TextFieldBase {
                 textField.borderStyle = .None
             }
         }
+		if secureTextEntry != nil {
+			textField.secureTextEntry = secureTextEntry!
+		}
 
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }
