@@ -61,6 +61,9 @@ public class View: ViewBase {
         if shadowOpacity != nil {
             view.layer.shadowOpacity = Float(shadowOpacity!)
         }
+		if masksToBounds != nil {
+			view.layer.masksToBounds = masksToBounds!
+		}
 
 		findParentView()?.view.addSubview(view)
     }
