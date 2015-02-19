@@ -50,6 +50,7 @@
 		A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */; };
 		A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332A1A85482F004969E1 /* SegmentedControl.swift */; };
 		A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */; };
+		C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */; };
 		C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD71A60D9290094F56A /* Notification.swift */; };
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
 		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
@@ -65,20 +66,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A9B4396D1A3A53C70052690A;
 			remoteInfo = PlanetSwift;
-		};
-		A9B439901A3A55290052690A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A9B4398C1A3A55290052690A /* gaxb.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 46132C2419F97A9200DEB7D1;
-			remoteInfo = gaxb;
-		};
-		A9B439921A3A55340052690A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A9B4398C1A3A55290052690A /* gaxb.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 46132C2319F97A9200DEB7D1;
-			remoteInfo = gaxb;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -119,7 +106,6 @@
 		A9B439791A3A53C70052690A /* PlanetSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B4397F1A3A53C70052690A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9B439801A3A53C70052690A /* PlanetSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSwiftTests.swift; sourceTree = "<group>"; };
-		A9B4398C1A3A55290052690A /* gaxb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gaxb.xcodeproj; path = gaxb/XCode/gaxb.xcodeproj; sourceTree = "<group>"; };
 		A9B439971A3B40B70052690A /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		A9B439981A3B40B70052690A /* ObjectBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectBase.swift; sourceTree = "<group>"; };
 		A9B4399A1A3B40B70052690A /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -130,6 +116,7 @@
 		A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaxbTypes.swift; sourceTree = "<group>"; };
 		A9E8332A1A85482F004969E1 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlBase.swift; sourceTree = "<group>"; };
+		C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftConfiguration.swift; sourceTree = "<group>"; };
 		C4AA9CD71A60D9290094F56A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C4AA9CD81A60D9290094F56A /* NotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBase.swift; sourceTree = "<group>"; };
 		C4AA9CE81A6383ED0094F56A /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -170,7 +157,6 @@
 		A9B439641A3A53C70052690A = {
 			isa = PBXGroup;
 			children = (
-				A9B4398C1A3A55290052690A /* gaxb.xcodeproj */,
 				A9B439DB1A3B714E0052690A /* AEXML.swift */,
 				A9B439A11A3B40F70052690A /* GaxbTypes */,
 				A9B439961A3B40B70052690A /* Generated */,
@@ -192,6 +178,7 @@
 		A9B439701A3A53C70052690A /* PlanetSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */,
 				9B9AC0911A6EB55C0098F7E4 /* Views */,
 				A9B439731A3A53C70052690A /* PlanetSwift.h */,
 				9B9AC0971A6EBA190098F7E4 /* ImageCache.swift */,
@@ -227,14 +214,6 @@
 				A9B4397F1A3A53C70052690A /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A9B4398D1A3A55290052690A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A9B439911A3A55290052690A /* gaxb */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A9B439961A3B40B70052690A /* Generated */ = {
@@ -308,7 +287,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9B439841A3A53C70052690A /* Build configuration list for PBXNativeTarget "PlanetSwift" */;
 			buildPhases = (
-				A9B439951A3B3E300052690A /* Gaxb */,
+				A9B439951A3B3E300052690A /* Gaxb generate PlanetSwift */,
 				A9B439691A3A53C70052690A /* Sources */,
 				A9B4396A1A3A53C70052690A /* Frameworks */,
 				A9B4396B1A3A53C70052690A /* Headers */,
@@ -317,7 +296,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A9B439931A3A55340052690A /* PBXTargetDependency */,
 			);
 			name = PlanetSwift;
 			productName = PlanetSwift;
@@ -369,12 +347,6 @@
 			mainGroup = A9B439641A3A53C70052690A;
 			productRefGroup = A9B4396F1A3A53C70052690A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A9B4398D1A3A55290052690A /* Products */;
-					ProjectRef = A9B4398C1A3A55290052690A /* gaxb.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A9B4396D1A3A53C70052690A /* PlanetSwift */,
@@ -382,16 +354,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A9B439911A3A55290052690A /* gaxb */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = gaxb;
-			remoteRef = A9B439901A3A55290052690A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A9B4396C1A3A53C70052690A /* Resources */ = {
@@ -411,19 +373,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A9B439951A3B3E300052690A /* Gaxb */ = {
+		A9B439951A3B3E300052690A /* Gaxb generate PlanetSwift */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Gaxb;
+			name = "Gaxb generate PlanetSwift";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GAXB_EXEC=\"$BUILD_DIR/$CONFIGURATION/gaxb\"\nmkdir -p $PROJECT_DIR/Generated\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/gaxb/templates\" -o \"$PROJECT_DIR/Generated\"";
+			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p $PROJECT_DIR/Generated\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -466,6 +428,7 @@
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
 				796C6AE41A7063A100D87C38 /* WebViewBase.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
+				C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
 				9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */,
 				9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */,
@@ -495,11 +458,6 @@
 			isa = PBXTargetDependency;
 			target = A9B4396D1A3A53C70052690A /* PlanetSwift */;
 			targetProxy = A9B4397B1A3A53C70052690A /* PBXContainerItemProxy */;
-		};
-		A9B439931A3A55340052690A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = gaxb;
-			targetProxy = A9B439921A3A55340052690A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -606,7 +564,7 @@
 				);
 				INFOPLIST_FILE = PlanetSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -632,7 +590,7 @@
 				);
 				INFOPLIST_FILE = PlanetSwift/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
