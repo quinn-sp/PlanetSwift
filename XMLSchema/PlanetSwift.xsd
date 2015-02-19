@@ -35,6 +35,7 @@
 				<attribute name="shadowOpacity" type="decimal"/>
 				<attribute name="shadowRadius" type="decimal"/>
 				<attribute name="shadowColor" type="ui:color"/>
+				<attribute name="masksToBounds" type="boolean"/>
 			</extension>
 		</complexContent>
 	</complexType>
