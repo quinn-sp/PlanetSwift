@@ -37,10 +37,10 @@ public class NetworkImageView: NetworkImageViewBase {
 		super.gaxbPrepare()
 		
 		if placeholderContentMode != nil {
-			networkImageView.placeholderContentMode = View.contentModeFromEnum(placeholderContentMode!)
+			networkImageView.placeholderContentMode = UIViewContentMode.fromPlanetUIContentMode(placeholderContentMode!)
 		}
 		if contentMode != nil {
-			networkImageView.downloadedContentMode = View.contentModeFromEnum(contentMode!)
+			networkImageView.downloadedContentMode = UIViewContentMode.fromPlanetUIContentMode(contentMode!)
 		}
 	}
 	

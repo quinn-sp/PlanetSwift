@@ -276,3 +276,38 @@ extension UITextFieldViewMode {
 		}
 	}
 }
+
+extension UIViewContentMode {
+	public static func fromPlanetUIContentMode(mode:PlanetUI.ContentMode) -> UIViewContentMode {
+		switch(mode) {
+		case .scaleToFill:
+			return .ScaleToFill
+		case .scaleAspectFit:
+			return .ScaleAspectFit
+		case .scaleAspectFill:
+			return .ScaleAspectFill
+		case .redraw:
+			return .Redraw
+		case .center:
+			return .Center
+		case .top:
+			return .Top
+		case .bottom:
+			return .Bottom
+		case .left:
+			return .Left
+		case .right:
+			return .Right
+		case .topLeft:
+			return .TopLeft
+		case .topRight:
+			return .TopRight
+		case .bottomLeft:
+			return .BottomLeft
+		case .bottomRight:
+			return .BottomRight
+		case .scaleToFill:
+			return .ScaleToFill
+		}
+	}
+}

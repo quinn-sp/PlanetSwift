@@ -303,6 +303,47 @@
 		</complexContent>
 	</complexType>
 
+	<element name="GestureRecognizer" type="ui:GestureRecognizer" />
+	<complexType name="GestureRecognizer">
+		<annotation>
+			<appinfo><![CDATA[GestureRecognizer attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIGestureRecognizer_Class/index.html" target="_blank">UIGestureRecognizer</a>]]></appinfo>
+			<appinfo><![CDATA[GestureRecognizer is an abstraction, you should never specify an actual <GestureRecognizer/> tag. Use the other types of recognizers instead.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="view" type="string" use="required" />
+				<attribute name="cancelsTouchesInView" type="boolean" />
+				<attribute name="delaysTouchesBegan" type="boolean" />
+				<attribute name="delaysTouchesEnded" type="boolean" />
+				<attribute name="onStateChange" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="PanGestureRecognizer" type="ui:PanGestureRecognizer" />
+	<complexType name="PanGestureRecognizer">
+		<annotation>
+			<appinfo><![CDATA[PanGestureRecognizer attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIPanGestureRecognizer_Class/index.html" target="_blank">UIPanGestureRecognizer</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:GestureRecognizer">
+				<attribute name="maximumNumberOfTouches" type="int" />
+				<attribute name="minimumNumberOfTouches" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="PinchGestureRecognizer" type="ui:PinchGestureRecognizer" />
+	<complexType name="PinchGestureRecognizer">
+		<annotation>
+			<appinfo><![CDATA[PinchGestureRecognizer attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIPinchGestureRecognizer_Class/index.html" target="_blank">UIPinchGestureRecognizer</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:GestureRecognizer">
+			</extension>
+		</complexContent>
+	</complexType>
+
 <!-- enumerations -->
 
 	<simpleType name="BlurEffect">
