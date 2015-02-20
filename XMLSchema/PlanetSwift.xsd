@@ -256,6 +256,18 @@
 		</complexContent>
 	</complexType>
 
+	<element name="CollectionView" type="ui:CollectionView"/>
+	<complexType name="CollectionView">
+		<annotation>
+			<appinfo><![CDATA[CollectionView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/" target="_blank">UICollectionView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="layoutClass" type="string" default="UICollectionViewFlowLayout"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<!-- Object descendents -->
 
 	<element name="Notification" type="ui:Notification" />
