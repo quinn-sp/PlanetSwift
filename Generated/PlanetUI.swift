@@ -15,6 +15,9 @@ extension PlanetUI {
     }
     
     private class func checkLoadConfig() {
+		
+		println("")//hack: this fixes a swift compiler bug for some reason
+		
         if config == nil && !attemptedConfigLoad {
             attemptedConfigLoad = true
             if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_configPathKey) as? String {
