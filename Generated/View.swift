@@ -23,6 +23,9 @@ public class View: ViewBase {
         if clipsToBounds != nil {
             view.clipsToBounds = clipsToBounds!
         }
+		if userInteractionEnabled != nil {
+			view.userInteractionEnabled = userInteractionEnabled!
+		}
         if hidden != nil {
             view.hidden = hidden!
         }

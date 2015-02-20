@@ -23,6 +23,7 @@
 				<attribute name="alpha" type="decimal"/>
 				<attribute name="hidden" type="boolean"/>
 				<attribute name="clipsToBounds" type="boolean"/>
+				<attribute name="userInteractionEnabled" type="boolean"/>
 				<attribute name="tag" type="integer"/>
 				<attribute name="contentMode" type="ui:ContentMode"/>
 				<attribute name="contentHuggingPriority" type="ui:point"/><!-- 250 -->
