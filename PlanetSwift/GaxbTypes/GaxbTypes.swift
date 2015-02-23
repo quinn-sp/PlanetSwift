@@ -311,3 +311,32 @@ extension UIViewContentMode {
 		}
 	}
 }
+
+extension UIReturnKeyType {
+	public static func fromPlanetUIReturnKeyType(type:PlanetUI.ReturnKeyType) -> UIReturnKeyType {
+		switch(type) {
+		case .Default:
+			return .Default
+		case .go:
+			return .Go
+		case .google:
+			return .Google
+		case .join:
+			return .Join
+		case .next:
+			return .Next
+		case .route:
+			return .Route
+		case .search:
+			return .Search
+		case .send:
+			return .Send
+		case .yahoo:
+			return .Yahoo
+		case .done:
+			return .Done
+		case .emergencyCall:
+			return .EmergencyCall
+		}
+	}
+}

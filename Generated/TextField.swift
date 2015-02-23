@@ -57,6 +57,9 @@ public class TextField: TextFieldBase {
 		if clearsOnBeginEditing != nil {
 			textField.clearsOnBeginEditing = clearsOnBeginEditing!
 		}
+		if returnKeyType != nil {
+			textField.returnKeyType = UIReturnKeyType.fromPlanetUIReturnKeyType(returnKeyType!)
+		}
 		
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }

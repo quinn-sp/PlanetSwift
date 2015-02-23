@@ -136,6 +136,7 @@
 				<attribute name="borderStyle" type="ui:TextBorderStyle"/>
 				<attribute name="clearButtonMode" type="ui:TextFieldViewMode"/>
 				<attribute name="clearsOnBeginEditing" type="boolean"/>
+				<attribute name="returnKeyType" type="ui:ReturnKeyType"/>
 				<attribute name="onBeginEditing" type="string"/>
 				<attribute name="onEndEditing" type="string"/>
 				<attribute name="onReturnPressed" type="string"/>
@@ -470,6 +471,25 @@
 			<enumeration value="whileEditing" />
 			<enumeration value="unlessEditing" />
 			<enumeration value="always" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ReturnKeyType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="go" />
+			<enumeration value="google" />
+			<enumeration value="join" />
+			<enumeration value="next" />
+			<enumeration value="route" />
+			<enumeration value="search" />
+			<enumeration value="send" />
+			<enumeration value="yahoo" />
+			<enumeration value="done" />
+			<enumeration value="emergencyCall" />
 		</restriction>
 	</simpleType>
 
