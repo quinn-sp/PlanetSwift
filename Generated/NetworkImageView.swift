@@ -17,20 +17,24 @@ public class NetworkImageView: NetworkImageViewBase {
 			}
 		}
 	}
+    
+    public func setImageWithPath(path:String, completion:((success:Bool)->Void)?) {
+        if let url = NSURL(string: path) {
+            
+            var placeholder:UIImage?
+            if placeholderPath != nil {
+                placeholder = UIImage(named: String(bundlePath: placeholderPath!))
+            }
+            networkImageView.setImage(url, placeholder: placeholder, completion)
+        }
+        else {
+            super.setImageWithPath(path)
+            completion?(success: false)
+        }
+    }
 	
-	public override func setImageWithPath(path:String) {
-		
-		if let url = NSURL(string: path) {
-			
-			var placeholder:UIImage?
-			if placeholderPath != nil {
-				placeholder = UIImage(named: String(bundlePath: placeholderPath!))
-			}
-			networkImageView.setImage(url, placeholder: placeholder)
-		}
-		else {
-			super.setImageWithPath(path)
-		}
+    public override func setImageWithPath(path:String) {
+		self.setImageWithPath(path, nil)
 	}
 	
 	public override func gaxbPrepare() {
