@@ -8,7 +8,7 @@ public class TextField: TextFieldBase {
     lazy public var textField = UITextField()
     lazy private var textFieldDelegate = TextFieldHelper()
 
-    override public var view: UIView {
+    override public var control: UIControl? {
         get {
             if textField.delegate == nil {
                 textField.delegate = textFieldDelegate

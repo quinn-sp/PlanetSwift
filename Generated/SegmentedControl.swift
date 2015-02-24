@@ -7,7 +7,7 @@ import UIKit
 public class SegmentedControl: SegmentedControlBase {
     lazy public var segmentedControl = UISegmentedControl()
     
-    override public var view: UIView {
+    override public var control: UIControl {
         get {
             return segmentedControl
         }

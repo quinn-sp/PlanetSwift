@@ -16,7 +16,10 @@ extension PlanetUI {
     
     private class func checkLoadConfig() {
 		
+		#if DEBUG
+		#else
 		println("")//hack: this fixes a swift compiler bug for some reason
+		#endif
 		
         if config == nil && !attemptedConfigLoad {
             attemptedConfigLoad = true

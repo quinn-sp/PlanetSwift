@@ -7,7 +7,7 @@ import UIKit
 public class Button: ButtonBase {
     
     lazy public var button = PlanetButton()
-    override public var view: UIView {
+    override public var control: UIControl? {
         get {
             return button
         }
@@ -20,14 +20,6 @@ public class Button: ButtonBase {
     
     public override func gaxbPrepare() {
         super.gaxbPrepare()
-        
-        //Attributed String Test Stuff
-        /*var attr1: NSAttributedString = NSAttributedString(string: "Zip Zap", attributes: [NSForegroundColorAttributeName: UIColor(red: 255, green: 255, blue: 0)])
-        var attr2: NSAttributedString = NSAttributedString(string: "Zip Zap", attributes: [NSForegroundColorAttributeName: UIColor(red: 0, green: 255, blue: 255), NSFontAttributeName: UIFont(name: "Chalkduster", size: 20)!])
-        button.setAttributedTitle(attr1, forState: .Normal)
-        button.setAttributedTitle(attr2, forState: .Highlighted)
-        
-        button.titleLabel?.font = UIFont(name: "Zapfino", size: 20)*/
         
         if onTouchUp != nil {
             button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
@@ -164,7 +156,12 @@ public class Button: ButtonBase {
         }
         
         button.isToggle = isToggle
-        
+
+		//TODO: better way to solve this?
+//		//hack: UIButton bug, we need to reassign these values to init the button properly
+//		button.enabled = button.enabled
+//		button.selected = button.selected
+//		button.highlighted = button.highlighted
     }
     
     @objc func buttonOnTouchUp(sender:UIButton!)

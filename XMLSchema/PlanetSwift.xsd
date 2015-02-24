@@ -78,7 +78,7 @@
 			<appinfo><![CDATA[Button attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIButton_Class/index.html" target="_blank">UIButton</a>]]></appinfo>
 		</annotation>
 		<complexContent>
-			<extension base="ui:View">
+			<extension base="ui:Control">
 				<attribute name="onTouchUp" type="string" />
 				<attribute name="onTouchDown" type="string" />
 				<attribute name="tintColor" type="ui:color" />
@@ -123,7 +123,7 @@
 			<appinfo><![CDATA[Use a TextField when your text input only requires one line.]]></appinfo>
 		</annotation>
 		<complexContent>
-			<extension base="ui:View">
+			<extension base="ui:Control">
 				<attribute name="text" type="string"/>
 				<attribute name="placeholder" type="string"/>
 				<attribute name="fontName" type="string"/>
@@ -236,7 +236,7 @@
 			<appinfo><![CDATA[SegmentedControl attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISegmentedControl_Class/" target="_blank">UISegmentedControl</a>]]></appinfo>
 		</annotation>
 		<complexContent>
-			<extension base="ui:View">
+			<extension base="ui:Control">
 				<attribute name="tintColor" type="ui:color" /> <!-- selected color -->
 				<attribute name="textColorNormal" type="ui:color" />
 				<attribute name="textColorHighlighted" type="ui:color" />
@@ -313,6 +313,21 @@
 				<attribute name="relation" type="ui:LayoutRelation" default="equal" />
 				<attribute name="multiplier" type="float" default="1" />
 				<attribute name="constant" type="float" default="0" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Control" type="ui:Control" />
+	<complexType name="Control">
+		<annotation>
+			<appinfo><![CDATA[Control attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIControl_Class/" target="_blank">UIControl</a>]]></appinfo>
+			<appinfo><![CDATA[Control is an abstraction that represents a group of interactive views (buttons and toggles etc), you should never specify an actual <Control/> tag.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="enabled" type="boolean" />
+				<attribute name="selected" type="boolean" />
+				<attribute name="highlighted" type="boolean" />
 			</extension>
 		</complexContent>
 	</complexType>
