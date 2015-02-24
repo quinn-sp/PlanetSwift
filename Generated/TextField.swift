@@ -60,6 +60,9 @@ public class TextField: TextFieldBase {
 		if returnKeyType != nil {
 			textField.returnKeyType = UIReturnKeyType.fromPlanetUIReturnKeyType(returnKeyType!)
 		}
+		if keyboardType != nil {
+			textField.keyboardType = UIKeyboardType.fromPlanetUIKeyboardType(keyboardType!)
+		}
 		
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }

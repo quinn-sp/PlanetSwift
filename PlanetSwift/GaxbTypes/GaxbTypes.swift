@@ -279,7 +279,7 @@ extension UITextFieldViewMode {
 
 extension UIViewContentMode {
 	public static func fromPlanetUIContentMode(mode:PlanetUI.ContentMode) -> UIViewContentMode {
-		switch(mode) {
+		switch mode {
 		case .scaleToFill:
 			return .ScaleToFill
 		case .scaleAspectFit:
@@ -314,7 +314,7 @@ extension UIViewContentMode {
 
 extension UIReturnKeyType {
 	public static func fromPlanetUIReturnKeyType(type:PlanetUI.ReturnKeyType) -> UIReturnKeyType {
-		switch(type) {
+		switch type {
 		case .Default:
 			return .Default
 		case .go:
@@ -337,6 +337,35 @@ extension UIReturnKeyType {
 			return .Done
 		case .emergencyCall:
 			return .EmergencyCall
+		}
+	}
+}
+
+extension UIKeyboardType {
+	public static func fromPlanetUIKeyboardType(type:PlanetUI.KeyboardType) -> UIKeyboardType {
+		switch type {
+		case .Default:
+			return .Default
+		case .ASCIICapable:
+			return .ASCIICapable
+		case .numbersAndPunctuation:
+			return .NumbersAndPunctuation
+		case .URL:
+			return .URL
+		case .numberPad:
+			return .NumberPad
+		case .phonePad:
+			return .PhonePad
+		case .namePhonePad:
+			return .NamePhonePad
+		case .emailAddress:
+			return .EmailAddress
+		case .decimalPad:
+			return .DecimalPad
+		case .twitter:
+			return .Twitter
+		case .webSearch:
+			return .WebSearch
 		}
 	}
 }
