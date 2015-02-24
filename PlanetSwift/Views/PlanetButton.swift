@@ -31,10 +31,17 @@ public class PlanetButton: UIButton {
         backgroundColorSelected = bgColorSelected
         backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
         isToggle = toggle
-		self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
     }
 	
-    var isToggle: Bool = false
+	var isToggle: Bool = false {
+		didSet {
+			if isToggle {
+				self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+			} else {
+				self.removeTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+			}
+		}
+	}
     
     var backgroundColorNormal: UIColor? {
         didSet {
@@ -107,8 +114,6 @@ public class PlanetButton: UIButton {
     }
     
     func touchUpInside(sender: UIButton!) {
-		if isToggle {
-			selected = !selected
-		}
+		selected = !selected
     }
 }
