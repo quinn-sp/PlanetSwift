@@ -92,7 +92,13 @@ public class PlanetButton: UIButton {
             updateBackgroundColor()
         }
     }
-    
+	
+	public override var selected: Bool {
+		didSet {
+			updateBackgroundColor()
+		}
+	}
+	
     func checkBackgroundColor(color: UIColor?)
     {
         if color != nil {
