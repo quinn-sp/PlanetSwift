@@ -138,10 +138,10 @@ public class Button: ButtonBase {
             img = UIImage(named: String(bundlePath: disabledPath))
             button.setBackgroundImage(img, forState: .Disabled)
         }
-        
-        if backgroundColorNormal != nil {
-            button.backgroundColorNormal = backgroundColorNormal!
-        }
+		
+		if backgroundColor != nil {
+			button.backgroundColorNormal = backgroundColor!
+		}
         if backgroundColorHighlighted != nil {
             button.backgroundColorHighlighted = backgroundColorHighlighted!
         }
@@ -156,12 +156,6 @@ public class Button: ButtonBase {
         }
         
         button.isToggle = isToggle
-
-		//TODO: better way to solve this?
-//		//hack: UIButton bug, we need to reassign these values to init the button properly
-//		button.enabled = button.enabled
-//		button.selected = button.selected
-//		button.highlighted = button.highlighted
     }
     
     @objc func buttonOnTouchUp(sender:UIButton!)

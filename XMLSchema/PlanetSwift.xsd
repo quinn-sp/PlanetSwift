@@ -95,7 +95,6 @@
 				<attribute name="titleFont" type="string" />
 				<attribute name="titleFontSize" type="decimal" default="15" />
 				<attribute name="isToggle" type="boolean" default="false"/>
-				<attribute name="backgroundColorNormal" type="ui:color" />
 				<attribute name="backgroundColorHighlighted" type="ui:color" />
 				<attribute name="backgroundColorSelected" type="ui:color" />
 				<attribute name="backgroundColorSelectedHighlighted" type="ui:color" />

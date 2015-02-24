@@ -31,17 +31,10 @@ public class PlanetButton: UIButton {
         backgroundColorSelected = bgColorSelected
         backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
         isToggle = toggle
+		self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
     }
-    
-    var isToggle: Bool = false {
-        didSet {
-            if isToggle {
-                self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
-            } else {
-                self.removeTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
-            }
-        }
-    }
+	
+    var isToggle: Bool = false
     
     var backgroundColorNormal: UIColor? {
         didSet {
@@ -68,27 +61,35 @@ public class PlanetButton: UIButton {
     var _backgroundColorDisabled: UIColor? {
         return backgroundColorDisabled != nil ? backgroundColorDisabled : backgroundColorNormal
     }
-    
+	
+	private func updateBackgroundColor() {
+		
+		if enabled == false {
+			backgroundColor = _backgroundColorDisabled
+		}
+		else {
+			switch (highlighted, selected) {
+			case (true, false):
+				checkBackgroundColor(_backgroundColorHighlighted)
+			case (true, true):
+				checkBackgroundColor(_backgroundColorSelectedHighlighted)
+			case (false, true):
+				checkBackgroundColor(_backgroundColorSelected)
+			default:
+				checkBackgroundColor(backgroundColorNormal)
+			}
+		}
+	}
+	
     public override var enabled: Bool {
         didSet {
-            if enabled == false {
-                backgroundColor = _backgroundColorDisabled
-            }
+			updateBackgroundColor()
         }
     }
     
     public override var highlighted: Bool {
         didSet {
-            switch (highlighted, selected) {
-            case (true, false):
-               checkBackgroundColor(_backgroundColorHighlighted)
-            case (true, true):
-                checkBackgroundColor(_backgroundColorSelectedHighlighted)
-            case (false, true):
-                checkBackgroundColor(_backgroundColorSelected)
-            default:
-                checkBackgroundColor(backgroundColorNormal)
-            }
+            updateBackgroundColor()
         }
     }
     
@@ -100,6 +101,8 @@ public class PlanetButton: UIButton {
     }
     
     func touchUpInside(sender: UIButton!) {
-        selected = ~selected
+		if isToggle {
+			selected = !selected
+		}
     }
 }
