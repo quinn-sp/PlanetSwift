@@ -46,57 +46,57 @@ public class Button: ButtonBase {
         }
         
         if backgroundImage != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImage!))
+            let img = UIImage(named: String(bundlePath: backgroundImage!))
             button.setBackgroundImage(img, forState: .Normal)
         }
         if backgroundImageHighlighted != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageHighlighted!))
+            let img = UIImage(named: String(bundlePath: backgroundImageHighlighted!))
             button.setBackgroundImage(img, forState: .Highlighted)
         }
         if backgroundImageSelected != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageSelected!))
+            let img = UIImage(named: String(bundlePath: backgroundImageSelected!))
             button.setBackgroundImage(img, forState: .Selected)
         }
         if backgroundImageSelectedHighlighted != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageSelectedHighlighted!))
+            let img = UIImage(named: String(bundlePath: backgroundImageSelectedHighlighted!))
             button.setBackgroundImage(img, forState: .Selected | .Highlighted)
         }
         if backgroundImageDisabled != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: backgroundImageDisabled!))
+            let img = UIImage(named: String(bundlePath: backgroundImageDisabled!))
             button.setBackgroundImage(img, forState: .Disabled)
         }
         
         if image != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: image!))
+            let img = UIImage(named: String(bundlePath: image!))
             button.setImage(img, forState: .Normal)
         }
         if imageHighlighted != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: imageHighlighted!))
+            let img = UIImage(named: String(bundlePath: imageHighlighted!))
             button.setImage(img, forState: .Highlighted)
         }
         if imageSelected != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: imageSelected!))
+            let img = UIImage(named: String(bundlePath: imageSelected!))
             button.setImage(img, forState: .Selected)
         }
         if imageSelectedHighlighted != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: imageSelectedHighlighted!))
+            let img = UIImage(named: String(bundlePath: imageSelectedHighlighted!))
             button.setImage(img, forState: .Selected | .Highlighted)
         }
         if imageDisabled != nil {
-            let img: UIImage? = UIImage(named: String(bundlePath: imageDisabled!))
+            let img = UIImage(named: String(bundlePath: imageDisabled!))
             button.setImage(img, forState: .Disabled)
         }
         
         if imageSet != nil {
-            let pathLength: Int = countElements(imageSet!)
-            let extensionLength: Int = countElements(imageSet!.componentsSeparatedByString(".").last!)
-            let insertPosition:Int = pathLength - extensionLength - 1
+            let pathLength = countElements(imageSet!)
+            let extensionLength = countElements(imageSet!.componentsSeparatedByString(".").last!)
+            let insertPosition = pathLength - extensionLength - 1
             
-            let normalPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_normal" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let highlightedPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let selectedPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let selectedHighlightedPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let disabledPath:String = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_disabled" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let normalPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_normal" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let highlightedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let selectedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let selectedHighlightedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let disabledPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_disabled" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
             
             var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
             if img == nil {
@@ -114,15 +114,15 @@ public class Button: ButtonBase {
         }
         
         if backgroundImageSet != nil {
-            let pathLength: Int = countElements(backgroundImageSet!)
-            let extensionLength: Int = countElements(backgroundImageSet!.componentsSeparatedByString(".").last!)
-            let insertPosition:Int = pathLength - extensionLength - 1
+            let pathLength = countElements(backgroundImageSet!)
+            let extensionLength = countElements(backgroundImageSet!.componentsSeparatedByString(".").last!)
+            let insertPosition = pathLength - extensionLength - 1
             
-            let normalPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_normal" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let highlightedPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let selectedPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let selectedHighlightedPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let disabledPath:String = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_disabled" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let normalPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_normal" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let highlightedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let selectedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let selectedHighlightedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let disabledPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_disabled" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
             
             var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
             if img == nil {
@@ -139,21 +139,11 @@ public class Button: ButtonBase {
             button.setBackgroundImage(img, forState: .Disabled)
         }
 		
-		if backgroundColor != nil {
-			button.backgroundColorNormal = backgroundColor!
-		}
-        if backgroundColorHighlighted != nil {
-            button.backgroundColorHighlighted = backgroundColorHighlighted!
-        }
-        if backgroundColorSelected != nil {
-            button.backgroundColorSelected = backgroundColorSelected!
-        }
-        if backgroundColorSelectedHighlighted != nil {
-            button.backgroundColorSelectedHighlighted = backgroundColorSelectedHighlighted!
-        }
-        if backgroundColorDisabled != nil {
-            button.backgroundColorDisabled = backgroundColorDisabled!
-        }
+        button.backgroundColorNormal = backgroundColor
+        button.backgroundColorHighlighted = backgroundColorHighlighted
+        button.backgroundColorSelected = backgroundColorSelected
+        button.backgroundColorSelectedHighlighted = backgroundColorSelectedHighlighted
+        button.backgroundColorDisabled = backgroundColorDisabled
         
         button.isToggle = isToggle
     }
@@ -166,10 +156,6 @@ public class Button: ButtonBase {
                 NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
             }
         }
-        
-        /*if isToggle {
-            sender.selected = !sender.selected;
-        }*/
     }
     
     @objc func buttonOnTouchDown(sender:UIButton!)
