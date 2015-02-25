@@ -6,6 +6,7 @@ import UIKit
 
 private var config:Dictionary<String, AnyObject>?
 private var attemptedConfigLoad = false
+var dummy = 0
 
 extension PlanetUI {
 	
@@ -15,12 +16,11 @@ extension PlanetUI {
     }
     
     private class func checkLoadConfig() {
-		
-		#if DEBUG
-		#else
-		println("")//hack: this fixes a swift compiler bug for some reason
-		#endif
-		
+        
+        #if RELEASE
+        println("")
+        #endif
+
         if config == nil && !attemptedConfigLoad {
             attemptedConfigLoad = true
             if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_configPathKey) as? String {
