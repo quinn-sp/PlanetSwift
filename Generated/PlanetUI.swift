@@ -75,7 +75,7 @@ extension PlanetUI {
 		}
 	}
     
-    // MARK - helper methods
+    // MARK: - helper methods
     
     // returns an array of all available fonts
     public class func fontNames() -> [String] {
@@ -88,4 +88,7 @@ extension PlanetUI {
         return names
     }
 	
+	public class func GCDDelay(delayAmount:Float, block:(Void->Void)) {
+		dispatch_after(dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), Int64(delayAmount * Float(NSEC_PER_SEC))), dispatch_get_main_queue(), block)
+	}
 }
