@@ -111,6 +111,9 @@
 				<attribute name="imageDisabled" type="string" />
 				<attribute name="backgroundImageSet" type="string" />
 				<attribute name="imageSet" type="string" /> <!-- "Quality of life" attribute that, given a path, will fill out all the image states for the button using the naming convention: "path"_normal, "path"_highlighted, "path"_selected, "path"_selected_highlighted, "path"_disabled -->
+				<attribute name="contentEdgeInsets" type="ui:edgeInsets" />
+				<attribute name="titleEdgeInsets" type="ui:edgeInsets" />
+				<attribute name="imageEdgeInsets" type="ui:edgeInsets" />
 			</extension>
 		</complexContent>
 	</complexType>
@@ -532,6 +535,15 @@
 	<simpleType name="rect">
 		<annotation>
 			<appinfo>CGRect</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*(,\s*-?[0-9.]+\s*){3}"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="edgeInsets">
+		<annotation>
+			<appinfo>UIEdgeInsets</appinfo>
 		</annotation>
 		<restriction base="string">
 			<pattern value="\s*-?[0-9.]+\s*(,\s*-?[0-9.]+\s*){3}"/>

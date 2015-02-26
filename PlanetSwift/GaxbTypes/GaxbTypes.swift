@@ -96,6 +96,30 @@ extension CGRect: GaxbType {
     }
 }
 
+extension UIEdgeInsets: GaxbType {
+    public init(gaxbString withGaxbString: String) {
+        let (top, left, bottom, right) = UIEdgeInsets.componentsFromString(withGaxbString)
+        self = UIEdgeInsetsMake(top, left, bottom, right)
+    }
+    public mutating func setWithGaxbString(GaxbString: String) {
+        (top, left, bottom, right) = UIEdgeInsets.componentsFromString(GaxbString)
+    }
+    public static func componentsFromString(string: String) -> (CGFloat, CGFloat, CGFloat, CGFloat) {
+        var t:Float=0.0, l:Float=0.0, b:Float=0.0, r:Float=0.0
+        var components = string.componentsSeparatedByString(",")
+        if components.count == 4 {
+            t = (components[0] as NSString).floatValue
+            l = (components[1] as NSString).floatValue
+            b = (components[2] as NSString).floatValue
+            r = (components[3] as NSString).floatValue
+        }
+        return (CGFloat(t), CGFloat(l), CGFloat(b), CGFloat(r))
+    }
+    public func toGaxbString() -> String {
+        return "\(top),\(left),\(bottom),\(right))"
+    }
+}
+
 extension CGSize: GaxbType {
 	public init(gaxbString: String) {
 		let (width, height) = CGSize.componentsFromString(gaxbString)

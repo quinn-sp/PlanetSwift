@@ -146,6 +146,15 @@ public class Button: ButtonBase {
         button.backgroundColorDisabled = backgroundColorDisabled
         
         button.isToggle = isToggle
+        if contentEdgeInsets != nil {
+            button.contentEdgeInsets = contentEdgeInsets!
+        }
+        if titleEdgeInsets != nil {
+            button.titleEdgeInsets = titleEdgeInsets!
+        }
+        if imageEdgeInsets != nil {
+            button.imageEdgeInsets = imageEdgeInsets!
+        }
     }
     
     @objc func buttonOnTouchUp(sender:UIButton!)
