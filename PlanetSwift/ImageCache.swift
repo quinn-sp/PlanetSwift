@@ -49,29 +49,31 @@ public class ImageCache {
 				cacheRequest = activeRequest
 			}
 			else {
-				cacheRequest = ImageCacheRequest(url: url, completion: { [unowned self] (success:Bool) in
+				cacheRequest = ImageCacheRequest(url: url, completion: { [weak self] (success:Bool) in
 					
-					var image:UIImage? = nil
-					if success {
-						image = UIImage(data: cacheRequest.imageData)
-						if image != nil {
-							self.memoryCache.setObject(image!, forKey: imageKey)
+					if self != nil {
+						var image:UIImage? = nil
+						if success {
+							image = UIImage(data: cacheRequest.imageData)
+							if image != nil {
+								self!.memoryCache.setObject(image!, forKey: imageKey)
+							}
 						}
-					}
-					
-					var index = 0
-					for request in self.activeNetworkRequests {
 						
-						if request === cacheRequest {
-							break
+						var index = 0
+						for request in self!.activeNetworkRequests {
+							
+							if request === cacheRequest {
+								break
+							}
+							index++
 						}
-						index++
-					}
-					self.activeNetworkRequests.removeAtIndex(index)
-					
-					//call all completion blocks
-					for block in cacheRequest.completionBlocks {
-						block(image)
+						self!.activeNetworkRequests.removeAtIndex(index)
+						
+						//call all completion blocks
+						for block in cacheRequest.completionBlocks {
+							block(image)
+						}
 					}
 				})
 				activeNetworkRequests.append(cacheRequest)
