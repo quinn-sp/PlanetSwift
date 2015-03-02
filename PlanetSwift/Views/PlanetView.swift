@@ -8,9 +8,9 @@
 
 import UIKit
 
-class PlanetView: UIView {
+public class PlanetView: UIView {
 	
-	var xmlView:View?
+	public var xmlView:View?
 	@IBInspectable var bundlePath:String? {
 		didSet {
 			loadXMLView()

@@ -10,7 +10,7 @@ import UIKit
 
 public class PlanetViewController: UIViewController {
 	
-	var planetViews = Array<PlanetView>()
+    public var planetViews = Array<PlanetView>()
 	var idMappings = Dictionary<String, Object>()
 	@IBInspectable var titleBundlePath:String?
 	
