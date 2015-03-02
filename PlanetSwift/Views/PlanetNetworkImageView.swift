@@ -13,16 +13,18 @@ public class PlanetNetworkImageView: UIImageView {
 	public var placeholderContentMode:UIViewContentMode = .ScaleToFill
 	public var downloadedContentMode:UIViewContentMode = .ScaleToFill
 	
-    public func setImage(url:NSURL, placeholder:UIImage? = nil, completion:((success:Bool)->Void)?) {
+    public func setImage(url:NSURL, placeholder:UIImage? = nil, completion:((success:Bool)->Void)? = nil) {
 		
 		self.contentMode = placeholderContentMode
 		self.image = placeholder
 		
-		ImageCache.sharedInstance.get(url) { [unowned self] (image:UIImage?) in
+		ImageCache.sharedInstance.get(url) { [weak self] (image:UIImage?) in
 			
 			if image != nil {
-				self.contentMode = self.downloadedContentMode
-				self.image = image
+				if let downloadedContentMode = self?.downloadedContentMode {
+					self?.contentMode = downloadedContentMode
+				}
+				self?.image = image
                 completion?(success: true)
 			}
             else {
