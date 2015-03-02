@@ -55,6 +55,16 @@
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
 		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
 		C4AA9CEB1A6383ED0094F56A /* ButtonBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */; };
+		C4C060F61AA37675004D39EC /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060EC1AA37675004D39EC /* CollectionView.swift */; };
+		C4C060F71AA37675004D39EC /* CollectionViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060ED1AA37675004D39EC /* CollectionViewBase.swift */; };
+		C4C060F81AA37675004D39EC /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060EE1AA37675004D39EC /* Control.swift */; };
+		C4C060F91AA37675004D39EC /* ControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060EF1AA37675004D39EC /* ControlBase.swift */; };
+		C4C060FA1AA37675004D39EC /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F01AA37675004D39EC /* GestureRecognizer.swift */; };
+		C4C060FB1AA37675004D39EC /* GestureRecognizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */; };
+		C4C060FC1AA37675004D39EC /* PanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F21AA37675004D39EC /* PanGestureRecognizer.swift */; };
+		C4C060FD1AA37675004D39EC /* PanGestureRecognizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F31AA37675004D39EC /* PanGestureRecognizerBase.swift */; };
+		C4C060FE1AA37675004D39EC /* PinchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F41AA37675004D39EC /* PinchGestureRecognizer.swift */; };
+		C4C060FF1AA37675004D39EC /* PinchGestureRecognizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */; };
 		C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */; };
 		C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */; };
 /* End PBXBuildFile section */
@@ -121,6 +131,16 @@
 		C4AA9CD81A60D9290094F56A /* NotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBase.swift; sourceTree = "<group>"; };
 		C4AA9CE81A6383ED0094F56A /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBase.swift; sourceTree = "<group>"; };
+		C4C060EC1AA37675004D39EC /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		C4C060ED1AA37675004D39EC /* CollectionViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewBase.swift; sourceTree = "<group>"; };
+		C4C060EE1AA37675004D39EC /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
+		C4C060EF1AA37675004D39EC /* ControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlBase.swift; sourceTree = "<group>"; };
+		C4C060F01AA37675004D39EC /* GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
+		C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureRecognizerBase.swift; sourceTree = "<group>"; };
+		C4C060F21AA37675004D39EC /* PanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureRecognizer.swift; sourceTree = "<group>"; };
+		C4C060F31AA37675004D39EC /* PanGestureRecognizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanGestureRecognizerBase.swift; sourceTree = "<group>"; };
+		C4C060F41AA37675004D39EC /* PinchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinchGestureRecognizer.swift; sourceTree = "<group>"; };
+		C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinchGestureRecognizerBase.swift; sourceTree = "<group>"; };
 		C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUI.swift; sourceTree = "<group>"; };
 		C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUIBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +239,16 @@
 		A9B439961A3B40B70052690A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				C4C060EC1AA37675004D39EC /* CollectionView.swift */,
+				C4C060ED1AA37675004D39EC /* CollectionViewBase.swift */,
+				C4C060EE1AA37675004D39EC /* Control.swift */,
+				C4C060EF1AA37675004D39EC /* ControlBase.swift */,
+				C4C060F01AA37675004D39EC /* GestureRecognizer.swift */,
+				C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */,
+				C4C060F21AA37675004D39EC /* PanGestureRecognizer.swift */,
+				C4C060F31AA37675004D39EC /* PanGestureRecognizerBase.swift */,
+				C4C060F41AA37675004D39EC /* PinchGestureRecognizer.swift */,
+				C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */,
 				C4AA9CE81A6383ED0094F56A /* Button.swift */,
 				C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */,
 				9B972B851A66D52200BD0CC5 /* Constraint.swift */,
@@ -402,6 +432,7 @@
 				9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */,
 				9BC9743E1A7022FC002F0295 /* Controller.swift in Sources */,
 				9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */,
+				C4C060FB1AA37675004D39EC /* GestureRecognizerBase.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
 				9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */,
 				9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */,
@@ -415,27 +446,36 @@
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
 				796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */,
+				C4C060FC1AA37675004D39EC /* PanGestureRecognizer.swift in Sources */,
+				C4C060FE1AA37675004D39EC /* PinchGestureRecognizer.swift in Sources */,
 				79AEF3971A72E6A3006B76E4 /* VisualEffectView.swift in Sources */,
 				9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */,
 				9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */,
+				C4C060FA1AA37675004D39EC /* GestureRecognizer.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,
 				796C6AF01A7188F900D87C38 /* PickerView.swift in Sources */,
+				C4C060FF1AA37675004D39EC /* PinchGestureRecognizerBase.swift in Sources */,
 				A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */,
 				A92E73821A4212B200B22884 /* LabelBase.swift in Sources */,
 				796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */,
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
+				C4C060FD1AA37675004D39EC /* PanGestureRecognizerBase.swift in Sources */,
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
 				796C6AE41A7063A100D87C38 /* WebViewBase.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
 				C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
+				C4C060F61AA37675004D39EC /* CollectionView.swift in Sources */,
 				9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */,
 				9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */,
 				9B972B881A66D52200BD0CC5 /* ConstraintBase.swift in Sources */,
+				C4C060F91AA37675004D39EC /* ControlBase.swift in Sources */,
 				796C6ACF1A6ED86300D87C38 /* TextFieldBase.swift in Sources */,
 				9B972B871A66D52200BD0CC5 /* Constraint.swift in Sources */,
+				C4C060F81AA37675004D39EC /* Control.swift in Sources */,
 				A9639EF71A643A0D009C818F /* SceneBase.swift in Sources */,
+				C4C060F71AA37675004D39EC /* CollectionViewBase.swift in Sources */,
 				A92E73811A4212B200B22884 /* Label.swift in Sources */,
 				C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */,
 			);
