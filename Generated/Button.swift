@@ -155,6 +155,8 @@ public class Button: ButtonBase {
         if imageEdgeInsets != nil {
             button.imageEdgeInsets = imageEdgeInsets!
         }
+        
+        button.titleLabel?.font = button.titleLabel?.font.fontWithSize(CGFloat(titleFontSize))
     }
     
     @objc func buttonOnTouchUp(sender:UIButton!)

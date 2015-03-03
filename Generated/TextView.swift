@@ -46,6 +46,8 @@ public class TextView: TextViewBase {
 		if editable != nil {
 			textView.editable = editable!
 		}
+        
+        textView.font = textView.font.fontWithSize(CGFloat(fontSize))
 	}
 	
 	func textViewDidChange(textView: UITextView) {

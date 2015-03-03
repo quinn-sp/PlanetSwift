@@ -61,7 +61,7 @@
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
 				<attribute name="fontName" type="string"/>
-				<attribute name="fontSize" type="decimal"/>
+				<attribute name="fontSize" type="decimal" default="12"/>
 				<attribute name="textColor" type="ui:color"/>
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<attribute name="lineBreakMode" type="ui:LineBreakMode"/>

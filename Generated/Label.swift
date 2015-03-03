@@ -24,6 +24,7 @@ public class Label: LabelBase {
         if text != nil {
             label.text = text!
         }
+        
         if textColor != nil {
             label.textColor = textColor
         }
@@ -37,12 +38,14 @@ public class Label: LabelBase {
         if textAlignment != nil {
 			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
         }
-        if fontName != nil && fontSize != nil {
-            label.font = UIFont(name: fontName!, size: CGFloat(fontSize!))
+        if fontName != nil {
+            label.font = UIFont(name: fontName!, size: CGFloat(fontSize))
         }
 		if lineBreakMode != nil {
 			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
 		}
+        
+        label.font = label.font.fontWithSize(CGFloat(fontSize))
     }
     
 }

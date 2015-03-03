@@ -65,6 +65,7 @@ public class TextField: TextFieldBase {
 		}
 		
         textField.minimumFontSize = CGFloat(minimumFontSize)
+        textField.font = textField.font.fontWithSize(CGFloat(fontSize))
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
