@@ -39,13 +39,14 @@ public class Label: LabelBase {
 			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
         }
         if fontName != nil {
-            label.font = UIFont(name: fontName!, size: CGFloat(fontSize))
+            label.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+        }
+        if fontSize != nil {
+            label.font = label.font.fontWithSize(CGFloat(fontSize!))
         }
 		if lineBreakMode != nil {
 			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
 		}
-        
-        label.font = label.font.fontWithSize(CGFloat(fontSize))
     }
     
 }

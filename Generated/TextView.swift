@@ -32,8 +32,11 @@ public class TextView: TextViewBase {
 			textView.text = text!
 		}
 		if fontName != nil {
-			textView.font = UIFont(name: fontName!, size: CGFloat(fontSize))
+			textView.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
 		}
+        if fontSize != nil {
+            textView.font = textView.font.fontWithSize(CGFloat(fontSize!))
+        }
 		if textColor != nil {
 			textView.textColor = textColor!
 		}
@@ -46,8 +49,6 @@ public class TextView: TextViewBase {
 		if editable != nil {
 			textView.editable = editable!
 		}
-        
-        textView.font = textView.font.fontWithSize(CGFloat(fontSize))
 	}
 	
 	func textViewDidChange(textView: UITextView) {
