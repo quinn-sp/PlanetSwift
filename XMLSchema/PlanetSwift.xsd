@@ -68,6 +68,8 @@
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
 				<attribute name="numberOfLines" type="integer"/>
+				<!-- NSAttributedString attributes -->
+				<attribute name="lineSpacing" type="decimal"/>
 			</extension>
 		</complexContent>
 	</complexType>

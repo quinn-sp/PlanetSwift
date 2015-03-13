@@ -20,9 +20,12 @@ public class Label: LabelBase {
 	
     public override func gaxbPrepare() {
         super.gaxbPrepare()
-        
-        if text != nil {
-            label.text = text!
+        var _paragraphStyle: NSMutableParagraphStyle?
+        var paragraphStyle: NSMutableParagraphStyle {
+            if _paragraphStyle == nil {
+                _paragraphStyle = NSMutableParagraphStyle()
+            }
+            return _paragraphStyle!
         }
         
         if textColor != nil {
@@ -47,6 +50,25 @@ public class Label: LabelBase {
 		if lineBreakMode != nil {
 			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
 		}
+        if lineSpacing != nil {
+            paragraphStyle.lineSpacing = CGFloat(lineSpacing!)
+        }
+        
+        let unwrappedText = text != nil ? text! : ""
+        
+        if _paragraphStyle != nil {
+            var attributedString = NSMutableAttributedString(string: unwrappedText)
+            let attributes = [NSParagraphStyleAttributeName : paragraphStyle]
+            attributedString.setAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
+            label.attributedText = attributedString
+        } else {
+            label.text = unwrappedText
+        }
+    }
+    
+    public func updateText(newText: String) {
+        text = newText
+        gaxbPrepare()
     }
     
 }
