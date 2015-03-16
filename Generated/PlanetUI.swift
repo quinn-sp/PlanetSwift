@@ -31,46 +31,52 @@ extension PlanetUI {
     
     public class func processExpressions(string: String) -> String {
         checkLoadConfig()
-		var processedString = string
+		var processedString = NSMutableString(string: string)
 		if config != nil {
-			processedString = findAndReplaceExpressions(processedString, expressionName:"config") { (expressionValue:String) in
+			findAndReplaceExpressions(processedString, expressionName:"config") { (expressionValue:String) in
 				return config![expressionValue]
 			}
 		}
-        return processedString
+        return processedString as String
     }
 	
-	public class func findAndReplaceExpressions(var stringToSearch:String, expressionName:String, expressionEvaluatorBlock:(String->AnyObject?)) -> String {
+	public class func findAndReplaceExpressions(stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:(String->AnyObject?)) {
 		
 		var expressionSearchString = "@\(expressionName)("
-		var searchRange = Range<String.Index>(start: stringToSearch.startIndex, end: stringToSearch.endIndex)
+		var searchRange = NSMakeRange(0, stringToSearch.length)
 		while true {
-			if let startRange = stringToSearch.rangeOfString(expressionSearchString, range: searchRange) {
+			
+			let startRange = stringToSearch.rangeOfString(expressionSearchString, options: NSStringCompareOptions.allZeros, range: searchRange)
+			if startRange.location != NSNotFound {
 				
-				searchRange.startIndex = startRange.endIndex
+				searchRange.location = startRange.location+startRange.length
+				searchRange.length = stringToSearch.length-searchRange.location
 				
-				if let endRange = stringToSearch.rangeOfString(")", range: searchRange) {
+				let endRange = stringToSearch.rangeOfString(")", options: NSStringCompareOptions.allZeros, range: searchRange)
+				if endRange.location != NSNotFound {
 					
-					searchRange.startIndex = endRange.endIndex
-					let expressionValue = stringToSearch.substringWithRange(Range<String.Index>(start:startRange.endIndex, end:endRange.startIndex))
+					searchRange.location = endRange.location+endRange.length
+					searchRange.length = stringToSearch.length-searchRange.location
+					
+					let expressionValue = stringToSearch.substringWithRange(NSMakeRange(startRange.location+startRange.length, endRange.location-(startRange.location+startRange.length)))
 					if let replaceValue:AnyObject = expressionEvaluatorBlock(expressionValue) {
 						
-						let replaceString = "\(replaceValue)"
-						stringToSearch.replaceRange(Range<String.Index>(start:startRange.startIndex, end:endRange.endIndex), with: replaceString)
-						
-						let advanceNum = count(replaceString) - distance(startRange.startIndex, endRange.endIndex)
+						let replaceString = "\(replaceValue)" as NSString
+						let replaceLength = (endRange.location+endRange.length)-startRange.location
+						stringToSearch.replaceCharactersInRange(NSMakeRange(startRange.location, replaceLength), withString: replaceString as String)
 						
 						//adjust the search range because we just changed the length / posision of the search range by replacing stuff
-						searchRange.startIndex = advance(searchRange.startIndex, advanceNum)
-						searchRange.endIndex = stringToSearch.endIndex
+						let adjustNum = replaceString.length - replaceLength
+						searchRange.location += adjustNum
+						searchRange.length = stringToSearch.length-searchRange.location
 					}
 				}
 				else {
-					return stringToSearch
+					return
 				}
 			}
 			else {
-				return stringToSearch
+				return
 			}
 		}
 	}

@@ -42,7 +42,10 @@ public class Button: ButtonBase {
         button.setTitleColor(titleFontColorDisabled, forState: .Disabled)
         
         if titleFont != nil {
-            button.titleLabel?.font = UIFont(name: titleFont!, size: CGFloat(titleFontSize))
+            button.titleLabel?.font = UIFont(name: titleFont!, size: UIFont.systemFontSize())
+        }
+        if titleFontSize != nil {
+            button.titleLabel?.font = button.titleLabel?.font.fontWithSize(CGFloat(titleFontSize!))
         }
         
         if backgroundImage != nil {

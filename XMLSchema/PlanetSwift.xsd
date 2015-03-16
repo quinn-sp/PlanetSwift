@@ -61,13 +61,15 @@
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
 				<attribute name="fontName" type="string"/>
-				<attribute name="fontSize" type="decimal"/>
+				<attribute name="fontSize" type="decimal" />
 				<attribute name="textColor" type="ui:color"/>
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<attribute name="lineBreakMode" type="ui:LineBreakMode"/>
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
 				<attribute name="numberOfLines" type="integer"/>
+				<!-- NSAttributedString attributes -->
+				<attribute name="lineSpacing" type="decimal"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -93,7 +95,7 @@
 				<attribute name="titleFontColorSelectedHighlighted" type="ui:color" />
 				<attribute name="titleFontColorDisabled" type="ui:color" />
 				<attribute name="titleFont" type="string" />
-				<attribute name="titleFontSize" type="decimal" default="15" />
+				<attribute name="titleFontSize" type="decimal" />
 				<attribute name="isToggle" type="boolean" default="false"/>
 				<attribute name="backgroundColorHighlighted" type="ui:color" />
 				<attribute name="backgroundColorSelected" type="ui:color" />
@@ -129,7 +131,7 @@
 				<attribute name="text" type="string"/>
 				<attribute name="placeholder" type="string"/>
 				<attribute name="fontName" type="string"/>
-				<attribute name="fontSize" type="decimal" default="12" />
+				<attribute name="fontSize" type="decimal" />
 				<attribute name="textColor" type="ui:color"/>
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
@@ -157,7 +159,7 @@
 			<extension base="ui:View">
 				<attribute name="text" type="string"/>
 				<attribute name="fontName" type="string"/>
-				<attribute name="fontSize" type="decimal" default="12" />
+				<attribute name="fontSize" type="decimal" />
 				<attribute name="textColor" type="ui:color"/>
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
 				<attribute name="selectable" type="boolean"/>

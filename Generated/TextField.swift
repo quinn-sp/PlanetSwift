@@ -34,7 +34,10 @@ public class TextField: TextFieldBase {
             textField.placeholder = placeholder!
         }
         if fontName != nil {
-            textField.font = UIFont(name: fontName!, size: CGFloat(fontSize))
+            textField.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+        }
+        if fontSize != nil {
+            textField.font = textField.font.fontWithSize(CGFloat(fontSize!))
         }
         if textColor != nil {
             textField.textColor = textColor!

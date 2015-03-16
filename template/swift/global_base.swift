@@ -44,7 +44,9 @@ public class <%= FULL_NAME_CAMEL %> {
 		let namespace = self.namespaceForElement(element)
 		if let entity : GaxbElement = GaxbFactory.element(namespace, name:element.name) {
 			for (attribute, value) in element.attributes {
-				entity.setAttribute(value as String, key: attribute as String)
+				if let valueString = value as? String, attributeString = attribute as? String {
+					entity.setAttribute(valueString, key: attributeString)
+				}
 			}
 			for child in element.children {
 				if let subEntity = <%= FULL_NAME_CAMEL %>.parseElement(child) {
