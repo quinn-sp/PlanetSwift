@@ -87,7 +87,7 @@ public class ImageCache {
 	
 	func activeRequestForKey(key:String) -> ImageCacheRequest? {
 		for request in activeNetworkRequests {
-			if request.request.URL.absoluteString == key {
+			if request.request.URL!.absoluteString == key {
 				return request
 			}
 		}
@@ -99,7 +99,7 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
 	
 	var completionBlocks = Array<ImageCache_CompletionBlock>()
 	let request:NSURLRequest
-	let connection:NSURLConnection?
+	var connection:NSURLConnection?
 	let completionBlock:ImageCache_DownloadBlock
 	let imageData:NSMutableData
 	
@@ -108,7 +108,8 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
 		completionBlock = completion
 		request = NSURLRequest(URL: url, cachePolicy: .ReturnCacheDataElseLoad, timeoutInterval: 60)
 		imageData = NSMutableData()
-		
+		connection = NSURLConnection()
+        
 		super.init()
 		
 		connection = NSURLConnection(request: request, delegate: self, startImmediately: false)

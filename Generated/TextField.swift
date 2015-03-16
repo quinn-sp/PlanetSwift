@@ -17,7 +17,7 @@ public class TextField: TextFieldBase {
         }
         set {
             if newValue is UITextField {
-                textField = newValue as UITextField
+                textField = newValue as! UITextField
             }
         }
     }

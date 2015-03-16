@@ -12,7 +12,7 @@ public class CollectionView: CollectionViewBase {
         }
         set {
             if newValue is UICollectionView {
-                collectionView = newValue as UICollectionView
+                collectionView = newValue as! UICollectionView
             }
         }
     }
@@ -24,7 +24,7 @@ public class CollectionView: CollectionViewBase {
     // MARK: - Layout
     
     func newLayout() -> UICollectionViewLayout? {
-        let layoutClass = NSClassFromString(self.layoutClass) as NSObject.Type
+        let layoutClass = NSClassFromString(self.layoutClass) as! NSObject.Type
         if let layoutObject = layoutClass() as? UICollectionViewLayout {
             return layoutObject
         }

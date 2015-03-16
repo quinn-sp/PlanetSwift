@@ -13,7 +13,7 @@ public class NetworkImageView: NetworkImageViewBase {
 		}
 		set {
 			if newValue is PlanetNetworkImageView {
-				networkImageView = newValue as PlanetNetworkImageView
+				networkImageView = newValue as! PlanetNetworkImageView
 			}
 		}
 	}
@@ -25,7 +25,7 @@ public class NetworkImageView: NetworkImageViewBase {
             if placeholderPath != nil {
                 placeholder = UIImage(named: String(bundlePath: placeholderPath!))
             }
-            networkImageView.setImage(url, placeholder: placeholder, completion)
+            networkImageView.setImage(url, placeholder: placeholder, completion: completion)
         }
         else {
             super.setImageWithPath(path)
@@ -34,7 +34,7 @@ public class NetworkImageView: NetworkImageViewBase {
     }
 	
     public override func setImageWithPath(path:String) {
-		self.setImageWithPath(path, nil)
+		self.setImageWithPath(path, completion: nil)
 	}
 	
 	public override func gaxbPrepare() {

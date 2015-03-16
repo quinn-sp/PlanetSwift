@@ -13,7 +13,7 @@ public class PanGestureRecognizer: PanGestureRecognizerBase {
 		}
 		set {
 			if newValue is UIPanGestureRecognizer {
-				panRecognizer = newValue as UIPanGestureRecognizer
+				panRecognizer = newValue as! UIPanGestureRecognizer
 			}
 		}
 	}

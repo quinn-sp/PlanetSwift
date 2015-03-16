@@ -13,7 +13,7 @@ public class Label: LabelBase {
         }
         set {
             if newValue is UILabel {
-                label = newValue as UILabel
+                label = newValue as! UILabel
             }
         }
     }

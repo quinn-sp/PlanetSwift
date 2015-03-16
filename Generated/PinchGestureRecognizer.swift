@@ -12,7 +12,7 @@ public class PinchGestureRecognizer: PinchGestureRecognizerBase {
 		}
 		set {
 			if newValue is UIPinchGestureRecognizer {
-				pinchRecognizer = newValue as UIPinchGestureRecognizer
+				pinchRecognizer = newValue as! UIPinchGestureRecognizer
 			}
 		}
 	}

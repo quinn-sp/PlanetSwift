@@ -24,7 +24,7 @@ public class PickerView: PickerViewBase {
         }
         set {
             if newValue is UIPickerView {
-                picker = newValue as UIPickerView
+                picker = newValue as! UIPickerView
             }
         }
     }

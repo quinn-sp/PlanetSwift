@@ -18,7 +18,7 @@ public class TextView: TextViewBase {
 		}
 		set {
 			if newValue is UITextView {
-				textView = newValue as UITextView
+				textView = newValue as! UITextView
 			}
 		}
 	}

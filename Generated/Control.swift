@@ -16,7 +16,7 @@ public class Control: ControlBase {
 		}
 		set {
 			if newValue is UIControl {
-				control = (newValue as UIControl)
+				control = (newValue as! UIControl)
 			}
 		}
 	}

@@ -58,7 +58,7 @@ extension PlanetUI {
 						let replaceString = "\(replaceValue)"
 						stringToSearch.replaceRange(Range<String.Index>(start:startRange.startIndex, end:endRange.endIndex), with: replaceString)
 						
-						let advanceNum = countElements(replaceString) - distance(startRange.startIndex, endRange.endIndex)
+						let advanceNum = count(replaceString) - distance(startRange.startIndex, endRange.endIndex)
 						
 						//adjust the search range because we just changed the length / posision of the search range by replacing stuff
 						searchRange.startIndex = advance(searchRange.startIndex, advanceNum)
@@ -80,9 +80,9 @@ extension PlanetUI {
     // returns an array of all available fonts
     public class func fontNames() -> [String] {
         var names = [String]()
-        for family in UIFont.familyNames() as [String] {
+        for family in UIFont.familyNames() as! [String] {
             for name in UIFont.fontNamesForFamilyName(family) {
-                names.append(name as String)
+                names.append(name as! String)
             }
         }
         return names
