@@ -15,6 +15,28 @@ extension PlanetUI {
         return config?[key]
     }
     
+    public class func configStringForKey(key: String) -> String? {
+        return PlanetUI.configForKey(key) as? String
+    }
+    
+    public class func configFloatForKey(key: String) -> Float? {
+        return (PlanetUI.configForKey(key) as? NSString)?.floatValue
+    }
+    
+    public class func configCGFloatForKey(key: String) -> CGFloat? {
+        if let value = PlanetUI.configFloatForKey(key) {
+            return CGFloat(value)
+        }
+        return nil
+    }
+    
+    public class func configColorForKey(key: String) -> UIColor? {
+        if let colorString = PlanetUI.configStringForKey(key) {
+            return UIColor(gaxbString: colorString)
+        }
+        return nil
+    }
+    
     private class func checkLoadConfig() {
         
         #if RELEASE
