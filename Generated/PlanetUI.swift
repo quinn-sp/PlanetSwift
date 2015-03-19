@@ -59,12 +59,9 @@ extension PlanetUI {
 	//MARK: - processing expressions
 	
     public class func processExpressions(string: String) -> String {
-        checkLoadConfig()
 		var processedString = NSMutableString(string: string)
 		if config != nil {
-			findAndReplaceExpressions(processedString, expressionName:"config") { (expressionValue:String) in
-				return config![expressionValue]
-			}
+			findAndReplaceExpressions(processedString, expressionName:"config", configForKey)
 		}
         return processedString
     }
