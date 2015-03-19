@@ -4,15 +4,16 @@
 
 import UIKit
 
-private var config:Dictionary<String, AnyObject>?
+private var config:NSDictionary?
 private var attemptedConfigLoad = false
-var dummy = 0
 
 extension PlanetUI {
 	
+	//MARK: - config
+	
     public class func configForKey(key: String) -> AnyObject? {
         checkLoadConfig()
-        return config?[key]
+        return config?.valueForKeyPath(key)
     }
     
     public class func configStringForKey(key: String) -> String? {
@@ -46,11 +47,13 @@ extension PlanetUI {
         if config == nil && !attemptedConfigLoad {
             attemptedConfigLoad = true
             if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_configPathKey) as? String {
-                config = NSDictionary(contentsOfFile: String(bundlePath: path)) as? Dictionary<String, AnyObject>
+                config = NSDictionary(contentsOfFile: String(bundlePath: path))
             }
         }
     }
-    
+	
+	//MARK: - processing expressions
+	
     public class func processExpressions(string: String) -> String {
         checkLoadConfig()
 		var processedString = NSMutableString(string: string)
