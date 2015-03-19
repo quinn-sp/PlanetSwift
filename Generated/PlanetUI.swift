@@ -20,6 +20,10 @@ extension PlanetUI {
         return PlanetUI.configForKey(key) as? String
     }
     
+    public class func configIntForKey(key: String) -> Int? {
+        return PlanetUI.configStringForKey(key)?.toInt()
+    }
+    
     public class func configFloatForKey(key: String) -> Float? {
         return (PlanetUI.configForKey(key) as? NSString)?.floatValue
     }
