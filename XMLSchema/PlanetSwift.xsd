@@ -262,6 +262,22 @@
 		</complexContent>
 	</complexType>
 
+	<element name="ActivityIndicatorView" type="ui:ActivityIndicatorView"/><!-- typically better than TextField only for multi-line text input -->
+	<complexType name="ActivityIndicatorView">
+		<annotation>
+			<appinfo><![CDATA[ActivityIndicatorView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIActivityIndicatorView_Class/" target="_blank">UIActivityIndicatorView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="startAnimating" type="string"/>
+				<attribute name="stopAnimating" type="string"/>
+				<attribute name="hidesWhenStopped" type="boolean" />
+				<attribute name="activityIndicatorViewStyle" type="ui:ActivityIndicatorViewStyle"/>
+				<attribute name="color" type="ui:color"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="CollectionView" type="ui:CollectionView"/>
 	<complexType name="CollectionView">
 		<annotation>
@@ -379,6 +395,17 @@
 	</complexType>
 
 <!-- enumerations -->
+
+	<simpleType name="ActivityIndicatorViewStyle">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="whiteLarge" />
+			<enumeration value="white" />
+			<enumeration value="gray" />
+		</restriction>
+	</simpleType>
 
 	<simpleType name="BlurEffect">
 		<annotation>

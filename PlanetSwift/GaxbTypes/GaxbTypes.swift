@@ -393,3 +393,16 @@ extension UIKeyboardType {
 		}
 	}
 }
+
+extension UIActivityIndicatorViewStyle {
+    public static func fromPlanetUIActivityIndicatorViewStyle(type:PlanetUI.ActivityIndicatorViewStyle) -> UIActivityIndicatorViewStyle {
+		switch type {
+		case .whiteLarge:
+			return .WhiteLarge
+		case .white:
+			return .White
+		case .gray:
+			return .Gray
+		}
+	}
+}
