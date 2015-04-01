@@ -41,7 +41,24 @@ extension PlanetUI {
         }
         return nil
     }
-    
+	
+	public class func configImageForKey(key: String) -> UIImage? {
+		if let bundlePath = PlanetUI.configStringForKey(key) {
+			if let image = UIImage(contentsOfFile: String(bundlePath: bundlePath)) {
+				return image
+			}
+		}
+		return nil
+	}
+	
+	public class func configRemoteImageForKey(key: String, completion: ImageCache_CompletionBlock) {
+		if let urlString = PlanetUI.configStringForKey(key) {
+			if let url = NSURL(string: urlString) {
+				ImageCache.sharedInstance.get(url, completion: completion)
+			}
+		}
+	}
+	
     private class func checkLoadConfig() {
         
         #if RELEASE
