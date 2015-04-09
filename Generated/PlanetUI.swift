@@ -4,17 +4,61 @@
 
 import UIKit
 
-private var config:Dictionary<String, AnyObject>?
+private var config:NSDictionary?
 private var attemptedConfigLoad = false
-var dummy = 0
 
 extension PlanetUI {
 	
+	//MARK: - config
+	
     public class func configForKey(key: String) -> AnyObject? {
         checkLoadConfig()
-        return config?[key]
+        return config?.valueForKeyPath(key)
     }
     
+    public class func configStringForKey(key: String) -> String? {
+        return PlanetUI.configForKey(key) as? String
+    }
+    
+    public class func configIntForKey(key: String) -> Int? {
+        return PlanetUI.configStringForKey(key)?.toInt()
+    }
+    
+    public class func configFloatForKey(key: String) -> Float? {
+        return (PlanetUI.configForKey(key) as? NSString)?.floatValue
+    }
+    
+    public class func configCGFloatForKey(key: String) -> CGFloat? {
+        if let value = PlanetUI.configFloatForKey(key) {
+            return CGFloat(value)
+        }
+        return nil
+    }
+    
+    public class func configColorForKey(key: String) -> UIColor? {
+        if let colorString = PlanetUI.configStringForKey(key) {
+            return UIColor(gaxbString: colorString)
+        }
+        return nil
+    }
+	
+	public class func configImageForKey(key: String) -> UIImage? {
+		if let bundlePath = PlanetUI.configStringForKey(key) {
+			if let image = UIImage(contentsOfFile: String(bundlePath: bundlePath)) {
+				return image
+			}
+		}
+		return nil
+	}
+	
+	public class func configRemoteImageForKey(key: String, completion: ImageCache_CompletionBlock) {
+		if let urlString = PlanetUI.configStringForKey(key) {
+			if let url = NSURL(string: urlString) {
+				ImageCache.sharedInstance.get(url, completion: completion)
+			}
+		}
+	}
+	
     private class func checkLoadConfig() {
         
         #if RELEASE
@@ -24,18 +68,17 @@ extension PlanetUI {
         if config == nil && !attemptedConfigLoad {
             attemptedConfigLoad = true
             if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_configPathKey) as? String {
-                config = NSDictionary(contentsOfFile: String(bundlePath: path)) as? Dictionary<String, AnyObject>
+                config = NSDictionary(contentsOfFile: String(bundlePath: path))
             }
         }
     }
-    
+	
+	//MARK: - processing expressions
+	
     public class func processExpressions(string: String) -> String {
-        checkLoadConfig()
 		var processedString = NSMutableString(string: string)
 		if config != nil {
-			findAndReplaceExpressions(processedString, expressionName:"config") { (expressionValue:String) in
-				return config![expressionValue]
-			}
+			findAndReplaceExpressions(processedString, expressionName:"config", configForKey)
 		}
         return processedString as String
     }
