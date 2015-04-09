@@ -35,14 +35,8 @@ public class GestureRecognizer: GestureRecognizerBase {
 		super.gaxbDidPrepare()
 		
 		//TODO: clean up this pyramid once swift 1.2 is out
-		if let recognizer = recognizer {
-			if let view = view {
-				
-				let viewObj:AnyObject? = (scope() as? Object)?.objectForId(view)
-				if let referencedView = viewObj as? View {
-					referencedView.view.addGestureRecognizer(recognizer)
-				}
-			}
+		if let recognizer = recognizer, view = view, referencedView = (scope() as? Object)?.objectForId(view) as? View {
+			referencedView.view.addGestureRecognizer(recognizer)
 		}
 	}
 	
