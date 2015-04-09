@@ -10,18 +10,6 @@ import UIKit
 
 public class PlanetButton: UIButton {
     
-    override init() {
-        super.init()
-    }
-    
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
     convenience init(bgColor: UIColor, bgColorHighlighted: UIColor, bgColorSelected: UIColor, bgColorSelectedHighlighted: UIColor, bgColorDisabled: UIColor, toggle: Bool)
     {
         self.init();

@@ -12,7 +12,7 @@ public class ActivityIndicatorView: ActivityIndicatorViewBase {
         }
         set {
             if newValue is UIActivityIndicatorView {
-                activityIndicator = newValue as UIActivityIndicatorView
+                activityIndicator = newValue as! UIActivityIndicatorView
             }
         }
     }
