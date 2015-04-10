@@ -13,7 +13,7 @@ public class Controller: ControllerBase {
 				for notification in self.notifications {
 					let (scopeObject: AnyObject?, name) = self.parseNotification(notification.scopedName)
 					if name != nil {
-						NSNotificationCenter.defaultCenter().removeObserver(oldValue!, name: notification.name?, object: notification.scopeObject)
+						NSNotificationCenter.defaultCenter().removeObserver(oldValue!, name: notification.name, object: notification.scopeObject)
 					}
 				}
 			}

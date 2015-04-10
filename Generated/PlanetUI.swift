@@ -78,9 +78,9 @@ extension PlanetUI {
     public class func processExpressions(string: String) -> String {
 		var processedString = NSMutableString(string: string)
 		if config != nil {
-			findAndReplaceExpressions(processedString, expressionName:"config", configForKey)
+			findAndReplaceExpressions(processedString, expressionName:"config", expressionEvaluatorBlock: configForKey)
 		}
-        return processedString
+        return processedString as String
     }
 	
 	public class func findAndReplaceExpressions(stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:(String->AnyObject?)) {
@@ -106,7 +106,7 @@ extension PlanetUI {
 						
 						let replaceString = "\(replaceValue)" as NSString
 						let replaceLength = (endRange.location+endRange.length)-startRange.location
-						stringToSearch.replaceCharactersInRange(NSMakeRange(startRange.location, replaceLength), withString: replaceString)
+						stringToSearch.replaceCharactersInRange(NSMakeRange(startRange.location, replaceLength), withString: replaceString as String)
 						
 						//adjust the search range because we just changed the length / posision of the search range by replacing stuff
 						let adjustNum = replaceString.length - replaceLength
@@ -129,9 +129,9 @@ extension PlanetUI {
     // returns an array of all available fonts
     public class func fontNames() -> [String] {
         var names = [String]()
-        for family in UIFont.familyNames() as [String] {
+        for family in UIFont.familyNames() as! [String] {
             for name in UIFont.fontNamesForFamilyName(family) {
-                names.append(name as String)
+                names.append(name as! String)
             }
         }
         return names

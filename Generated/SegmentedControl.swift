@@ -7,13 +7,13 @@ import UIKit
 public class SegmentedControl: SegmentedControlBase {
     lazy public var segmentedControl = UISegmentedControl()
     
-    override public var control: UIControl {
+    override public var control: UIControl? {
         get {
             return segmentedControl
         }
         set {
             if newValue is UISegmentedControl {
-                segmentedControl = newValue as UISegmentedControl
+                segmentedControl = newValue as! UISegmentedControl
             }
         }
     }

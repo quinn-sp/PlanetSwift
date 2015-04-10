@@ -13,7 +13,7 @@ public class WebView: WebViewBase {
         }
         set {
             if newValue is UIWebView {
-                webview = newValue as UIWebView
+                webview = newValue as! UIWebView
             }
         }
     }

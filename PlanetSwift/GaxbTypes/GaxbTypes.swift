@@ -192,7 +192,7 @@ extension UIColor {
             let substring = gaxbString.substringFromIndex(advance(gaxbString.startIndex, 1))
             var hexNumber:UInt32 = 0;
             let hexScanner = NSScanner(string: substring).scanHexInt(&hexNumber)
-            switch countElements(substring) {
+            switch count(substring) {
             case 8:
                 r = CGFloat((hexNumber & 0xFF000000) >> 24) / 255.0
                 g = CGFloat((hexNumber & 0x00FF0000) >> 16) / 255.0
@@ -222,7 +222,7 @@ extension UIColor {
         var r:CGFloat = 0, g:CGFloat = 0, b:CGFloat = 0, a:CGFloat = 0
         if self.getRed(&r, green:&g , blue: &b, alpha: &a) {
             let hexNumber = Int(r*255) << 24 + Int(g*255) << 16 + Int(b*255) << 8 + Int(a*255)
-            return NSString(format:"#%08X", hexNumber)
+            return NSString(format:"#%08X", hexNumber) as String
         }
         return ""
     }

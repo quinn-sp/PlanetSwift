@@ -12,7 +12,7 @@ public class ImageView: ImageViewBase {
         }
         set {
             if newValue is UIImageView {
-                imageView = newValue as UIImageView
+                imageView = newValue as! UIImageView
             }
         }
     }

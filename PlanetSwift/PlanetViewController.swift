@@ -22,7 +22,7 @@ public class PlanetViewController: UIViewController {
 		}
 		
 		if titleBundlePath != nil {
-			let xmlView:View? = PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as View?
+			let xmlView:View? = PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as! View?
 			if xmlView != nil {
 				self.navigationItem.titleView = xmlView!.view
 				xmlView!.visit({ (element) -> () in
@@ -62,7 +62,7 @@ public class PlanetViewController: UIViewController {
 			planetViews.append(foundView)
 		}
 		for child in searchedView.subviews {
-			searchForPlanetView(child as UIView)
+			searchForPlanetView(child as! UIView)
 		}
 	}
 	

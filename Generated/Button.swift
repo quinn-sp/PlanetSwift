@@ -13,7 +13,7 @@ public class Button: ButtonBase {
         }
         set {
             if newValue is PlanetButton {
-                button = newValue as PlanetButton
+                button = newValue as! PlanetButton
             }
         }
     }
@@ -91,8 +91,8 @@ public class Button: ButtonBase {
         }
         
         if imageSet != nil {
-            let pathLength = countElements(imageSet!)
-            let extensionLength = countElements(imageSet!.componentsSeparatedByString(".").last!)
+            let pathLength = count(imageSet!)
+            let extensionLength = count(imageSet!.componentsSeparatedByString(".").last!)
             let insertPosition = pathLength - extensionLength - 1
             
             let normalPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_normal" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
@@ -117,8 +117,8 @@ public class Button: ButtonBase {
         }
         
         if backgroundImageSet != nil {
-            let pathLength = countElements(backgroundImageSet!)
-            let extensionLength = countElements(backgroundImageSet!.componentsSeparatedByString(".").last!)
+            let pathLength = count(backgroundImageSet!)
+            let extensionLength = count(backgroundImageSet!.componentsSeparatedByString(".").last!)
             let insertPosition = pathLength - extensionLength - 1
             
             let normalPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_normal" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
