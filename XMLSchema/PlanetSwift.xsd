@@ -185,7 +185,7 @@
 	<element name="NetworkImageView" type="ui:NetworkImageView"/>
 	<complexType name="NetworkImageView">
 		<annotation>
-			<appinfo><![CDATA[NetworkImageView show an image, similar to ImageView, but it also allows you to pull the image from the internet. It can show a local image as a placeholder until the remote image finishes loading.]]></appinfo>
+			<appinfo><![CDATA[NetworkImageView shows an image, similar to ImageView, but it also allows you to pull the image from the internet. It can show a local image as a placeholder until the remote image finishes loading.]]></appinfo>
 		</annotation>
 		<complexContent>
 			<extension base="ui:ImageView">
