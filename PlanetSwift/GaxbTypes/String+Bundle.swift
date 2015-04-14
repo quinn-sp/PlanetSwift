@@ -22,7 +22,10 @@ extension String {
             if let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as? NSString {
                 self = documentsPath.stringByAppendingPathComponent(pathComponents[1])
             }
-            break
+        case "cache":
+            if let cachePath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as? NSString {
+                self = cachePath.stringByAppendingPathComponent(pathComponents[1])
+            }
         default:
             self = bundlePath
         }
