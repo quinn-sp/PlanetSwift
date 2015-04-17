@@ -406,3 +406,44 @@ extension UIActivityIndicatorViewStyle {
 		}
 	}
 }
+
+extension UITextAutocapitalizationType {
+	public static func fromPlanetUITextAutocapitalizationType(type:PlanetUI.TextAutocapitalizationType) -> UITextAutocapitalizationType {
+		switch type {
+		case .none:
+			return .None
+		case .words:
+			return .Words
+		case .sentences:
+			return .Sentences
+		case .allCharacters:
+			return .AllCharacters
+		}
+	}
+}
+
+extension UITextAutocorrectionType {
+	public static func fromPlanetUITextAutocorrectionType(type:PlanetUI.TextAutocorrectionType) -> UITextAutocorrectionType {
+		switch type {
+		case .Default:
+			return .Default
+		case .no:
+			return .No
+		case .yes:
+			return .Yes
+		}
+	}
+}
+
+extension UITextSpellCheckingType {
+	public static func fromPlanetUITextSpellCheckingType(type:PlanetUI.TextSpellCheckingType) -> UITextSpellCheckingType {
+		switch type {
+		case .Default:
+			return .Default
+		case .no:
+			return .No
+		case .yes:
+			return .Yes
+		}
+	}
+}

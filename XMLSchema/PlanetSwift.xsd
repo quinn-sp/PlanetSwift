@@ -145,6 +145,9 @@
 				<attribute name="onBeginEditing" type="string"/>
 				<attribute name="onEndEditing" type="string"/>
 				<attribute name="onReturnPressed" type="string"/>
+				<attribute name="autocapitalizationType" type="ui:TextAutocapitalizationType"/>
+				<attribute name="autocorrectionType" type="ui:TextAutocorrectionType"/>
+				<attribute name="spellCheckingType" type="ui:TextSpellCheckingType"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -556,6 +559,40 @@
 			<enumeration value="decimalPad" />
 			<enumeration value="twitter" />
 			<enumeration value="webSearch" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextAutocapitalizationType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="none" />
+			<enumeration value="words" />
+			<enumeration value="sentences" />
+			<enumeration value="allCharacters" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextAutocorrectionType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="no" />
+			<enumeration value="yes" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextSpellCheckingType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="no" />
+			<enumeration value="yes" />
 		</restriction>
 	</simpleType>
 

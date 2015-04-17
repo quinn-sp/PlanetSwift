@@ -66,6 +66,15 @@ public class TextField: TextFieldBase {
 		if keyboardType != nil {
 			textField.keyboardType = UIKeyboardType.fromPlanetUIKeyboardType(keyboardType!)
 		}
+		if autocapitalizationType != nil {
+			textField.autocapitalizationType = UITextAutocapitalizationType.fromPlanetUITextAutocapitalizationType(autocapitalizationType!)
+		}
+		if autocorrectionType != nil {
+			textField.autocorrectionType = UITextAutocorrectionType.fromPlanetUITextAutocorrectionType(autocorrectionType!)
+		}
+		if spellCheckingType != nil {
+			textField.spellCheckingType = UITextSpellCheckingType.fromPlanetUITextSpellCheckingType(spellCheckingType!)
+		}
 		
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }
