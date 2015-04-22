@@ -16,11 +16,6 @@ public class PlanetView: UIView {
 			loadXMLView()
 		}
 	}
-    
-    convenience init(bundlePath: String?) {
-        self.init()
-        self.bundlePath = bundlePath
-    }
 	
 	//MARK: - loading / unloading view
 	
