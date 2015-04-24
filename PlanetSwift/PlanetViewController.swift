@@ -13,6 +13,8 @@ public class PlanetViewController: UIViewController {
     public var planetViews = Array<PlanetView>()
 	var idMappings = Dictionary<String, Object>()
 	@IBInspectable var titleBundlePath:String?
+    
+    var titleXmlView:View?
 	
 	public override func loadView() {
 		super.loadView()
@@ -22,13 +24,13 @@ public class PlanetViewController: UIViewController {
 		}
 		
 		if titleBundlePath != nil {
-			let xmlView:View? = PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as! View?
-			if xmlView != nil {
-				self.navigationItem.titleView = xmlView!.view
-				xmlView!.visit({ (element) -> () in
+			titleXmlView = PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as! View?
+			if titleXmlView != nil {
+				self.navigationItem.titleView = titleXmlView!.view
+				titleXmlView!.visit({ (element) -> () in
 					element.gaxbDidPrepare()
 				})
-				searchXMLObject(xmlView!)
+				searchXMLObject(titleXmlView!)
 			}
 		}
 		
