@@ -281,6 +281,33 @@
 		</complexContent>
 	</complexType>
 
+	<element name="PageControl" type="ui:PageControl"/>
+	<complexType name="PageControl">
+		<annotation>
+			<appinfo><![CDATA[PageControl attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIPageControl_Class/" target="_blank">UIPageControl</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="hidesForSinglePage" type="boolean"/>
+				<attribute name="pageIndicatorTintColor" type="ui:color"/>
+				<attribute name="currentPageIndicatorTintColor" type="ui:color"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ScrollView" type="ui:ScrollView"/>
+	<complexType name="ScrollView">
+		<annotation>
+			<appinfo><![CDATA[ScrollView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/" target="_blank">UIScrollView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="contentSize" type="ui:size"/>
+				<attribute name="pagingEnabled" type="boolean"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="CollectionView" type="ui:CollectionView"/>
 	<complexType name="CollectionView">
 		<annotation>
