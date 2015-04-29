@@ -66,7 +66,7 @@ public class Label: LabelBase {
         }
     }
     
-    public func updateText(newText: String) {
+    public func updateText(newText: String?) {
         text = newText
         gaxbPrepare()
     }
