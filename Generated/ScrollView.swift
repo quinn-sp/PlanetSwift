@@ -24,5 +24,11 @@ public class ScrollView: ScrollViewBase {
 		if pagingEnabled != nil {
 			scrollView.pagingEnabled = pagingEnabled!
 		}
+		if showsHorizontalScrollIndicator != nil {
+			scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator!
+		}
+		if showsVerticalScrollIndicator != nil {
+			scrollView.showsVerticalScrollIndicator = showsVerticalScrollIndicator!
+		}
 	}
 }

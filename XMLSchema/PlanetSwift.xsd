@@ -304,6 +304,8 @@
 			<extension base="ui:View">
 				<attribute name="contentSize" type="ui:size"/>
 				<attribute name="pagingEnabled" type="boolean"/>
+				<attribute name="showsHorizontalScrollIndicator" type="boolean"/>
+				<attribute name="showsVerticalScrollIndicator" type="boolean"/>
 			</extension>
 		</complexContent>
 	</complexType>
