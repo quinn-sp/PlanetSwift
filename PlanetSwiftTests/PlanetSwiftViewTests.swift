@@ -19,7 +19,7 @@ class PlanetSwiftViewTests: XCTestCase {
     override func setUp() {
         super.setUp()
         element = PlanetUI.readFromString(testXMLString)
-        if let view = element as View? {
+        if let view = element as? View {
             subview0 = view.anys[0] as? View
             subview1 = view.anys[1] as? View
         }

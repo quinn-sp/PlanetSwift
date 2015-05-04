@@ -51,6 +51,12 @@
 		A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332A1A85482F004969E1 /* SegmentedControl.swift */; };
 		A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */; };
 		C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */; };
+		C49462451AF819F200F005B4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494623F1AF819F200F005B4 /* ActivityIndicatorView.swift */; };
+		C49462461AF819F200F005B4 /* ActivityIndicatorViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462401AF819F200F005B4 /* ActivityIndicatorViewBase.swift */; };
+		C49462471AF819F200F005B4 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462411AF819F200F005B4 /* PageControl.swift */; };
+		C49462481AF819F200F005B4 /* PageControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462421AF819F200F005B4 /* PageControlBase.swift */; };
+		C49462491AF819F200F005B4 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462431AF819F200F005B4 /* ScrollView.swift */; };
+		C494624A1AF819F200F005B4 /* ScrollViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462441AF819F200F005B4 /* ScrollViewBase.swift */; };
 		C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD71A60D9290094F56A /* Notification.swift */; };
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
 		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
@@ -127,6 +133,12 @@
 		A9E8332A1A85482F004969E1 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlBase.swift; sourceTree = "<group>"; };
 		C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftConfiguration.swift; sourceTree = "<group>"; };
+		C494623F1AF819F200F005B4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		C49462401AF819F200F005B4 /* ActivityIndicatorViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewBase.swift; sourceTree = "<group>"; };
+		C49462411AF819F200F005B4 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		C49462421AF819F200F005B4 /* PageControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlBase.swift; sourceTree = "<group>"; };
+		C49462431AF819F200F005B4 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		C49462441AF819F200F005B4 /* ScrollViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewBase.swift; sourceTree = "<group>"; };
 		C4AA9CD71A60D9290094F56A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		C4AA9CD81A60D9290094F56A /* NotificationBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBase.swift; sourceTree = "<group>"; };
 		C4AA9CE81A6383ED0094F56A /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -239,22 +251,20 @@
 		A9B439961A3B40B70052690A /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				C4C060EC1AA37675004D39EC /* CollectionView.swift */,
-				C4C060ED1AA37675004D39EC /* CollectionViewBase.swift */,
-				C4C060EE1AA37675004D39EC /* Control.swift */,
-				C4C060EF1AA37675004D39EC /* ControlBase.swift */,
-				C4C060F01AA37675004D39EC /* GestureRecognizer.swift */,
-				C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */,
-				C4C060F21AA37675004D39EC /* PanGestureRecognizer.swift */,
-				C4C060F31AA37675004D39EC /* PanGestureRecognizerBase.swift */,
-				C4C060F41AA37675004D39EC /* PinchGestureRecognizer.swift */,
-				C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */,
+				C494623F1AF819F200F005B4 /* ActivityIndicatorView.swift */,
+				C49462401AF819F200F005B4 /* ActivityIndicatorViewBase.swift */,
 				C4AA9CE81A6383ED0094F56A /* Button.swift */,
 				C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */,
+				C4C060EC1AA37675004D39EC /* CollectionView.swift */,
+				C4C060ED1AA37675004D39EC /* CollectionViewBase.swift */,
 				9B972B851A66D52200BD0CC5 /* Constraint.swift */,
 				9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */,
+				C4C060EE1AA37675004D39EC /* Control.swift */,
+				C4C060EF1AA37675004D39EC /* ControlBase.swift */,
 				9BC9743C1A7022FC002F0295 /* Controller.swift */,
 				9BC9743D1A7022FC002F0295 /* ControllerBase.swift */,
+				C4C060F01AA37675004D39EC /* GestureRecognizer.swift */,
+				C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */,
 				9BCF35EF1A6EE7AF00E8418B /* ImageView.swift */,
 				9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */,
 				A92E737F1A4212B200B22884 /* Label.swift */,
@@ -265,12 +275,20 @@
 				C4AA9CD81A60D9290094F56A /* NotificationBase.swift */,
 				A9B439971A3B40B70052690A /* Object.swift */,
 				A9B439981A3B40B70052690A /* ObjectBase.swift */,
+				C49462411AF819F200F005B4 /* PageControl.swift */,
+				C49462421AF819F200F005B4 /* PageControlBase.swift */,
+				C4C060F21AA37675004D39EC /* PanGestureRecognizer.swift */,
+				C4C060F31AA37675004D39EC /* PanGestureRecognizerBase.swift */,
 				796C6AEE1A7188F900D87C38 /* PickerView.swift */,
 				796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */,
+				C4C060F41AA37675004D39EC /* PinchGestureRecognizer.swift */,
+				C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */,
 				C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */,
 				C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */,
 				A9639EF41A643A0D009C818F /* Scene.swift */,
 				A9639EF51A643A0D009C818F /* SceneBase.swift */,
+				C49462431AF819F200F005B4 /* ScrollView.swift */,
+				C49462441AF819F200F005B4 /* ScrollViewBase.swift */,
 				A9E8332A1A85482F004969E1 /* SegmentedControl.swift */,
 				A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */,
 				796C6ACC1A6ED86300D87C38 /* TextField.swift */,
@@ -430,9 +448,11 @@
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
 				9B77E4C21A7975DD001DF00B /* TextViewBase.swift in Sources */,
 				9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */,
+				C49462451AF819F200F005B4 /* ActivityIndicatorView.swift in Sources */,
 				9BC9743E1A7022FC002F0295 /* Controller.swift in Sources */,
 				9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */,
 				C4C060FB1AA37675004D39EC /* GestureRecognizerBase.swift in Sources */,
+				C49462491AF819F200F005B4 /* ScrollView.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
 				9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */,
 				9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */,
@@ -441,6 +461,7 @@
 				9BB342E61A65AC80004C12B7 /* String+Bundle.swift in Sources */,
 				796C6AE31A7063A100D87C38 /* WebView.swift in Sources */,
 				9BCF35F21A6EE7AF00E8418B /* ImageViewBase.swift in Sources */,
+				C49462461AF819F200F005B4 /* ActivityIndicatorViewBase.swift in Sources */,
 				A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */,
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
@@ -461,10 +482,12 @@
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
 				C4C060FD1AA37675004D39EC /* PanGestureRecognizerBase.swift in Sources */,
+				C494624A1AF819F200F005B4 /* ScrollViewBase.swift in Sources */,
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
 				796C6AE41A7063A100D87C38 /* WebViewBase.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
 				C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */,
+				C49462481AF819F200F005B4 /* PageControlBase.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
 				C4C060F61AA37675004D39EC /* CollectionView.swift in Sources */,
 				9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */,
@@ -478,6 +501,7 @@
 				C4C060F71AA37675004D39EC /* CollectionViewBase.swift in Sources */,
 				A92E73811A4212B200B22884 /* Label.swift in Sources */,
 				C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */,
+				C49462471AF819F200F005B4 /* PageControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

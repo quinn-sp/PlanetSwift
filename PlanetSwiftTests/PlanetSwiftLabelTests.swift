@@ -19,7 +19,7 @@ class PlanetSwiftLabelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         element = PlanetUI.readFromString(testXMLString)
-        if let view = element as View? {
+        if let view = element as? View {
             if let label = view.anys[0] as? Label {
                 label0 = label
             }
