@@ -27,7 +27,10 @@ public class Label: LabelBase {
             }
             return _paragraphStyle!
         }
-        
+		
+		if lineSpacing != nil {
+			paragraphStyle.lineSpacing = CGFloat(lineSpacing!)
+		}
         if textColor != nil {
             label.textColor = textColor
         }
@@ -38,24 +41,29 @@ public class Label: LabelBase {
         if numberOfLines != nil {
             label.numberOfLines = numberOfLines!
         }
-        if textAlignment != nil {
-			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
-        }
         if fontName != nil {
             label.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
         }
         if fontSize != nil {
             label.font = label.font.fontWithSize(CGFloat(fontSize!))
         }
+		
+		//attributes that are sensitive to the existence (or non-existence) of _paragraphStyle
+		if textAlignment != nil {
+			if _paragraphStyle != nil {
+				paragraphStyle.alignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
+			}
+			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
+		}
 		if lineBreakMode != nil {
+			if _paragraphStyle != nil {
+				paragraphStyle.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
+			}
 			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
 		}
-        if lineSpacing != nil {
-            paragraphStyle.lineSpacing = CGFloat(lineSpacing!)
-        }
-        
+		
         let unwrappedText = text != nil ? text! : ""
-        
+		
         if _paragraphStyle != nil {
             var attributedString = NSMutableAttributedString(string: unwrappedText)
             let attributes = [NSParagraphStyleAttributeName : paragraphStyle]
