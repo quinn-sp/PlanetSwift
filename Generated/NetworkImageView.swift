@@ -40,6 +40,10 @@ public class NetworkImageView: NetworkImageViewBase {
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
+        if placeholderPath != nil {
+            networkImageView.image = UIImage(named: String(bundlePath: placeholderPath!))
+        }
+        
 		if placeholderContentMode != nil {
 			networkImageView.placeholderContentMode = UIViewContentMode.fromPlanetUIContentMode(placeholderContentMode!)
 		}
