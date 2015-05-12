@@ -30,7 +30,7 @@ public class ImageView: ImageViewBase {
 	}
 	
 	public func setImageWithPath(path:String) {
-		if let img: UIImage = UIImage(named: path) {
+		if let img: UIImage = UIImage(contentsOfFile: path) {
 			imageView.image = img
 		}
 	}
