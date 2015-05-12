@@ -49,44 +49,44 @@ public class Button: ButtonBase {
         }
         
         if backgroundImage != nil {
-            let img = UIImage(named: String(bundlePath: backgroundImage!))
+            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImage!))
             button.setBackgroundImage(img, forState: .Normal)
         }
         if backgroundImageHighlighted != nil {
-            let img = UIImage(named: String(bundlePath: backgroundImageHighlighted!))
+            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageHighlighted!))
             button.setBackgroundImage(img, forState: .Highlighted)
         }
         if backgroundImageSelected != nil {
-            let img = UIImage(named: String(bundlePath: backgroundImageSelected!))
+            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSelected!))
             button.setBackgroundImage(img, forState: .Selected)
         }
         if backgroundImageSelectedHighlighted != nil {
-            let img = UIImage(named: String(bundlePath: backgroundImageSelectedHighlighted!))
+            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSelectedHighlighted!))
             button.setBackgroundImage(img, forState: .Selected | .Highlighted)
         }
         if backgroundImageDisabled != nil {
-            let img = UIImage(named: String(bundlePath: backgroundImageDisabled!))
+            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageDisabled!))
             button.setBackgroundImage(img, forState: .Disabled)
         }
         
         if image != nil {
-            let img = UIImage(named: String(bundlePath: image!))
+            let img = UIImage(contentsOfFile: String(bundlePath: image!))
             button.setImage(img, forState: .Normal)
         }
         if imageHighlighted != nil {
-            let img = UIImage(named: String(bundlePath: imageHighlighted!))
+            let img = UIImage(contentsOfFile: String(bundlePath: imageHighlighted!))
             button.setImage(img, forState: .Highlighted)
         }
         if imageSelected != nil {
-            let img = UIImage(named: String(bundlePath: imageSelected!))
+            let img = UIImage(contentsOfFile: String(bundlePath: imageSelected!))
             button.setImage(img, forState: .Selected)
         }
         if imageSelectedHighlighted != nil {
-            let img = UIImage(named: String(bundlePath: imageSelectedHighlighted!))
+            let img = UIImage(contentsOfFile: String(bundlePath: imageSelectedHighlighted!))
             button.setImage(img, forState: .Selected | .Highlighted)
         }
         if imageDisabled != nil {
-            let img = UIImage(named: String(bundlePath: imageDisabled!))
+            let img = UIImage(contentsOfFile: String(bundlePath: imageDisabled!))
             button.setImage(img, forState: .Disabled)
         }
         
@@ -101,18 +101,18 @@ public class Button: ButtonBase {
             let selectedHighlightedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
             let disabledPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_disabled" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
             
-            var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
+            var img: UIImage? = UIImage(contentsOfFile: String(bundlePath: normalPath))
             if img == nil {
-                img = UIImage(named: String(bundlePath: imageSet!))
+                img = UIImage(contentsOfFile: String(bundlePath: imageSet!))
             }
             button.setImage(img, forState: .Normal)
-            img = UIImage(named: String(bundlePath: highlightedPath))
+            img = UIImage(contentsOfFile: String(bundlePath: highlightedPath))
             button.setImage(img, forState: .Highlighted)
-            img = UIImage(named: String(bundlePath: selectedPath))
+            img = UIImage(contentsOfFile: String(bundlePath: selectedPath))
             button.setImage(img, forState: .Selected)
-            img = UIImage(named: String(bundlePath: selectedHighlightedPath))
+            img = UIImage(contentsOfFile: String(bundlePath: selectedHighlightedPath))
             button.setImage(img, forState: .Selected | .Highlighted)
-            img = UIImage(named: String(bundlePath: disabledPath))
+            img = UIImage(contentsOfFile: String(bundlePath: disabledPath))
             button.setImage(img, forState: .Disabled)
         }
         
@@ -127,18 +127,18 @@ public class Button: ButtonBase {
             let selectedHighlightedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
             let disabledPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_disabled" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
             
-            var img: UIImage? = UIImage(named: String(bundlePath: normalPath))
+            var img: UIImage? = UIImage(contentsOfFile: String(bundlePath: normalPath))
             if img == nil {
-                img = UIImage(named: String(bundlePath: backgroundImageSet!))
+                img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSet!))
             }
             button.setBackgroundImage(img, forState: .Normal)
-            img = UIImage(named: String(bundlePath: highlightedPath))
+            img = UIImage(contentsOfFile: String(bundlePath: highlightedPath))
             button.setBackgroundImage(img, forState: .Highlighted)
-            img = UIImage(named: String(bundlePath: selectedPath))
+            img = UIImage(contentsOfFile: String(bundlePath: selectedPath))
             button.setBackgroundImage(img, forState: .Selected)
-            img = UIImage(named: String(bundlePath: selectedHighlightedPath))
+            img = UIImage(contentsOfFile: String(bundlePath: selectedHighlightedPath))
             button.setBackgroundImage(img, forState: .Selected | .Highlighted)
-            img = UIImage(named: String(bundlePath: disabledPath))
+            img = UIImage(contentsOfFile: String(bundlePath: disabledPath))
             button.setBackgroundImage(img, forState: .Disabled)
         }
 		
