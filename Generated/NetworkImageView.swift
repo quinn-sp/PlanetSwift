@@ -23,7 +23,7 @@ public class NetworkImageView: NetworkImageViewBase {
             
             var placeholder:UIImage?
             if placeholderPath != nil {
-                placeholder = UIImage(named: String(bundlePath: placeholderPath!))
+                placeholder = UIImage(contentsOfFile: String(bundlePath: placeholderPath!))
             }
             networkImageView.setImage(url, placeholder: placeholder, completion: completion)
         }
@@ -41,7 +41,7 @@ public class NetworkImageView: NetworkImageViewBase {
 		super.gaxbPrepare()
 		
         if placeholderPath != nil {
-            networkImageView.image = UIImage(named: String(bundlePath: placeholderPath!))
+            networkImageView.image = UIImage(contentsOfFile: String(bundlePath: placeholderPath!))
         }
         
 		if placeholderContentMode != nil {
