@@ -12,7 +12,7 @@ extension String {
 	
 	public init(bundlePath:String) {
 		self.init()
-        let pathComponents = bundlePath.componentsSeparatedByString("://")
+        let pathComponents = bundlePath.componentsSeparatedByString(":/")
         switch pathComponents[0] {
         case "bundle":
             if let resourcePath = NSBundle.mainBundle().resourcePath {
