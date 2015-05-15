@@ -10,7 +10,7 @@ import UIKit
 
 public protocol GaxbElement {
     var xmlns: String { get }
-    var parent: GaxbElement? { get }
+	var parent: GaxbElement? { get set }
     func gaxbPrepare()
     func visit(visitor: (GaxbElement) -> ())
 	func gaxbDidPrepare()
@@ -24,6 +24,7 @@ public protocol GaxbElement {
     func toXML(useOriginalValues:Bool) -> String
     func toXML() -> String
     func description() -> String
+	func copy() -> GaxbElement
 }
 
 public protocol GaxbType {

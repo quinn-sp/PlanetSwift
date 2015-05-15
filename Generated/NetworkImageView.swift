@@ -51,8 +51,4 @@ public class NetworkImageView: NetworkImageViewBase {
 			networkImageView.downloadedContentMode = UIViewContentMode.fromPlanetUIContentMode(contentMode!)
 		}
 	}
-	
-    override public init() {
-        super.init()
-    }
 }
