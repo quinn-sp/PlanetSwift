@@ -14,16 +14,11 @@ typealias ImageCache_DownloadBlock = ((success:Bool) -> Void)
 
 public class ImageCache {
 	
-	//MARK: - static shared instance
+	//MARK: - public API
 	
 	public class var sharedInstance: ImageCache {
 		return ImageCache_shared
 	}
-	
-	//MARK: - various caching mechanisms
-	
-	let memoryCache = NSCache()
-	var activeNetworkRequests = Array<ImageCacheRequest>()
 	
 	public func get(url:NSURL, completion:ImageCache_CompletionBlock) {
 		
@@ -87,7 +82,20 @@ public class ImageCache {
 		}
 	}
 	
-	func activeRequestForKey(key:String) -> ImageCacheRequest? {
+	public func get(key:AnyObject) -> UIImage? {
+		return memoryCache.objectForKey(key) as? UIImage
+	}
+	
+	public func set(image:UIImage, key:AnyObject) {
+		memoryCache.setObject(image, forKey: key)
+	}
+	
+	//MARK: - private
+	
+	private let memoryCache = NSCache()
+	private var activeNetworkRequests = Array<ImageCacheRequest>()
+	
+	private func activeRequestForKey(key:String) -> ImageCacheRequest? {
 		for request in activeNetworkRequests {
 			if request.request.URL!.absoluteString == key {
 				return request
