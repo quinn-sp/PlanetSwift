@@ -16,12 +16,11 @@ public class <%= CAP_NAME %>Base<% if (hasSuperclass(this)) then %> : <%= superc
     public var parent: GaxbElement?
     public var originalValues = Dictionary<String, String> ()
 
-    init() { }
+    public required init() { }
     public func gaxbPrepare() { }
     public func gaxbDidPrepare() { }
 
 <% end
-
 local sequencesCount = 0;
 local hasAnys = false;
 for k,v in pairs(this.sequences) do
@@ -39,6 +38,36 @@ for k,v in pairs(this.sequences) do
 end
 
 %>
+
+    public <%= SUPERCLASS_OVERRIDE %>func copy() -> GaxbElement {
+<%if hasSuperclass(this) then %>        let copied = super.copy() as! <%= CAP_NAME %>
+<% else %>        let copied = self.dynamicType()
+<% end %>
+<%for k,v in pairs(this.sequences) do
+			if (v.name == "any") then
+		 		%>        for any in anys {
+            var anyCopy = any.copy()
+            copied.anys.append(anyCopy)
+            anyCopy.parent = copied
+        }
+<%		elseif (isPlural(v)) then
+				%>        for child in <%= lowercasedString(pluralName(v.name)) %> {
+            let childCopy = child.copy() as! <%= simpleTypeForItem(v) %>
+            copied.<%= lowercasedString(pluralName(v.name)) %>.append(childCopy)
+            childCopy.parent = copied
+        }
+<%
+			else
+		 		%><%= copied.lowercasedString(v.name) %> = lowercasedString(v.name) %>.copy() as! <%= simpleTypeForItem(v) %>
+<%		end
+	end
+    for k,v in pairs(this.attributes) do
+%>        copied.<%= v.name %> = <%= v.name %>
+<%    end
+%>
+        return copied
+    }
+
 	public <%= SUPERCLASS_OVERRIDE %>func visit(visitor: (GaxbElement) -> ()) {
 <%if hasSuperclass(this) then %>        super.visit(visitor)
 <% else %>        visitor(self)
@@ -100,7 +129,7 @@ end
 	end %>
     func <%= v.name %>AsString() -> String {<%
  if (v.type=="string") then %>
-        return <%= v.name %><% if (v.default == nil) then %>!<% end %>
+        return <%= v.name %> ?? ""
 <% elseif (isEnumForItem(v)) then %>
         return <%= v.name %><% if (v.default == nil) then %>!<% end %>.rawValue
 <% elseif (isGaxbTypeForItem(v)) then %>
