@@ -11,7 +11,7 @@ import UIKit
 public class PlanetView: UIView {
 	
 	public var xmlView:View?
-	@IBInspectable var bundlePath:String? {
+	@IBInspectable public var bundlePath:String? {
 		didSet {
 			loadXMLView()
 		}
