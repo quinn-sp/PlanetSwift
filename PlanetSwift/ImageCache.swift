@@ -22,64 +22,60 @@ public class ImageCache {
 	
 	public func get(url:NSURL, completion:ImageCache_CompletionBlock) {
 		
-		if let imageKey = url.absoluteString {
+		let imageKey = url.absoluteString
 			
-			if let memCacheImage = memoryCache.objectForKey(imageKey) as? UIImage {
-				completion(memCacheImage)
-				return
-			}
-				
-			if url.isFileReferenceURL() {
-				if let image = UIImage(contentsOfFile: imageKey) {
-					
-					memoryCache.setObject(image, forKey: imageKey)
-					completion(image)
-					
-					return
-				}
-			}
-			
-			var cacheRequest:ImageCacheRequest!
-			if let activeRequest = activeRequestForKey(imageKey) {
-				cacheRequest = activeRequest
-			}
-			else {
-				cacheRequest = ImageCacheRequest(url: url, completion: { [weak self] (success:Bool) in
-					
-					if self != nil {
-						var image:UIImage? = nil
-						if success {
-							image = UIImage(data: cacheRequest.imageData)
-							if image != nil {
-								self!.memoryCache.setObject(image!, forKey: imageKey)
-							}
-						}
-						
-						var index = 0
-						for request in self!.activeNetworkRequests {
-							
-							if request === cacheRequest {
-								break
-							}
-							index++
-						}
-						self!.activeNetworkRequests.removeAtIndex(index)
-						
-						//call all completion blocks
-						for block in cacheRequest.completionBlocks {
-							block(image)
-						}
-					}
-				})
-				activeNetworkRequests.append(cacheRequest)
-			}
-			
-			//append our completion block to this already-in-progress request
-			cacheRequest.completionBlocks.append(completion)
-		}
-		else {
-			completion(nil)
-		}
+        if let memCacheImage = memoryCache.objectForKey(imageKey) as? UIImage {
+            completion(memCacheImage)
+            return
+        }
+            
+        if url.isFileReferenceURL() {
+            if let image = UIImage(contentsOfFile: imageKey) {
+                
+                memoryCache.setObject(image, forKey: imageKey)
+                completion(image)
+                
+                return
+            }
+        }
+        
+        var cacheRequest:ImageCacheRequest!
+        if let activeRequest = activeRequestForKey(imageKey) {
+            cacheRequest = activeRequest
+        }
+        else {
+            cacheRequest = ImageCacheRequest(url: url, completion: { [weak self] (success:Bool) in
+                
+                if self != nil {
+                    var image:UIImage? = nil
+                    if success {
+                        image = UIImage(data: cacheRequest.imageData)
+                        if image != nil {
+                            self!.memoryCache.setObject(image!, forKey: imageKey)
+                        }
+                    }
+                    
+                    var index = 0
+                    for request in self!.activeNetworkRequests {
+                        
+                        if request === cacheRequest {
+                            break
+                        }
+                        index++
+                    }
+                    self!.activeNetworkRequests.removeAtIndex(index)
+                    
+                    //call all completion blocks
+                    for block in cacheRequest.completionBlocks {
+                        block(image)
+                    }
+                }
+            })
+            activeNetworkRequests.append(cacheRequest)
+        }
+        
+        //append our completion block to this already-in-progress request
+        cacheRequest.completionBlocks.append(completion)
 	}
 	
 	public func get(key:AnyObject) -> UIImage? {

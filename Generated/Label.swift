@@ -65,7 +65,7 @@ public class Label: LabelBase {
         let unwrappedText = text != nil ? text! : ""
 		
         if _paragraphStyle != nil {
-            var attributedString = NSMutableAttributedString(string: unwrappedText)
+            let attributedString = NSMutableAttributedString(string: unwrappedText)
             let attributes = [NSParagraphStyleAttributeName : paragraphStyle]
             attributedString.setAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
             label.attributedText = attributedString

@@ -6,7 +6,7 @@ import UIKit
 
 public class Button: ButtonBase {
     
-    lazy public var button = PlanetButton()
+    lazy public var button: PlanetButton = PlanetButton()
     override public var control: UIControl? {
         get {
             return button
@@ -32,13 +32,13 @@ public class Button: ButtonBase {
         button.setTitle(title, forState: .Normal)
         button.setTitle(titleHighlighted, forState: .Highlighted)
         button.setTitle(titleSelected, forState: .Selected)
-        button.setTitle(titleSelectedHighlighted, forState: .Selected | .Highlighted)
+        button.setTitle(titleSelectedHighlighted, forState: [.Selected, .Highlighted])
         button.setTitle(titleDisabled, forState: .Disabled)
         
         button.setTitleColor(titleFontColor, forState: .Normal)
         button.setTitleColor(titleFontColorHighlighted, forState: .Highlighted)
         button.setTitleColor(titleFontColorSelected, forState: .Selected)
-        button.setTitleColor(titleFontColorSelectedHighlighted, forState: .Selected | .Highlighted)
+        button.setTitleColor(titleFontColorSelectedHighlighted, forState: [.Selected, .Highlighted])
         button.setTitleColor(titleFontColorDisabled, forState: .Disabled)
         
         if titleFont != nil {
@@ -62,7 +62,7 @@ public class Button: ButtonBase {
         }
         if backgroundImageSelectedHighlighted != nil {
             let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSelectedHighlighted!))
-            button.setBackgroundImage(img, forState: .Selected | .Highlighted)
+            button.setBackgroundImage(img, forState: [.Selected, .Highlighted])
         }
         if backgroundImageDisabled != nil {
             let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageDisabled!))
@@ -83,7 +83,7 @@ public class Button: ButtonBase {
         }
         if imageSelectedHighlighted != nil {
             let img = UIImage(contentsOfFile: String(bundlePath: imageSelectedHighlighted!))
-            button.setImage(img, forState: .Selected | .Highlighted)
+            button.setImage(img, forState: [.Selected, .Highlighted])
         }
         if imageDisabled != nil {
             let img = UIImage(contentsOfFile: String(bundlePath: imageDisabled!))
@@ -91,8 +91,8 @@ public class Button: ButtonBase {
         }
         
         if imageSet != nil {
-            let pathLength = count(imageSet!)
-            let extensionLength = count(imageSet!.componentsSeparatedByString(".").last!)
+            let pathLength = (imageSet!).characters.count
+            let extensionLength = (imageSet!.componentsSeparatedByString(".").last!).characters.count
             let insertPosition = pathLength - extensionLength - 1
             
             let normalPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_normal" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
@@ -111,14 +111,14 @@ public class Button: ButtonBase {
             img = UIImage(contentsOfFile: String(bundlePath: selectedPath))
             button.setImage(img, forState: .Selected)
             img = UIImage(contentsOfFile: String(bundlePath: selectedHighlightedPath))
-            button.setImage(img, forState: .Selected | .Highlighted)
+            button.setImage(img, forState: [.Selected, .Highlighted])
             img = UIImage(contentsOfFile: String(bundlePath: disabledPath))
             button.setImage(img, forState: .Disabled)
         }
         
         if backgroundImageSet != nil {
-            let pathLength = count(backgroundImageSet!)
-            let extensionLength = count(backgroundImageSet!.componentsSeparatedByString(".").last!)
+            let pathLength = (backgroundImageSet!).characters.count
+            let extensionLength = (backgroundImageSet!.componentsSeparatedByString(".").last!).characters.count
             let insertPosition = pathLength - extensionLength - 1
             
             let normalPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_normal" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
@@ -137,7 +137,7 @@ public class Button: ButtonBase {
             img = UIImage(contentsOfFile: String(bundlePath: selectedPath))
             button.setBackgroundImage(img, forState: .Selected)
             img = UIImage(contentsOfFile: String(bundlePath: selectedHighlightedPath))
-            button.setBackgroundImage(img, forState: .Selected | .Highlighted)
+            button.setBackgroundImage(img, forState: [.Selected, .Highlighted])
             img = UIImage(contentsOfFile: String(bundlePath: disabledPath))
             button.setBackgroundImage(img, forState: .Disabled)
         }
@@ -163,7 +163,7 @@ public class Button: ButtonBase {
     @objc func buttonOnTouchUp(sender:UIButton!)
     {
         if onTouchUp != nil {
-            let (scopeObject: AnyObject?, name) = self.parseNotification(onTouchUp)
+            let (scopeObject, name) = self.parseNotification(onTouchUp)
             if name != nil {
                 NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
             }
@@ -173,7 +173,7 @@ public class Button: ButtonBase {
     @objc func buttonOnTouchDown(sender:UIButton!)
     {
         if onTouchDown != nil {
-            let (scopeObject: AnyObject?, name) = self.parseNotification(onTouchDown)
+            let (scopeObject, name) = self.parseNotification(onTouchDown)
             if name != nil {
                 NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)  // todo scope
             }

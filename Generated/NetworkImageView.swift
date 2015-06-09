@@ -6,7 +6,7 @@ import UIKit
 
 public class NetworkImageView: NetworkImageViewBase {
     
-	lazy public var networkImageView = PlanetNetworkImageView()
+    lazy public var networkImageView: PlanetNetworkImageView = PlanetNetworkImageView()
 	override public var imageView : UIImageView {
 		get {
 			return networkImageView

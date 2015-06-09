@@ -245,7 +245,7 @@ end
 
         xml += attributesXML(useOriginalValues)
 
-        var sXML = sequencesXML(useOriginalValues)
+        let sXML = sequencesXML(useOriginalValues)
         xml += sXML == "" ? "/>" : ">\\(sXML)</<%= CAP_NAME %>>"
         return xml
     }

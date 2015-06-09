@@ -34,8 +34,8 @@ public class TextView: TextViewBase {
 		if fontName != nil {
 			textView.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
 		}
-        if fontSize != nil {
-            textView.font = textView.font.fontWithSize(CGFloat(fontSize!))
+        if fontSize != nil && textView.font != nil {
+            textView.font = textView.font!.fontWithSize(CGFloat(fontSize!))
         }
 		if textColor != nil {
 			textView.textColor = textColor!
@@ -64,7 +64,7 @@ public class TextView: TextViewBase {
 	}
 	
 	func doNotification(note: String) {
-		let (scopeObject: AnyObject?, name) = self.parseNotification(note)
+		let (scopeObject, name) = self.parseNotification(note)
 		if name != nil {
 			NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
 		}
@@ -75,14 +75,14 @@ private class TextViewDelegateHelper : NSObject, UITextViewDelegate {
 	
 	weak var delegate:TextView?
 	
-	func textViewDidChange(textView: UITextView) {
+	@objc func textViewDidChange(textView: UITextView) {
 		
 		if delegate != nil {
 			delegate?.textViewDidChange(textView)
 		}
 	}
 	
-	func textViewDidEndEditing(textView: UITextView) {
+	@objc func textViewDidEndEditing(textView: UITextView) {
 		
 		if delegate != nil {
 			delegate?.textViewDidChange(textView)

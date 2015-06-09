@@ -29,7 +29,7 @@ extension Int: GaxbType {
         self.setWithGaxbString(gaxbString)
     }
     public mutating func setWithGaxbString(gaxbString: String) {
-        if let tmp = gaxbString.toInt() as Int? {
+        if let tmp = Int(gaxbString) as Int? {
             self = tmp
         } else {
             self = 0
@@ -191,8 +191,8 @@ extension UIColor {
         if gaxbString.hasPrefix("#") {
             let substring = gaxbString.substringFromIndex(advance(gaxbString.startIndex, 1))
             var hexNumber:UInt32 = 0;
-            let hexScanner = NSScanner(string: substring).scanHexInt(&hexNumber)
-            switch count(substring) {
+            let _ = NSScanner(string: substring).scanHexInt(&hexNumber)
+            switch substring.characters.count {
             case 8:
                 r = CGFloat((hexNumber & 0xFF000000) >> 24) / 255.0
                 g = CGFloat((hexNumber & 0x00FF0000) >> 16) / 255.0
@@ -330,8 +330,6 @@ extension UIViewContentMode {
 			return .BottomLeft
 		case .bottomRight:
 			return .BottomRight
-		case .scaleToFill:
-			return .ScaleToFill
 		}
 	}
 }

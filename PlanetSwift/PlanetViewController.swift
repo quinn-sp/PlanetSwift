@@ -64,7 +64,7 @@ public class PlanetViewController: UIViewController {
 			planetViews.append(foundView)
 		}
 		for child in searchedView.subviews {
-			searchForPlanetView(child as! UIView)
+			searchForPlanetView(child as UIView)
 		}
 	}
 	

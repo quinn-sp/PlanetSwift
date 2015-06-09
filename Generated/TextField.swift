@@ -36,8 +36,8 @@ public class TextField: TextFieldBase {
         if fontName != nil {
             textField.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
         }
-        if fontSize != nil {
-            textField.font = textField.font.fontWithSize(CGFloat(fontSize!))
+        if fontSize != nil && textField.font != nil {
+            textField.font = textField.font!.fontWithSize(CGFloat(fontSize!))
         }
         if textColor != nil {
             textField.textColor = textColor!
@@ -91,14 +91,15 @@ public class TextField: TextFieldBase {
         }
     }
 
-    func textFieldShouldReturn(textField: UITextField) {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         if onReturnPressed != nil {
             doNotification(onReturnPressed!)
         }
+        return true
     }
 
     func doNotification(note: String) {
-        let (scopeObject: AnyObject?, name) = self.parseNotification(note)
+        let (scopeObject, name) = self.parseNotification(note)
         if name != nil {
             NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
         }
@@ -108,24 +109,16 @@ public class TextField: TextFieldBase {
 private class TextFieldHelper: NSObject, UITextFieldDelegate {
     weak var textDelegate: TextField?
 
-    func textFieldDidBeginEditing(textField: UITextField) {
-
-        if textDelegate != nil {
-            textDelegate!.textFieldDidBeginEditing(textField)
-        }
+    @objc func textFieldDidBeginEditing(textField: UITextField) {
+        textDelegate?.textFieldDidBeginEditing(textField)
     }
 
-    func textFieldDidEndEditing(textField: UITextField) {
-
-        if textDelegate != nil {
-            textDelegate!.textFieldDidEndEditing(textField)
-        }
+    @objc func textFieldDidEndEditing(textField: UITextField) {
+        textDelegate?.textFieldDidEndEditing(textField)
     }
-
-    func textFieldShouldReturn(textField: UITextField) {
-
-        if textDelegate != nil {
-            textDelegate!.textFieldShouldReturn(textField)
-        }
+    
+    @objc func textFieldShouldReturn(textField: UITextField) -> Bool {
+        guard textDelegate != nil else { return true }
+        return textDelegate!.textFieldShouldReturn(textField)
     }
 }

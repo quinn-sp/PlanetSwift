@@ -21,7 +21,10 @@ extension PlanetUI {
     }
     
     public class func configIntForKey(key: String) -> Int? {
-        return PlanetUI.configStringForKey(key)?.toInt()
+        if let value = PlanetUI.configStringForKey(key) {
+            return Int(value)
+        }
+        return nil
     }
     
     public class func configFloatForKey(key: String) -> Float? {
@@ -76,7 +79,7 @@ extension PlanetUI {
 	//MARK: - processing expressions
 	
     public class func processExpressions(string: String) -> String {
-		var processedString = NSMutableString(string: string)
+		let processedString = NSMutableString(string: string)
 		if config != nil {
 			findAndReplaceExpressions(processedString, expressionName:"config", expressionEvaluatorBlock: configForKey)
 		}
@@ -85,17 +88,17 @@ extension PlanetUI {
 	
 	public class func findAndReplaceExpressions(stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:(String->AnyObject?)) {
 		
-		var expressionSearchString = "@\(expressionName)("
+		let expressionSearchString = "@\(expressionName)("
 		var searchRange = NSMakeRange(0, stringToSearch.length)
 		while true {
 			
-			let startRange = stringToSearch.rangeOfString(expressionSearchString, options: NSStringCompareOptions.allZeros, range: searchRange)
+			let startRange = stringToSearch.rangeOfString(expressionSearchString, options: NSStringCompareOptions(), range: searchRange)
 			if startRange.location != NSNotFound {
 				
 				searchRange.location = startRange.location+startRange.length
 				searchRange.length = stringToSearch.length-searchRange.location
 				
-				let endRange = stringToSearch.rangeOfString(")", options: NSStringCompareOptions.allZeros, range: searchRange)
+				let endRange = stringToSearch.rangeOfString(")", options: NSStringCompareOptions(), range: searchRange)
 				if endRange.location != NSNotFound {
 					
 					searchRange.location = endRange.location+endRange.length
@@ -129,9 +132,9 @@ extension PlanetUI {
     // returns an array of all available fonts
     public class func fontNames() -> [String] {
         var names = [String]()
-        for family in UIFont.familyNames() as! [String] {
+        for family in UIFont.familyNames() as [String] {
             for name in UIFont.fontNamesForFamilyName(family) {
-                names.append(name as! String)
+                names.append(name as String)
             }
         }
         return names

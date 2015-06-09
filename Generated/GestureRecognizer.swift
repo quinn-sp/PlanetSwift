@@ -42,7 +42,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 	
 	func recognizerStateDidChange(recognizer:UIGestureRecognizer) {
 		if onStateChange != nil {
-			let (scopeObject: AnyObject?, name) = self.parseNotification(onStateChange)
+			let (scopeObject, name) = self.parseNotification(onStateChange)
 			if name != nil {
 				NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
 			}

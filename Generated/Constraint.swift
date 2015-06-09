@@ -117,8 +117,8 @@ public class Constraint: ConstraintBase {
 				
 				constraint?.priority = priority
 				
-				first.setTranslatesAutoresizingMaskIntoConstraints(false)
-				second?.setTranslatesAutoresizingMaskIntoConstraints(false)
+				first.translatesAutoresizingMaskIntoConstraints = false
+				second?.translatesAutoresizingMaskIntoConstraints = false
 				
 				//attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
 				if second != nil && first.isDescendantOfView(second!) {

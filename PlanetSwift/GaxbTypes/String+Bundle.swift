@@ -19,13 +19,11 @@ extension String {
                 self = resourcePath.stringByAppendingPathComponent(pathComponents[1])
             }
         case "documents":
-            if let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as? NSString {
-                self = documentsPath.stringByAppendingPathComponent(pathComponents[1])
-            }
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+            self = documentsPath.stringByAppendingPathComponent(pathComponents[1])
         case "cache":
-            if let cachePath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0] as? NSString {
-                self = cachePath.stringByAppendingPathComponent(pathComponents[1])
-            }
+            let cachePath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
+            self = cachePath.stringByAppendingPathComponent(pathComponents[1])
         default:
             self = bundlePath
         }
