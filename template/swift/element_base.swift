@@ -142,7 +142,7 @@ end
 <%	if (typeNameForItem(v)=="Bool") then
 %>        self.<%= v.name %> = value == "true"<%
     elseif (typeNameForItem(v)=="Int") then
-%>        self.<%= v.name %> = value.toInt()!<%
+%>        self.<%= v.name %> = Int(value)!<%
 elseif (typeNameForItem(v)=="Float") then
 %>        self.<%= v.name %> = (value as NSString).floatValue<%
 elseif (typeNameForItem(v)=="Double") then

@@ -14,11 +14,12 @@ private let xmlCache = NSCache()
 public class <%= FULL_NAME_CAMEL %> {
 
 	public class func readFromFile(filePath: String, prepare: Bool = true) -> GaxbElement? {
-		var error: NSError?
-		if let xmlString = String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding, error: &error) {
+		do {
+			let xmlString = try String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
 			return <%= FULL_NAME_CAMEL %>.readFromString(xmlString)
+		} catch {
+				return nil
 		}
-		return nil
 	}
 
 	public class func readFromString(string: String, prepare: Bool = true) -> GaxbElement? {
@@ -32,20 +33,23 @@ public class <%= FULL_NAME_CAMEL %> {
 		}
 
 		if let xmlData = <%= FULL_NAME_CAMEL %>.processExpressions(string).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-			var error: NSError?
-			if let xmlDoc = AEXMLDocument(xmlData: xmlData, processNamespaces: true, error: &error), parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
-
-				xmlCache.setObject(parsedElement as! AnyObject, forKey:string)
-
-				let copiedElement = parsedElement.copy()
-				if prepare {
-					copiedElement.visit() { $0.gaxbPrepare() }
+			do {
+				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
+				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
+					xmlCache.setObject(parsedElement as! AnyObject, forKey:string)
+					let copiedElement = parsedElement.copy()
+					if prepare {
+						copiedElement.visit() { $0.gaxbPrepare() }
+					}
+					return copiedElement
 				}
-				return copiedElement
+			} catch {
+				return nil
 			}
 		}
 		return nil
 	}
+
 
 	public class func namespaceForElement(element: AEXMLElement) -> String {
 		if let namespace = element.namespaceURI?.lastPathComponent {
