@@ -45,8 +45,9 @@ end
 <% end %>
 <%for k,v in pairs(this.sequences) do
 			if (v.name == "any") then
-		 		%>        for any in anys {
-            var anyCopy = any.copy()
+		 		%>       var anyCopy: GaxbElement
+        for any in anys {
+            anyCopy = any.copy()
             copied.anys.append(anyCopy)
             anyCopy.parent = copied
         }
@@ -102,8 +103,8 @@ end
   end
   end
     if (hasAnys) then %>
-                anys.append(element)
-                element.setParent(self)
+        anys.append(element)
+        element.setParent(self)
 <% end if (not hasAnys and hasSuperclass(this)) then %>
         super.setElement(element, key:key)
 <%  end %>    }
@@ -123,7 +124,9 @@ end
 <% end
 %>    }
 <%
-  for k,v in pairs(this.attributes) do %>
+  local hasAttributes = false
+  for k,v in pairs(this.attributes) do
+    hasAttributes = true %>
 	public var <%= v.name %>: <%if (isEnumForItem(v)) then %><%= capitalizedString(this.namespace) %>.<% end %><%= typeForItem(v) %><%
 	if (v.default == nil) then %>?<% else %> = <%if (isEnumForItem(v)) then %>.<% end %><% if (typeNameForItem(v)=="String") then %>"<% end %><%= v.default %><% if (typeNameForItem(v)=="String") then %>"<% end %><%
 	end %>
@@ -166,14 +169,14 @@ end %>
 <% for k,v in pairs(this.attributes) do
 %>            case "<%= v.name %>":
                 set<%= capitalizedString(v.name) %>(value)
-<% end
+<%    end
 %>            default:
                 break
         }
     }
 
     <%= SUPERCLASS_OVERRIDE %>public func imprintAttributes(receiver: GaxbElement?) -> GaxbElement? {
-<% if (this.attributes) then
+<% if (hasAttributes == true) then
 %>       if let obj = receiver as? <%= CAP_NAME %> {
 <% for k,v in pairs(this.attributes) do
 %>            if <%if (v.default == nil) then %><%= v.name %> != nil && <% end %>obj.originalValues["<%= v.name %>"] == nil {
