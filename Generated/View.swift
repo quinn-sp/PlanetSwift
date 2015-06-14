@@ -67,6 +67,7 @@ public class View: ViewBase {
 		if masksToBounds != nil {
 			view.layer.masksToBounds = masksToBounds!
 		}
+        view.accessibilityIdentifier = id
 
 		findParentView()?.view.addSubview(view)
     }

@@ -10,26 +10,9 @@ import UIKit
 
 public class PlanetButton: UIButton {
     
-    convenience init(bgColor: UIColor, bgColorHighlighted: UIColor, bgColorSelected: UIColor, bgColorSelectedHighlighted: UIColor, bgColorDisabled: UIColor, toggle: Bool)
-    {
-        self.init();
-        
-        backgroundColorNormal = bgColor
-        backgroundColorHighlighted = bgColorHighlighted
-        backgroundColorSelected = bgColorSelected
-        backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
-        isToggle = toggle
-    }
-	
-	var isToggle: Bool = false {
-		didSet {
-			if isToggle {
-				self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
-			} else {
-				self.removeTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
-			}
-		}
-	}
+    public var touchUpInsideHandler: (Void -> Void)?
+    
+	var isToggle = false
     
     var backgroundColorNormal: UIColor? {
         didSet {
@@ -102,6 +85,33 @@ public class PlanetButton: UIButton {
     }
     
     func touchUpInside(sender: UIButton!) {
-		selected = !selected
+        if isToggle {
+            selected = !selected
+        }
+        touchUpInsideHandler?()
     }
+    
+    // MARK: - Initializers
+    
+    required public init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+    }
+    
+    convenience init(bgColor: UIColor, bgColorHighlighted: UIColor, bgColorSelected: UIColor, bgColorSelectedHighlighted: UIColor, bgColorDisabled: UIColor, toggle: Bool)
+    {
+        self.init();
+        backgroundColorNormal = bgColor
+        backgroundColorHighlighted = bgColorHighlighted
+        backgroundColorSelected = bgColorSelected
+        backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
+        isToggle = toggle
+        self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+    }
+    
 }

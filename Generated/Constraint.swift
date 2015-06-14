@@ -115,10 +115,11 @@ public class Constraint: ConstraintBase {
 					multiplier: CGFloat(multiplier),
 					constant: CGFloat(constant))
 				
+                first.translatesAutoresizingMaskIntoConstraints = false
+                second?.translatesAutoresizingMaskIntoConstraints = false
+                
 				constraint?.priority = priority
-				
-				first.translatesAutoresizingMaskIntoConstraints = false
-				second?.translatesAutoresizingMaskIntoConstraints = false
+                constraint?.identifier = id
 				
 				//attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
 				if second != nil && first.isDescendantOfView(second!) {
