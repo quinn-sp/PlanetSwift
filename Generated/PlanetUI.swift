@@ -21,10 +21,8 @@ extension PlanetUI {
     }
     
     public class func configIntForKey(key: String) -> Int? {
-        if let value = PlanetUI.configStringForKey(key) {
-            return Int(value)
-        }
-        return nil
+        guard let value = PlanetUI.configStringForKey(key) else { return nil }
+        return Int(value)
     }
     
     public class func configFloatForKey(key: String) -> Float? {
@@ -32,34 +30,29 @@ extension PlanetUI {
     }
     
     public class func configCGFloatForKey(key: String) -> CGFloat? {
-        if let value = PlanetUI.configFloatForKey(key) {
-            return CGFloat(value)
-        }
-        return nil
+        guard let value = PlanetUI.configFloatForKey(key) else { return nil }
+        return CGFloat(value)
     }
     
     public class func configColorForKey(key: String) -> UIColor? {
-        if let colorString = PlanetUI.configStringForKey(key) {
-            return UIColor(gaxbString: colorString)
-        }
-        return nil
+        guard let colorString = PlanetUI.configStringForKey(key) else { return nil }
+        return UIColor(gaxbString: colorString)
+    }
+    
+    public class func configFont(forNameKey name: String, sizeKey size: String) -> UIFont? {
+        guard let name = self.configStringForKey(name), size = self.configCGFloatForKey(size) else { return nil }
+        return UIFont(name: name, size: size)
     }
 	
 	public class func configImageForKey(key: String) -> UIImage? {
-		if let bundlePath = PlanetUI.configStringForKey(key) {
-			if let image = UIImage(contentsOfFile: String(bundlePath: bundlePath)) {
-				return image
-			}
-		}
-		return nil
+        guard let bundlePath = PlanetUI.configStringForKey(key),
+            image = UIImage(contentsOfFile: String(bundlePath: bundlePath)) else { return nil }
+        return image
 	}
 	
 	public class func configRemoteImageForKey(key: String, completion: ImageCache_CompletionBlock) {
-		if let urlString = PlanetUI.configStringForKey(key) {
-			if let url = NSURL(string: urlString) {
-				ImageCache.sharedInstance.get(url, completion: completion)
-			}
-		}
+        guard let urlString = PlanetUI.configStringForKey(key), url = NSURL(string: urlString) else { return }
+        ImageCache.sharedInstance.get(url, completion: completion)
 	}
 	
     private class func checkLoadConfig() {
