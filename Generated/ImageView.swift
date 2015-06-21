@@ -19,20 +19,11 @@ public class ImageView: ImageViewBase {
     
     public override func gaxbPrepare() {
         super.gaxbPrepare()
-		
-        if image != nil {
-			setImageWithBundlePath(image!)
-        }
+        setImageWithString(image)
     }
 	
-	public func setImageWithBundlePath(bundlePath:String) {
-		setImageWithPath(String(bundlePath: bundlePath))
-	}
-	
-	public func setImageWithPath(path:String) {
-		if let img: UIImage = UIImage(contentsOfFile: path) {
-			imageView.image = img
-		}
-	}
-	
+    public func setImageWithString(image: String?) {
+        imageView.image = UIImage(gaxbString: image)
+    }
+    
 }

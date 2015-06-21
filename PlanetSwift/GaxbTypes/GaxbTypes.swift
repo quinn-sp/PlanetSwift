@@ -171,6 +171,19 @@ extension CGPoint: GaxbType {
 // MARK: - UIKit data types
 
 extension UIImage {
+    convenience init?(gaxbString: String?) {
+        guard let gaxbString = gaxbString else { return nil }
+        if gaxbString.rangeOfString(":/") != nil {
+            self.init(contentsOfFile:(String(bundlePath: gaxbString)))
+        } else {
+            guard let _ = UIImage(named: gaxbString) else {
+                assertionFailure("Could not load image named \(gaxbString)")
+                return nil
+            }
+            self.init(named: gaxbString)
+        }
+    }
+    
     convenience init?(validateAndLoad name: String!) {
         self.init(named: name)
         

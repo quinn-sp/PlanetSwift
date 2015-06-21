@@ -49,44 +49,44 @@ public class Button: ButtonBase {
         }
         
         if backgroundImage != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImage!))
+            let img = UIImage(gaxbString: backgroundImage)
             button.setBackgroundImage(img, forState: .Normal)
         }
         if backgroundImageHighlighted != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageHighlighted!))
+            let img = UIImage(gaxbString: backgroundImageHighlighted)
             button.setBackgroundImage(img, forState: .Highlighted)
         }
         if backgroundImageSelected != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSelected!))
+            let img = UIImage(gaxbString: backgroundImageSelected)
             button.setBackgroundImage(img, forState: .Selected)
         }
         if backgroundImageSelectedHighlighted != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSelectedHighlighted!))
+            let img = UIImage(gaxbString: backgroundImageSelectedHighlighted)
             button.setBackgroundImage(img, forState: [.Selected, .Highlighted])
         }
         if backgroundImageDisabled != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: backgroundImageDisabled!))
+            let img = UIImage(gaxbString: backgroundImageDisabled)
             button.setBackgroundImage(img, forState: .Disabled)
         }
         
         if image != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: image!))
+            let img = UIImage(gaxbString: image)
             button.setImage(img, forState: .Normal)
         }
         if imageHighlighted != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: imageHighlighted!))
+            let img = UIImage(gaxbString: imageHighlighted!)
             button.setImage(img, forState: .Highlighted)
         }
         if imageSelected != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: imageSelected!))
+            let img = UIImage(gaxbString: imageSelected)
             button.setImage(img, forState: .Selected)
         }
         if imageSelectedHighlighted != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: imageSelectedHighlighted!))
+            let img = UIImage(gaxbString: imageSelectedHighlighted)
             button.setImage(img, forState: [.Selected, .Highlighted])
         }
         if imageDisabled != nil {
-            let img = UIImage(contentsOfFile: String(bundlePath: imageDisabled!))
+            let img = UIImage(gaxbString: imageDisabled)
             button.setImage(img, forState: .Disabled)
         }
         
