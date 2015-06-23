@@ -41,7 +41,7 @@ public class GaxbFactory: NSObject {
     public class func factory(namespace: String) -> AnyObject? {
         let className = namespace+"GaxbFactory"
         if let factoryClass = NSClassFromString(className) as? NSObject.Type {
-            return factoryClass()
+            return factoryClass.init()
         }
         return nil
     }

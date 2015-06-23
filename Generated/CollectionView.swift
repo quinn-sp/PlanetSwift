@@ -25,7 +25,7 @@ public class CollectionView: CollectionViewBase {
     
     func newLayout() -> UICollectionViewLayout? {
         let layoutClass = NSClassFromString(self.layoutClass) as! NSObject.Type
-        if let layoutObject = layoutClass() as? UICollectionViewLayout {
+        if let layoutObject = layoutClass.init() as? UICollectionViewLayout {
             return layoutObject
         }
         return UICollectionViewFlowLayout()
