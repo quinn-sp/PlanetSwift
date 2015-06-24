@@ -41,11 +41,11 @@ end
 
     public <%= SUPERCLASS_OVERRIDE %>func copy() -> GaxbElement {
 <%if hasSuperclass(this) then %>        let copied = super.copy() as! <%= CAP_NAME %>
-<% else %>        let copied = self.dynamicType()
+<% else %>        let copied = self.dynamicType.init()
 <% end %>
 <%for k,v in pairs(this.sequences) do
 			if (v.name == "any") then
-		 		%>       var anyCopy: GaxbElement
+		 		%>        var anyCopy: GaxbElement
         for any in anys {
             anyCopy = any.copy()
             copied.anys.append(anyCopy)
