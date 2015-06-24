@@ -21,12 +21,11 @@ extension PlanetUI {
     }
     
     public class func configIntForKey(key: String) -> Int? {
-        guard let value = PlanetUI.configStringForKey(key) else { return nil }
-        return Int(value)
+        return (PlanetUI.configForKey(key) as? NSNumber)?.integerValue ?? (PlanetUI.configForKey(key) as? NSString)?.integerValue
     }
     
     public class func configFloatForKey(key: String) -> Float? {
-        return (PlanetUI.configForKey(key) as? NSString)?.floatValue
+        return (PlanetUI.configForKey(key) as? NSString)?.floatValue ?? (PlanetUI.configForKey(key) as? NSNumber)?.floatValue
     }
     
     public class func configCGFloatForKey(key: String) -> CGFloat? {
