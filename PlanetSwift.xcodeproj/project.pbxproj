@@ -16,6 +16,8 @@
 		796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */; };
 		79AEF3971A72E6A3006B76E4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */; };
 		79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */; };
+		7F01F2321B4344970075D7A7 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01F2301B4344970075D7A7 /* DatePicker.swift */; };
+		7F01F2331B4344970075D7A7 /* DatePickerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01F2311B4344970075D7A7 /* DatePickerBase.swift */; };
 		9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4BF1A7975DD001DF00B /* TextView.swift */; };
 		9B77E4C21A7975DD001DF00B /* TextViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4C01A7975DD001DF00B /* TextViewBase.swift */; };
 		9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E9A781A70036800D64615 /* PlanetViewController.swift */; };
@@ -95,6 +97,8 @@
 		796C6AEF1A7188F900D87C38 /* PickerViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewBase.swift; sourceTree = "<group>"; };
 		79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectViewBase.swift; sourceTree = "<group>"; };
+		7F01F2301B4344970075D7A7 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		7F01F2311B4344970075D7A7 /* DatePickerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerBase.swift; sourceTree = "<group>"; };
 		9B77E4BF1A7975DD001DF00B /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		9B77E4C01A7975DD001DF00B /* TextViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewBase.swift; sourceTree = "<group>"; };
 		9B8E9A781A70036800D64615 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				C4C060EF1AA37675004D39EC /* ControlBase.swift */,
 				9BC9743C1A7022FC002F0295 /* Controller.swift */,
 				9BC9743D1A7022FC002F0295 /* ControllerBase.swift */,
+				7F01F2301B4344970075D7A7 /* DatePicker.swift */,
+				7F01F2311B4344970075D7A7 /* DatePickerBase.swift */,
 				C4C060F01AA37675004D39EC /* GestureRecognizer.swift */,
 				C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */,
 				9BCF35EF1A6EE7AF00E8418B /* ImageView.swift */,
@@ -447,6 +453,7 @@
 				C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */,
 				79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */,
 				C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */,
+				7F01F2321B4344970075D7A7 /* DatePicker.swift in Sources */,
 				9B77E4C21A7975DD001DF00B /* TextViewBase.swift in Sources */,
 				9B9AC0951A6EB5D00098F7E4 /* PlanetNetworkImageView.swift in Sources */,
 				C49462451AF819F200F005B4 /* ActivityIndicatorView.swift in Sources */,
@@ -454,6 +461,7 @@
 				9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */,
 				C4C060FB1AA37675004D39EC /* GestureRecognizerBase.swift in Sources */,
 				C49462491AF819F200F005B4 /* ScrollView.swift in Sources */,
+				7F01F2331B4344970075D7A7 /* DatePickerBase.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
 				9B9AC0931A6EB55C0098F7E4 /* PlanetView.swift in Sources */,
 				9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */,
