@@ -61,16 +61,16 @@ public class Label: LabelBase {
 			}
 			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
 		}
-		
-        let unwrappedText = text != nil ? text! : ""
-		
+        
+        let localizedText = text.map{NSLocalizedString($0, comment: "")} ?? ""
+        
         if _paragraphStyle != nil {
-            let attributedString = NSMutableAttributedString(string: unwrappedText)
+            let attributedString = NSMutableAttributedString(string: localizedText)
             let attributes = [NSParagraphStyleAttributeName : paragraphStyle]
             attributedString.setAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
             label.attributedText = attributedString
         } else {
-            label.text = unwrappedText
+            label.text = localizedText
         }
     }
     
