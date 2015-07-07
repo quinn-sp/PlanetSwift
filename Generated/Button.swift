@@ -18,6 +18,10 @@ public class Button: ButtonBase {
         }
     }
     
+    public func updateTitle(text: String?, forState state: UIControlState) {
+        button.setTitle(text.map{NSLocalizedString($0, comment:"")}, forState:state)
+    }
+    
     public override func gaxbPrepare() {
         super.gaxbPrepare()
         
@@ -29,11 +33,11 @@ public class Button: ButtonBase {
         }
         button.tintColor = tintColor
         
-        button.setTitle(title, forState: .Normal)
-        button.setTitle(titleHighlighted, forState: .Highlighted)
-        button.setTitle(titleSelected, forState: .Selected)
-        button.setTitle(titleSelectedHighlighted, forState: [.Selected, .Highlighted])
-        button.setTitle(titleDisabled, forState: .Disabled)
+        updateTitle(title, forState: .Normal)
+        updateTitle(titleHighlighted, forState: .Highlighted)
+        updateTitle(titleSelected, forState: .Selected)
+        updateTitle(titleSelectedHighlighted, forState: [.Selected, .Highlighted])
+        updateTitle(titleDisabled, forState: .Disabled)
         
         button.setTitleColor(titleFontColor, forState: .Normal)
         button.setTitleColor(titleFontColorHighlighted, forState: .Highlighted)
