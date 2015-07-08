@@ -18,5 +18,9 @@ public class DatePicker: DatePickerBase {
     
     public override func gaxbPrepare() {
         super.gaxbPrepare()
+        
+        if datePickerMode != nil {
+            picker.datePickerMode = UIDatePickerMode.fromPlanetUIDatePickerMode(datePickerMode!)
+        }
     }
 }

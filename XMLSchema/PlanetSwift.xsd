@@ -232,6 +232,7 @@
 		</annotation>
 		<complexContent>
 			<extension base="ui:View">
+				<attribute name="datePickerMode" type="ui:DatePickerMode" /> <!-- Defaults to dateAndTime -->
 			</extension>
 		</complexContent>
 	</complexType>
@@ -438,6 +439,18 @@
 	</complexType>
 
 <!-- enumerations -->
+
+	<simpleType name="DatePickerMode">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="time" />
+			<enumeration value="date" />
+			<enumeration value="dateAndTime" />
+			<enumeration value="countDownTimer" />
+		</restriction>
+	</simpleType>
 
 	<simpleType name="ActivityIndicatorViewStyle">
 		<annotation>

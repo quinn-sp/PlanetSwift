@@ -284,6 +284,21 @@ extension NSLineBreakMode {
 	}
 }
 
+extension UIDatePickerMode {
+    public static func fromPlanetUIDatePickerMode(alignment:PlanetUI.DatePickerMode) -> UIDatePickerMode {
+        switch alignment {
+        case .time:
+            return UIDatePickerMode.Time
+        case .date:
+            return UIDatePickerMode.Date
+        case .dateAndTime:
+            return UIDatePickerMode.DateAndTime
+        case .countDownTimer:
+            return UIDatePickerMode.CountDownTimer
+        }
+    }
+}
+
 extension UITextBorderStyle {
 	public static func fromPlanetUITextFieldBorderStyle(style:PlanetUI.TextBorderStyle) -> UITextBorderStyle {
 		switch style {
