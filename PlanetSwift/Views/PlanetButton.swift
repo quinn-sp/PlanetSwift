@@ -93,7 +93,7 @@ public class PlanetButton: UIButton {
     
     // MARK: - Initializers
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
     }

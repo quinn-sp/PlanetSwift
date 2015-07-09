@@ -37,7 +37,7 @@ class PlanetSwiftTests: XCTestCase {
                 stamp.imprintAttributes(receiver)
                 XCTAssertNotNil(receiver.backgroundColor, "receiver.color is nil")
                 if let color = receiver.backgroundColor {
-                    var (r,g,b,a) = color.getRGBA()
+                    let (r,g,b,a) = color.getRGBA()
                     XCTAssertEqual(r, CGFloat(1.0), "Color is incorrect")
                 }
                 XCTAssertEqual(receiver.id!, "coolview", "id does not match")

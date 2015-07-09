@@ -15,7 +15,7 @@ public protocol GaxbElement {
     func visit(visitor: (GaxbElement) -> ())
 	func gaxbDidPrepare()
 	func setElement(element: GaxbElement, key:String)
-    func setParent(GaxbElement)
+    func setParent(_: GaxbElement)
     func isKindOfClass(className: String) -> Bool
     func setAttribute(value: String, key:String)
     func imprintAttributes(receiver: GaxbElement?) -> GaxbElement?

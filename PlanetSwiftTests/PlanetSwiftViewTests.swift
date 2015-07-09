@@ -61,7 +61,7 @@ class PlanetSwiftViewTests: XCTestCase {
         if let view = element as? View {
             XCTAssertNotNil(view.backgroundColor, "view.backgroundColor is nil")
             if let color = view.backgroundColor {
-                var (r,g,b,a) = color.getRGBA()
+                let (r,g,b,a) = color.getRGBA()
                 XCTAssertEqual(r, CGFloat(1.0), "Color's red is incorrect")
                 XCTAssertEqual(g, CGFloat(0x80/255.0), "Color's green is incorrect")
                 XCTAssertEqual(b, CGFloat(0x40/255.0), "Color's blue is incorrect")
