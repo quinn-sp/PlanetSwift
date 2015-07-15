@@ -199,7 +199,7 @@ extension UIColor {
         
         self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
     }
-    convenience init(gaxbString: String) {
+    public convenience init(gaxbString: String) {
         var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
         if gaxbString.hasPrefix("#") {
             let substring = gaxbString.substringFromIndex(advance(gaxbString.startIndex, 1))
