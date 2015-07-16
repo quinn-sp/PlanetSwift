@@ -11,29 +11,30 @@ extension PlanetUI {
 	
 	//MARK: - config
 	
-    public class func configForKey(key: String) -> AnyObject? {
+    public class func configForKey(key: String?) -> AnyObject? {
+        guard let key = key else { return nil }
         checkLoadConfig()
         return config?.valueForKeyPath(key)
     }
     
-    public class func configStringForKey(key: String) -> String? {
+    public class func configStringForKey(key: String?) -> String? {
         return PlanetUI.configForKey(key) as? String
     }
     
-    public class func configIntForKey(key: String) -> Int? {
+    public class func configIntForKey(key: String?) -> Int? {
         return (PlanetUI.configForKey(key) as? NSNumber)?.integerValue ?? (PlanetUI.configForKey(key) as? NSString)?.integerValue
     }
     
-    public class func configFloatForKey(key: String) -> Float? {
+    public class func configFloatForKey(key: String?) -> Float? {
         return (PlanetUI.configForKey(key) as? NSString)?.floatValue ?? (PlanetUI.configForKey(key) as? NSNumber)?.floatValue
     }
     
-    public class func configCGFloatForKey(key: String) -> CGFloat? {
+    public class func configCGFloatForKey(key: String?) -> CGFloat? {
         guard let value = PlanetUI.configFloatForKey(key) else { return nil }
         return CGFloat(value)
     }
     
-    public class func configColorForKey(key: String) -> UIColor? {
+    public class func configColorForKey(key: String?) -> UIColor? {
         guard let colorString = PlanetUI.configStringForKey(key) else { return nil }
         return UIColor(gaxbString: colorString)
     }
@@ -43,7 +44,7 @@ extension PlanetUI {
         return UIFont(name: name, size: size)
     }
 	
-	public class func configImageForKey(key: String) -> UIImage? {
+	public class func configImageForKey(key: String?) -> UIImage? {
         guard let bundlePath = PlanetUI.configStringForKey(key),
             image = UIImage(contentsOfFile: String(bundlePath: bundlePath)) else { return nil }
         return image
@@ -78,7 +79,7 @@ extension PlanetUI {
         return processedString as String
     }
 	
-	public class func findAndReplaceExpressions(stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:(String->AnyObject?)) {
+	public class func findAndReplaceExpressions(stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:(String?->AnyObject?)) {
 		
 		let expressionSearchString = "@\(expressionName)("
 		var searchRange = NSMakeRange(0, stringToSearch.length)
