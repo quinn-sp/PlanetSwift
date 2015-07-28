@@ -39,6 +39,7 @@ public class PlanetViewController: UIViewController {
 		for planetView in planetViews {
 			if let xmlObj = planetView.xmlView {
 				searchXMLObject(xmlObj)
+                xmlObj.visit(decorate)
 			}
 		}
 	}
@@ -58,6 +59,10 @@ public class PlanetViewController: UIViewController {
 			}
 		})
 	}
+    
+    public func decorate(element: GaxbElement) {
+        //Override decorate in your controller class if you need a handle on the XML views from your PlanetView
+    }
 	
 	func searchForPlanetView(searchedView:UIView) {
 		if let foundView = searchedView as? PlanetView {
