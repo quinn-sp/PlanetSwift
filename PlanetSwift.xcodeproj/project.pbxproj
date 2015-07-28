@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65E820071B66BD16000B27F9 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E820051B66BD16000B27F9 /* Switch.swift */; };
+		65E820081B66BD16000B27F9 /* SwitchBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E820061B66BD16000B27F9 /* SwitchBase.swift */; };
 		796C6ACE1A6ED86300D87C38 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6ACC1A6ED86300D87C38 /* TextField.swift */; };
 		796C6ACF1A6ED86300D87C38 /* TextFieldBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */; };
 		796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AD91A70356D00D87C38 /* PlanetButton.swift */; };
@@ -88,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65E820051B66BD16000B27F9 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
+		65E820061B66BD16000B27F9 /* SwitchBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchBase.swift; sourceTree = "<group>"; };
 		796C6ACC1A6ED86300D87C38 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldBase.swift; sourceTree = "<group>"; };
 		796C6AD91A70356D00D87C38 /* PlanetButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButton.swift; sourceTree = "<group>"; };
@@ -293,6 +297,8 @@
 				C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */,
 				A9639EF41A643A0D009C818F /* Scene.swift */,
 				A9639EF51A643A0D009C818F /* SceneBase.swift */,
+				65E820051B66BD16000B27F9 /* Switch.swift */,
+				65E820061B66BD16000B27F9 /* SwitchBase.swift */,
 				C49462431AF819F200F005B4 /* ScrollView.swift */,
 				C49462441AF819F200F005B4 /* ScrollViewBase.swift */,
 				A9E8332A1A85482F004969E1 /* SegmentedControl.swift */,
@@ -473,6 +479,7 @@
 				C49462461AF819F200F005B4 /* ActivityIndicatorViewBase.swift in Sources */,
 				A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */,
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
+				65E820081B66BD16000B27F9 /* SwitchBase.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
 				796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */,
@@ -497,6 +504,7 @@
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,
 				C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */,
 				C49462481AF819F200F005B4 /* PageControlBase.swift in Sources */,
+				65E820071B66BD16000B27F9 /* Switch.swift in Sources */,
 				C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */,
 				C4C060F61AA37675004D39EC /* CollectionView.swift in Sources */,
 				9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */,

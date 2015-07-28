@@ -397,6 +397,19 @@
 		</complexContent>
 	</complexType>
 
+	<element name="Switch" type="ui:Switch" />
+	<complexType name="Switch">
+		<annotation>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Control">
+				<attribute name="on" type="boolean" />
+				<attribute name="tintColor" type="ui:color" />
+				<attribute name="onTintColor" type="ui:color" />
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<element name="GestureRecognizer" type="ui:GestureRecognizer" />
 	<complexType name="GestureRecognizer">
 		<annotation>
