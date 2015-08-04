@@ -4,6 +4,12 @@
 
 import UIKit
 
+// to find and dump localizable strings in a project, set _findLoclaizable to true
+// and after using the app for a suitable period of time, run Label.printLocalizable()
+// to get a dump of content ready for pasting into a .strings file
+private let _findLocalizable = false
+private var _localizable = Set<String>()
+
 public class Label: LabelBase {
     
     lazy public var label = UILabel()
@@ -64,6 +70,8 @@ public class Label: LabelBase {
         
         let localizedText = text.map{NSLocalizedString($0, comment: "")} ?? ""
         
+        checkUnlocalized(text, localized: localizedText)
+        
         if _paragraphStyle != nil {
             let attributedString = NSMutableAttributedString(string: localizedText)
             let attributes = [NSParagraphStyleAttributeName : paragraphStyle]
@@ -79,4 +87,16 @@ public class Label: LabelBase {
         gaxbPrepare()
     }
     
+    func checkUnlocalized(text: String?, localized: String) {
+        guard let text = text where text.characters.count > 0 && _findLocalizable else { return }
+        let output = "\"\(text)\" = \"\(localized)\";"
+        _localizable.insert(output)
+    }
+    
+    public class func printLocalizable() {
+        guard _findLocalizable else { return }
+        print("//--------- localizable strings start --------")
+        print("\n".join(Array(_localizable)))
+        print("//---------- localizable strings end ---------")
+    }
 }
