@@ -7,7 +7,7 @@ import UIKit
 // to find and dump localizable strings in a project, set _findLoclaizable to true
 // and after using the app for a suitable period of time, run Label.printLocalizable()
 // to get a dump of content ready for pasting into a .strings file
-private let _findLocalizable = false
+private let _findLocalizable = true
 private var _localizable = Set<String>()
 
 public class Label: LabelBase {
@@ -89,6 +89,7 @@ public class Label: LabelBase {
     
     func checkUnlocalized(text: String?, localized: String) {
         guard let text = text where text.characters.count > 0 && _findLocalizable else { return }
+        guard text == localized else { return }
         let output = "\"\(text)\" = \"\(localized)\";"
         _localizable.insert(output)
     }
