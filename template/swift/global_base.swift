@@ -51,8 +51,8 @@ public class <%= FULL_NAME_CAMEL %> {
 
 
 	public class func namespaceForElement(element: AEXMLElement) -> String {
-		if let namespace = element.namespaceURI?.lastPathComponent {
-			return namespace
+		if let namespaceURI = element.namespaceURI {
+			return NSString(string: namespaceURI).lastPathComponent
 		}
 		return "<%= FULL_NAME_CAMEL %>"
 	}
