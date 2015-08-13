@@ -6,8 +6,28 @@ import UIKit
 
 private let Constraint_parentKeyword = "parent"
 
-public class Constraint: ConstraintBase {
+//MARK: - InterfaceSizeClassMask
 
+//NOTE: refer to this if you need to convert to Swift 2.0 http://stackoverflow.com/questions/24066170/swift-ns-options-style-bitmask-enumerations
+public struct ConstraintInterfaceSizeClassMask : RawOptionSetType {
+	typealias RawValue = UInt
+	private var value: UInt = 0
+	init(_ value: UInt) { self.value = value }
+	public init(rawValue value: UInt) { self.value = value }
+	public init(nilLiteral: ()) { self.value = 0 }
+	public static var allZeros: ConstraintInterfaceSizeClassMask { return self(0) }
+	static func fromMask(raw: UInt) -> ConstraintInterfaceSizeClassMask { return self(raw) }
+	public var rawValue: UInt { return self.value }
+	
+	static var Unspecified:ConstraintInterfaceSizeClassMask { return self(1 << 0) }
+	static var Compact:ConstraintInterfaceSizeClassMask { return self(1 << 1) }
+	static var Regular:ConstraintInterfaceSizeClassMask { return self(1 << 2) }
+}
+
+//MARK: -
+
+public class Constraint: ConstraintBase, PlanetTraitCollectionDelegate {
+	
 	internal(set) public var constraint:NSLayoutConstraint?
 	
 	//MARK: - enum conversion
@@ -96,6 +116,13 @@ public class Constraint: ConstraintBase {
 		return nil
 	}
 	
+	internal func isHorizontal() -> Bool? {
+		if let attr = self.constraint?.firstAttribute {
+			return attr == .Left || attr == .Right || attr == .Leading || attr == .Trailing || attr == .Width || attr == .CenterX || attr == .LeftMargin || attr == .RightMargin || attr == .LeadingMargin || attr == .TrailingMargin || attr == .CenterXWithinMargins
+		}
+		return nil
+	}
+	
 	//MARK: - loading
 	
 	public override func gaxbDidPrepare() {
@@ -129,7 +156,25 @@ public class Constraint: ConstraintBase {
 				}
 			}
 		}
-		
+	}
+	
+	//MARK: - PlanetTraitCollectionDelegate
+	
+	public func willTransitionToTraitCollection(newCollection: UITraitCollection) {
+		if let sizeClass = sizeClass, horizontal = isHorizontal() {
+			
+			let newSizeClass = horizontal ? newCollection.horizontalSizeClass : newCollection.verticalSizeClass
+			let shouldEnable:Bool
+			switch newSizeClass {
+			case .Unspecified:
+				shouldEnable = (sizeClass & ConstraintInterfaceSizeClassMask.Unspecified).rawValue != 0
+			case .Compact:
+				shouldEnable = (sizeClass & ConstraintInterfaceSizeClassMask.Compact).rawValue != 0
+			case .Regular:
+				shouldEnable = (sizeClass & ConstraintInterfaceSizeClassMask.Regular).rawValue != 0
+			}
+			self.constraint?.active = shouldEnable
+		}
 	}
 	
 }

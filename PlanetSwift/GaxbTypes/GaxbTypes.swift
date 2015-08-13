@@ -447,3 +447,54 @@ extension UITextSpellCheckingType {
 		}
 	}
 }
+
+extension ConstraintInterfaceSizeClassMask : GaxbType {
+	
+	public init(gaxbString: String) {
+		self.init(0)
+		self.setWithGaxbString(gaxbString)
+	}
+	
+	public mutating func setWithGaxbString(GaxbString: String) {
+		var selfVal = ConstraintInterfaceSizeClassMask.allZeros
+		
+		let whiteSpace = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+		let components = split(GaxbString) {$0 == "|"}
+		for componentString in components {
+			switch componentString.stringByTrimmingCharactersInSet(whiteSpace).lowercaseString {
+			case "unspecified":
+				selfVal |= .Unspecified
+			case "compact":
+				selfVal |= .Compact
+			case "regular":
+				selfVal |= .Regular
+			default:
+				break
+			}
+		}
+		self = selfVal
+	}
+	
+	public func toGaxbString() -> String {
+		var first = true
+		var returnStr = ""
+		if (self & ConstraintInterfaceSizeClassMask.Unspecified).rawValue != 0 {
+			returnStr += "Unspecified"
+			first = false
+		}
+		if (self & ConstraintInterfaceSizeClassMask.Regular).rawValue != 0 {
+			if(!first) {
+				returnStr += "|"
+			}
+			returnStr += "Regular"
+			first = false
+		}
+		if (self & ConstraintInterfaceSizeClassMask.Compact).rawValue != 0 {
+			if(!first) {
+				returnStr += "|"
+			}
+			returnStr += "Compact"
+		}
+		return returnStr
+	}
+}

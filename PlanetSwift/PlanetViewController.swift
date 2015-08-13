@@ -8,6 +8,14 @@
 
 import UIKit
 
+//MARK: - PlanetTraitCollectionDelegate
+
+public protocol PlanetTraitCollectionDelegate {
+	func willTransitionToTraitCollection(newCollection: UITraitCollection)
+}
+
+//MARK: -
+
 public class PlanetViewController: UIViewController {
 	
     public var planetViews = Array<PlanetView>()
@@ -44,7 +52,7 @@ public class PlanetViewController: UIViewController {
 	}
 	
 	func searchXMLObject(xmlObj:Object) {
-		xmlObj.visit({ [unowned self] (element:GaxbElement) -> () in
+		xmlObj.visit({ [weak self] (element:GaxbElement) -> () in
 			
 			if let xmlController = element as? Controller {
 				xmlController.controllerObject = self
@@ -53,7 +61,7 @@ public class PlanetViewController: UIViewController {
 			if let xmlObject = element as? Object {
 				
 				if xmlObject.id != nil {
-					self.idMappings[xmlObject.id!] = xmlObject
+					self?.idMappings[xmlObject.id!] = xmlObject
 				}
 			}
 		})
@@ -73,6 +81,20 @@ public class PlanetViewController: UIViewController {
 			return foundObj
 		}
 		return nil
+	}
+	
+	//MARK: - UIContentContainer protocol
+	
+	public override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+		for planetView in planetViews {
+			if let xmlObj = planetView.xmlView {
+				xmlObj.visit({ [weak self] (element:GaxbElement) -> () in
+					if let contentContainer = element as? PlanetTraitCollectionDelegate {
+						contentContainer.willTransitionToTraitCollection(newCollection)
+					}
+				})
+			}
+		}
 	}
 	
 }
