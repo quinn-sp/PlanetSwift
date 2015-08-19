@@ -6,7 +6,7 @@ import UIKit
 
 private let Constraint_parentKeyword = "parent"
 
-//MARK: - InterfaceSizeClassMask
+//MARK: - ConstraintInterfaceSizeClassMask
 
 //NOTE: refer to this if you need to convert to Swift 2.0 http://stackoverflow.com/questions/24066170/swift-ns-options-style-bitmask-enumerations
 public struct ConstraintInterfaceSizeClassMask : RawOptionSetType {
@@ -19,9 +19,10 @@ public struct ConstraintInterfaceSizeClassMask : RawOptionSetType {
 	static func fromMask(raw: UInt) -> ConstraintInterfaceSizeClassMask { return self(raw) }
 	public var rawValue: UInt { return self.value }
 	
-	static var Unspecified:ConstraintInterfaceSizeClassMask { return self(1 << 0) }
-	static var Compact:ConstraintInterfaceSizeClassMask { return self(1 << 1) }
-	static var Regular:ConstraintInterfaceSizeClassMask { return self(1 << 2) }
+	static var Any:ConstraintInterfaceSizeClassMask { return self(0b11) }
+	static var Compact:ConstraintInterfaceSizeClassMask { return self(0b01) }
+	static var Regular:ConstraintInterfaceSizeClassMask { return self(0b10) }
+	static var None:ConstraintInterfaceSizeClassMask { return self(0b00) }
 }
 
 //MARK: -
@@ -116,13 +117,6 @@ public class Constraint: ConstraintBase, PlanetTraitCollectionDelegate {
 		return nil
 	}
 	
-	internal func isHorizontal() -> Bool? {
-		if let attr = self.constraint?.firstAttribute {
-			return attr == .Left || attr == .Right || attr == .Leading || attr == .Trailing || attr == .Width || attr == .CenterX || attr == .LeftMargin || attr == .RightMargin || attr == .LeadingMargin || attr == .TrailingMargin || attr == .CenterXWithinMargins
-		}
-		return nil
-	}
-	
 	//MARK: - loading
 	
 	public override func gaxbDidPrepare() {
@@ -142,6 +136,7 @@ public class Constraint: ConstraintBase, PlanetTraitCollectionDelegate {
 					multiplier: CGFloat(multiplier),
 					constant: CGFloat(constant))
 				
+				constraint?.identifier = self.id
 				constraint?.priority = priority
 				
 				first.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -161,19 +156,31 @@ public class Constraint: ConstraintBase, PlanetTraitCollectionDelegate {
 	//MARK: - PlanetTraitCollectionDelegate
 	
 	public func willTransitionToTraitCollection(newCollection: UITraitCollection) {
-		if let sizeClass = sizeClass, horizontal = isHorizontal() {
+		
+		if let constraint = constraint {
 			
-			let newSizeClass = horizontal ? newCollection.horizontalSizeClass : newCollection.verticalSizeClass
-			let shouldEnable:Bool
-			switch newSizeClass {
-			case .Unspecified:
-				shouldEnable = (sizeClass & ConstraintInterfaceSizeClassMask.Unspecified).rawValue != 0
+			//get the settings that correspond to the current width class
+			let mask:ConstraintInterfaceSizeClassMask
+			switch newCollection.horizontalSizeClass {
 			case .Compact:
-				shouldEnable = (sizeClass & ConstraintInterfaceSizeClassMask.Compact).rawValue != 0
+				mask = compactWidth ?? ConstraintInterfaceSizeClassMask.Any;
 			case .Regular:
-				shouldEnable = (sizeClass & ConstraintInterfaceSizeClassMask.Regular).rawValue != 0
+				mask = regularWidth ?? ConstraintInterfaceSizeClassMask.Any;
+			case .Unspecified:
+				mask = ConstraintInterfaceSizeClassMask.None;//should this be 'Any'?
 			}
-			self.constraint?.active = shouldEnable
+			
+			//check if we're matching the height class at this width
+			let shouldEnable:Bool
+			switch newCollection.verticalSizeClass {
+			case .Compact:
+				shouldEnable = (mask & ConstraintInterfaceSizeClassMask.Compact).rawValue != 0
+			case .Regular:
+				shouldEnable = (mask & ConstraintInterfaceSizeClassMask.Regular).rawValue != 0
+			case .Unspecified:
+				shouldEnable = false;
+			}
+			constraint.active = shouldEnable
 		}
 	}
 	

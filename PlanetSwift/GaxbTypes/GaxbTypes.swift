@@ -462,8 +462,8 @@ extension ConstraintInterfaceSizeClassMask : GaxbType {
 		let components = split(GaxbString) {$0 == "|"}
 		for componentString in components {
 			switch componentString.stringByTrimmingCharactersInSet(whiteSpace).lowercaseString {
-			case "unspecified":
-				selfVal |= .Unspecified
+			case "any":
+				selfVal |= .Any
 			case "compact":
 				selfVal |= .Compact
 			case "regular":
@@ -476,10 +476,15 @@ extension ConstraintInterfaceSizeClassMask : GaxbType {
 	}
 	
 	public func toGaxbString() -> String {
+		
+		if self == ConstraintInterfaceSizeClassMask.None {
+			return "None"
+		}
+		
 		var first = true
 		var returnStr = ""
-		if (self & ConstraintInterfaceSizeClassMask.Unspecified).rawValue != 0 {
-			returnStr += "Unspecified"
+		if (self & ConstraintInterfaceSizeClassMask.Any).rawValue != 0 {
+			returnStr += "Any"
 			first = false
 		}
 		if (self & ConstraintInterfaceSizeClassMask.Regular).rawValue != 0 {

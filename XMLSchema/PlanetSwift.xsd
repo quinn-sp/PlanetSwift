@@ -366,7 +366,8 @@
 				<attribute name="relation" type="ui:LayoutRelation" default="equal" />
 				<attribute name="multiplier" type="float" default="1" />
 				<attribute name="constant" type="float" default="0" />
-				<attribute name="sizeClass" type="ui:UserInterfaceSizeClass" />
+				<attribute name="regularWidth" type="ui:UserInterfaceSizeClass" />
+				<attribute name="compactWidth" type="ui:UserInterfaceSizeClass" />
 			</extension>
 		</complexContent>
 	</complexType>
@@ -631,7 +632,7 @@
 			<appinfo>ConstraintInterfaceSizeClassMask</appinfo>
 		</annotation>
 		<restriction base="string">
-			<pattern value="\s*(unspecified|compact|regular)(\s*\|\s*(unspecified|compact|regular))*\s*"/>
+			<pattern value="\s*([nN]one|[aA]ny|([cC]ompact|[rR]egular)(\s*\|\s*([cC]ompact|[rR]egular))*)\s*"/>
 		</restriction>
 	</simpleType>
 

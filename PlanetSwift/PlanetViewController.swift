@@ -14,7 +14,7 @@ public protocol PlanetTraitCollectionDelegate {
 	func willTransitionToTraitCollection(newCollection: UITraitCollection)
 }
 
-//MARK: -
+//MARK: - PlanetViewController
 
 public class PlanetViewController: UIViewController {
 	
@@ -49,6 +49,8 @@ public class PlanetViewController: UIViewController {
 				searchXMLObject(xmlObj)
 			}
 		}
+		
+		handleTraitCollectionChange(self.traitCollection)
 	}
 	
 	func searchXMLObject(xmlObj:Object) {
@@ -86,6 +88,10 @@ public class PlanetViewController: UIViewController {
 	//MARK: - UIContentContainer protocol
 	
 	public override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+		handleTraitCollectionChange(newCollection)
+	}
+	
+	private func handleTraitCollectionChange(newCollection: UITraitCollection) {
 		for planetView in planetViews {
 			if let xmlObj = planetView.xmlView {
 				xmlObj.visit({ [weak self] (element:GaxbElement) -> () in
@@ -96,5 +102,4 @@ public class PlanetViewController: UIViewController {
 			}
 		}
 	}
-	
 }
