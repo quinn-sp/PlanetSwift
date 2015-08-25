@@ -202,7 +202,7 @@ extension UIColor {
     public convenience init(gaxbString: String) {
         var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
         if gaxbString.hasPrefix("#") {
-            let substring = gaxbString.substringFromIndex(advance(gaxbString.startIndex, 1))
+            let substring = gaxbString.substringFromIndex(gaxbString.startIndex.advancedBy(1))
             var hexNumber:UInt32 = 0;
             let _ = NSScanner(string: substring).scanHexInt(&hexNumber)
             switch substring.characters.count {

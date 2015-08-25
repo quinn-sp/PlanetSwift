@@ -94,21 +94,18 @@ public class Button: ButtonBase {
             button.setImage(img, forState: .Disabled)
         }
         
-        if imageSet != nil {
-            let pathLength = (imageSet!).characters.count
-            let extensionLength = (imageSet!.componentsSeparatedByString(".").last!).characters.count
-            let insertPosition = pathLength - extensionLength - 1
+        if let imageSet = imageSet {
+            let pathLength = imageSet.characters.count
+            let extensionLength = imageSet.componentsSeparatedByString(".").last?.characters.count ?? 0
+            let insertPosition = pathLength - extensionLength - ( extensionLength > 0 ? 1 : 0 )
             
-            let normalPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_normal" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let highlightedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let selectedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let selectedHighlightedPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_selected_highlighted" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
-            let disabledPath = imageSet!.substringToIndex(advance(imageSet!.startIndex, insertPosition)) + "_disabled" + imageSet!.substringFromIndex(advance(imageSet!.startIndex, insertPosition))
+            let normalPath = imageSet.substringToIndex(imageSet.startIndex.advancedBy(insertPosition)) + "_normal" + imageSet.substringFromIndex(imageSet.startIndex.advancedBy(insertPosition))
+            let highlightedPath = imageSet.substringToIndex(imageSet.startIndex.advancedBy(insertPosition)) + "_highlighted" + imageSet.substringFromIndex(imageSet.startIndex.advancedBy(insertPosition))
+            let selectedPath = imageSet.substringToIndex(imageSet.startIndex.advancedBy(insertPosition)) + "_selected" + imageSet.substringFromIndex(imageSet.startIndex.advancedBy(insertPosition))
+            let selectedHighlightedPath = imageSet.substringToIndex(imageSet.startIndex.advancedBy(insertPosition)) + "_selected_highlighted" + imageSet.substringFromIndex(imageSet.startIndex.advancedBy(insertPosition))
+            let disabledPath = imageSet.substringToIndex(imageSet.startIndex.advancedBy(insertPosition)) + "_disabled" + imageSet.substringFromIndex(imageSet.startIndex.advancedBy(insertPosition))
             
-            var img: UIImage? = UIImage(contentsOfFile: String(bundlePath: normalPath))
-            if img == nil {
-                img = UIImage(contentsOfFile: String(bundlePath: imageSet!))
-            }
+            var img = UIImage(contentsOfFile: String(bundlePath: normalPath)) ?? UIImage(contentsOfFile: String(bundlePath: imageSet))
             button.setImage(img, forState: .Normal)
             img = UIImage(contentsOfFile: String(bundlePath: highlightedPath))
             button.setImage(img, forState: .Highlighted)
@@ -120,21 +117,18 @@ public class Button: ButtonBase {
             button.setImage(img, forState: .Disabled)
         }
         
-        if backgroundImageSet != nil {
-            let pathLength = (backgroundImageSet!).characters.count
-            let extensionLength = (backgroundImageSet!.componentsSeparatedByString(".").last!).characters.count
-            let insertPosition = pathLength - extensionLength - 1
+        if let backgroundImageSet = backgroundImageSet {
+            let pathLength = backgroundImageSet.characters.count
+            let extensionLength = backgroundImageSet.componentsSeparatedByString(".").last?.characters.count ?? 0
+            let insertPosition = pathLength - extensionLength - (extensionLength > 0 ? 1 : 0)
             
-            let normalPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_normal" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let highlightedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let selectedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let selectedHighlightedPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_selected_highlighted" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
-            let disabledPath = backgroundImageSet!.substringToIndex(advance(backgroundImageSet!.startIndex, insertPosition)) + "_disabled" + backgroundImageSet!.substringFromIndex(advance(backgroundImageSet!.startIndex, insertPosition))
+            let normalPath = backgroundImageSet.substringToIndex(backgroundImageSet.startIndex.advancedBy(insertPosition)) + "_normal" + backgroundImageSet.substringFromIndex(backgroundImageSet.startIndex.advancedBy(insertPosition))
+            let highlightedPath = backgroundImageSet.substringToIndex(backgroundImageSet.startIndex.advancedBy(insertPosition)) + "_highlighted" + backgroundImageSet.substringFromIndex(backgroundImageSet.startIndex.advancedBy(insertPosition))
+            let selectedPath = backgroundImageSet.substringToIndex(backgroundImageSet.startIndex.advancedBy(insertPosition)) + "_selected" + backgroundImageSet.substringFromIndex(backgroundImageSet.startIndex.advancedBy(insertPosition))
+            let selectedHighlightedPath = backgroundImageSet.substringToIndex(backgroundImageSet.startIndex.advancedBy(insertPosition)) + "_selected_highlighted" + backgroundImageSet.substringFromIndex(backgroundImageSet.startIndex.advancedBy(insertPosition))
+            let disabledPath = backgroundImageSet.substringToIndex(backgroundImageSet.startIndex.advancedBy(insertPosition)) + "_disabled" + backgroundImageSet.substringFromIndex(backgroundImageSet.startIndex.advancedBy(insertPosition))
             
-            var img: UIImage? = UIImage(contentsOfFile: String(bundlePath: normalPath))
-            if img == nil {
-                img = UIImage(contentsOfFile: String(bundlePath: backgroundImageSet!))
-            }
+            var img = UIImage(contentsOfFile: String(bundlePath: normalPath)) ?? UIImage(contentsOfFile: String(bundlePath: backgroundImageSet))
             button.setBackgroundImage(img, forState: .Normal)
             img = UIImage(contentsOfFile: String(bundlePath: highlightedPath))
             button.setBackgroundImage(img, forState: .Highlighted)

@@ -97,7 +97,7 @@ public class Label: LabelBase {
     public class func printLocalizable() {
         guard _findLocalizable else { return }
         print("//--------- localizable strings start --------")
-        print("\n".join(Array(_localizable)))
+        print(Array(_localizable).joinWithSeparator("\n"))
         print("//---------- localizable strings end ---------")
     }
 }
