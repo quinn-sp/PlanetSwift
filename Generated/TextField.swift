@@ -27,81 +27,73 @@ public class TextField: TextFieldBase {
 
         textFieldDelegate.textDelegate = self
 		
-        if text != nil {
-            textField.text = text!
+        textField.text = text
+        textField.placeholder = placeholder
+        if let fontName = fontName {
+            textField.font = UIFont(name: fontName, size: UIFont.systemFontSize())
         }
-        if placeholder != nil {
-            textField.placeholder = placeholder!
+        if let fontSize = fontSize where textField.font != nil {
+            textField.font = textField.font!.fontWithSize(CGFloat(fontSize))
         }
-        if fontName != nil {
-            textField.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+        textField.textColor = textColor
+        if let textAlignment = textAlignment {
+            textField.textAlignment = NSTextAlignment(withPlanetTextAlignment: textAlignment)
         }
-        if fontSize != nil && textField.font != nil {
-            textField.font = textField.font!.fontWithSize(CGFloat(fontSize!))
+        if let adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth {
+            textField.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         }
-        if textColor != nil {
-            textField.textColor = textColor!
+        if let borderStyle = borderStyle {
+            textField.borderStyle = UITextBorderStyle(withPlanetTextBorderStyle: borderStyle)
         }
-        if textAlignment != nil {
-			textField.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
-        }
-        if adjustsFontSizeToFitWidth != nil {
-            textField.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth!
-        }
-        if borderStyle != nil {
-            textField.borderStyle = UITextBorderStyle.fromPlanetUITextFieldBorderStyle(borderStyle!)
-        }
-		if secureTextEntry != nil {
-			textField.secureTextEntry = secureTextEntry!
+		if let secureTextEntry = secureTextEntry {
+			textField.secureTextEntry = secureTextEntry
 		}
-		if clearButtonMode != nil {
-			textField.clearButtonMode = UITextFieldViewMode.fromPlanetUITextFieldViewMode(clearButtonMode!)
+		if let clearButtonMode = clearButtonMode {
+            textField.clearButtonMode = UITextFieldViewMode(withPlanetTextFieldViewMode:clearButtonMode)
 		}
-		if clearsOnBeginEditing != nil {
-			textField.clearsOnBeginEditing = clearsOnBeginEditing!
+		if let clearsOnBeginEditing = clearsOnBeginEditing {
+			textField.clearsOnBeginEditing = clearsOnBeginEditing
 		}
-		if returnKeyType != nil {
-			textField.returnKeyType = UIReturnKeyType.fromPlanetUIReturnKeyType(returnKeyType!)
+		if let returnKeyType = returnKeyType {
+            textField.returnKeyType = UIReturnKeyType(withPlanetReturnKeyType:returnKeyType)
 		}
-		if keyboardType != nil {
-			textField.keyboardType = UIKeyboardType.fromPlanetUIKeyboardType(keyboardType!)
+		if let keyboardType = keyboardType {
+            textField.keyboardType = UIKeyboardType(withPlanetKeyboardType:keyboardType)
 		}
-		if autocapitalizationType != nil {
-			textField.autocapitalizationType = UITextAutocapitalizationType.fromPlanetUITextAutocapitalizationType(autocapitalizationType!)
+		if let autocapitalizationType = autocapitalizationType {
+			textField.autocapitalizationType = UITextAutocapitalizationType(withPlanetTextAutocapitalizationType:autocapitalizationType)
 		}
-		if autocorrectionType != nil {
-			textField.autocorrectionType = UITextAutocorrectionType.fromPlanetUITextAutocorrectionType(autocorrectionType!)
+		if let autocorrectionType = autocorrectionType {
+			textField.autocorrectionType = UITextAutocorrectionType(withPlanetTextAutocorrectionType:autocorrectionType)
 		}
-		if spellCheckingType != nil {
-			textField.spellCheckingType = UITextSpellCheckingType.fromPlanetUITextSpellCheckingType(spellCheckingType!)
+		if let spellCheckingType = spellCheckingType {
+			textField.spellCheckingType = UITextSpellCheckingType(withPlanetTextSpellCheckingType:spellCheckingType)
 		}
 		
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
-        if onBeginEditing != nil {
-            doNotification(onBeginEditing!)
-        }
+        guard let onBeginEditing = onBeginEditing else { return }
+        doNotification(onBeginEditing)
     }
 
     func textFieldDidEndEditing(textField: UITextField) {
-        if onEndEditing != nil {
-            doNotification(onEndEditing!)
-        }
+        guard let onEndEditing = onEndEditing else { return }
+        doNotification(onEndEditing)
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if onReturnPressed != nil {
-            doNotification(onReturnPressed!)
+        if let onReturnPressed = onReturnPressed {
+            doNotification(onReturnPressed)
         }
         return true
     }
 
     func doNotification(note: String) {
         let (scopeObject, name) = self.parseNotification(note)
-        if name != nil {
-            NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
+        if let name = name {
+            NSNotificationCenter.defaultCenter().postNotificationName(name, object: scopeObject)
         }
     }
 }

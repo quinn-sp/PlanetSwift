@@ -250,226 +250,262 @@ extension UIColor {
 
 extension NSTextAlignment {
 	public static func fromPlanetUITextAlignment(alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
-		switch alignment {
-		case .center:
-			return NSTextAlignment.Center
-		case .right:
-			return NSTextAlignment.Right
-		case .left:
-			return NSTextAlignment.Left
-		case .justified:
-			return NSTextAlignment.Justified
-		case .natural:
-			return NSTextAlignment.Natural
-		}
+        return self.init(withPlanetTextAlignment: alignment)
 	}
+    public init(withPlanetTextAlignment alignment: PlanetUI.TextAlignment) {
+        switch alignment {
+        case .center:
+            self = NSTextAlignment.Center
+        case .right:
+            self = NSTextAlignment.Right
+        case .left:
+            self = NSTextAlignment.Left
+        case .justified:
+            self = NSTextAlignment.Justified
+        case .natural:
+            self = NSTextAlignment.Natural
+        }
+    }
 }
 
 extension NSLineBreakMode {
 	public static func fromPlanetUILineBreakMode(mode:PlanetUI.LineBreakMode) -> NSLineBreakMode {
+        return self.init(withPlanetLineBreakMode: mode)
+    }
+    public init(withPlanetLineBreakMode mode: PlanetUI.LineBreakMode) {
 		switch mode {
 		case .truncatingTail:
-			return .ByTruncatingTail
+			self = .ByTruncatingTail
 		case .wordWrapping:
-			return .ByWordWrapping
+			self = .ByWordWrapping
 		case .charWrapping:
-			return .ByCharWrapping
+			self = .ByCharWrapping
 		case .truncatingHead:
-			return .ByTruncatingHead
+			self = .ByTruncatingHead
 		case .clipping:
-			return .ByClipping
+			self = .ByClipping
 		case .truncatingMiddle:
-			return .ByTruncatingMiddle
+			self = .ByTruncatingMiddle
 		}
 	}
 }
 
 extension UIDatePickerMode {
-    public static func fromPlanetUIDatePickerMode(alignment:PlanetUI.DatePickerMode) -> UIDatePickerMode {
-        switch alignment {
+    public static func fromPlanetUIDatePickerMode(mode:PlanetUI.DatePickerMode) -> UIDatePickerMode {
+        return self.init(withPlanetDatePickerMode: mode)
+    }
+    public init(withPlanetDatePickerMode mode: PlanetUI.DatePickerMode) {
+        switch mode {
         case .time:
-            return UIDatePickerMode.Time
+            self = UIDatePickerMode.Time
         case .date:
-            return UIDatePickerMode.Date
+            self = UIDatePickerMode.Date
         case .dateAndTime:
-            return UIDatePickerMode.DateAndTime
+            self = UIDatePickerMode.DateAndTime
         case .countDownTimer:
-            return UIDatePickerMode.CountDownTimer
+            self = UIDatePickerMode.CountDownTimer
         }
     }
 }
 
 extension UITextBorderStyle {
 	public static func fromPlanetUITextFieldBorderStyle(style:PlanetUI.TextBorderStyle) -> UITextBorderStyle {
+        return self.init(withPlanetTextBorderStyle: style)
+    }
+    public init(withPlanetTextBorderStyle style: PlanetUI.TextBorderStyle) {
 		switch style {
 		case .line:
-			return .Line
+			self = .Line
 		case .bezel:
-			return .Bezel
+			self = .Bezel
 		case .roundedRect:
-			return .RoundedRect
+			self = .RoundedRect
 		default:
-			return .None
+			self = .None
 		}
 	}
 }
 
 extension UITextFieldViewMode {
 	public static func fromPlanetUITextFieldViewMode(mode:PlanetUI.TextFieldViewMode) -> UITextFieldViewMode {
+        return self.init(withPlanetTextFieldViewMode: mode)
+    }
+    public init(withPlanetTextFieldViewMode mode: PlanetUI.TextFieldViewMode) {
 		switch mode {
 		case .always:
-			return .Always
+			self = .Always
 		case .never:
-			return .Never
+			self = .Never
 		case .unlessEditing:
-			return .UnlessEditing
+			self = .UnlessEditing
 		case .whileEditing:
-			return .WhileEditing
+			self = .WhileEditing
 		}
 	}
 }
 
 extension UIViewContentMode {
 	public static func fromPlanetUIContentMode(mode:PlanetUI.ContentMode) -> UIViewContentMode {
+        return self.init(withPlanetContentMode: mode)
+    }
+    public init(withPlanetContentMode mode: PlanetUI.ContentMode) {
 		switch mode {
 		case .scaleToFill:
-			return .ScaleToFill
+			self = .ScaleToFill
 		case .scaleAspectFit:
-			return .ScaleAspectFit
+			self = .ScaleAspectFit
 		case .scaleAspectFill:
-			return .ScaleAspectFill
+			self = .ScaleAspectFill
 		case .redraw:
-			return .Redraw
+			self = .Redraw
 		case .center:
-			return .Center
+			self = .Center
 		case .top:
-			return .Top
+			self = .Top
 		case .bottom:
-			return .Bottom
+			self = .Bottom
 		case .left:
-			return .Left
+			self = .Left
 		case .right:
-			return .Right
+			self = .Right
 		case .topLeft:
-			return .TopLeft
+			self = .TopLeft
 		case .topRight:
-			return .TopRight
+			self = .TopRight
 		case .bottomLeft:
-			return .BottomLeft
+			self = .BottomLeft
 		case .bottomRight:
-			return .BottomRight
+			self = .BottomRight
 		}
 	}
 }
 
 extension UIReturnKeyType {
 	public static func fromPlanetUIReturnKeyType(type:PlanetUI.ReturnKeyType) -> UIReturnKeyType {
+        return self.init(withPlanetReturnKeyType: type)
+    }
+    public init(withPlanetReturnKeyType type: PlanetUI.ReturnKeyType) {
 		switch type {
 		case .Default:
-			return .Default
+			self = .Default
 		case .go:
-			return .Go
+			self = .Go
 		case .google:
-			return .Google
+			self = .Google
 		case .join:
-			return .Join
+			self = .Join
 		case .next:
-			return .Next
+			self = .Next
 		case .route:
-			return .Route
+			self = .Route
 		case .search:
-			return .Search
+			self = .Search
 		case .send:
-			return .Send
+			self = .Send
 		case .yahoo:
-			return .Yahoo
+			self = .Yahoo
 		case .done:
-			return .Done
+			self = .Done
 		case .emergencyCall:
-			return .EmergencyCall
+			self = .EmergencyCall
 		}
 	}
 }
 
 extension UIKeyboardType {
 	public static func fromPlanetUIKeyboardType(type:PlanetUI.KeyboardType) -> UIKeyboardType {
+        return self.init(withPlanetKeyboardType: type)
+    }
+    public init(withPlanetKeyboardType type: PlanetUI.KeyboardType) {
 		switch type {
 		case .Default:
-			return .Default
+			self = .Default
 		case .ASCIICapable:
-			return .ASCIICapable
+			self = .ASCIICapable
 		case .numbersAndPunctuation:
-			return .NumbersAndPunctuation
+			self = .NumbersAndPunctuation
 		case .URL:
-			return .URL
+			self = .URL
 		case .numberPad:
-			return .NumberPad
+			self = .NumberPad
 		case .phonePad:
-			return .PhonePad
+			self = .PhonePad
 		case .namePhonePad:
-			return .NamePhonePad
+			self = .NamePhonePad
 		case .emailAddress:
-			return .EmailAddress
+			self = .EmailAddress
 		case .decimalPad:
-			return .DecimalPad
+			self = .DecimalPad
 		case .twitter:
-			return .Twitter
+			self = .Twitter
 		case .webSearch:
-			return .WebSearch
+			self = .WebSearch
 		}
 	}
 }
 
 extension UIActivityIndicatorViewStyle {
     public static func fromPlanetUIActivityIndicatorViewStyle(type:PlanetUI.ActivityIndicatorViewStyle) -> UIActivityIndicatorViewStyle {
-		switch type {
+        return self.init(withPlanetActivityIndicatorViewStyle: type)
+    }
+    public init(withPlanetActivityIndicatorViewStyle style: PlanetUI.ActivityIndicatorViewStyle) {
+		switch style {
 		case .whiteLarge:
-			return .WhiteLarge
+			self = .WhiteLarge
 		case .white:
-			return .White
+			self = .White
 		case .gray:
-			return .Gray
+			self = .Gray
 		}
 	}
 }
 
 extension UITextAutocapitalizationType {
 	public static func fromPlanetUITextAutocapitalizationType(type:PlanetUI.TextAutocapitalizationType) -> UITextAutocapitalizationType {
+        return self.init(withPlanetTextAutocapitalizationType: type)
+    }
+    public init(withPlanetTextAutocapitalizationType type: PlanetUI.TextAutocapitalizationType) {
 		switch type {
 		case .none:
-			return .None
+			self = .None
 		case .words:
-			return .Words
+			self = .Words
 		case .sentences:
-			return .Sentences
+			self = .Sentences
 		case .allCharacters:
-			return .AllCharacters
+			self = .AllCharacters
 		}
 	}
 }
 
 extension UITextAutocorrectionType {
 	public static func fromPlanetUITextAutocorrectionType(type:PlanetUI.TextAutocorrectionType) -> UITextAutocorrectionType {
+        return self.init(withPlanetTextAutocorrectionType: type)
+    }
+    public init(withPlanetTextAutocorrectionType type: PlanetUI.TextAutocorrectionType) {
 		switch type {
 		case .Default:
-			return .Default
+			self = .Default
 		case .no:
-			return .No
+			self = .No
 		case .yes:
-			return .Yes
+			self = .Yes
 		}
 	}
 }
 
 extension UITextSpellCheckingType {
 	public static func fromPlanetUITextSpellCheckingType(type:PlanetUI.TextSpellCheckingType) -> UITextSpellCheckingType {
+        return self.init(withPlanetTextSpellCheckingType: type)
+    }
+    public init(withPlanetTextSpellCheckingType type: PlanetUI.TextSpellCheckingType) {
 		switch type {
 		case .Default:
-			return .Default
+			self = .Default
 		case .no:
-			return .No
+			self = .No
 		case .yes:
-			return .Yes
+			self = .Yes
 		}
 	}
 }
