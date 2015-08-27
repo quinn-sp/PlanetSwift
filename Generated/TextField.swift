@@ -28,7 +28,7 @@ public class TextField: TextFieldBase {
         textFieldDelegate.textDelegate = self
 		
         textField.text = text
-        textField.placeholder = placeholder
+        textField.placeholder = placeholder.map{NSLocalizedString($0, comment: "")} ?? ""
         if let fontName = fontName {
             textField.font = UIFont(name: fontName, size: UIFont.systemFontSize())
         }
