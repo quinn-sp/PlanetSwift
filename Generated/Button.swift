@@ -18,7 +18,7 @@ public class Button: ButtonBase {
         }
     }
     
-    public func updateTitle(text: String?, forState state: UIControlState) {
+    public func updateTitle(text: String?, forState state: UIControlState = .Normal) {
         button.setTitle(text.map{NSLocalizedString($0, comment:"")}, forState:state)
     }
     
