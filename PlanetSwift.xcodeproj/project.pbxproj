@@ -40,6 +40,7 @@
 		A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */; };
 		A9639EF61A643A0D009C818F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639EF41A643A0D009C818F /* Scene.swift */; };
 		A9639EF71A643A0D009C818F /* SceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639EF51A643A0D009C818F /* SceneBase.swift */; };
+		A967CD931B9A07B9008DEBE5 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		A96D92AB1A4358F800119036 /* PlanetSwiftViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */; };
 		A9B439741A3A53C70052690A /* PlanetSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B439731A3A53C70052690A /* PlanetSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B4397A1A3A53C70052690A /* PlanetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B4396E1A3A53C70052690A /* PlanetSwift.framework */; };
@@ -123,6 +124,7 @@
 		A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftLabelTests.swift; sourceTree = "<group>"; };
 		A9639EF41A643A0D009C818F /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		A9639EF51A643A0D009C818F /* SceneBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBase.swift; sourceTree = "<group>"; };
+		A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftViewTests.swift; sourceTree = "<group>"; };
 		A9B4396E1A3A53C70052690A /* PlanetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlanetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B439721A3A53C70052690A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				9B8E9A781A70036800D64615 /* PlanetViewController.swift */,
 				A9B439711A3A53C70052690A /* Supporting Files */,
 				A9B439CC1A3B5AA20052690A /* PlanetSwift-Bridging-Header.h */,
+				A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */,
 			);
 			path = PlanetSwift;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				9BC9743E1A7022FC002F0295 /* Controller.swift in Sources */,
 				9BCF35F11A6EE7AF00E8418B /* ImageView.swift in Sources */,
 				C4C060FB1AA37675004D39EC /* GestureRecognizerBase.swift in Sources */,
+				A967CD931B9A07B9008DEBE5 /* NotificationHandler.swift in Sources */,
 				C49462491AF819F200F005B4 /* ScrollView.swift in Sources */,
 				7F01F2331B4344970075D7A7 /* DatePickerBase.swift in Sources */,
 				C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */,
