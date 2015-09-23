@@ -176,10 +176,6 @@ extension UIImage {
         if gaxbString.rangeOfString(":/") != nil {
             self.init(contentsOfFile:(String(bundlePath: gaxbString)))
         } else {
-            guard let _ = UIImage(named: gaxbString) else {
-                assertionFailure("Could not load image named \(gaxbString)")
-                return nil
-            }
             self.init(named: gaxbString)
         }
     }

@@ -45,9 +45,8 @@ extension PlanetUI {
     }
 	
 	public class func configImageForKey(key: String?) -> UIImage? {
-        guard let bundlePath = PlanetUI.configStringForKey(key),
-            image = UIImage(contentsOfFile: String(bundlePath: bundlePath)) else { return nil }
-        return image
+        guard let bundlePath = PlanetUI.configStringForKey(key) else { return nil }
+        return UIImage(gaxbString: bundlePath)
 	}
 	
 	public class func configRemoteImageForKey(key: String, completion: ImageCache_CompletionBlock) {
