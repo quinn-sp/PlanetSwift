@@ -20,16 +20,14 @@ public class PlanetView: UIView {
 	//MARK: - loading / unloading view
 	
 	func loadXMLView() {
-		
-		if xmlView == nil && bundlePath != nil {
+        guard let bundlePath = bundlePath where xmlView == nil else { return }
 			
-			xmlView = PlanetUI.readFromFile(String(bundlePath: bundlePath!)) as? View
-			if let loadedView = xmlView?.view {
-				self.addSubview(loadedView)
-			}
-			xmlView?.visit({ (element) -> () in
-                element.gaxbDidPrepare()
-            })
-		}
+        xmlView = PlanetUI.readFromFile(String(bundlePath: bundlePath)) as? View
+        if let loadedView = xmlView?.view {
+            addSubview(loadedView)
+        }
+        xmlView?.visit() { element in
+            element.gaxbDidPrepare()
+        }
 	}
 }
