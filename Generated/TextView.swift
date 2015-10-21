@@ -28,27 +28,30 @@ public class TextView: TextViewBase {
 		
 		textViewDelegate.delegate = self
 		
-		if text != nil {
-			textView.text = text!
+		if let text = text {
+			textView.text = text
 		}
-		if fontName != nil {
-			textView.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+		if let fontName = fontName {
+			textView.font = UIFont(name: fontName, size: UIFont.systemFontSize())
 		}
-        if fontSize != nil && textView.font != nil {
-            textView.font = textView.font!.fontWithSize(CGFloat(fontSize!))
+        if let fontSize = fontSize where textView.font != nil {
+            textView.font = textView.font!.fontWithSize(CGFloat(fontSize))
         }
-		if textColor != nil {
-			textView.textColor = textColor!
+		if let textColor = textColor {
+			textView.textColor = textColor
 		}
-		if textAlignment != nil {
-			textView.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
+		if let textAlignment = textAlignment {
+			textView.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment)
 		}
-		if selectable != nil {
-			textView.selectable = selectable!
+		if let selectable = selectable {
+			textView.selectable = selectable
 		}
-		if editable != nil {
-			textView.editable = editable!
+		if let editable = editable {
+			textView.editable = editable
 		}
+        if let tintColor = tintColor {
+            textView.tintColor = tintColor
+        }
 	}
 	
 	func textViewDidChange(textView: UITextView) {

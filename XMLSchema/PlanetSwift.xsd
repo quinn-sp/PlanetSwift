@@ -165,6 +165,7 @@
 				<attribute name="fontSize" type="decimal" />
 				<attribute name="textColor" type="ui:color"/>
 				<attribute name="textAlignment" type="ui:TextAlignment"/>
+				<attribute name="tintColor" type="ui:color" />
 				<attribute name="selectable" type="boolean"/>
 				<attribute name="editable" type="boolean"/>
 				<attribute name="onChange" type="string"/>
