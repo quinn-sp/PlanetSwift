@@ -72,6 +72,11 @@ public class TextView: TextViewBase {
 			NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
 		}
 	}
+    
+    public func updateText(newText: String?) {
+        text = newText
+        gaxbPrepare()
+    }
 }
 
 private class TextViewDelegateHelper : NSObject, UITextViewDelegate {
