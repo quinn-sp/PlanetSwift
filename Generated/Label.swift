@@ -48,7 +48,11 @@ public class Label: LabelBase {
             label.numberOfLines = numberOfLines!
         }
         if fontName != nil {
-            label.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+            #if os(iOS)
+                label.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+            #else
+                label.font = UIFont(name: fontName!, size: 18)
+            #endif
         }
         if fontSize != nil {
             label.font = label.font.fontWithSize(CGFloat(fontSize!))

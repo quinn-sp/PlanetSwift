@@ -21,11 +21,13 @@ public class PanGestureRecognizer: PanGestureRecognizerBase {
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
-		if maximumNumberOfTouches != nil {
-			panRecognizer.maximumNumberOfTouches = maximumNumberOfTouches!
-		}
-		if minimumNumberOfTouches != nil {
-			panRecognizer.minimumNumberOfTouches = minimumNumberOfTouches!
-		}
+        #if os(iOS)
+            if maximumNumberOfTouches != nil {
+                panRecognizer.maximumNumberOfTouches = maximumNumberOfTouches!
+            }
+            if minimumNumberOfTouches != nil {
+                panRecognizer.minimumNumberOfTouches = minimumNumberOfTouches!
+            }
+        #endif
 	}
 }

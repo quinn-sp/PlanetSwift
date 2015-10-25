@@ -30,7 +30,11 @@ public class TextField: TextFieldBase {
         textField.text = text
         textField.placeholder = placeholder.map{NSLocalizedString($0, comment: "")} ?? ""
         if let fontName = fontName {
-            textField.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+            #if os(iOS)
+                textField.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+            #else
+                textField.font = UIFont(name: fontName, size: 18)
+            #endif
         }
         if let fontSize = fontSize where textField.font != nil {
             textField.font = textField.font!.fontWithSize(CGFloat(fontSize))

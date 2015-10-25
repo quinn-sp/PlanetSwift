@@ -30,10 +30,11 @@ public class ActivityIndicatorView: ActivityIndicatorViewBase {
             activityIndicator.hidesWhenStopped = hidesWhenStopped!
         }
         
+#if os(iOS)
         if activityIndicatorViewStyle != nil {
             activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.fromPlanetUIActivityIndicatorViewStyle(activityIndicatorViewStyle!)
         }
-        
+#endif
         if color != nil {
             activityIndicator.color = color!
         }

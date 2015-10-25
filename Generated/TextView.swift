@@ -32,7 +32,11 @@ public class TextView: TextViewBase {
 			textView.text = text
 		}
 		if let fontName = fontName {
-			textView.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+            #if os(iOS)
+                textView.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+            #else
+                textView.font = UIFont(name: fontName, size: 18)
+            #endif
 		}
         if let fontSize = fontSize where textView.font != nil {
             textView.font = textView.font!.fontWithSize(CGFloat(fontSize))
@@ -46,9 +50,11 @@ public class TextView: TextViewBase {
 		if let selectable = selectable {
 			textView.selectable = selectable
 		}
-		if let editable = editable {
-			textView.editable = editable
-		}
+        #if os(iOS)
+            if let editable = editable {
+                textView.editable = editable
+            }
+        #endif
         if let tintColor = tintColor {
             textView.tintColor = tintColor
         }

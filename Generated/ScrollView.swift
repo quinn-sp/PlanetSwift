@@ -21,9 +21,11 @@ public class ScrollView: ScrollViewBase {
 		if contentSize != nil {
 			scrollView.contentSize = contentSize!
 		}
+#if os(iOS)
 		if pagingEnabled != nil {
 			scrollView.pagingEnabled = pagingEnabled!
 		}
+#endif
 		if showsHorizontalScrollIndicator != nil {
 			scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator!
 		}

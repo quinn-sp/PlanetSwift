@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ui="http://schema.smallplanet.com/PlanetUI" targetNamespace="http://schema.smallplanet.com/PlanetUI">
+
+	<element name="Object" type="ui:Object"/>
+	<complexType name="Object">
+		<sequence>
+			<any minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+		<attribute name="id" type="string"/>
+		<attribute name="styleId" type="string"/>
+	</complexType>
+
+	<element name="View" type="ui:View"/>
+	<complexType name="View">
+		<annotation>
+			<appinfo><![CDATA[View attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/" target="_blank">UIView</a>]]></appinfo>
+			<appinfo><![CDATA[In addition, every view has a layer. Some of the attributes map to <a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CALayer_class/" target="_blank">CALayer</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="frame" type="ui:rect"/>
+				<attribute name="backgroundColor" type="ui:color"/>
+				<attribute name="alpha" type="decimal"/>
+				<attribute name="hidden" type="boolean"/>
+				<attribute name="clipsToBounds" type="boolean"/>
+				<attribute name="userInteractionEnabled" type="boolean"/>
+				<attribute name="tag" type="integer"/>
+				<attribute name="contentMode" type="ui:ContentMode"/>
+				<attribute name="contentHuggingPriority" type="ui:point"/><!-- 250 -->
+				<attribute name="contentCompressionResistancePriority" type="ui:point"/><!-- 750 -->
+				<!-- CALayer properties -->
+				<attribute name="borderColor" type="ui:color"/>
+				<attribute name="borderWidth" type="decimal"/>
+				<attribute name="cornerRadius" type="decimal"/>
+				<attribute name="shadowOffset" type="ui:size"/>
+				<attribute name="shadowOpacity" type="decimal"/>
+				<attribute name="shadowRadius" type="decimal"/>
+				<attribute name="shadowColor" type="ui:color"/>
+				<attribute name="masksToBounds" type="boolean"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Scene" type="ui:Scene"/>
+	<complexType name="Scene">
+		<annotation>
+			<appinfo><![CDATA[Scene is the same as View. It can be useful to make the first XML element in a file a Scene.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Label" type="ui:Label"/>
+	<complexType name="Label">
+		<annotation>
+			<appinfo><![CDATA[Label attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UILabel_Class/index.html" target="_blank">UILabel</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="text" type="string"/>
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal" />
+				<attribute name="textColor" type="ui:color"/>
+				<attribute name="textAlignment" type="ui:TextAlignment"/>
+				<attribute name="lineBreakMode" type="ui:LineBreakMode"/>
+				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
+				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
+				<attribute name="numberOfLines" type="integer"/>
+				<!-- NSAttributedString attributes -->
+				<attribute name="lineSpacing" type="decimal"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Button" type="ui:Button"/>
+	<complexType name="Button">
+		<annotation>
+			<appinfo><![CDATA[Button attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIButton_Class/index.html" target="_blank">UIButton</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Control">
+				<attribute name="onTouchUp" type="string" />
+				<attribute name="onTouchDown" type="string" />
+				<attribute name="tintColor" type="ui:color" />
+				<attribute name="title" type="string" />
+				<attribute name="titleHighlighted" type="string" />
+				<attribute name="titleSelected" type="string" />
+				<attribute name="titleSelectedHighlighted" type="string" />
+				<attribute name="titleDisabled" type="string" />
+				<attribute name="titleFontColor" type="ui:color" />
+				<attribute name="titleFontColorHighlighted" type="ui:color" />
+				<attribute name="titleFontColorSelected" type="ui:color" />
+				<attribute name="titleFontColorSelectedHighlighted" type="ui:color" />
+				<attribute name="titleFontColorDisabled" type="ui:color" />
+				<attribute name="titleFont" type="string" />
+				<attribute name="titleFontSize" type="decimal" />
+				<attribute name="isToggle" type="boolean" default="false"/>
+				<attribute name="backgroundColorHighlighted" type="ui:color" />
+				<attribute name="backgroundColorSelected" type="ui:color" />
+				<attribute name="backgroundColorSelectedHighlighted" type="ui:color" />
+				<attribute name="backgroundColorDisabled" type="ui:color" />
+				<attribute name="backgroundImage" type="string" />
+				<attribute name="backgroundImageHighlighted" type="string" />
+				<attribute name="backgroundImageSelected" type="string" />
+				<attribute name="backgroundImageSelectedHighlighted" type="string" />
+				<attribute name="backgroundImageDisabled" type="string" />
+				<attribute name="image" type="string" />
+				<attribute name="imageHighlighted" type="string" />
+				<attribute name="imageSelected" type="string" />
+				<attribute name="imageSelectedHighlighted" type="string" />
+				<attribute name="imageDisabled" type="string" />
+				<attribute name="backgroundImageSet" type="string" />
+				<attribute name="imageSet" type="string" /> <!-- "Quality of life" attribute that, given a path, will fill out all the image states for the button using the naming convention: "path"_normal, "path"_highlighted, "path"_selected, "path"_selected_highlighted, "path"_disabled -->
+				<attribute name="contentEdgeInsets" type="ui:edgeInsets" />
+				<attribute name="titleEdgeInsets" type="ui:edgeInsets" />
+				<attribute name="imageEdgeInsets" type="ui:edgeInsets" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="TextField" type="ui:TextField"/>
+	<complexType name="TextField">
+		<annotation>
+			<appinfo><![CDATA[TextField attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextField_Class/index.html" target="_blank">UITextField</a>]]></appinfo>
+			<appinfo><![CDATA[Use a TextField when your text input only requires one line.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Control">
+				<attribute name="text" type="string"/>
+				<attribute name="placeholder" type="string"/>
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal" />
+				<attribute name="textColor" type="ui:color"/>
+				<attribute name="textAlignment" type="ui:TextAlignment"/>
+				<attribute name="adjustsFontSizeToFitWidth" type="boolean"/>
+				<attribute name="minimumFontSize" type="decimal" default="0.0"/>
+				<attribute name="secureTextEntry" type="boolean"/>
+				<attribute name="borderStyle" type="ui:TextBorderStyle"/>
+				<attribute name="clearButtonMode" type="ui:TextFieldViewMode"/>
+				<attribute name="clearsOnBeginEditing" type="boolean"/>
+				<attribute name="returnKeyType" type="ui:ReturnKeyType"/>
+				<attribute name="keyboardType" type="ui:KeyboardType"/>
+				<attribute name="onBeginEditing" type="string"/>
+				<attribute name="onEndEditing" type="string"/>
+				<attribute name="onReturnPressed" type="string"/>
+				<attribute name="autocapitalizationType" type="ui:TextAutocapitalizationType"/>
+				<attribute name="autocorrectionType" type="ui:TextAutocorrectionType"/>
+				<attribute name="spellCheckingType" type="ui:TextSpellCheckingType"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="TextView" type="ui:TextView"/><!-- typically better than TextField only for multi-line text input -->
+	<complexType name="TextView">
+		<annotation>
+			<appinfo><![CDATA[TextView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITextView_Class/index.html" target="_blank">UITextView</a>]]></appinfo>
+			<appinfo><![CDATA[Use a TextView when your text input might require multiple lines.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="text" type="string"/>
+				<attribute name="fontName" type="string"/>
+				<attribute name="fontSize" type="decimal" />
+				<attribute name="textColor" type="ui:color"/>
+				<attribute name="textAlignment" type="ui:TextAlignment"/>
+				<attribute name="tintColor" type="ui:color" />
+				<attribute name="selectable" type="boolean"/>
+				<attribute name="editable" type="boolean"/>
+				<attribute name="onChange" type="string"/>
+				<attribute name="onEndEditing" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ImageView" type="ui:ImageView"/>
+	<complexType name="ImageView">
+		<annotation>
+			<appinfo><![CDATA[ImageView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIImageView_Class/index.html" target="_blank">UIImageView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="image" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="NetworkImageView" type="ui:NetworkImageView"/>
+	<complexType name="NetworkImageView">
+		<annotation>
+			<appinfo><![CDATA[NetworkImageView shows an image, similar to ImageView, but it also allows you to pull the image from the internet. It can show a local image as a placeholder until the remote image finishes loading.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:ImageView">
+				<attribute name="placeholderPath" type="string" />
+				<attribute name="placeholderContentMode" type="ui:ContentMode"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="VisualEffectView" type="ui:VisualEffectView"/>
+	<complexType name="VisualEffectView">
+		<annotation>
+			<appinfo><![CDATA[VisualEffectView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIVisualEffectView/index.html" target="_blank">UIVisualEffectView</a>]]></appinfo>
+			<appinfo><![CDATA[(iOS 8+ only))]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="effect" type="ui:BlurEffect" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="SegmentedControl" type="ui:SegmentedControl"/>
+	<complexType name="SegmentedControl">
+		<annotation>
+			<appinfo><![CDATA[SegmentedControl attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISegmentedControl_Class/" target="_blank">UISegmentedControl</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Control">
+				<attribute name="tintColor" type="ui:color" /> <!-- selected color -->
+				<attribute name="textColorNormal" type="ui:color" />
+				<attribute name="textColorHighlighted" type="ui:color" />
+				<attribute name="textColorSelected" type="ui:color" />
+				<attribute name="textColorSelectedHighlighted" type="ui:color" />
+				<attribute name="textColorDisabled" type="ui:color" />
+				<attribute name="fontNormal" type="string" />
+				<attribute name="fontHighlighted" type="string" />
+				<attribute name="fontSelected" type="string" />
+				<attribute name="fontSelectedHighlighted" type="string" />
+				<attribute name="fontDisabled" type="string" />
+				<attribute name="fontSizeNormal" type="decimal" default="15" />
+				<attribute name="fontSizeHighlighted" type="decimal" default="15" />
+				<attribute name="fontSizeSelectedHighlighted" type="decimal" default="15" />
+				<attribute name="fontSizeSelected" type="decimal" default="15" />
+				<attribute name="fontSizeDisabled" type="decimal" default="15" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ActivityIndicatorView" type="ui:ActivityIndicatorView"/><!-- typically better than TextField only for multi-line text input -->
+	<complexType name="ActivityIndicatorView">
+		<annotation>
+			<appinfo><![CDATA[ActivityIndicatorView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIActivityIndicatorView_Class/" target="_blank">UIActivityIndicatorView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="startAnimating" type="string"/>
+				<attribute name="stopAnimating" type="string"/>
+				<attribute name="hidesWhenStopped" type="boolean" />
+				<attribute name="activityIndicatorViewStyle" type="ui:ActivityIndicatorViewStyle"/>
+				<attribute name="color" type="ui:color"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="PageControl" type="ui:PageControl"/>
+	<complexType name="PageControl">
+		<annotation>
+			<appinfo><![CDATA[PageControl attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIPageControl_Class/" target="_blank">UIPageControl</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="hidesForSinglePage" type="boolean"/>
+				<attribute name="pageIndicatorTintColor" type="ui:color"/>
+				<attribute name="currentPageIndicatorTintColor" type="ui:color"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="CollectionView" type="ui:CollectionView"/>
+	<complexType name="CollectionView">
+		<annotation>
+			<appinfo><![CDATA[CollectionView attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UICollectionView_class/" target="_blank">UICollectionView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="layoutClass" type="string" default="UICollectionViewFlowLayout"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Object descendents -->
+
+	<element name="Notification" type="ui:Notification" />
+	<complexType name="Notification">
+		<annotation>
+			<appinfo><![CDATA[Notifications are used to connect events from other tags to Controllers.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="scopedName" type="string" use="required" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Controller" type="ui:Controller" />
+	<complexType name="Controller">
+		<annotation>
+			<appinfo><![CDATA[Controllers connect what happens in the XML to the apps code.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<sequence>
+					<element ref="ui:Notification" minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Constraint" type="ui:Constraint" />
+	<complexType name="Constraint">
+		<annotation>
+			<appinfo><![CDATA[Constraint attributes map to <a href="https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/" target="_blank">NSLayoutConstraint</a>]]></appinfo>
+			<appinfo><![CDATA[Constraints are part of a system called Auto Layout. Auto Layout sets the position and size of all constrained views.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="priority" type="float" default="1000" />
+				<attribute name="firstItem" type="string" use="required" />
+				<attribute name="secondItem" type="string" use="optional" />
+				<attribute name="firstAttribute" type="ui:LayoutAttribute" default="notAnAttribute" />
+				<attribute name="secondAttribute" type="ui:LayoutAttribute" default="notAnAttribute" />
+				<attribute name="relation" type="ui:LayoutRelation" default="equal" />
+				<attribute name="multiplier" type="float" default="1" />
+				<attribute name="constant" type="float" default="0" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="Control" type="ui:Control" />
+	<complexType name="Control">
+		<annotation>
+			<appinfo><![CDATA[Control attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIControl_Class/" target="_blank">UIControl</a>]]></appinfo>
+			<appinfo><![CDATA[Control is an abstraction that represents a group of interactive views (buttons and toggles etc), you should never specify an actual <Control/> tag.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="enabled" type="boolean" />
+				<attribute name="selected" type="boolean" />
+				<attribute name="highlighted" type="boolean" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="GestureRecognizer" type="ui:GestureRecognizer" />
+	<complexType name="GestureRecognizer">
+		<annotation>
+			<appinfo><![CDATA[GestureRecognizer attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIGestureRecognizer_Class/index.html" target="_blank">UIGestureRecognizer</a>]]></appinfo>
+			<appinfo><![CDATA[GestureRecognizer is an abstraction, you should never specify an actual <GestureRecognizer/> tag. Use the other types of recognizers instead.]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="view" type="string" use="required" />
+				<attribute name="cancelsTouchesInView" type="boolean" />
+				<attribute name="delaysTouchesBegan" type="boolean" />
+				<attribute name="delaysTouchesEnded" type="boolean" />
+				<attribute name="onStateChange" type="string" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="PanGestureRecognizer" type="ui:PanGestureRecognizer" />
+	<complexType name="PanGestureRecognizer">
+		<annotation>
+			<appinfo><![CDATA[PanGestureRecognizer attributes map to <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIPanGestureRecognizer_Class/index.html" target="_blank">UIPanGestureRecognizer</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:GestureRecognizer">
+				<attribute name="maximumNumberOfTouches" type="int" />
+				<attribute name="minimumNumberOfTouches" type="int" />
+			</extension>
+		</complexContent>
+	</complexType>
+
+<!-- enumerations -->
+
+	<simpleType name="ActivityIndicatorViewStyle">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="whiteLarge" />
+			<enumeration value="white" />
+			<enumeration value="gray" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BlurEffect">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="extraLight" />
+			<enumeration value="light" />
+			<enumeration value="dark" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextAlignment">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="left" />
+			<enumeration value="center" />
+			<enumeration value="right" />
+			<enumeration value="justified" />
+			<enumeration value="natural" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextBorderStyle">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="none" />
+			<enumeration value="line" />
+			<enumeration value="bezel" />
+			<enumeration value="roundedRect" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LineBreakMode">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="wordWrapping" />
+			<enumeration value="charWrapping" />
+			<enumeration value="clipping" />
+			<enumeration value="truncatingHead" />
+			<enumeration value="truncatingTail" />
+			<enumeration value="truncatingMiddle" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LayoutAttribute">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="left" />
+			<enumeration value="right" />
+			<enumeration value="top" />
+			<enumeration value="bottom" />
+			<enumeration value="leading" />
+			<enumeration value="trailing" />
+			<enumeration value="width" />
+			<enumeration value="height" />
+			<enumeration value="centerX" />
+			<enumeration value="centerY" />
+			<enumeration value="baseline" />
+			<enumeration value="notAnAttribute" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LayoutRelation">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="lessThanOrEqual" />
+			<enumeration value="equal" />
+			<enumeration value="greaterThanOrEqual" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ContentMode">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="scaleToFill" />
+			<enumeration value="scaleAspectFit" />
+			<enumeration value="scaleAspectFill" />
+			<enumeration value="redraw" />
+			<enumeration value="center" />
+			<enumeration value="top" />
+			<enumeration value="bottom" />
+			<enumeration value="left" />
+			<enumeration value="right" />
+			<enumeration value="topLeft" />
+			<enumeration value="topRight" />
+			<enumeration value="bottomLeft" />
+			<enumeration value="bottomRight" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextFieldViewMode">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="never" />
+			<enumeration value="whileEditing" />
+			<enumeration value="unlessEditing" />
+			<enumeration value="always" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ReturnKeyType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="go" />
+			<enumeration value="google" />
+			<enumeration value="join" />
+			<enumeration value="next" />
+			<enumeration value="route" />
+			<enumeration value="search" />
+			<enumeration value="send" />
+			<enumeration value="yahoo" />
+			<enumeration value="done" />
+			<enumeration value="emergencyCall" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="KeyboardType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="ASCIICapable" />
+			<enumeration value="numbersAndPunctuation" />
+			<enumeration value="URL" />
+			<enumeration value="numberPad" />
+			<enumeration value="phonePad" />
+			<enumeration value="namePhonePad" />
+			<enumeration value="emailAddress" />
+			<enumeration value="decimalPad" />
+			<enumeration value="twitter" />
+			<enumeration value="webSearch" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextAutocapitalizationType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="none" />
+			<enumeration value="words" />
+			<enumeration value="sentences" />
+			<enumeration value="allCharacters" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextAutocorrectionType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="no" />
+			<enumeration value="yes" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TextSpellCheckingType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="Default" />
+			<enumeration value="no" />
+			<enumeration value="yes" />
+		</restriction>
+	</simpleType>
+
+	<!-- types -->
+
+	<simpleType name="rect">
+		<annotation>
+			<appinfo>CGRect</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*(,\s*-?[0-9.]+\s*){3}"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="edgeInsets">
+		<annotation>
+			<appinfo>UIEdgeInsets</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*(,\s*-?[0-9.]+\s*){3}"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="size">
+		<annotation>
+			<appinfo>CGSize</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*,\s*-?[0-9.]+\s*"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="point">
+		<annotation>
+			<appinfo>CGPoint</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\s*-?[0-9.]+\s*,\s*-?[0-9.]+\s*"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="color">
+		<!-- A color, represented in #rrggbbaa format. Remember the # is required! -->
+		<annotation>
+			<appinfo>UIColor</appinfo>
+		</annotation>
+		<restriction base="string">
+			<pattern value="#[0-9a-fA-F]{8}|#[0-9a-fA-F]{6}|black|white|red|green|blue"/>
+		</restriction>
+	</simpleType>
+
+</schema>

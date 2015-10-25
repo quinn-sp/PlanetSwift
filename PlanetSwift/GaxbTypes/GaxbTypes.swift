@@ -286,6 +286,7 @@ extension NSLineBreakMode {
 	}
 }
 
+#if os(iOS)
 extension UIDatePickerMode {
     public static func fromPlanetUIDatePickerMode(mode:PlanetUI.DatePickerMode) -> UIDatePickerMode {
         return self.init(withPlanetDatePickerMode: mode)
@@ -303,6 +304,7 @@ extension UIDatePickerMode {
         }
     }
 }
+#endif
 
 extension UITextBorderStyle {
 	public static func fromPlanetUITextFieldBorderStyle(style:PlanetUI.TextBorderStyle) -> UITextBorderStyle {
@@ -440,6 +442,7 @@ extension UIKeyboardType {
 	}
 }
 
+#if os(iOS)
 extension UIActivityIndicatorViewStyle {
     public static func fromPlanetUIActivityIndicatorViewStyle(type:PlanetUI.ActivityIndicatorViewStyle) -> UIActivityIndicatorViewStyle {
         return self.init(withPlanetActivityIndicatorViewStyle: type)
@@ -450,11 +453,12 @@ extension UIActivityIndicatorViewStyle {
 			self = .WhiteLarge
 		case .white:
 			self = .White
-		case .gray:
+		case gray:
 			self = .Gray
 		}
 	}
 }
+#endif
 
 extension UITextAutocapitalizationType {
 	public static func fromPlanetUITextAutocapitalizationType(type:PlanetUI.TextAutocapitalizationType) -> UITextAutocapitalizationType {
