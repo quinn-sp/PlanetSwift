@@ -632,7 +632,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p $PROJECT_DIR/Generated\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated\"";
+			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p \"$PROJECT_DIR/Generated\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated\"";
 		};
 		C4A28FB81BDD208F00D4713C /* GAXB */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -646,7 +646,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p \"$PROJECT_DIR/Generated_tvOS\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift_tvOS.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated_tvOS\"";
+			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p \"$PROJECT_DIR/Generated\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated\"\n\nmkdir -p \"$PROJECT_DIR/Generated_tvOS\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift_tvOS.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated_tvOS\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -312,6 +312,7 @@
 				<attribute name="relation" type="ui:LayoutRelation" default="equal" />
 				<attribute name="multiplier" type="float" default="1" />
 				<attribute name="constant" type="float" default="0" />
+				<attribute name="ruleSet" type="ui:LayoutRuleSet" default="none"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -466,6 +467,16 @@
 			<enumeration value="lessThanOrEqual" />
 			<enumeration value="equal" />
 			<enumeration value="greaterThanOrEqual" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LayoutRuleSet">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="none"/>
+			<enumeration value="fillSuperview"/>
 		</restriction>
 	</simpleType>
 

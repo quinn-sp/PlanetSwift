@@ -107,30 +107,53 @@ public class Constraint: ConstraintBase {
 				
 				let second = secondView()
 				
-				constraint = NSLayoutConstraint(item: first,
-					attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
-					relatedBy: Constraint.layoutRelationFromEnum(relation),
-					toItem: second,
-					attribute: Constraint.layoutAttributeFromEnum(secondAttribute),
-					multiplier: CGFloat(multiplier),
-					constant: CGFloat(constant))
-				
+                let constraints = makeConstraints()
+                if constraints.count == 1 {
+                    constraint = constraints.first
+                    constraint?.identifier = id
+                }
+                
                 first.translatesAutoresizingMaskIntoConstraints = false
                 second?.translatesAutoresizingMaskIntoConstraints = false
                 
-				constraint?.priority = priority
-                constraint?.identifier = id
+                constraints.forEach { $0.priority = priority }
 				
 				//attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
 				if second != nil && first.isDescendantOfView(second!) {
-					second!.addConstraint(constraint!)
+					second!.addConstraints(constraints)
 				}
 				else {
-					first.superview?.addConstraint(constraint!)
+					first.superview?.addConstraints(constraints)
 				}
 			}
 		}
-		
 	}
-	
+    
+    public func makeConstraints() -> [NSLayoutConstraint] {
+        guard let first = firstView() else { return [] }
+        let second = secondView()
+        switch ruleSet {
+        case .fillSuperview:
+            let superview = first.superview
+            return [NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Top),
+                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Right),
+                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Bottom),
+                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Left)]
+        default:
+            return [NSLayoutConstraint(item: first,
+                attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
+                relatedBy: Constraint.layoutRelationFromEnum(relation),
+                toItem: second,
+                attribute: Constraint.layoutAttributeFromEnum(secondAttribute),
+                multiplier: CGFloat(multiplier),
+                constant: CGFloat(constant))]
+        }
+    }
+    
+}
+
+extension NSLayoutConstraint {
+    public convenience init(item: UIView, toItem: UIView?, equalAttribute attribute: NSLayoutAttribute) {
+        self.init(item: item, attribute: attribute, relatedBy:.Equal, toItem:toItem, attribute: attribute, multiplier: 1, constant: 0)
+    }
 }
