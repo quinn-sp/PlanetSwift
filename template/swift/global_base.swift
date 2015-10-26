@@ -128,3 +128,13 @@ end %>
 		}
 	}
 }
+
+public extension GaxbElement {<%
+for k,v in pairs(schema.elements) do
+-- if not in the schema namespace, skip
+if (schema.namespace == v.namespace) then
+v.name = cleanedName(v.name);%>
+    var as<%= v.name %>: <%= v.name %>? { return self as? <%= v.name %> }<%
+	end
+end %>
+}
