@@ -8,7 +8,8 @@ private let Constraint_parentKeyword = "parent"
 
 public class Constraint: ConstraintBase {
 
-	internal(set) public var constraint:NSLayoutConstraint?
+	internal(set) public var constraints = [NSLayoutConstraint]()
+    public var constraint: NSLayoutConstraint? { return constraints.first }
 	
 	//MARK: - enum conversion
 	
@@ -107,9 +108,8 @@ public class Constraint: ConstraintBase {
 				
 				let second = secondView()
 				
-                let constraints = makeConstraints()
+                constraints = makeConstraints()
                 if constraints.count == 1 {
-                    constraint = constraints.first
                     constraint?.identifier = id
                 }
                 
@@ -139,6 +139,9 @@ public class Constraint: ConstraintBase {
                 NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Right),
                 NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Bottom),
                 NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Left)]
+        case .equalSize:
+            return [NSLayoutConstraint(item: first, toItem: second, equalAttribute: .Width),
+                NSLayoutConstraint(item: first, toItem: second, equalAttribute: .Height)]
         default:
             return [NSLayoutConstraint(item: first,
                 attribute: Constraint.layoutAttributeFromEnum(firstAttribute),

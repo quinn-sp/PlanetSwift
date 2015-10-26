@@ -477,6 +477,7 @@
 		<restriction base="string">
 			<enumeration value="none"/>
 			<enumeration value="fillSuperview"/>
+			<enumeration value="equalSize"/>
 		</restriction>
 	</simpleType>
 
