@@ -511,11 +511,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A28FB21BDD208300D4713C /* Build configuration list for PBXNativeTarget "PlanetSwift tvOS" */;
 			buildPhases = (
-				C4A28F9C1BDD208300D4713C /* Sources */,
-				C4A28F9D1BDD208300D4713C /* Frameworks */,
-				C4A28F9E1BDD208300D4713C /* Headers */,
-				C4A28F9F1BDD208300D4713C /* Resources */,
 				C4A28FB81BDD208F00D4713C /* GAXB */,
+				C4A28F9F1BDD208300D4713C /* Resources */,
+				C4A28F9C1BDD208300D4713C /* Sources */,
+				C4A28F9E1BDD208300D4713C /* Headers */,
+				C4A28F9D1BDD208300D4713C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1089,6 +1089,7 @@
 				C4A28FB41BDD208300D4713C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4A28FB51BDD208300D4713C /* Build configuration list for PBXNativeTarget "PlanetSwift tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1097,6 +1098,7 @@
 				C4A28FB71BDD208300D4713C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

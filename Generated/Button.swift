@@ -6,7 +6,7 @@ import UIKit
 
 public class Button: ButtonBase {
     
-    lazy public var button: PlanetButton = PlanetButton()
+    lazy public var button: PlanetButton = self.makeButton()
     override public var control: UIControl? {
         get {
             return button
@@ -20,6 +20,13 @@ public class Button: ButtonBase {
     
     public func updateTitle(text: String?, forState state: UIControlState = .Normal) {
         button.setTitle(text.map{NSLocalizedString($0, comment:"")}, forState:state)
+    }
+    
+    public func makeButton() -> PlanetButton {
+        if let type = type {
+            return PlanetButton(type: UIButtonType(withPlanetButtonType: type))
+        }
+        return PlanetButton()
     }
     
     public override func gaxbPrepare() {

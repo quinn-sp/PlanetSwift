@@ -244,6 +244,28 @@ extension UIColor {
 
 //MARK: - enum conversion
 
+extension UIButtonType {
+    public static func fromPlanetUIButtonType(type:PlanetUI.ButtonType) -> UIButtonType {
+        return self.init(withPlanetButtonType: type)
+    }
+    public init(withPlanetButtonType type: PlanetUI.ButtonType) {
+        switch type {
+        case .custom:
+            self = .Custom
+        case .system:
+            self = .System
+        case .detailDisclosure:
+            self = .DetailDisclosure
+        case .infoLight:
+            self = .InfoLight
+        case .infoDark:
+            self = .InfoDark
+        case .contactAdd:
+            self = .ContactAdd
+        }
+    }
+}
+
 extension NSTextAlignment {
 	public static func fromPlanetUITextAlignment(alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
         return self.init(withPlanetTextAlignment: alignment)
@@ -453,7 +475,7 @@ extension UIActivityIndicatorViewStyle {
 			self = .WhiteLarge
 		case .white:
 			self = .White
-		case gray:
+		case .gray:
 			self = .Gray
 		}
 	}

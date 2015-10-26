@@ -81,6 +81,7 @@
 		</annotation>
 		<complexContent>
 			<extension base="ui:Control">
+				<attribute name="type" type="ui:ButtonType" />
 				<attribute name="onTouchUp" type="string" />
 				<attribute name="onTouchDown" type="string" />
 				<attribute name="tintColor" type="ui:color" />
@@ -485,6 +486,20 @@
 			<enumeration value="extraLight" />
 			<enumeration value="light" />
 			<enumeration value="dark" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ButtonType">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="custom" />
+			<enumeration value="system" />
+			<enumeration value="detailDisclosure" />
+			<enumeration value="infoLight" />
+			<enumeration value="infoDark" />
+			<enumeration value="contactAdd" />
 		</restriction>
 	</simpleType>
 
