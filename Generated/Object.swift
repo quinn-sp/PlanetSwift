@@ -96,6 +96,11 @@ public class Object: ObjectBase {
 		}
 	}
     
+    public func updateStyleId(newStyle: String?) {
+        styleId = newStyle
+        gaxbPrepare()
+    }
+    
     //MARK: - style handling
     
     public class func styleForId(_id: String) -> GaxbElement? {
