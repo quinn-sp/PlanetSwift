@@ -142,6 +142,12 @@ public class Constraint: ConstraintBase {
         case .equalSize:
             return [NSLayoutConstraint(item: first, toItem: second, equalAttribute: .Width),
                 NSLayoutConstraint(item: first, toItem: second, equalAttribute: .Height)]
+        case .equalCenter:
+            return [NSLayoutConstraint(item:first, toItem: second, equalAttribute: .CenterX),
+                NSLayoutConstraint(item:first, toItem: second, equalAttribute: .CenterY)]
+        case .square:
+            return [NSLayoutConstraint(item: first, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: CGFloat(constant)),
+                NSLayoutConstraint(item: first, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: CGFloat(constant))]
         default:
             return [NSLayoutConstraint(item: first,
                 attribute: Constraint.layoutAttributeFromEnum(firstAttribute),

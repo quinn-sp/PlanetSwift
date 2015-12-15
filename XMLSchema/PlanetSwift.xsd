@@ -582,6 +582,8 @@
 			<enumeration value="none"/>
 			<enumeration value="fillSuperview"/>
 			<enumeration value="equalSize"/>
+			<enumeration value="equalCenter"/>
+			<enumeration value="square"/>
 		</restriction>
 	</simpleType>
 
