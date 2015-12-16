@@ -561,6 +561,8 @@
 			<enumeration value="centerX" />
 			<enumeration value="centerY" />
 			<enumeration value="baseline" />
+			<enumeration value="firstBaseline" />
+			<enumeration value="lastBaseline" />
 			<enumeration value="notAnAttribute" />
 		</restriction>
 	</simpleType>

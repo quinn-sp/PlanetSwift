@@ -38,6 +38,10 @@ public class Constraint: ConstraintBase {
 			return .CenterY
 		case .baseline:
 			return .Baseline
+        case .firstBaseline:
+            return .FirstBaseline
+        case .lastBaseline:
+            return .LastBaseline
 		default:
 			return .NotAnAttribute
 		}
