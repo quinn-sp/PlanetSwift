@@ -7,7 +7,7 @@ import UIKit
 // to find and dump localizable strings in a project, set _findLoclaizable to true
 // and after using the app for a suitable period of time, run Label.printLocalizable()
 // to get a dump of content ready for pasting into a .strings file
-private let _findLocalizable = true
+private let _findLocalizable = false
 private var _localizable = Set<String>()
 
 public class Label: LabelBase {
@@ -34,42 +34,48 @@ public class Label: LabelBase {
             return _paragraphStyle!
         }
 		
-		if lineSpacing != nil {
-			paragraphStyle.lineSpacing = CGFloat(lineSpacing!)
+		if let lineSpacing = lineSpacing {
+            paragraphStyle.lineSpacing = CGFloat(lineSpacing)
+        }
+        if let minimumLineHeight = minimumLineHeight {
+            paragraphStyle.minimumLineHeight = CGFloat(minimumLineHeight)
+        }
+        if let maximumLineHeight = maximumLineHeight {
+            paragraphStyle.maximumLineHeight = CGFloat(maximumLineHeight)
 		}
-        if textColor != nil {
+        if let textColor = textColor {
             label.textColor = textColor
         }
-        if adjustsFontSizeToFitWidth != nil {
-            label.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth!
+        if let adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth {
+            label.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         }
         label.minimumScaleFactor = CGFloat(minimumScaleFactor)
-        if numberOfLines != nil {
-            label.numberOfLines = numberOfLines!
+        if let numberOfLines = numberOfLines {
+            label.numberOfLines = numberOfLines
         }
-        if fontName != nil {
+        if let fontName = fontName {
             #if os(iOS)
-                label.font = UIFont(name: fontName!, size: UIFont.systemFontSize())
+                label.font = UIFont(name: fontName, size: UIFont.systemFontSize())
             #else
-                label.font = UIFont(name: fontName!, size: 18)
+                label.font = UIFont(name: fontName, size: 18)
             #endif
         }
-        if fontSize != nil {
-            label.font = label.font.fontWithSize(CGFloat(fontSize!))
+        if let fontSize = fontSize {
+            label.font = label.font.fontWithSize(CGFloat(fontSize))
         }
 		
 		//attributes that are sensitive to the existence (or non-existence) of _paragraphStyle
-		if textAlignment != nil {
+		if let textAlignment = textAlignment {
 			if _paragraphStyle != nil {
-				paragraphStyle.alignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
+				paragraphStyle.alignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment)
 			}
-			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment!)
+			label.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment)
 		}
-		if lineBreakMode != nil {
+		if let lineBreakMode = lineBreakMode {
 			if _paragraphStyle != nil {
-				paragraphStyle.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
+				paragraphStyle.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode)
 			}
-			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode!)
+			label.lineBreakMode = NSLineBreakMode.fromPlanetUILineBreakMode(lineBreakMode)
 		}
         
         let localizedText = text.map{NSLocalizedString($0, comment: "")} ?? ""

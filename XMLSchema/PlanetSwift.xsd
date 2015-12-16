@@ -69,7 +69,9 @@
 				<attribute name="minimumScaleFactor" type="decimal" default="0.0"/>
 				<attribute name="numberOfLines" type="integer"/>
 				<!-- NSAttributedString attributes -->
-				<attribute name="lineSpacing" type="decimal"/>
+				<attribute name="lineSpacing" type="decimal"/> <!-- works with numberOfLines == 1 only -->
+				<attribute name="minimumLineHeight" type="decimal"/> <!-- works with multiline -->
+				<attribute name="maximumLineHeight" type="decimal"/> <!-- works with multiline -->
 			</extension>
 		</complexContent>
 	</complexType>
