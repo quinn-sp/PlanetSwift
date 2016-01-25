@@ -35,7 +35,7 @@ public class <%= FULL_NAME_CAMEL %> {
 			do {
 				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
 				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
-					xmlCache.setObject(parsedElement as! AnyObject, forKey:string)
+					xmlCache.setObject(parsedElement, forKey:string)
 					let copiedElement = parsedElement.copy()
 					if prepare {
 						copiedElement.visit() { $0.gaxbPrepare() }
@@ -58,21 +58,18 @@ public class <%= FULL_NAME_CAMEL %> {
 	}
 
 	public class func parseElement(element: AEXMLElement) -> GaxbElement? {
-		let namespace = self.namespaceForElement(element)
-		if let entity : GaxbElement = GaxbFactory.element(namespace, name:element.name) {
-			for (attribute, value) in element.attributes {
-				if let valueString = value as? String, attributeString = attribute as? String {
-					entity.setAttribute(valueString, key: attributeString)
-				}
+		guard let entity = GaxbFactory.element(namespaceForElement(element), name:element.name) else { return nil }
+		for (attribute, value) in element.attributes {
+			if let valueString = value as? String, attributeString = attribute as? String {
+				entity.setAttribute(valueString, key: attributeString)
 			}
-			for child in element.children {
-				if let subEntity = <%= FULL_NAME_CAMEL %>.parseElement(child) {
-					entity.setElement(subEntity, key: child.name)
-				}
-			}
-			return entity
 		}
-		return nil
+		for child in element.children {
+			if let subEntity = <%= FULL_NAME_CAMEL %>.parseElement(child) {
+				entity.setElement(subEntity, key: child.name)
+			}
+		}
+		return entity
 	}
 
 <%
@@ -93,7 +90,7 @@ public class <%= FULL_NAME_CAMEL %> {
 
 				if(appinfo == "ENUM" or appinfo == "NAMED_ENUM") then
 					for k,v in pairs(enums) do
-						gaxb_print("\t\tcase "..v.attributes.value.." = \""..v.attributes.value.."\"\n")
+						gaxb_print("\t\tcase "..v.attributes.value.."\n")
 					end
 				end
 		--		if(appinfo == "ENUM_MASK") then
