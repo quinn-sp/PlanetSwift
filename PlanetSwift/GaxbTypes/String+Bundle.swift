@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Small Planet. All rights reserved.
 //
 
-import UIKit
 import Foundation
 
 extension String {
