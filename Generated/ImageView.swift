@@ -23,6 +23,7 @@ public class ImageView: ImageViewBase {
     }
 	
     public func setImageWithString(image: String?) {
+        guard let image = image else { return }
         imageView.image = UIImage(gaxbString: image)
     }
     
