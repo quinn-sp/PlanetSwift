@@ -26,7 +26,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 			
 			if onStateChange != nil {
 				helper.delegate = self;
-				recognizer.addTarget(helper, action: Selector("recognizerStateDidChange:"))
+				recognizer.addTarget(helper, action: #selector(GestureRecognizerHelper.recognizerStateDidChange(_:)))
 			}
 		}
 	}

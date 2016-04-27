@@ -33,10 +33,10 @@ public class Button: ButtonBase {
         super.gaxbPrepare()
         
         if onTouchUp != nil {
-            button.addTarget(self, action: Selector("buttonOnTouchUp:"), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(Button.buttonOnTouchUp(_:)), forControlEvents: .TouchUpInside)
         }
         if onTouchDown != nil {
-            button.addTarget(self, action: Selector("buttonOnTouchDown:"), forControlEvents: .TouchDown)
+            button.addTarget(self, action: #selector(Button.buttonOnTouchDown(_:)), forControlEvents: .TouchDown)
         }
         button.tintColor = tintColor
         

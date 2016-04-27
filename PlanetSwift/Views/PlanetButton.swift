@@ -95,12 +95,12 @@ public class PlanetButton: UIButton {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), forControlEvents: .TouchUpInside)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), forControlEvents: .TouchUpInside)
     }
     
     convenience init(bgColor: UIColor, bgColorHighlighted: UIColor, bgColorSelected: UIColor, bgColorSelectedHighlighted: UIColor, bgColorDisabled: UIColor, toggle: Bool)
@@ -111,7 +111,7 @@ public class PlanetButton: UIButton {
         backgroundColorSelected = bgColorSelected
         backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
         isToggle = toggle
-        self.addTarget(self, action: Selector("touchUpInside:"), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), forControlEvents: .TouchUpInside)
     }
     
 }

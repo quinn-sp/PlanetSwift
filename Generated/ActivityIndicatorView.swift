@@ -21,10 +21,10 @@ public class ActivityIndicatorView: ActivityIndicatorViewBase {
         super.gaxbPrepare()
         
         if startAnimating != nil {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("startAnimating:"), name:startAnimating!, object:nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ActivityIndicatorView.startAnimating(_:)), name:startAnimating!, object:nil)
         }
         if stopAnimating != nil {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("stopAnimating:"), name:stopAnimating!, object:nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ActivityIndicatorView.stopAnimating(_:)), name:stopAnimating!, object:nil)
         }
         if hidesWhenStopped != nil {
             activityIndicator.hidesWhenStopped = hidesWhenStopped!
@@ -40,11 +40,11 @@ public class ActivityIndicatorView: ActivityIndicatorViewBase {
         }
     }
     
-    func startAnimating(note:NSNotification) {
+    @objc func startAnimating(note:NSNotification) {
         activityIndicator.startAnimating()
     }
     
-    func stopAnimating(note:NSNotification) {
+    @objc func stopAnimating(note:NSNotification) {
         activityIndicator.stopAnimating()
     }
 }

@@ -61,7 +61,7 @@ public class ImageCache {
                         if request === cacheRequest {
                             break
                         }
-                        index++
+                        index += 1
                     }
                     self!.activeNetworkRequests.removeAtIndex(index)
                     
