@@ -37,7 +37,7 @@ public class Constraint: ConstraintBase {
 		case .centerY:
 			return .CenterY
 		case .baseline:
-			return .Baseline
+			return .LastBaseline
         case .firstBaseline:
             return .FirstBaseline
         case .lastBaseline:
