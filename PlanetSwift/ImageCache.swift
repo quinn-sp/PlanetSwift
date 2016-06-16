@@ -21,10 +21,10 @@ public class ImageCache {
 	}
 	
 	public func get(url:NSURL, completion:ImageCache_CompletionBlock) {
-        #if swift(>=2.2)
-            let imageKey = url.absoluteString
-        #else
+        #if swift(>=2.3)
             let imageKey = url.absoluteString!
+        #else
+            let imageKey = url.absoluteString
         #endif
 			
         if let memCacheImage = memoryCache.objectForKey(imageKey) as? UIImage {
