@@ -132,6 +132,7 @@
 		C4C060FF1AA37675004D39EC /* PinchGestureRecognizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */; };
 		C4C5DCE71A4F7B4700BE7271 /* PlanetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */; };
 		C4C5DCE81A4F7B4700BE7271 /* PlanetUIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */; };
+		C4DCBA611D1D661B00A96F27 /* PlanetCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCBA601D1D661B00A96F27 /* PlanetCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +235,7 @@
 		C4C060F51AA37675004D39EC /* PinchGestureRecognizerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinchGestureRecognizerBase.swift; sourceTree = "<group>"; };
 		C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUI.swift; sourceTree = "<group>"; };
 		C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUIBase.swift; sourceTree = "<group>"; };
+		C4DCBA601D1D661B00A96F27 /* PlanetCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 				A9B439731A3A53C70052690A /* PlanetSwift.h */,
 				9B9AC0971A6EBA190098F7E4 /* ImageCache.swift */,
 				9B8E9A781A70036800D64615 /* PlanetViewController.swift */,
+				C4DCBA601D1D661B00A96F27 /* PlanetCollectionViewController.swift */,
 				A9B439711A3A53C70052690A /* Supporting Files */,
 				A9B439CC1A3B5AA20052690A /* PlanetSwift-Bridging-Header.h */,
 				A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */,
@@ -699,6 +702,7 @@
 				A92E73821A4212B200B22884 /* LabelBase.swift in Sources */,
 				796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */,
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,
+				C4DCBA611D1D661B00A96F27 /* PlanetCollectionViewController.swift in Sources */,
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
 				C4C060FD1AA37675004D39EC /* PanGestureRecognizerBase.swift in Sources */,
 				C494624A1AF819F200F005B4 /* ScrollViewBase.swift in Sources */,
