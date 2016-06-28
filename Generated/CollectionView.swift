@@ -5,7 +5,7 @@
 import UIKit
 
 public class CollectionView: CollectionViewBase {
-    lazy public var collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: UICollectionViewFlowLayout())
+    lazy public var collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     override public var view: UIView {
         get {
             return collectionView

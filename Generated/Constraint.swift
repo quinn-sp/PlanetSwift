@@ -13,49 +13,49 @@ public class Constraint: ConstraintBase {
 	
 	//MARK: - enum conversion
 	
-	public class func layoutAttributeFromEnum(attribute:PlanetUI.LayoutAttribute) -> NSLayoutAttribute {
+	public class func layoutAttributeFromEnum(_ attribute:PlanetUI.LayoutAttribute) -> NSLayoutAttribute {
 		
 		switch(attribute) {
 		case .left:
-			return .Left
+			return .left
 		case .right:
-			return .Right
+			return .right
 		case .top:
-			return .Top
+			return .top
 		case .bottom:
-			return .Bottom
+			return .bottom
 		case .leading:
-			return .Leading
+			return .leading
 		case .trailing:
-			return .Trailing
+			return .trailing
 		case .width:
-			return .Width
+			return .width
 		case .height:
-			return .Height
+			return .height
 		case .centerX:
-			return .CenterX
+			return .centerX
 		case .centerY:
-			return .CenterY
+			return .centerY
 		case .baseline:
-			return .LastBaseline
+			return .lastBaseline
         case .firstBaseline:
-            return .FirstBaseline
+            return .firstBaseline
         case .lastBaseline:
-            return .LastBaseline
+            return .lastBaseline
 		default:
-			return .NotAnAttribute
+			return .notAnAttribute
 		}
 	}
 	
-	public class func layoutRelationFromEnum(relation:PlanetUI.LayoutRelation) -> NSLayoutRelation {
+	public class func layoutRelationFromEnum(_ relation:PlanetUI.LayoutRelation) -> NSLayoutRelation {
 		
 		switch(relation) {
 		case .lessThanOrEqual:
-			return .LessThanOrEqual
+			return .lessThanOrEqual
 		case .greaterThanOrEqual:
-			return .GreaterThanOrEqual
+			return .greaterThanOrEqual
 		default:
-			return .Equal
+			return .equal
 		}
 	}
 	
@@ -123,7 +123,7 @@ public class Constraint: ConstraintBase {
                 constraints.forEach { $0.priority = priority }
 				
 				//attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
-				if second != nil && first.isDescendantOfView(second!) {
+				if second != nil && first.isDescendant(of: second!) {
 					second!.addConstraints(constraints)
 				}
 				else {
@@ -139,19 +139,19 @@ public class Constraint: ConstraintBase {
         switch ruleSet {
         case .fillSuperview:
             let superview = first.superview
-            return [NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Top),
-                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Right),
-                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Bottom),
-                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .Left)]
+            return [NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .top),
+                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .right),
+                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .bottom),
+                NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .left)]
         case .equalSize:
-            return [NSLayoutConstraint(item: first, toItem: second, equalAttribute: .Width),
-                NSLayoutConstraint(item: first, toItem: second, equalAttribute: .Height)]
+            return [NSLayoutConstraint(item: first, toItem: second, equalAttribute: .width),
+                NSLayoutConstraint(item: first, toItem: second, equalAttribute: .height)]
         case .equalCenter:
-            return [NSLayoutConstraint(item:first, toItem: second, equalAttribute: .CenterX),
-                NSLayoutConstraint(item:first, toItem: second, equalAttribute: .CenterY)]
+            return [NSLayoutConstraint(item:first, toItem: second, equalAttribute: .centerX),
+                NSLayoutConstraint(item:first, toItem: second, equalAttribute: .centerY)]
         case .square:
-            return [NSLayoutConstraint(item: first, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: CGFloat(constant)),
-                NSLayoutConstraint(item: first, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: CGFloat(constant))]
+            return [NSLayoutConstraint(item: first, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(constant)),
+                NSLayoutConstraint(item: first, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(constant))]
         default:
             return [NSLayoutConstraint(item: first,
                 attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
@@ -167,6 +167,6 @@ public class Constraint: ConstraintBase {
 
 extension NSLayoutConstraint {
     public convenience init(item: UIView, toItem: UIView?, equalAttribute attribute: NSLayoutAttribute) {
-        self.init(item: item, attribute: attribute, relatedBy:.Equal, toItem:toItem, attribute: attribute, multiplier: 1, constant: 0)
+        self.init(item: item, attribute: attribute, relatedBy:.equal, toItem:toItem, attribute: attribute, multiplier: 1, constant: 0)
     }
 }

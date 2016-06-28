@@ -11,30 +11,30 @@ extension PlanetUI {
 	
 	//MARK: - config
 	
-    public class func configForKey(key: String?) -> AnyObject? {
+    public class func configForKey(_ key: String?) -> AnyObject? {
         guard let key = key else { return nil }
         checkLoadConfig()
-        return config?.valueForKeyPath(key)
+        return config?.value(forKeyPath: key)
     }
     
-    public class func configStringForKey(key: String?) -> String? {
+    public class func configStringForKey(_ key: String?) -> String? {
         return PlanetUI.configForKey(key) as? String
     }
     
-    public class func configIntForKey(key: String?) -> Int? {
-        return (PlanetUI.configForKey(key) as? NSNumber)?.integerValue ?? (PlanetUI.configForKey(key) as? NSString)?.integerValue
+    public class func configIntForKey(_ key: String?) -> Int? {
+        return (PlanetUI.configForKey(key) as? NSNumber)?.intValue ?? (PlanetUI.configForKey(key) as? NSString)?.integerValue
     }
     
-    public class func configFloatForKey(key: String?) -> Float? {
+    public class func configFloatForKey(_ key: String?) -> Float? {
         return (PlanetUI.configForKey(key) as? NSString)?.floatValue ?? (PlanetUI.configForKey(key) as? NSNumber)?.floatValue
     }
     
-    public class func configCGFloatForKey(key: String?) -> CGFloat? {
+    public class func configCGFloatForKey(_ key: String?) -> CGFloat? {
         guard let value = PlanetUI.configFloatForKey(key) else { return nil }
         return CGFloat(value)
     }
     
-    public class func configColorForKey(key: String?) -> UIColor? {
+    public class func configColorForKey(_ key: String?) -> UIColor? {
         guard let colorString = PlanetUI.configStringForKey(key) else { return nil }
         return UIColor(gaxbString: colorString)
     }
@@ -44,13 +44,13 @@ extension PlanetUI {
         return UIFont(name: name, size: size)
     }
 	
-	public class func configImageForKey(key: String?) -> UIImage? {
+	public class func configImageForKey(_ key: String?) -> UIImage? {
         guard let bundlePath = PlanetUI.configStringForKey(key) else { return nil }
         return UIImage(gaxbString: bundlePath)
 	}
 	
-	public class func configRemoteImageForKey(key: String, completion: ImageCache_CompletionBlock) {
-        guard let urlString = PlanetUI.configStringForKey(key), url = NSURL(string: urlString) else { return }
+	public class func configRemoteImageForKey(_ key: String, completion: ImageCache_CompletionBlock) {
+        guard let urlString = PlanetUI.configStringForKey(key), url = URL(string: urlString) else { return }
         ImageCache.sharedInstance.get(url, completion: completion)
 	}
 	
@@ -70,7 +70,7 @@ extension PlanetUI {
 	
 	//MARK: - processing expressions
 	
-    public class func processExpressions(string: String) -> String {
+    public class func processExpressions(_ string: String) -> String {
 		let processedString = NSMutableString(string: string)
         checkLoadConfig()
 		if config != nil {
@@ -79,30 +79,30 @@ extension PlanetUI {
         return processedString as String
     }
 	
-	public class func findAndReplaceExpressions(stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:(String?->AnyObject?)) {
+	public class func findAndReplaceExpressions(_ stringToSearch:NSMutableString, expressionName:NSString, expressionEvaluatorBlock:((String?)->AnyObject?)) {
 		
 		let expressionSearchString = "@\(expressionName)("
 		var searchRange = NSMakeRange(0, stringToSearch.length)
 		while true {
 			
-			let startRange = stringToSearch.rangeOfString(expressionSearchString, options: NSStringCompareOptions(), range: searchRange)
+			let startRange = stringToSearch.range(of: expressionSearchString, options: NSString.CompareOptions(), range: searchRange)
 			if startRange.location != NSNotFound {
 				
 				searchRange.location = startRange.location+startRange.length
 				searchRange.length = stringToSearch.length-searchRange.location
 				
-				let endRange = stringToSearch.rangeOfString(")", options: NSStringCompareOptions(), range: searchRange)
+				let endRange = stringToSearch.range(of: ")", options: NSString.CompareOptions(), range: searchRange)
 				if endRange.location != NSNotFound {
 					
 					searchRange.location = endRange.location+endRange.length
 					searchRange.length = stringToSearch.length-searchRange.location
 					
-					let expressionValue = stringToSearch.substringWithRange(NSMakeRange(startRange.location+startRange.length, endRange.location-(startRange.location+startRange.length)))
+					let expressionValue = stringToSearch.substring(with: NSMakeRange(startRange.location+startRange.length, endRange.location-(startRange.location+startRange.length)))
 					if let replaceValue:AnyObject = expressionEvaluatorBlock(expressionValue) {
 						
 						let replaceString = "\(replaceValue)" as NSString
 						let replaceLength = (endRange.location+endRange.length)-startRange.location
-						stringToSearch.replaceCharactersInRange(NSMakeRange(startRange.location, replaceLength), withString: replaceString as String)
+						stringToSearch.replaceCharacters(in: NSMakeRange(startRange.location, replaceLength), with: replaceString as String)
 						
 						//adjust the search range because we just changed the length / posision of the search range by replacing stuff
 						let adjustNum = replaceString.length - replaceLength
@@ -126,14 +126,14 @@ extension PlanetUI {
     public class func fontNames() -> [String] {
         var names = [String]()
         for family in UIFont.familyNames() as [String] {
-            for name in UIFont.fontNamesForFamilyName(family) {
+            for name in UIFont.fontNames(forFamilyName: family) {
                 names.append(name as String)
             }
         }
         return names
     }
 	
-	public class func GCDDelay(delayAmount:Float, block:(Void->Void)) {
-		dispatch_after(dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), Int64(delayAmount * Float(NSEC_PER_SEC))), dispatch_get_main_queue(), block)
+	public class func GCDDelay(_ delayAmount:Double, block:((Void)->Void)) {
+        DispatchQueue.main.after(when: .now() + delayAmount, execute: block)
 	}
 }

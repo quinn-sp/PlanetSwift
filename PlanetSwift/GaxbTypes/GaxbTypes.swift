@@ -12,7 +12,7 @@ extension Bool: GaxbType {
         self.init()
         self.setWithGaxbString(gaxbString)
     }
-    public mutating func setWithGaxbString(gaxbString: String) {
+    public mutating func setWithGaxbString(_ gaxbString: String) {
         switch gaxbString {
         case "true": self = true
         default: self = false
@@ -28,7 +28,7 @@ extension Int: GaxbType {
         self.init()
         self.setWithGaxbString(gaxbString)
     }
-    public mutating func setWithGaxbString(gaxbString: String) {
+    public mutating func setWithGaxbString(_ gaxbString: String) {
         if let tmp = Int(gaxbString) as Int? {
             self = tmp
         } else {
@@ -45,7 +45,7 @@ extension Float: GaxbType {
         self.init()
         self.setWithGaxbString(gaxbString)
     }
-    public mutating func setWithGaxbString(gaxbString: String) {
+    public mutating func setWithGaxbString(_ gaxbString: String) {
         self = (gaxbString as NSString).floatValue
     }
     public func toGaxbString() -> String {
@@ -58,7 +58,7 @@ extension Double: GaxbType {
         self.init()
         self.setWithGaxbString(gaxbString)
     }
-    public mutating func setWithGaxbString(gaxbString: String) {
+    public mutating func setWithGaxbString(_ gaxbString: String) {
         self = (gaxbString as NSString).doubleValue
     }
     public func toGaxbString() -> String {
@@ -73,14 +73,14 @@ extension CGRect: GaxbType {
         let (origin, size) = CGRect.componentsFromString(withGaxbString)
         self.init(origin: origin, size: size)
     }
-    public mutating func setWithGaxbString(GaxbString: String) {
+    public mutating func setWithGaxbString(_ GaxbString: String) {
         let (newOrigin, newSize) = CGRect.componentsFromString(GaxbString)
         origin = newOrigin
         size = newSize
     }
-    public static func componentsFromString(string: String) -> (CGPoint, CGSize) {
+    public static func componentsFromString(_ string: String) -> (CGPoint, CGSize) {
         var x:Float=0.0, y:Float=0.0, w:Float=0.0, h:Float=0.0
-        var components = string.componentsSeparatedByString(",")
+        var components = string.components(separatedBy: ",")
         if components.count == 4 {
             x = (components[0] as NSString).floatValue
             y = (components[1] as NSString).floatValue
@@ -101,12 +101,12 @@ extension UIEdgeInsets: GaxbType {
         let (top, left, bottom, right) = UIEdgeInsets.componentsFromString(withGaxbString)
         self = UIEdgeInsetsMake(top, left, bottom, right)
     }
-    public mutating func setWithGaxbString(GaxbString: String) {
+    public mutating func setWithGaxbString(_ GaxbString: String) {
         (top, left, bottom, right) = UIEdgeInsets.componentsFromString(GaxbString)
     }
-    public static func componentsFromString(string: String) -> (CGFloat, CGFloat, CGFloat, CGFloat) {
+    public static func componentsFromString(_ string: String) -> (CGFloat, CGFloat, CGFloat, CGFloat) {
         var t:Float=0.0, l:Float=0.0, b:Float=0.0, r:Float=0.0
-        var components = string.componentsSeparatedByString(",")
+        var components = string.components(separatedBy: ",")
         if components.count == 4 {
             t = (components[0] as NSString).floatValue
             l = (components[1] as NSString).floatValue
@@ -125,14 +125,14 @@ extension CGSize: GaxbType {
 		let (width, height) = CGSize.componentsFromString(gaxbString)
         self.init(width: width, height: height)
 	}
-	mutating public func setWithGaxbString(GaxbString: String) {
+	mutating public func setWithGaxbString(_ GaxbString: String) {
 		let (newWidth, newHeight) = CGPoint.componentsFromString(GaxbString)
 		width = newWidth
 		height = newHeight
 	}
-	public static func componentsFromString(string: String) -> (CGFloat, CGFloat) {
+	public static func componentsFromString(_ string: String) -> (CGFloat, CGFloat) {
 		var width:Float=0.0, height:Float=0.0
-		var components = string.componentsSeparatedByString(",")
+		var components = string.components(separatedBy: ",")
 		if components.count == 2 {
 			width = (components[0] as NSString).floatValue
 			height = (components[1] as NSString).floatValue
@@ -149,14 +149,14 @@ extension CGPoint: GaxbType {
         let (x, y) = CGPoint.componentsFromString(gaxbString)
         self.init(x: x, y: y)
     }
-    mutating public func setWithGaxbString(GaxbString: String) {
+    mutating public func setWithGaxbString(_ GaxbString: String) {
         let (newX, newY) = CGPoint.componentsFromString(GaxbString)
         x = newX
         y = newY
     }
-    public static func componentsFromString(string: String) -> (CGFloat, CGFloat) {
+    public static func componentsFromString(_ string: String) -> (CGFloat, CGFloat) {
         var x:Float=0.0, y:Float=0.0
-        var components = string.componentsSeparatedByString(",")
+        var components = string.components(separatedBy: ",")
         if components.count == 2 {
             x = (components[0] as NSString).floatValue
             y = (components[1] as NSString).floatValue
@@ -173,7 +173,7 @@ extension CGPoint: GaxbType {
 extension UIImage {
     convenience init?(gaxbString: String?) {
         guard let gaxbString = gaxbString else { return nil }
-        if gaxbString.rangeOfString(":/") != nil {
+        if gaxbString.range(of: ":/") != nil {
             self.init(contentsOfFile:(String(bundlePath: gaxbString)))
         } else {
             self.init(named: gaxbString)
@@ -198,9 +198,9 @@ extension UIColor {
     public convenience init(gaxbString: String) {
         var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
         if gaxbString.hasPrefix("#") {
-            let substring = gaxbString.substringFromIndex(gaxbString.startIndex.advancedBy(1))
+            let substring = gaxbString.substring(from: gaxbString.characters.index(gaxbString.startIndex, offsetBy: 1))
             var hexNumber:UInt32 = 0;
-            let _ = NSScanner(string: substring).scanHexInt(&hexNumber)
+            let _ = Scanner(string: substring).scanHexInt32(&hexNumber)
             switch substring.characters.count {
             case 8:
                 r = CGFloat((hexNumber & 0xFF000000) >> 24) / 255.0
@@ -224,7 +224,7 @@ extension UIColor {
         }
         self.init(red: r, green:g, blue:b, alpha:a)
     }
-    public func setWithGaxbString(GaxbString: String) {
+    public func setWithGaxbString(_ GaxbString: String) {
         // immutable
     }
     public func toGaxbString() -> String {
@@ -245,289 +245,289 @@ extension UIColor {
 //MARK: - enum conversion
 
 extension UIButtonType {
-    public static func fromPlanetUIButtonType(type:PlanetUI.ButtonType) -> UIButtonType {
+    public static func fromPlanetUIButtonType(_ type:PlanetUI.ButtonType) -> UIButtonType {
         return self.init(withPlanetButtonType: type)
     }
     public init(withPlanetButtonType type: PlanetUI.ButtonType) {
         switch type {
         case .custom:
-            self = .Custom
+            self = .custom
         case .system:
-            self = .System
+            self = .system
         case .detailDisclosure:
-            self = .DetailDisclosure
+            self = .detailDisclosure
         case .infoLight:
-            self = .InfoLight
+            self = .infoLight
         case .infoDark:
-            self = .InfoDark
+            self = .infoDark
         case .contactAdd:
-            self = .ContactAdd
+            self = .contactAdd
         }
     }
 }
 
 extension NSTextAlignment {
-	public static func fromPlanetUITextAlignment(alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
+	public static func fromPlanetUITextAlignment(_ alignment:PlanetUI.TextAlignment) -> NSTextAlignment {
         return self.init(withPlanetTextAlignment: alignment)
 	}
     public init(withPlanetTextAlignment alignment: PlanetUI.TextAlignment) {
         switch alignment {
         case .center:
-            self = NSTextAlignment.Center
+            self = NSTextAlignment.center
         case .right:
-            self = NSTextAlignment.Right
+            self = NSTextAlignment.right
         case .left:
-            self = NSTextAlignment.Left
+            self = NSTextAlignment.left
         case .justified:
-            self = NSTextAlignment.Justified
+            self = NSTextAlignment.justified
         case .natural:
-            self = NSTextAlignment.Natural
+            self = NSTextAlignment.natural
         }
     }
 }
 
 extension NSLineBreakMode {
-	public static func fromPlanetUILineBreakMode(mode:PlanetUI.LineBreakMode) -> NSLineBreakMode {
+	public static func fromPlanetUILineBreakMode(_ mode:PlanetUI.LineBreakMode) -> NSLineBreakMode {
         return self.init(withPlanetLineBreakMode: mode)
     }
     public init(withPlanetLineBreakMode mode: PlanetUI.LineBreakMode) {
 		switch mode {
 		case .truncatingTail:
-			self = .ByTruncatingTail
+			self = .byTruncatingTail
 		case .wordWrapping:
-			self = .ByWordWrapping
+			self = .byWordWrapping
 		case .charWrapping:
-			self = .ByCharWrapping
+			self = .byCharWrapping
 		case .truncatingHead:
-			self = .ByTruncatingHead
+			self = .byTruncatingHead
 		case .clipping:
-			self = .ByClipping
+			self = .byClipping
 		case .truncatingMiddle:
-			self = .ByTruncatingMiddle
+			self = .byTruncatingMiddle
 		}
 	}
 }
 
 #if os(iOS)
 extension UIDatePickerMode {
-    public static func fromPlanetUIDatePickerMode(mode:PlanetUI.DatePickerMode) -> UIDatePickerMode {
+    public static func fromPlanetUIDatePickerMode(_ mode:PlanetUI.DatePickerMode) -> UIDatePickerMode {
         return self.init(withPlanetDatePickerMode: mode)
     }
     public init(withPlanetDatePickerMode mode: PlanetUI.DatePickerMode) {
         switch mode {
         case .time:
-            self = UIDatePickerMode.Time
+            self = UIDatePickerMode.time
         case .date:
-            self = UIDatePickerMode.Date
+            self = UIDatePickerMode.date
         case .dateAndTime:
-            self = UIDatePickerMode.DateAndTime
+            self = UIDatePickerMode.dateAndTime
         case .countDownTimer:
-            self = UIDatePickerMode.CountDownTimer
+            self = UIDatePickerMode.countDownTimer
         }
     }
 }
 #endif
 
 extension UITextBorderStyle {
-	public static func fromPlanetUITextFieldBorderStyle(style:PlanetUI.TextBorderStyle) -> UITextBorderStyle {
+	public static func fromPlanetUITextFieldBorderStyle(_ style:PlanetUI.TextBorderStyle) -> UITextBorderStyle {
         return self.init(withPlanetTextBorderStyle: style)
     }
     public init(withPlanetTextBorderStyle style: PlanetUI.TextBorderStyle) {
 		switch style {
 		case .line:
-			self = .Line
+			self = .line
 		case .bezel:
-			self = .Bezel
+			self = .bezel
 		case .roundedRect:
-			self = .RoundedRect
+			self = .roundedRect
 		default:
-			self = .None
+			self = .none
 		}
 	}
 }
 
 extension UITextFieldViewMode {
-	public static func fromPlanetUITextFieldViewMode(mode:PlanetUI.TextFieldViewMode) -> UITextFieldViewMode {
+	public static func fromPlanetUITextFieldViewMode(_ mode:PlanetUI.TextFieldViewMode) -> UITextFieldViewMode {
         return self.init(withPlanetTextFieldViewMode: mode)
     }
     public init(withPlanetTextFieldViewMode mode: PlanetUI.TextFieldViewMode) {
 		switch mode {
 		case .always:
-			self = .Always
+			self = .always
 		case .never:
-			self = .Never
+			self = .never
 		case .unlessEditing:
-			self = .UnlessEditing
+			self = .unlessEditing
 		case .whileEditing:
-			self = .WhileEditing
+			self = .whileEditing
 		}
 	}
 }
 
 extension UIViewContentMode {
-	public static func fromPlanetUIContentMode(mode:PlanetUI.ContentMode) -> UIViewContentMode {
+	public static func fromPlanetUIContentMode(_ mode:PlanetUI.ContentMode) -> UIViewContentMode {
         return self.init(withPlanetContentMode: mode)
     }
     public init(withPlanetContentMode mode: PlanetUI.ContentMode) {
 		switch mode {
 		case .scaleToFill:
-			self = .ScaleToFill
+			self = .scaleToFill
 		case .scaleAspectFit:
-			self = .ScaleAspectFit
+			self = .scaleAspectFit
 		case .scaleAspectFill:
-			self = .ScaleAspectFill
+			self = .scaleAspectFill
 		case .redraw:
-			self = .Redraw
+			self = .redraw
 		case .center:
-			self = .Center
+			self = .center
 		case .top:
-			self = .Top
+			self = .top
 		case .bottom:
-			self = .Bottom
+			self = .bottom
 		case .left:
-			self = .Left
+			self = .left
 		case .right:
-			self = .Right
+			self = .right
 		case .topLeft:
-			self = .TopLeft
+			self = .topLeft
 		case .topRight:
-			self = .TopRight
+			self = .topRight
 		case .bottomLeft:
-			self = .BottomLeft
+			self = .bottomLeft
 		case .bottomRight:
-			self = .BottomRight
+			self = .bottomRight
 		}
 	}
 }
 
 extension UIReturnKeyType {
-	public static func fromPlanetUIReturnKeyType(type:PlanetUI.ReturnKeyType) -> UIReturnKeyType {
+	public static func fromPlanetUIReturnKeyType(_ type:PlanetUI.ReturnKeyType) -> UIReturnKeyType {
         return self.init(withPlanetReturnKeyType: type)
     }
     public init(withPlanetReturnKeyType type: PlanetUI.ReturnKeyType) {
 		switch type {
 		case .Default:
-			self = .Default
+			self = .default
 		case .go:
-			self = .Go
+			self = .go
 		case .google:
-			self = .Google
+			self = .google
 		case .join:
-			self = .Join
+			self = .join
 		case .next:
-			self = .Next
+			self = .next
 		case .route:
-			self = .Route
+			self = .route
 		case .search:
-			self = .Search
+			self = .search
 		case .send:
-			self = .Send
+			self = .send
 		case .yahoo:
-			self = .Yahoo
+			self = .yahoo
 		case .done:
-			self = .Done
+			self = .done
 		case .emergencyCall:
-			self = .EmergencyCall
+			self = .emergencyCall
 		}
 	}
 }
 
 extension UIKeyboardType {
-	public static func fromPlanetUIKeyboardType(type:PlanetUI.KeyboardType) -> UIKeyboardType {
+	public static func fromPlanetUIKeyboardType(_ type:PlanetUI.KeyboardType) -> UIKeyboardType {
         return self.init(withPlanetKeyboardType: type)
     }
     public init(withPlanetKeyboardType type: PlanetUI.KeyboardType) {
 		switch type {
 		case .Default:
-			self = .Default
+			self = .default
 		case .ASCIICapable:
-			self = .ASCIICapable
+			self = .asciiCapable
 		case .numbersAndPunctuation:
-			self = .NumbersAndPunctuation
+			self = .numbersAndPunctuation
 		case .URL:
 			self = .URL
 		case .numberPad:
-			self = .NumberPad
+			self = .numberPad
 		case .phonePad:
-			self = .PhonePad
+			self = .phonePad
 		case .namePhonePad:
-			self = .NamePhonePad
+			self = .namePhonePad
 		case .emailAddress:
-			self = .EmailAddress
+			self = .emailAddress
 		case .decimalPad:
-			self = .DecimalPad
+			self = .decimalPad
 		case .twitter:
-			self = .Twitter
+			self = .twitter
 		case .webSearch:
-			self = .WebSearch
+			self = .webSearch
 		}
 	}
 }
 
 #if os(iOS)
 extension UIActivityIndicatorViewStyle {
-    public static func fromPlanetUIActivityIndicatorViewStyle(type:PlanetUI.ActivityIndicatorViewStyle) -> UIActivityIndicatorViewStyle {
+    public static func fromPlanetUIActivityIndicatorViewStyle(_ type:PlanetUI.ActivityIndicatorViewStyle) -> UIActivityIndicatorViewStyle {
         return self.init(withPlanetActivityIndicatorViewStyle: type)
     }
     public init(withPlanetActivityIndicatorViewStyle style: PlanetUI.ActivityIndicatorViewStyle) {
 		switch style {
 		case .whiteLarge:
-			self = .WhiteLarge
+			self = .whiteLarge
 		case .white:
-			self = .White
+			self = .white
 		case .gray:
-			self = .Gray
+			self = .gray
 		}
 	}
 }
 #endif
 
 extension UITextAutocapitalizationType {
-	public static func fromPlanetUITextAutocapitalizationType(type:PlanetUI.TextAutocapitalizationType) -> UITextAutocapitalizationType {
+	public static func fromPlanetUITextAutocapitalizationType(_ type:PlanetUI.TextAutocapitalizationType) -> UITextAutocapitalizationType {
         return self.init(withPlanetTextAutocapitalizationType: type)
     }
     public init(withPlanetTextAutocapitalizationType type: PlanetUI.TextAutocapitalizationType) {
 		switch type {
 		case .none:
-			self = .None
+			self = .none
 		case .words:
-			self = .Words
+			self = .words
 		case .sentences:
-			self = .Sentences
+			self = .sentences
 		case .allCharacters:
-			self = .AllCharacters
+			self = .allCharacters
 		}
 	}
 }
 
 extension UITextAutocorrectionType {
-	public static func fromPlanetUITextAutocorrectionType(type:PlanetUI.TextAutocorrectionType) -> UITextAutocorrectionType {
+	public static func fromPlanetUITextAutocorrectionType(_ type:PlanetUI.TextAutocorrectionType) -> UITextAutocorrectionType {
         return self.init(withPlanetTextAutocorrectionType: type)
     }
     public init(withPlanetTextAutocorrectionType type: PlanetUI.TextAutocorrectionType) {
 		switch type {
 		case .Default:
-			self = .Default
+			self = .default
 		case .no:
-			self = .No
+			self = .no
 		case .yes:
-			self = .Yes
+			self = .yes
 		}
 	}
 }
 
 extension UITextSpellCheckingType {
-	public static func fromPlanetUITextSpellCheckingType(type:PlanetUI.TextSpellCheckingType) -> UITextSpellCheckingType {
+	public static func fromPlanetUITextSpellCheckingType(_ type:PlanetUI.TextSpellCheckingType) -> UITextSpellCheckingType {
         return self.init(withPlanetTextSpellCheckingType: type)
     }
     public init(withPlanetTextSpellCheckingType type: PlanetUI.TextSpellCheckingType) {
 		switch type {
 		case .Default:
-			self = .Default
+			self = .default
 		case .no:
-			self = .No
+			self = .no
 		case .yes:
-			self = .Yes
+			self = .yes
 		}
 	}
 }

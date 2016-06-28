@@ -41,8 +41,8 @@ class PlanetSwiftLabelTests: XCTestCase {
     }
     
     func testLabelViews() {
-        XCTAssert(label0!.label.isKindOfClass(UILabel), "label0 does not have a UILabel")
-        XCTAssert(label1!.label.isKindOfClass(UILabel), "label1 does not have a UILabel")
+        XCTAssert(label0!.label.isKind(UILabel), "label0 does not have a UILabel")
+        XCTAssert(label1!.label.isKind(UILabel), "label1 does not have a UILabel")
     }
     
     func testLabelTextAlignmentEnum() {
@@ -55,9 +55,9 @@ class PlanetSwiftLabelTests: XCTestCase {
     
     func testLabelTextAlignment() {
         XCTAssertEqual(label0!.textAlignment!, PlanetUI.TextAlignment.center, "Label element textAlignment not properly set");
-        XCTAssert(label0!.label.textAlignment == .Center, "Label UIKit textAlignment not properly set");
+        XCTAssert(label0!.label.textAlignment == .center, "Label UIKit textAlignment not properly set");
         XCTAssertEqual(label1!.textAlignment!, PlanetUI.TextAlignment.right, "Label element textAlignment not properly set");
-        XCTAssert(label1!.label.textAlignment == .Right, "Label UIKit textAlignment not properly set");
+        XCTAssert(label1!.label.textAlignment == .right, "Label UIKit textAlignment not properly set");
     }
     
     func testLabelAttributes() {

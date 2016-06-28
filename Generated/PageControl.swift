@@ -3,7 +3,7 @@
 //
 
 public class PageControl: PageControlBase {
-	lazy public var pageControl = UIPageControl(frame: CGRectZero)
+	lazy public var pageControl = UIPageControl(frame: CGRect.zero)
 	override public var view: UIView {
 		get {
 			return pageControl

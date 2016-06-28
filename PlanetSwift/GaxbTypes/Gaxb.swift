@@ -12,16 +12,16 @@ public protocol GaxbElement: class {
     var xmlns: String { get }
 	var parent: GaxbElement? { get set }
     func gaxbPrepare()
-    func visit(visitor: (GaxbElement) -> ())
+    func visit(_ visitor: (GaxbElement) -> ())
 	func gaxbDidPrepare()
-	func setElement(element: GaxbElement, key:String)
+	func setElement(_ element: GaxbElement, key:String)
     func setParent(_: GaxbElement)
-    func isKindOfClass(className: String) -> Bool
-    func setAttribute(value: String, key:String)
-    func imprintAttributes(receiver: GaxbElement?) -> GaxbElement?
-    func attributesXML(useOriginalValues:Bool) -> String
-    func sequencesXML(useOriginalValues:Bool) -> String
-    func toXML(useOriginalValues:Bool) -> String
+    func isKindOfClass(_ className: String) -> Bool
+    func setAttribute(_ value: String, key:String)
+    func imprintAttributes(_ receiver: GaxbElement?) -> GaxbElement?
+    func attributesXML(_ useOriginalValues:Bool) -> String
+    func sequencesXML(_ useOriginalValues:Bool) -> String
+    func toXML(_ useOriginalValues:Bool) -> String
     func toXML() -> String
     func description() -> String
 	func copy() -> GaxbElement
@@ -29,16 +29,16 @@ public protocol GaxbElement: class {
 
 public protocol GaxbType {
     init(gaxbString: String)
-    mutating func setWithGaxbString(GaxbString: String)
+    mutating func setWithGaxbString(_ GaxbString: String)
     func toGaxbString() -> String
 }
 
 public class GaxbFactory: NSObject {
-    public func classWithName(name : String) -> GaxbElement? {
+    public func classWithName(_ name : String) -> GaxbElement? {
         return nil
     }
     
-    public class func factory(namespace: String) -> AnyObject? {
+    public class func factory(_ namespace: String) -> AnyObject? {
         let className = namespace+"GaxbFactory"
         if let factoryClass = NSClassFromString(className) as? NSObject.Type {
             return factoryClass.init()
@@ -46,7 +46,7 @@ public class GaxbFactory: NSObject {
         return nil
     }
     
-    public class func element(namespace: String, name: String) -> GaxbElement? {
+    public class func element(_ namespace: String, name: String) -> GaxbElement? {
         if let factory = self.factory(namespace) as? GaxbFactory
         {
             return factory.classWithName(name)
@@ -54,8 +54,8 @@ public class GaxbFactory: NSObject {
         return nil
     }
     
-    public class func element(fullname: String) -> GaxbElement? {
-        let components = fullname.componentsSeparatedByString(".")
+    public class func element(_ fullname: String) -> GaxbElement? {
+        let components = fullname.components(separatedBy: ".")
         if (components.count == 2) {
             return self.element(components[0], name: components[1])
         }

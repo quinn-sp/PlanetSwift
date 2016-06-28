@@ -44,12 +44,12 @@ public class PickerView: PickerViewBase {
         return picker.numberOfComponents
     }
     
-    public func numberOfRowsInComponent(component: Int) -> Int {
-        return picker.numberOfRowsInComponent(component)
+    public func numberOfRowsInComponent(_ component: Int) -> Int {
+        return picker.numberOfRows(inComponent: component)
     }
     
-    public func rowSizeForComponent(component: Int) -> CGSize {
-        return picker.rowSizeForComponent(component)
+    public func rowSizeForComponent(_ component: Int) -> CGSize {
+        return picker.rowSize(forComponent: component)
     }
     
     //Reloading
@@ -57,16 +57,16 @@ public class PickerView: PickerViewBase {
         picker.reloadAllComponents()
     }
     
-    public func reloadComponent(component: Int) {
+    public func reloadComponent(_ component: Int) {
         picker.reloadComponent(component)
     }
     
     //Selecting
-    public func selectRow(row: Int, inComponent component: Int, animated animates: Bool) {
+    public func selectRow(_ row: Int, inComponent component: Int, animated animates: Bool) {
         picker.selectRow(row, inComponent: component, animated: animates)
     }
     
-    public func selectRow(row: Int, inComponent component: Int) {
+    public func selectRow(_ row: Int, inComponent component: Int) {
         selectRow(row, inComponent: component, animated: false)
     }
 }

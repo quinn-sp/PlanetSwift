@@ -8,22 +8,22 @@ FULL_NAME_CAMEL = capitalizedString(this.namespace)
 
 import Foundation
 
-private let xmlCache = NSCache()
+private let xmlCache = Cache<String, AnyObject>()
 
 public class <%= FULL_NAME_CAMEL %> {
 
-	public class func readFromFile(filePath: String, prepare: Bool = true) -> GaxbElement? {
+	public class func readFromFile(_ filePath: String, prepare: Bool = true) -> GaxbElement? {
 		do {
-			let xmlString = try String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
+			let xmlString = try String(contentsOfFile: filePath, encoding: String.Encoding.utf8)
 			return <%= FULL_NAME_CAMEL %>.readFromString(xmlString)
 		} catch {
 				return nil
 		}
 	}
 
-	public class func readFromString(string: String, prepare: Bool = true) -> GaxbElement? {
+	public class func readFromString(_ string: String, prepare: Bool = true) -> GaxbElement? {
 
-		if let cachedElement = xmlCache.objectForKey(string) as? GaxbElement {
+		if let cachedElement = xmlCache.object(forKey: string) as? GaxbElement {
 			let copiedCache = cachedElement.copy()
 			if prepare {
 				copiedCache.visit() { $0.gaxbPrepare() }
@@ -31,7 +31,7 @@ public class <%= FULL_NAME_CAMEL %> {
 			return copiedCache
 		}
 
-		if let xmlData = <%= FULL_NAME_CAMEL %>.processExpressions(string).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+		if let xmlData = <%= FULL_NAME_CAMEL %>.processExpressions(string).data(using: String.Encoding.utf8, allowLossyConversion: false) {
 			do {
 				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
 				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
@@ -50,14 +50,14 @@ public class <%= FULL_NAME_CAMEL %> {
 	}
 
 
-	public class func namespaceForElement(element: AEXMLElement) -> String {
+	public class func namespaceForElement(_ element: AEXMLElement) -> String {
 		if let namespaceURI = element.namespaceURI {
 			return NSString(string: namespaceURI).lastPathComponent
 		}
 		return "<%= FULL_NAME_CAMEL %>"
 	}
 
-	public class func parseElement(element: AEXMLElement) -> GaxbElement? {
+	public class func parseElement(_ element: AEXMLElement) -> GaxbElement? {
 		guard let entity = GaxbFactory.element(namespaceForElement(element), name:element.name) else { return nil }
 		for (attribute, value) in element.attributes {
 			if let valueString = value as? String, attributeString = attribute as? String {

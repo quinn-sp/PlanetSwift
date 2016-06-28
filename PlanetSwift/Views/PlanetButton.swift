@@ -10,7 +10,7 @@ import UIKit
 
 public class PlanetButton: UIButton {
     
-    public var touchUpInsideHandler: (Void -> Void)?
+    public var touchUpInsideHandler: ((Void) -> Void)?
     
 	var isToggle = false
     
@@ -42,11 +42,11 @@ public class PlanetButton: UIButton {
 	
 	private func updateBackgroundColor() {
 		
-		if enabled == false {
+		if isEnabled == false {
 			backgroundColor = _backgroundColorDisabled
 		}
 		else {
-			switch (highlighted, selected) {
+			switch (isHighlighted, isSelected) {
 			case (true, false):
 				checkBackgroundColor(_backgroundColorHighlighted)
 			case (true, true):
@@ -59,34 +59,34 @@ public class PlanetButton: UIButton {
 		}
 	}
 	
-    public override var enabled: Bool {
+    public override var isEnabled: Bool {
         didSet {
 			updateBackgroundColor()
         }
     }
     
-    public override var highlighted: Bool {
+    public override var isHighlighted: Bool {
         didSet {
             updateBackgroundColor()
         }
     }
 	
-	public override var selected: Bool {
+	public override var isSelected: Bool {
 		didSet {
 			updateBackgroundColor()
 		}
 	}
 	
-    func checkBackgroundColor(color: UIColor?)
+    func checkBackgroundColor(_ color: UIColor?)
     {
         if color != nil {
             backgroundColor = color!
         }
     }
     
-    func touchUpInside(sender: UIButton!) {
+    func touchUpInside(_ sender: UIButton!) {
         if isToggle {
-            selected = !selected
+            isSelected = !isSelected
         }
         touchUpInsideHandler?()
     }
@@ -95,12 +95,12 @@ public class PlanetButton: UIButton {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), for: .touchUpInside)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), for: .touchUpInside)
     }
     
     convenience init(bgColor: UIColor, bgColorHighlighted: UIColor, bgColorSelected: UIColor, bgColorSelectedHighlighted: UIColor, bgColorDisabled: UIColor, toggle: Bool)
@@ -111,7 +111,7 @@ public class PlanetButton: UIButton {
         backgroundColorSelected = bgColorSelected
         backgroundColorSelectedHighlighted = bgColorSelectedHighlighted
         isToggle = toggle
-        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), forControlEvents: .TouchUpInside)
+        addTarget(self, action: #selector(PlanetButton.touchUpInside(_:)), for: .touchUpInside)
     }
     
 }

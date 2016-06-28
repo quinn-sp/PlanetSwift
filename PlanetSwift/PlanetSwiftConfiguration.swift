@@ -14,8 +14,8 @@ public let PlanetSwiftConfiguration_configPathKey = "configurationPath"
 
 public class PlanetSwiftConfiguration {
 	
-	public class func valueForKey(key:String) -> AnyObject? {
-		let dictionary = NSBundle.mainBundle().objectForInfoDictionaryKey(PlanetSwiftConfiguration_allParametersKey) as? Dictionary<String, AnyObject>
+	public class func valueForKey(_ key:String) -> AnyObject? {
+		let dictionary = Bundle.main().objectForInfoDictionaryKey(PlanetSwiftConfiguration_allParametersKey) as? Dictionary<String, AnyObject>
 		return dictionary?[key]
 	}
 }

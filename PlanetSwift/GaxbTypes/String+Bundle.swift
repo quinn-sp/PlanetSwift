@@ -12,18 +12,18 @@ extension String {
 	
 	public init(bundlePath:String) {
 		self.init()
-        let pathComponents = bundlePath.componentsSeparatedByString(":/")
+        let pathComponents = bundlePath.components(separatedBy: ":/")
         switch pathComponents[0] {
         case "bundle":
-            if let resourcePath = NSBundle.mainBundle().resourcePath {
-                self = NSString(string: resourcePath).stringByAppendingPathComponent(pathComponents[1])
+            if let resourcePath = Bundle.main().resourcePath {
+                self = NSString(string: resourcePath).appendingPathComponent(pathComponents[1])
             }
         case "documents":
-            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
-            self = NSString(string: documentsPath).stringByAppendingPathComponent(pathComponents[1])
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            self = NSString(string: documentsPath).appendingPathComponent(pathComponents[1])
         case "cache":
-            let cachePath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
-            self = NSString(string: cachePath).stringByAppendingPathComponent(pathComponents[1])
+            let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+            self = NSString(string: cachePath).appendingPathComponent(pathComponents[1])
         default:
             self = bundlePath
         }

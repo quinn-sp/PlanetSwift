@@ -39,7 +39,7 @@ public class TextView: TextViewBase {
             #endif
 		}
         if let fontSize = fontSize where textView.font != nil {
-            textView.font = textView.font!.fontWithSize(CGFloat(fontSize))
+            textView.font = textView.font!.withSize(CGFloat(fontSize))
         }
 		if let textColor = textColor {
 			textView.textColor = textColor
@@ -48,11 +48,11 @@ public class TextView: TextViewBase {
 			textView.textAlignment = NSTextAlignment.fromPlanetUITextAlignment(textAlignment)
 		}
 		if let selectable = selectable {
-			textView.selectable = selectable
+			textView.isSelectable = selectable
 		}
         #if os(iOS)
             if let editable = editable {
-                textView.editable = editable
+                textView.isEditable = editable
             }
         #endif
         if let tintColor = tintColor {
@@ -60,26 +60,26 @@ public class TextView: TextViewBase {
         }
 	}
 	
-	func textViewDidChange(textView: UITextView) {
+	func textViewDidChange(_ textView: UITextView) {
 		if onChange != nil {
 			doNotification(onChange!)
 		}
 	}
 	
-	func textViewDidEndEditing(textView: UITextView) {
+	func textViewDidEndEditing(_ textView: UITextView) {
 		if onEndEditing != nil {
 			doNotification(onEndEditing!)
 		}
 	}
 	
-	func doNotification(note: String) {
+	func doNotification(_ note: String) {
 		let (scopeObject, name) = self.parseNotification(note)
 		if name != nil {
-			NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
+			NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
 		}
 	}
     
-    public func updateText(newText: String?) {
+    public func updateText(_ newText: String?) {
         text = newText
         gaxbPrepare()
     }
@@ -89,14 +89,14 @@ private class TextViewDelegateHelper : NSObject, UITextViewDelegate {
 	
 	weak var delegate:TextView?
 	
-	@objc func textViewDidChange(textView: UITextView) {
+	@objc func textViewDidChange(_ textView: UITextView) {
 		
 		if delegate != nil {
 			delegate?.textViewDidChange(textView)
 		}
 	}
 	
-	@objc func textViewDidEndEditing(textView: UITextView) {
+	@objc func textViewDidEndEditing(_ textView: UITextView) {
 		
 		if delegate != nil {
 			delegate?.textViewDidChange(textView)

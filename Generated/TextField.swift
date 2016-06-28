@@ -37,7 +37,7 @@ public class TextField: TextFieldBase {
             #endif
         }
         if let fontSize = fontSize where textField.font != nil {
-            textField.font = textField.font!.fontWithSize(CGFloat(fontSize))
+            textField.font = textField.font!.withSize(CGFloat(fontSize))
         }
         textField.textColor = textColor
         if let textAlignment = textAlignment {
@@ -50,7 +50,7 @@ public class TextField: TextFieldBase {
             textField.borderStyle = UITextBorderStyle(withPlanetTextBorderStyle: borderStyle)
         }
 		if let secureTextEntry = secureTextEntry {
-			textField.secureTextEntry = secureTextEntry
+			textField.isSecureTextEntry = secureTextEntry
 		}
 		if let clearButtonMode = clearButtonMode {
             textField.clearButtonMode = UITextFieldViewMode(withPlanetTextFieldViewMode:clearButtonMode)
@@ -77,27 +77,27 @@ public class TextField: TextFieldBase {
         textField.minimumFontSize = CGFloat(minimumFontSize)
     }
 
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         guard let onBeginEditing = onBeginEditing else { return }
         doNotification(onBeginEditing)
     }
 
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         guard let onEndEditing = onEndEditing else { return }
         doNotification(onEndEditing)
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let onReturnPressed = onReturnPressed {
             doNotification(onReturnPressed)
         }
         return true
     }
 
-    func doNotification(note: String) {
+    func doNotification(_ note: String) {
         let (scopeObject, name) = self.parseNotification(note)
         if let name = name {
-            NSNotificationCenter.defaultCenter().postNotificationName(name, object: scopeObject)
+            NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name), object: scopeObject)
         }
     }
 }
@@ -105,15 +105,15 @@ public class TextField: TextFieldBase {
 private class TextFieldHelper: NSObject, UITextFieldDelegate {
     weak var textDelegate: TextField?
 
-    @objc func textFieldDidBeginEditing(textField: UITextField) {
+    @objc func textFieldDidBeginEditing(_ textField: UITextField) {
         textDelegate?.textFieldDidBeginEditing(textField)
     }
 
-    @objc func textFieldDidEndEditing(textField: UITextField) {
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
         textDelegate?.textFieldDidEndEditing(textField)
     }
     
-    @objc func textFieldShouldReturn(textField: UITextField) -> Bool {
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard textDelegate != nil else { return true }
         return textDelegate!.textFieldShouldReturn(textField)
     }

@@ -40,11 +40,11 @@ public class GestureRecognizer: GestureRecognizerBase {
 		}
 	}
 	
-	func recognizerStateDidChange(recognizer:UIGestureRecognizer) {
+	func recognizerStateDidChange(_ recognizer:UIGestureRecognizer) {
 		if onStateChange != nil {
 			let (scopeObject, name) = self.parseNotification(onStateChange)
 			if name != nil {
-				NSNotificationCenter.defaultCenter().postNotificationName(name!, object: scopeObject)
+				NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
 			}
 		}
 	}
@@ -53,7 +53,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 class GestureRecognizerHelper: NSObject {
 	weak var delegate: GestureRecognizer?
 	
-	func recognizerStateDidChange(recognizer:UIGestureRecognizer) {
+	func recognizerStateDidChange(_ recognizer:UIGestureRecognizer) {
 		delegate?.recognizerStateDidChange(recognizer)
 	}
 }

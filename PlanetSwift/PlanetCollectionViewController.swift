@@ -10,10 +10,10 @@
 public protocol PlanetCollectionViewTemplate {
     var reuseId: String { get }
     var size: TemplateSize { get }
-    func decorate(cell: UICollectionViewCell)
+    func decorate(_ cell: UICollectionViewCell)
 }
 
-public struct TemplateSize: OptionSetType {
+public struct TemplateSize: OptionSet {
     public let rawValue: Int
     
     public static let FullHeight = TemplateSize(rawValue: 1 << 0)
@@ -45,10 +45,10 @@ public extension PlanetCollectionViewCell where Self: UICollectionViewCell {
         contentView.addSubview(xmlView.view)
         xmlView.visit() { $0.gaxbDidPrepare() }
         
-        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .Width))
-        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .Height))
-        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .Left))
-        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .Top))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .width))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .height))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .left))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .top))
         xmlView.view.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -63,9 +63,9 @@ public class PlanetCollectionViewController: PlanetViewController {
     public var cellSizes: [[CGSize]] = []
     public var objects: [[PlanetCollectionViewTemplate]] = [] {
         didSet {
-            cellSizes.removeAll(keepCapacity: false)
+            cellSizes.removeAll(keepingCapacity: false)
             for subarray in objects {
-                cellSizes.append([CGSize](count:subarray.count, repeatedValue: CGSizeZero))
+                cellSizes.append([CGSize](repeating: CGSize.zero, count: subarray.count))
             }
         }
     }
@@ -73,48 +73,48 @@ public class PlanetCollectionViewController: PlanetViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        collectionView.contentOffset = CGPointZero
+        collectionView.contentOffset = CGPoint.zero
     }
     
     public func configureCollectionView() {
         for (cellId, cellClass) in cellMapping {
-            collectionView?.registerClass(cellClass, forCellWithReuseIdentifier: cellId)
+            collectionView?.register(cellClass, forCellWithReuseIdentifier: cellId)
         }
         collectionView?.setCollectionViewLayout(UICollectionViewFlowLayout(), animated: false)
     }
     
     // MARK: - Collection View Cell Handling
     
-    public func configure(cell: PlanetCollectionViewCell?, atIndexPath indexPath: NSIndexPath) {
+    public func configure(_ cell: PlanetCollectionViewCell?, atIndexPath indexPath: IndexPath) {
         cell?.loadView()
         guard let xmlView = cell?.xmlView,
             template = cellObject(indexPath),
             cell = cell as? UICollectionViewCell
             else { return }
         if template.size.contains(.FullWidth) {
-            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
-            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: collectionView.frame.size.width - insets.left - insets.right)
+            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: (indexPath as NSIndexPath).section)
+            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: collectionView.frame.size.width - insets.left - insets.right)
             xmlView.view.addConstraint(constraint)
         }
         if template.size.contains(.HalfWidth) {
-            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
+            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: (indexPath as NSIndexPath).section)
             let constant = (collectionView.frame.size.width - insets.left - insets.right - max(insets.right, insets.left)) / 2
-            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: floor(constant))
+            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: floor(constant))
             xmlView.view.addConstraint(constraint)
         }
         if template.size.contains(.FullHeight) {
-            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
-            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: collectionView.frame.size.height - insets.top - insets.bottom)
+            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: (indexPath as NSIndexPath).section)
+            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: collectionView.frame.size.height - insets.top - insets.bottom)
             xmlView.view.addConstraint(constraint)
         }
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    public func cellMapping(reuseId: String) -> PlanetCollectionViewCell.Type? {
+    public func cellMapping(_ reuseId: String) -> PlanetCollectionViewCell.Type? {
         return cellMapping[reuseId]
     }
     
-    public func reuseIdentifier(indexPath:NSIndexPath) -> String {
+    public func reuseIdentifier(_ indexPath:IndexPath) -> String {
         guard let reuseId = cellObject(indexPath)?.reuseId else {
             // cell template not found
             return ""
@@ -122,33 +122,33 @@ public class PlanetCollectionViewController: PlanetViewController {
         return reuseId
     }
     
-    public func cellObject(indexPath: NSIndexPath) -> PlanetCollectionViewTemplate? {
-        return objects[indexPath.section][indexPath.row]
+    public func cellObject(_ indexPath: IndexPath) -> PlanetCollectionViewTemplate? {
+        return objects[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     
-    public func cellSize(indexPath: NSIndexPath) -> CGSize? {
-        return cellSizes[indexPath.section][indexPath.row]
+    public func cellSize(_ indexPath: IndexPath) -> CGSize? {
+        return cellSizes[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
     }
     
-    public func setCellSize(size: CGSize, forIndexPath indexPath:NSIndexPath) {
-        cellSizes[indexPath.section][indexPath.row] = size
+    public func setCellSize(_ size: CGSize, forIndexPath indexPath:IndexPath) {
+        cellSizes[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row] = size
     }
     
-    public func cellHeight(indexPath: NSIndexPath) -> CGFloat? {
-        return (cellSize(indexPath) ?? CGSizeZero).height
+    public func cellHeight(_ indexPath: IndexPath) -> CGFloat? {
+        return (cellSize(indexPath) ?? CGSize.zero).height
     }
     
-    public func setCellHeight(height: CGFloat, forIndexPath indexPath: NSIndexPath) {
+    public func setCellHeight(_ height: CGFloat, forIndexPath indexPath: IndexPath) {
         if let size = cellSize(indexPath) {
-            setCellSize(CGSizeMake(size.width, height), forIndexPath:indexPath)
+            setCellSize(CGSize(width: size.width, height: height), forIndexPath:indexPath)
         }
     }
     
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        var size = cellSize(indexPath) ?? CGSizeZero
-        if let template = cellObject(indexPath) where size == CGSizeZero {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        var size = cellSize(indexPath) ?? CGSize.zero
+        if let template = cellObject(indexPath) where size == CGSize.zero {
             let reuseId = reuseIdentifier(indexPath)
             
             var cellReference: PlanetCollectionViewCell? = cellReferences[reuseId]
@@ -163,13 +163,13 @@ public class PlanetCollectionViewController: PlanetViewController {
             template.decorate(cellReference as! UICollectionViewCell)
             
             let xmlView = cellReference?.xmlView
-            size = xmlView?.view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize) ?? CGSizeZero
+            size = xmlView?.view.systemLayoutSizeFitting(UILayoutFittingCompressedSize) ?? CGSize.zero
             setCellSize(size, forIndexPath: indexPath)
         }
         return size
     }
     
-    public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: section == 0 ? 64 : 0, left: 0, bottom: 0, right: 0)
     }
     
@@ -177,16 +177,16 @@ public class PlanetCollectionViewController: PlanetViewController {
 
 extension PlanetCollectionViewController: UICollectionViewDataSource {
     
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return objects.count
     }
     
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return objects[section].count
     }
     
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier(indexPath), forIndexPath: indexPath)
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier(indexPath), for: indexPath)
         configure(cell as? PlanetCollectionViewCell, atIndexPath: indexPath)
         cellObject(indexPath)?.decorate(cell)
         return cell
@@ -196,12 +196,12 @@ extension PlanetCollectionViewController: UICollectionViewDataSource {
 
 extension PlanetCollectionViewController: UICollectionViewDelegate {
     
-    public func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.cellForItemAtIndexPath(indexPath)?.highlighted = true
+    public func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.isHighlighted = true
     }
     
-    public func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.cellForItemAtIndexPath(indexPath)?.highlighted = false
+    public func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.isHighlighted = false
     }
     
 }

@@ -10,10 +10,10 @@ import UIKit
 
 public class PlanetNetworkImageView: UIImageView {
 
-	public var placeholderContentMode:UIViewContentMode = .ScaleToFill
-	public var downloadedContentMode:UIViewContentMode = .ScaleToFill
+	public var placeholderContentMode:UIViewContentMode = .scaleToFill
+	public var downloadedContentMode:UIViewContentMode = .scaleToFill
 	
-    public func setImage(url:NSURL, placeholder:UIImage? = nil, completion:((success:Bool)->Void)? = nil) {
+    public func setImage(_ url:URL, placeholder:UIImage? = nil, completion:((success:Bool)->Void)? = nil) {
 		
 		self.contentMode = placeholderContentMode
 		self.image = placeholder

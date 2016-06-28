@@ -21,13 +21,13 @@ public class SegmentedControl: SegmentedControlBase {
     public override func gaxbPrepare() {
         super.gaxbPrepare()
         segmentedControl.tintColor = tintColor
-        segmentedControl.setTitleTextAttributes(textAttributes(.Normal), forState: .Normal)
-        segmentedControl.setTitleTextAttributes(textAttributes(.Selected), forState: .Selected)
+        segmentedControl.setTitleTextAttributes(textAttributes(UIControlState()), for: UIControlState())
+        segmentedControl.setTitleTextAttributes(textAttributes(.selected), for: .selected)
     }
 
-    private func textAttributes(state: UIControlState) -> [NSObject : AnyObject]? {
+    private func textAttributes(_ state: UIControlState) -> [NSObject : AnyObject]? {
         var attributes: [NSObject : AnyObject] = Dictionary()
-        if state == UIControlState.Normal {
+        if state == UIControlState() {
             if textColorNormal != nil {
                 attributes.updateValue(textColorNormal!, forKey: NSForegroundColorAttributeName)
             }
@@ -37,7 +37,7 @@ public class SegmentedControl: SegmentedControlBase {
             }
             return attributes
         }
-        if state == UIControlState.Selected {
+        if state == UIControlState.selected {
             if textColorSelected != nil {
                 attributes.updateValue(textColorSelected!, forKey: NSForegroundColorAttributeName)
             }

@@ -3,7 +3,7 @@
 //
 
 public class ScrollView: ScrollViewBase {
-	lazy public var scrollView = UIScrollView(frame: CGRectZero)
+	lazy public var scrollView = UIScrollView(frame: CGRect.zero)
 	override public var view: UIView {
 		get {
 			return scrollView
@@ -23,7 +23,7 @@ public class ScrollView: ScrollViewBase {
 		}
 #if os(iOS)
 		if pagingEnabled != nil {
-			scrollView.pagingEnabled = pagingEnabled!
+			scrollView.isPagingEnabled = pagingEnabled!
 		}
 #endif
 		if showsHorizontalScrollIndicator != nil {

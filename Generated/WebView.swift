@@ -22,8 +22,8 @@ public class WebView: WebViewBase {
         super.gaxbPrepare()
         
         if url != nil {
-            let requestURL = NSURL(string: url!)
-            let request = NSURLRequest(URL: requestURL!)
+            let requestURL = URL(string: url!)
+            let request = URLRequest(url: requestURL!)
             webview.loadRequest(request)
         }
         if scalesToFit != nil {

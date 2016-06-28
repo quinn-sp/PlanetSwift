@@ -36,9 +36,9 @@ class PlanetSwiftViewTests: XCTestCase {
     
     func testUIView() {
         if let view = element as? View {
-            XCTAssert(view.view.isKindOfClass(UIView), "element.view is not a UIView")
-            XCTAssert(subview0!.view.isKindOfClass(UIView), "element subview0 is not a UIView")
-            XCTAssert(subview1!.view.isKindOfClass(UIView), "element subview0 is not a UIView")
+            XCTAssert(view.view.isKind(of: UIView), "element.view is not a UIView")
+            XCTAssert(subview0!.view.isKind(UIView), "element subview0 is not a UIView")
+            XCTAssert(subview1!.view.isKind(UIView), "element subview0 is not a UIView")
         }
     }
 
@@ -99,15 +99,15 @@ class PlanetSwiftViewTests: XCTestCase {
 	
 	func testViewCompressionResistance() {
 		if let view = element as? View {
-			XCTAssertEqual(view.view.contentCompressionResistancePriorityForAxis(.Horizontal), UILayoutPriority(1.0), "element.view horizontal content compression resistance should be 1")
-			XCTAssertEqual(view.view.contentCompressionResistancePriorityForAxis(.Vertical), UILayoutPriority(2.0), "element.view horizontal content compression resistance should be 2")
+			XCTAssertEqual(view.view.contentCompressionResistancePriority(for: .horizontal), UILayoutPriority(1.0), "element.view horizontal content compression resistance should be 1")
+			XCTAssertEqual(view.view.contentCompressionResistancePriority(for: .vertical), UILayoutPriority(2.0), "element.view horizontal content compression resistance should be 2")
 		}
 	}
 	
 	func testViewContentHugging() {
 		if let view = element as? View {
-			XCTAssertEqual(view.view.contentHuggingPriorityForAxis(.Horizontal), UILayoutPriority(3.0), "element.view horizontal content hugging should be 3")
-			XCTAssertEqual(view.view.contentHuggingPriorityForAxis(.Vertical), UILayoutPriority(4.0), "element.view horizontal content hugging should be 4")
+			XCTAssertEqual(view.view.contentHuggingPriority(for: .horizontal), UILayoutPriority(3.0), "element.view horizontal content hugging should be 3")
+			XCTAssertEqual(view.view.contentHuggingPriority(for: .vertical), UILayoutPriority(4.0), "element.view horizontal content hugging should be 4")
 		}
 	}
 	

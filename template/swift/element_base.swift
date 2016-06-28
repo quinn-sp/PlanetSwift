@@ -68,7 +68,7 @@ end
         return copied
     }
 
-	public <%= SUPERCLASS_OVERRIDE %>func visit(visitor: (GaxbElement) -> ()) {
+	public <%= SUPERCLASS_OVERRIDE %>func visit(_ visitor: (GaxbElement) -> ()) {
 <%if hasSuperclass(this) then %>        super.visit(visitor)
 <% else %>        visitor(self)
 <% end %>
@@ -87,7 +87,7 @@ end
 
 <%
 
-%>    <%= SUPERCLASS_OVERRIDE %>public func setElement(element: GaxbElement, key:String) {<%
+%>    <%= SUPERCLASS_OVERRIDE %>public func setElement(_ element: GaxbElement, key:String) {<%
     if (sequencesCount > 0) then
       for k,v in pairs(this.sequences) do
         if (v.name ~= "any") then %>
@@ -112,7 +112,7 @@ end
         self.parent = parent
     }
 <% end %>
-    <%= SUPERCLASS_OVERRIDE %> public func isKindOfClass(className: String) -> Bool {
+    <%= SUPERCLASS_OVERRIDE %> public func isKindOfClass(_ className: String) -> Bool {
         if className == "<%= CAP_NAME %>" {
             return true
         }
@@ -140,7 +140,7 @@ end
         return <%= v.name %><% if (v.default == nil) then %>!<% end %>.toGaxbString()
 <% end
 %>    }
-    public func set<%= capitalizedString(v.name) %>(value: String) {
+    public func set<%= capitalizedString(v.name) %>(_ value: String) {
 <%	if (typeNameForItem(v)=="Bool") then
 %>        self.<%= v.name %> = value == "true"<%
     elseif (typeNameForItem(v)=="Int") then
@@ -161,7 +161,7 @@ end %>
     }
 <%
 	end %>
-    <%= SUPERCLASS_OVERRIDE %>public func setAttribute(value: String, key:String) {
+    <%= SUPERCLASS_OVERRIDE %>public func setAttribute(_ value: String, key:String) {
 <% if (hasSuperclass(this)) then %>        super.setAttribute(value, key:key)
 <% else %>        originalValues[key] = value
 <% end %>        switch key {
@@ -174,7 +174,7 @@ end %>
         }
     }
 
-    <%= SUPERCLASS_OVERRIDE %>public func imprintAttributes(receiver: GaxbElement?) -> GaxbElement? {
+    <%= SUPERCLASS_OVERRIDE %>public func imprintAttributes(_ receiver: GaxbElement?) -> GaxbElement? {
 <% if (hasAttributes == true) then
 %>       if let obj = receiver as? <%= CAP_NAME %> {
 <% for k,v in pairs(this.attributes) do
@@ -205,7 +205,7 @@ end %>
 <%
 	end
 %>
-    <%= SUPERCLASS_OVERRIDE %>public func attributesXML(useOriginalValues:Bool) -> String {
+    <%= SUPERCLASS_OVERRIDE %>public func attributesXML(_ useOriginalValues:Bool) -> String {
         var xml = ""
         if useOriginalValues {
             for (key, value) in originalValues {
@@ -225,7 +225,7 @@ end
         return xml
     }
 
-    <%= SUPERCLASS_OVERRIDE %>public func sequencesXML(useOriginalValues:Bool) -> String {
+    <%= SUPERCLASS_OVERRIDE %>public func sequencesXML(_ useOriginalValues:Bool) -> String {
         var xml = ""<%
     for k,v in pairs(this.sequences) do
       if (isPlural(v)) then %>
@@ -239,7 +239,7 @@ end
         return xml
     }
 
-    <%= SUPERCLASS_OVERRIDE %>public func toXML(useOriginalValues:Bool) -> String {
+    <%= SUPERCLASS_OVERRIDE %>public func toXML(_ useOriginalValues:Bool) -> String {
         var xml = "<<%= CAP_NAME %>"
         if (parent == nil || parent?.xmlns != xmlns) {
             xml += " xmlns='\\(xmlns)'"

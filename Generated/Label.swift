@@ -61,7 +61,7 @@ public class Label: LabelBase {
             #endif
         }
         if let fontSize = fontSize {
-            label.font = label.font.fontWithSize(CGFloat(fontSize))
+            label.font = label.font.withSize(CGFloat(fontSize))
         }
 		
 		//attributes that are sensitive to the existence (or non-existence) of _paragraphStyle
@@ -92,12 +92,12 @@ public class Label: LabelBase {
         }
     }
     
-    public func updateText(newText: String?) {
+    public func updateText(_ newText: String?) {
         text = newText
         gaxbPrepare()
     }
     
-    func checkUnlocalized(text: String?, localized: String) {
+    func checkUnlocalized(_ text: String?, localized: String) {
         guard let text = text where text.characters.count > 0 && _findLocalizable else { return }
         guard text == localized else { return }
         let output = "\"\(text)\" = \"\(localized)\";"
@@ -107,7 +107,7 @@ public class Label: LabelBase {
     public class func printLocalizable() {
         guard _findLocalizable else { return }
         print("//--------- localizable strings start --------")
-        print(Array(_localizable).joinWithSeparator("\n"))
+        print(Array(_localizable).joined(separator: "\n"))
         print("//---------- localizable strings end ---------")
     }
 }

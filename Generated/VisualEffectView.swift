@@ -17,11 +17,11 @@ public class VisualEffectView: VisualEffectViewBase {
                 if effect != nil {
                     switch effect! {
                     case PlanetUI.BlurEffect.extraLight:
-                        effectView =  UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight))
+                        effectView =  UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
                     case PlanetUI.BlurEffect.light:
-                        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+                        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
                     case PlanetUI.BlurEffect.dark:
-                        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+                        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
                     }
                 }
                 if effectView != nil {

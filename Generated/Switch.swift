@@ -20,6 +20,6 @@ public class Switch: SwitchBase {
         super.gaxbPrepare()
         switch_.tintColor = tintColor
         switch_.onTintColor = onTintColor
-        switch_.on = true
+        switch_.isOn = true
     }
 }

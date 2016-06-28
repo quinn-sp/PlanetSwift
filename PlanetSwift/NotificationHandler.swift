@@ -30,25 +30,25 @@ import Foundation
 
 public protocol NotificationHandler {
     var name: String { get }
-    func post(object: AnyObject?, userInfo: [NSObject : AnyObject]?)
-    func observe(observer: AnyObject, selector: Selector, object: AnyObject?)
-    func remove(observer: AnyObject, object: AnyObject?)
-    static func remove(observer: AnyObject)
+    func post(_ object: AnyObject?, userInfo: [NSObject : AnyObject]?)
+    func observe(_ observer: AnyObject, selector: Selector, object: AnyObject?)
+    func remove(_ observer: AnyObject, object: AnyObject?)
+    static func remove(_ observer: AnyObject)
 }
 
 public extension NotificationHandler {
     
-    func post(object: AnyObject? = nil, userInfo: [NSObject : AnyObject]? = nil) {
-        NSNotificationCenter.defaultCenter().postNotificationName(name, object: object, userInfo: userInfo)
+    func post(_ object: AnyObject? = nil, userInfo: [NSObject : AnyObject]? = nil) {
+        NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name), object: object, userInfo: userInfo)
     }
-    func observe(observer: AnyObject, selector: Selector, object: AnyObject? = nil) {
-        NSNotificationCenter.defaultCenter().addObserver(observer, selector: selector, name: name, object: object)
+    func observe(_ observer: AnyObject, selector: Selector, object: AnyObject? = nil) {
+        NotificationCenter.default().addObserver(observer, selector: selector, name: name, object: object)
     }
-    func remove(observer: AnyObject, object: AnyObject? = nil) {
-        NSNotificationCenter.defaultCenter().removeObserver(observer, name: name, object: object)
+    func remove(_ observer: AnyObject, object: AnyObject? = nil) {
+        NotificationCenter.default().removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
-    static func remove(observer: AnyObject) {
-        NSNotificationCenter.defaultCenter().removeObserver(observer)
+    static func remove(_ observer: AnyObject) {
+        NotificationCenter.default().removeObserver(observer)
     }
     
 }

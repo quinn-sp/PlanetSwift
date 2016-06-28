@@ -27,13 +27,13 @@ public class Control: ControlBase {
 		if let control = control {
 			
 			if enabled != nil {
-				control.enabled = enabled!
+				control.isEnabled = enabled!
 			}
 			if selected != nil {
-				control.selected = selected!
+				control.isSelected = selected!
 			}
 			if highlighted != nil {
-				control.highlighted = highlighted!
+				control.isHighlighted = highlighted!
 			}
 		}
 	}

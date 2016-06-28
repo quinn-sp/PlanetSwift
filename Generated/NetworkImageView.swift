@@ -18,8 +18,8 @@ public class NetworkImageView: NetworkImageViewBase {
 		}
 	}
     
-    public func setImageWithPath(path:String?, completion:((success:Bool)->Void)?) {
-        if let path = path, url = NSURL(string: path) {
+    public func setImageWithPath(_ path:String?, completion:((success:Bool)->Void)?) {
+        if let path = path, url = URL(string: path) {
             
             var placeholder:UIImage?
             if placeholderPath != nil {
@@ -33,7 +33,7 @@ public class NetworkImageView: NetworkImageViewBase {
         }
     }
 	
-    public override func setImageWithString(image: String?) {
+    public override func setImageWithString(_ image: String?) {
 		self.setImageWithPath(image, completion: nil)
 	}
 	

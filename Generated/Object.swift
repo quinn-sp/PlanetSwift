@@ -9,17 +9,17 @@ private var attemptedStylesLoad = false //workaround for inability to specify th
 
 public class Object: ObjectBase {
 	
-	//MARK: - ID mappings
+	// MARK: - ID mappings
 	
-	private lazy var idMappings:Dictionary<String,NSValue> = Dictionary<String,NSValue>()
+	private lazy var idMappings = Dictionary<String,NSValue>()
 	
-	public func objectForId(identifier:String) -> AnyObject? {
+	public func objectForId(_ identifier:String) -> AnyObject? {
 		
 		if let value = idMappings[identifier] {
 			
 			//clean out this object if the weak reference was zeroed
 			if value.nonretainedObjectValue == nil {
-				idMappings.removeValueForKey(identifier)
+				idMappings.removeValue(forKey: identifier)
 			}
 			
 			return value.nonretainedObjectValue
@@ -27,12 +27,11 @@ public class Object: ObjectBase {
 		return nil
 	}
 	
-	public func setObjectForId(identifier:String, object:AnyObject) {
-		
+	public func setObjectForId(_ identifier:String, object:AnyObject) {
 		idMappings[identifier] = NSValue(nonretainedObject: object)
 	}
 	
-	//MARK: - scoping
+	// MARK: - scoping
 	
     public func isScopeContainer() -> Bool {
         return false
@@ -48,17 +47,17 @@ public class Object: ObjectBase {
         return nil
     }
 	
-	//MARK: - notification
+	// MARK: - notification
 	
     // notification strings are one of the following:
     //  LOCAL::handleSomething  (local scope)
     //  handleSomething (same as above, local scope)
     //  GLOBAL::handleSomething (global scope)
-    public func parseNotification(scopedName: String?) -> (scope: AnyObject?, name: String? ) {
+    public func parseNotification(_ scopedName: String?) -> (scope: AnyObject?, name: String? ) {
         var scopeObject: AnyObject? = nil
         var name: String? = nil
         
-        if let components = scopedName?.componentsSeparatedByString("::") {
+        if let components = scopedName?.components(separatedBy: "::") {
             switch components.count {
             case 1:
                 scopeObject = self.scope()
@@ -83,43 +82,34 @@ public class Object: ObjectBase {
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
-        if styleId != nil {
-            if let styleElement = Object.styleForId(styleId!) {
-                styleElement.imprintAttributes(self)
-            }
+        if let styleId = styleId, styleElement = Object.styleForId(styleId) {
+            _ = styleElement.imprintAttributes(self)
         }
         
-		if id != nil {
-			if let scopeObj  = scope() as? Object {
-				scopeObj.setObjectForId(id!, object: self)
-			}
+		if let id = id , scopeObj  = scope() as? Object {
+            scopeObj.setObjectForId(id, object: self)
 		}
 	}
     
-    public func updateStyleId(newStyle: String?) {
+    public func updateStyleId(_ newStyle: String?) {
         styleId = newStyle
         gaxbPrepare()
     }
     
-    //MARK: - style handling
+    // MARK: - style handling
     
-    public class func styleForId(_id: String) -> GaxbElement? {
-		
+    public class func styleForId(_ _id: String) -> GaxbElement? {
 		if styles == nil && !attemptedStylesLoad {
-			
 			attemptedStylesLoad = true
 			if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_stylesheetPathKey) as? String {
 				styles = PlanetUI.readFromFile(String(bundlePath: path), prepare:false) as? Object
 			}
 		}
 		
-        if styles != nil {
-            for child in styles!.anys {
-                if let childObject = child as? Object {
-                    if childObject.styleId == _id {
-                        return childObject
-                    }
-                }
+        guard let styles = styles else { return nil }
+        for child in styles.anys {
+            if let childObject = child as? Object where childObject.styleId == _id {
+                return childObject
             }
         }
         return nil

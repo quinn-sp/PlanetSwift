@@ -44,7 +44,7 @@ public class PlanetViewController: UIViewController {
 		}
 	}
 	
-	func searchXMLObject(xmlObj:Object) {
+	func searchXMLObject(_ xmlObj:Object) {
 		xmlObj.visit({ [unowned self] (element:GaxbElement) -> () in
 			
 			if let xmlController = element as? Controller {
@@ -60,11 +60,11 @@ public class PlanetViewController: UIViewController {
 		})
 	}
     
-    public func decorate(element: GaxbElement) {
+    public func decorate(_ element: GaxbElement) {
         //Override decorate in your controller class if you need a handle on the XML views from your PlanetView
     }
 	
-	func searchForPlanetView(searchedView:UIView) {
+	func searchForPlanetView(_ searchedView:UIView) {
 		if let foundView = searchedView as? PlanetView {
 			planetViews.append(foundView)
 		}
@@ -73,7 +73,7 @@ public class PlanetViewController: UIViewController {
 		}
 	}
 	
-	public func objectForId<T>(id:String) -> T? {
+	public func objectForId<T>(_ id:String) -> T? {
 		if let foundObj = idMappings[id] as? T {
 			return foundObj
 		}

@@ -11,11 +11,11 @@ public class View: ViewBase {
 		super.gaxbPrepare()
 		
         if frame != nil {
-            view.bounds = CGRectMake(0, 0, frame!.size.width, frame!.size.height)
-            view.center = CGPointMake(CGRectGetMidX(frame!), CGRectGetMidY(frame!))
+            view.bounds = CGRect(x: 0, y: 0, width: frame!.size.width, height: frame!.size.height)
+            view.center = CGPoint(x: frame!.midX, y: frame!.midY)
         }
         if backgroundColor != nil {
-            view.layer.backgroundColor = backgroundColor!.CGColor
+            view.layer.backgroundColor = backgroundColor!.cgColor
         }
         if alpha != nil {
             view.alpha = CGFloat(alpha!)
@@ -24,10 +24,10 @@ public class View: ViewBase {
             view.clipsToBounds = clipsToBounds!
         }
 		if userInteractionEnabled != nil {
-			view.userInteractionEnabled = userInteractionEnabled!
+			view.isUserInteractionEnabled = userInteractionEnabled!
 		}
         if hidden != nil {
-            view.hidden = hidden!
+            view.isHidden = hidden!
         }
         if tag != nil {
             view.tag = tag!
@@ -36,15 +36,15 @@ public class View: ViewBase {
             view.contentMode = UIViewContentMode.fromPlanetUIContentMode(contentMode!)
         }
 		if contentHuggingPriority != nil {
-			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.x), forAxis: .Horizontal)
-			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.y), forAxis: .Vertical)
+			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.x), for: .horizontal)
+			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.y), for: .vertical)
 		}
 		if contentCompressionResistancePriority != nil {
-			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.x), forAxis: .Horizontal)
-			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.y), forAxis: .Vertical)
+			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.x), for: .horizontal)
+			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.y), for: .vertical)
 		}
         if borderColor != nil {
-            view.layer.borderColor = borderColor!.CGColor
+            view.layer.borderColor = borderColor!.cgColor
         }
         if borderWidth != nil {
             view.layer.borderWidth = CGFloat(borderWidth!)
@@ -59,7 +59,7 @@ public class View: ViewBase {
             view.layer.shadowRadius = CGFloat(shadowRadius!)
         }
         if shadowColor != nil {
-            view.layer.shadowColor = shadowColor!.CGColor
+            view.layer.shadowColor = shadowColor!.cgColor
         }
         if shadowOpacity != nil {
             view.layer.shadowOpacity = Float(shadowOpacity!)
