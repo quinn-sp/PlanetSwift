@@ -108,7 +108,7 @@ end
         super.setElement(element, key:key)
 <%  end %>    }
 <% if (hasSuperclass(this) == false) then  %>
-    public func setParent(parent: GaxbElement) {
+    public func setParent(_ parent: GaxbElement) {
         self.parent = parent
     }
 <% end %>

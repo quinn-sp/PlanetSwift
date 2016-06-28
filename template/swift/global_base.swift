@@ -8,7 +8,7 @@ FULL_NAME_CAMEL = capitalizedString(this.namespace)
 
 import Foundation
 
-private let xmlCache = Cache<String, AnyObject>()
+private let xmlCache = Cache<NSString, AnyObject>()
 
 public class <%= FULL_NAME_CAMEL %> {
 
@@ -110,7 +110,7 @@ public class <%= FULL_NAME_CAMEL %> {
 %>}
 
 @objc(<%= FULL_NAME_CAMEL %>GaxbFactory) public class <%= FULL_NAME_CAMEL %>GaxbFactory : GaxbFactory {
-	public override func classWithName(name : String) -> GaxbElement? {
+	public override func classWithName(_ name : String) -> GaxbElement? {
 		switch name {<%
 for k,v in pairs(schema.elements) do
 	-- if not in the schema namespace, skip
