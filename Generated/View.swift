@@ -64,10 +64,13 @@ public class View: ViewBase {
         if shadowOpacity != nil {
             view.layer.shadowOpacity = Float(shadowOpacity!)
         }
-		if masksToBounds != nil {
-			view.layer.masksToBounds = masksToBounds!
+		if let masksToBounds = masksToBounds {
+			view.layer.masksToBounds = masksToBounds
 		}
         view.accessibilityIdentifier = id
+        if let accessibilityLabel = accessibilityLabel {
+            view.accessibilityLabel = NSLocalizedString(accessibilityLabel, comment: "")
+        }
 
 		findParentView()?.view.addSubview(view)
     }

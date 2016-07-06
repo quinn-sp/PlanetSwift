@@ -28,6 +28,7 @@
 				<attribute name="contentMode" type="ui:ContentMode"/>
 				<attribute name="contentHuggingPriority" type="ui:point"/><!-- 250 -->
 				<attribute name="contentCompressionResistancePriority" type="ui:point"/><!-- 750 -->
+				<attribute name="accessibilityLabel" type="string"/>
 				<!-- CALayer properties -->
 				<attribute name="borderColor" type="ui:color"/>
 				<attribute name="borderWidth" type="decimal"/>
