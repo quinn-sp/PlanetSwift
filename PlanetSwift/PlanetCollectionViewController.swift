@@ -115,11 +115,7 @@ public class PlanetCollectionViewController: PlanetViewController {
     }
     
     public func reuseIdentifier(indexPath:NSIndexPath) -> String {
-        guard let reuseId = cellObject(indexPath)?.reuseId else {
-            // cell template not found
-            return ""
-        }
-        return reuseId
+        return cellObject(indexPath)?.reuseId ?? "invalidReuseId"
     }
     
     public func cellObject(indexPath: NSIndexPath) -> PlanetCollectionViewTemplate? {
@@ -155,6 +151,10 @@ public class PlanetCollectionViewController: PlanetViewController {
             if cellReference == nil {
                 if let cellReferenceType = cellMapping(reuseId) as? UICollectionViewCell.Type {
                     cellReference = cellReferenceType.init() as? PlanetCollectionViewCell
+                }
+                if cellReference == nil {
+                    assertionFailure("Could not create cell from reuseId \"\(reuseId)\"")
+                    return CGSizeZero
                 }
                 configure(cellReference!, atIndexPath: indexPath)
                 cellReferences[reuseId] = cellReference
