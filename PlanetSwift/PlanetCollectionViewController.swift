@@ -13,16 +13,35 @@ public protocol PlanetCollectionViewTemplate {
     func decorate(cell: UICollectionViewCell)
 }
 
-public struct TemplateSize: OptionSetType {
-    public let rawValue: Int
-    
-    public static let FullHeight = TemplateSize(rawValue: 1 << 0)
-    public static let FullWidth = TemplateSize(rawValue: 1 << 1)
-    public static let HalfWidth = TemplateSize(rawValue: 1 << 2)
-    
-    public init(rawValue: Int) {
-        self.rawValue = rawValue
+public typealias TemplateSize = (width: TemplateConstraint, height: TemplateConstraint)
+
+public enum TemplateConstraint {
+    case Unconstrained
+    case Full
+    case Half
+    case Fixed(points: Float)
+}
+
+public func ==(lhs: TemplateConstraint, rhs: TemplateConstraint) -> Bool {
+    switch (lhs, rhs) {
+    case (.Unconstrained, .Unconstrained): return true
+    case (.Full, .Full): return true
+    case (.Half, .Half): return true
+    case (.Fixed(let a), .Fixed(let b))   where a == b: return true
+    default: return false
     }
+}
+
+public func !=(lhs: TemplateConstraint, rhs: TemplateConstraint) -> Bool {
+    return !(lhs == rhs)
+}
+
+public func ==(lhs: TemplateSize, rhs: TemplateSize) -> Bool {
+    return lhs.width == rhs.width && lhs.height == rhs.height
+}
+
+public func !=(lhs: TemplateSize, rhs: TemplateSize) -> Bool {
+    return !(lhs == rhs)
 }
 
 
@@ -91,20 +110,33 @@ public class PlanetCollectionViewController: PlanetViewController {
             template = cellObject(indexPath),
             cell = cell as? UICollectionViewCell
             else { return }
-        if template.size.contains(.FullWidth) {
+        
+        switch template.size.width {
+        case .Unconstrained: break
+        case .Full:
             let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
             let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: collectionView.frame.size.width - insets.left - insets.right)
             xmlView.view.addConstraint(constraint)
-        }
-        if template.size.contains(.HalfWidth) {
+        case .Half:
             let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
             let constant = (collectionView.frame.size.width - insets.left - insets.right - max(insets.right, insets.left)) / 2
             let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1, constant: floor(constant))
             xmlView.view.addConstraint(constraint)
+        case .Fixed(let points):
+            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: CGFloat(points))
+            xmlView.view.addConstraint(constraint)
         }
-        if template.size.contains(.FullHeight) {
+        
+        switch template.size.height {
+        case .Unconstrained: break
+        case .Full:
             let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
             let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: collectionView.frame.size.height - insets.top - insets.bottom)
+            xmlView.view.addConstraint(constraint)
+        case .Half:  // FIXME: 
+            break
+        case .Fixed(let points):
+            let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: CGFloat(points))
             xmlView.view.addConstraint(constraint)
         }
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
