@@ -20,7 +20,7 @@ public class PlanetView: UIView {
 	//MARK: - loading / unloading view
 	
 	func loadXMLView() {
-        guard let bundlePath = bundlePath where xmlView == nil else { return }
+        guard let bundlePath = bundlePath, xmlView == nil else { return }
 			
         xmlView = PlanetUI.readFromFile(String(bundlePath: bundlePath)) as? View
         if let loadedView = xmlView?.view {

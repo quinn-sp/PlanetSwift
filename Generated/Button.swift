@@ -174,7 +174,7 @@ public class Button: ButtonBase {
         if onTouchUp != nil {
             let (scopeObject, name) = self.parseNotification(onTouchUp)
             if name != nil {
-                NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
+                NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
             }
         }
     }
@@ -184,7 +184,7 @@ public class Button: ButtonBase {
         if onTouchDown != nil {
             let (scopeObject, name) = self.parseNotification(onTouchDown)
             if name != nil {
-                NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
+                NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
             }
         }
     }

@@ -82,11 +82,11 @@ public class Object: ObjectBase {
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
-        if let styleId = styleId, styleElement = Object.styleForId(styleId) {
+        if let styleId = styleId, let styleElement = Object.styleForId(styleId) {
             _ = styleElement.imprintAttributes(self)
         }
         
-		if let id = id , scopeObj  = scope() as? Object {
+		if let id = id , let scopeObj = scope() as? Object {
             scopeObj.setObjectForId(id, object: self)
 		}
 	}
@@ -108,7 +108,7 @@ public class Object: ObjectBase {
 		
         guard let styles = styles else { return nil }
         for child in styles.anys {
-            if let childObject = child as? Object where childObject.styleId == _id {
+            if let childObject = child as? Object, childObject.styleId == _id {
                 return childObject
             }
         }

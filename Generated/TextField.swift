@@ -36,7 +36,7 @@ public class TextField: TextFieldBase {
                 textField.font = UIFont(name: fontName, size: 18)
             #endif
         }
-        if let fontSize = fontSize where textField.font != nil {
+        if let fontSize = fontSize, textField.font != nil {
             textField.font = textField.font!.withSize(CGFloat(fontSize))
         }
         textField.textColor = textColor
@@ -97,7 +97,7 @@ public class TextField: TextFieldBase {
     func doNotification(_ note: String) {
         let (scopeObject, name) = self.parseNotification(note)
         if let name = name {
-            NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name), object: scopeObject)
+            NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name), object: scopeObject)
         }
     }
 }

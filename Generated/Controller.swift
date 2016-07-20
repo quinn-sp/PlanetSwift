@@ -13,14 +13,14 @@ public class Controller: ControllerBase {
 				for notification in self.notifications {
                     let (_, name) = self.parseNotification(notification.scopedName)
 					if name != nil {
-						NotificationCenter.default().removeObserver(oldValue!, name: notification.name.map { NSNotification.Name(rawValue: $0) }, object: notification.scopeObject)
+						NotificationCenter.default.removeObserver(oldValue!, name: notification.name.map { NSNotification.Name(rawValue: $0) }, object: notification.scopeObject)
 					}
 				}
 			}
 			
 			for notification in self.notifications {
 				if let selector = notification.selector {
-					NotificationCenter.default().addObserver(controllerObject!, selector: selector, name: notification.name, object: notification.scopeObject)
+					NotificationCenter.default.addObserver(controllerObject!, selector: selector, name: notification.name.map { NSNotification.Name(rawValue: $0) }, object: notification.scopeObject)
 				}
 			}
 		}

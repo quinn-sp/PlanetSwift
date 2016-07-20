@@ -88,8 +88,8 @@ public class PlanetCollectionViewController: PlanetViewController {
     public func configure(_ cell: PlanetCollectionViewCell?, atIndexPath indexPath: IndexPath) {
         cell?.loadView()
         guard let xmlView = cell?.xmlView,
-            template = cellObject(indexPath),
-            cell = cell as? UICollectionViewCell
+            let template = cellObject(indexPath),
+            let cell = cell as? UICollectionViewCell
             else { return }
         if template.size.contains(.FullWidth) {
             let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: (indexPath as NSIndexPath).section)
@@ -148,7 +148,7 @@ public class PlanetCollectionViewController: PlanetViewController {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         var size = cellSize(indexPath) ?? CGSize.zero
-        if let template = cellObject(indexPath) where size == CGSize.zero {
+        if let template = cellObject(indexPath), size == CGSize.zero {
             let reuseId = reuseIdentifier(indexPath)
             
             var cellReference: PlanetCollectionViewCell? = cellReferences[reuseId]

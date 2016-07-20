@@ -15,7 +15,7 @@ extension String {
         let pathComponents = bundlePath.components(separatedBy: ":/")
         switch pathComponents[0] {
         case "bundle":
-            if let resourcePath = Bundle.main().resourcePath {
+            if let resourcePath = Bundle.main.resourcePath {
                 self = NSString(string: resourcePath).appendingPathComponent(pathComponents[1])
             }
         case "documents":

@@ -40,7 +40,7 @@ extension PlanetUI {
     }
     
     public class func configFont(forNameKey name: String, sizeKey size: String) -> UIFont? {
-        guard let name = self.configStringForKey(name), size = self.configCGFloatForKey(size) else { return nil }
+        guard let name = self.configStringForKey(name), let size = self.configCGFloatForKey(size) else { return nil }
         return UIFont(name: name, size: size)
     }
 	
@@ -50,7 +50,7 @@ extension PlanetUI {
 	}
 	
 	public class func configRemoteImageForKey(_ key: String, completion: ImageCache_CompletionBlock) {
-        guard let urlString = PlanetUI.configStringForKey(key), url = URL(string: urlString) else { return }
+        guard let urlString = PlanetUI.configStringForKey(key), let url = URL(string: urlString) else { return }
         ImageCache.sharedInstance.get(url, completion: completion)
 	}
 	

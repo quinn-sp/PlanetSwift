@@ -34,8 +34,10 @@ public class GestureRecognizer: GestureRecognizerBase {
 	public override func gaxbDidPrepare() {
 		super.gaxbDidPrepare()
 		
-		//TODO: clean up this pyramid once swift 1.2 is out
-		if let recognizer = recognizer, view = view, referencedView = (scope() as? Object)?.objectForId(view) as? View {
+		if let recognizer = recognizer,
+            let view = view,
+            let scope = scope() as? Object,
+            let referencedView = scope.objectForId(view) as? View {
 			referencedView.view.addGestureRecognizer(recognizer)
 		}
 	}
@@ -44,7 +46,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 		if onStateChange != nil {
 			let (scopeObject, name) = self.parseNotification(onStateChange)
 			if name != nil {
-				NotificationCenter.default().post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
+				NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
 			}
 		}
 	}

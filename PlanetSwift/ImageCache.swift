@@ -122,7 +122,7 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
 		super.init()
 		
 		connection = NSURLConnection(request: request, delegate: self, startImmediately: false)
-        connection?.schedule(in: RunLoop.current(), forMode: RunLoopMode.commonModes)
+        connection?.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
         connection?.start()
 		if connection == nil {
 			completionBlock(success: false)
