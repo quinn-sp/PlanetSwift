@@ -18,6 +18,17 @@ public class Button: ButtonBase {
         }
     }
     
+    public func updateBackgroundColor(color: UIColor?, forstate state: UIControlState) {
+        switch state {
+        case UIControlState.Normal: button.backgroundColor = color
+        case UIControlState.Selected: button.backgroundColorSelected = color
+        case UIControlState.Highlighted: button.backgroundColorHighlighted = color
+        case UIControlState.Disabled: button.backgroundColorDisabled = color
+        case [UIControlState.Selected, UIControlState.Highlighted]: button.backgroundColorSelectedHighlighted = color
+        default: break
+        }
+    }
+    
     public func updateTitle(text: String?, forState state: UIControlState = .Normal) {
         button.setTitle(text.map{NSLocalizedString($0, comment:"")}, forState:state)
     }
