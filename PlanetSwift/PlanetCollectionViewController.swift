@@ -99,7 +99,10 @@ public class PlanetCollectionViewController: PlanetViewController {
         for (cellId, cellClass) in cellMapping {
             collectionView?.registerClass(cellClass, forCellWithReuseIdentifier: cellId)
         }
-        collectionView?.setCollectionViewLayout(UICollectionViewFlowLayout(), animated: false)
+        
+        if collectionView?.collectionViewLayout == nil {
+            collectionView?.setCollectionViewLayout(UICollectionViewFlowLayout(), animated: false)
+        }
     }
     
     // MARK: - Collection View Cell Handling
