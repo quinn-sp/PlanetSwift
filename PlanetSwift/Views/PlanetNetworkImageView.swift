@@ -12,6 +12,15 @@ public class PlanetNetworkImageView: UIImageView {
 
 	public var placeholderContentMode:UIViewContentMode = .ScaleToFill
 	public var downloadedContentMode:UIViewContentMode = .ScaleToFill
+    
+    public func setImageWithPath(path: String?, placeholder:UIImage? = nil, completion:((success:Bool)->Void)? = nil) {
+        guard let urlPath = path, url = NSURL(string: urlPath) else {
+            setImage(nil, placeholder: placeholder, completion: completion)
+            return
+        }
+        
+        setImage(url, placeholder: placeholder, completion: completion)
+    }
 	
     public func setImage(url:NSURL?, placeholder:UIImage? = nil, completion:((success:Bool)->Void)? = nil) {
 		
