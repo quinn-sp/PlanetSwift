@@ -68,13 +68,11 @@ public class View: ViewBase {
 			view.layer.masksToBounds = masksToBounds
 		}
         view.accessibilityIdentifier = id
-    if let accessibilityLabel = accessibilityLabel {
-        view.accessibilityLabel = accessibilityLabel
-    }
-    if let accessibilityHint = accessibilityHint {
-        view.accessibilityHint = accessibilityHint
-    }
-		findParentView()?.view.addSubview(view)
+
+    view.accessibilityLabel = accessibilityLabel
+    view.accessibilityHint = accessibilityHint
+
+    findParentView()?.view.addSubview(view)
     }
 
 	internal func findParentView() -> View? {
