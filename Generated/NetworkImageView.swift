@@ -23,7 +23,7 @@ public class NetworkImageView: NetworkImageViewBase {
             
             var placeholder:UIImage?
             if placeholderPath != nil {
-                placeholder = UIImage(contentsOfFile: String(bundlePath: placeholderPath!))
+                placeholder = UIImage(gaxbString: placeholderPath!)
             }
             networkImageView.setImage(url, placeholder: placeholder, completion: completion)
         }
