@@ -7,6 +7,7 @@ FULL_NAME_CAMEL = capitalizedString(this.namespace)
 //
 
 import Foundation
+import PlanetSwift
 
 private let xmlCache = NSCache()
 
