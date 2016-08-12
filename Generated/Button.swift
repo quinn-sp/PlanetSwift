@@ -54,7 +54,7 @@ public class Button: ButtonBase {
         
         if titleFont != nil {
 #if os(iOS)
-            button.titleLabel?.font = UIFont(name: titleFont!, size: UIFont.systemFontSize())
+            button.titleLabel?.font = UIFont(name: titleFont!, size: UIFont.systemFontSize)
 #else
             button.titleLabel?.font = UIFont(name: titleFont!, size: 18)
 #endif
@@ -174,7 +174,7 @@ public class Button: ButtonBase {
         if onTouchUp != nil {
             let (scopeObject, name) = self.parseNotification(onTouchUp)
             if name != nil {
-                NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
+                NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
             }
         }
     }
@@ -184,7 +184,7 @@ public class Button: ButtonBase {
         if onTouchDown != nil {
             let (scopeObject, name) = self.parseNotification(onTouchDown)
             if name != nil {
-                NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
+                NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)  // todo scope
             }
         }
     }

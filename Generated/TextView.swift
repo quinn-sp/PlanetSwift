@@ -33,7 +33,7 @@ public class TextView: TextViewBase {
 		}
 		if let fontName = fontName {
             #if os(iOS)
-                textView.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+                textView.font = UIFont(name: fontName, size: UIFont.systemFontSize)
             #else
                 textView.font = UIFont(name: fontName, size: 18)
             #endif
@@ -75,7 +75,7 @@ public class TextView: TextViewBase {
 	func doNotification(_ note: String) {
 		let (scopeObject, name) = self.parseNotification(note)
 		if name != nil {
-			NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
+			NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
 		}
 	}
     

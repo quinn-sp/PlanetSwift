@@ -125,7 +125,7 @@ extension PlanetUI {
     // returns an array of all available fonts
     public class func fontNames() -> [String] {
         var names = [String]()
-        for family in UIFont.familyNames() as [String] {
+        for family in UIFont.familyNames {
             for name in UIFont.fontNames(forFamilyName: family) {
                 names.append(name as String)
             }
@@ -134,6 +134,6 @@ extension PlanetUI {
     }
 	
 	public class func GCDDelay(_ delayAmount:Double, block:((Void)->Void)) {
-        DispatchQueue.main.after(when: .now() + delayAmount, execute: block)
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayAmount, execute: block)
 	}
 }

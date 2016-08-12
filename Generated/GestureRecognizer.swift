@@ -46,7 +46,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 		if onStateChange != nil {
 			let (scopeObject, name) = self.parseNotification(onStateChange)
 			if name != nil {
-				NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
+				NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
 			}
 		}
 	}

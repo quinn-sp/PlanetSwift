@@ -39,16 +39,16 @@ public protocol NotificationHandler {
 public extension NotificationHandler {
     
     func post(_ object: AnyObject? = nil, userInfo: [NSObject : AnyObject]? = nil) {
-        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name), object: object, userInfo: userInfo)
+        NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name), object: object, userInfo: userInfo)
     }
     func observe(_ observer: AnyObject, selector: Selector, object: AnyObject? = nil) {
-        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
+        NotificationCenter.`default`.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
     }
     func remove(_ observer: AnyObject, object: AnyObject? = nil) {
-        NotificationCenter.default.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
+        NotificationCenter.`default`.removeObserver(observer, name: NSNotification.Name(rawValue: name), object: object)
     }
     static func remove(_ observer: AnyObject) {
-        NotificationCenter.default.removeObserver(observer)
+        NotificationCenter.`default`.removeObserver(observer)
     }
     
 }

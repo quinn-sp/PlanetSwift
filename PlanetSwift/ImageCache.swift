@@ -21,18 +21,14 @@ public class ImageCache {
 	}
 	
 	public func get(_ url:URL, completion:ImageCache_CompletionBlock) {
-        #if swift(>=2.3)
-            let imageKey = url.absoluteString!
-        #else
-            let imageKey = url.absoluteString
-        #endif
+        let imageKey = url.absoluteString
 			
         if let memCacheImage = memoryCache.object(forKey: imageKey) as? UIImage {
             completion(memCacheImage)
             return
         }
             
-        if url.isFileReferenceURL {
+        if url.isFileURL {
             if let image = UIImage(contentsOfFile: imageKey) {
                 
                 memoryCache.setObject(image, forKey: imageKey)
@@ -91,7 +87,7 @@ public class ImageCache {
 	
 	//MARK: - private
 	
-	private let memoryCache = Cache<AnyObject, AnyObject>()
+	private let memoryCache = NSCache<AnyObject, AnyObject>()
 	private var activeNetworkRequests = Array<ImageCacheRequest>()
 	
 	private func activeRequestForKey(_ key:String) -> ImageCacheRequest? {

@@ -55,7 +55,7 @@ public class Label: LabelBase {
         }
         if let fontName = fontName {
             #if os(iOS)
-                label.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+                label.font = UIFont(name: fontName, size: UIFont.systemFontSize)
             #else
                 label.font = UIFont(name: fontName, size: 18)
             #endif

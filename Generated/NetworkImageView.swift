@@ -19,7 +19,7 @@ public class NetworkImageView: NetworkImageViewBase {
 	}
     
     public func setImageWithPath(_ path:String?, completion:((success:Bool)->Void)?) {
-        if let path = path, url = URL(string: path) {
+        if let path = path, let url = URL(string: path) {
             
             var placeholder:UIImage?
             if placeholderPath != nil {

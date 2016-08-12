@@ -31,7 +31,7 @@ public class TextField: TextFieldBase {
         textField.placeholder = placeholder.map{NSLocalizedString($0, comment: "")} ?? ""
         if let fontName = fontName {
             #if os(iOS)
-                textField.font = UIFont(name: fontName, size: UIFont.systemFontSize())
+                textField.font = UIFont(name: fontName, size: UIFont.systemFontSize)
             #else
                 textField.font = UIFont(name: fontName, size: 18)
             #endif
@@ -97,7 +97,7 @@ public class TextField: TextFieldBase {
     func doNotification(_ note: String) {
         let (scopeObject, name) = self.parseNotification(note)
         if let name = name {
-            NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: name), object: scopeObject)
+            NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name), object: scopeObject)
         }
     }
 }
