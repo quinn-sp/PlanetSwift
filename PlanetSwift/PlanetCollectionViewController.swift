@@ -154,16 +154,19 @@ public class PlanetCollectionViewController: PlanetViewController {
     }
     
     public func cellObject(indexPath: NSIndexPath) -> PlanetCollectionViewTemplate? {
+        guard objects.count > indexPath.section && objects[indexPath.section].count > indexPath.row else { return nil }
         return objects[indexPath.section][indexPath.row]
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     
     public func cellSize(indexPath: NSIndexPath) -> CGSize? {
+        guard cellSizes.count > indexPath.section && cellSizes[indexPath.section].count > indexPath.row else { return nil }
         return cellSizes[indexPath.section][indexPath.row]
     }
     
     public func setCellSize(size: CGSize, forIndexPath indexPath:NSIndexPath) {
+        guard cellSizes.count > indexPath.section && cellSizes[indexPath.section].count > indexPath.row else { return }
         cellSizes[indexPath.section][indexPath.row] = size
     }
     
