@@ -71,7 +71,10 @@ public class View: ViewBase {
 
     view.accessibilityLabel = accessibilityLabel
     view.accessibilityHint = accessibilityHint
-
+    if let trait = accessibilityTraits {
+        view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait)
+    }
+    
     findParentView()?.view.addSubview(view)
     }
 

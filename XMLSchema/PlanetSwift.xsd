@@ -30,6 +30,7 @@
 				<attribute name="contentCompressionResistancePriority" type="ui:point"/><!-- 750 -->
 				<attribute name="accessibilityLabel" type="string"/>
 				<attribute name="accessibilityHint" type="string"/>
+				<attribute name="accessibilityTraits" type="ui:AccessibilityTraits"/>
 				<!-- CALayer properties -->
 				<attribute name="borderColor" type="ui:color"/>
 				<attribute name="borderWidth" type="decimal"/>
@@ -469,6 +470,31 @@
 			<enumeration value="date" />
 			<enumeration value="dateAndTime" />
 			<enumeration value="countDownTimer" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AccessibilityTraits">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="none" />
+			<enumeration value="button" />
+			<enumeration value="link" />
+			<enumeration value="searchField" />
+			<enumeration value="image" />
+			<enumeration value="selected" />
+			<enumeration value="playsSound" />
+			<enumeration value="keyboardKey" />
+			<enumeration value="staticText" />
+			<enumeration value="summaryElement" />
+			<enumeration value="notEnabled" />
+			<enumeration value="updatesFrequently" />
+			<enumeration value="startsMediaSession" />
+			<enumeration value="adjustable" />
+			<enumeration value="allowsDirectInteraction" />
+			<enumeration value="causesPageTurn" />
+			<enumeration value="header" />
 		</restriction>
 	</simpleType>
 
