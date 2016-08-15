@@ -9,7 +9,7 @@ public class View: ViewBase {
 
     public override func gaxbPrepare() {
 		super.gaxbPrepare()
-		
+
         if frame != nil {
             view.bounds = CGRectMake(0, 0, frame!.size.width, frame!.size.height)
             view.center = CGPointMake(CGRectGetMidX(frame!), CGRectGetMidY(frame!))
@@ -68,24 +68,27 @@ public class View: ViewBase {
 			view.layer.masksToBounds = masksToBounds
 		}
         view.accessibilityIdentifier = id
-        if let accessibilityLabel = accessibilityLabel {
-            view.accessibilityLabel = NSLocalizedString(accessibilityLabel, comment: "")
-        }
 
-		findParentView()?.view.addSubview(view)
+        view.accessibilityLabel = accessibilityLabel
+        view.accessibilityHint = accessibilityHint
+        if let trait = accessibilityTraits {
+            view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait)
+        }
+        
+        findParentView()?.view.addSubview(view)
     }
-	
+
 	internal func findParentView() -> View? {
 		var parent:GaxbElement? = self.parent
 		while parent != nil {
-			
+
 			if let view = parent as? View {
 				return view
 			}
-			
+
 			parent = parent!.parent
 		}
 		return nil
 	}
-	
+
 }
