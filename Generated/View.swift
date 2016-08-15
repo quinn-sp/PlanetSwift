@@ -69,13 +69,13 @@ public class View: ViewBase {
 		}
         view.accessibilityIdentifier = id
 
-    view.accessibilityLabel = accessibilityLabel
-    view.accessibilityHint = accessibilityHint
-    if let trait = accessibilityTraits {
-        view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait)
-    }
-    
-    findParentView()?.view.addSubview(view)
+        view.accessibilityLabel = accessibilityLabel
+        view.accessibilityHint = accessibilityHint
+        if let trait = accessibilityTraits {
+            view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait)
+        }
+        
+        findParentView()?.view.addSubview(view)
     }
 
 	internal func findParentView() -> View? {
