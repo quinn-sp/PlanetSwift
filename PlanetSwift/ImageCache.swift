@@ -10,7 +10,7 @@ import UIKit
 private let ImageCache_shared = ImageCache()
 
 public typealias ImageCache_CompletionBlock = ((UIImage?) -> Void)
-typealias ImageCache_DownloadBlock = ((success:Bool) -> Void)
+typealias ImageCache_DownloadBlock = ((_ success:Bool) -> Void)
 
 public class ImageCache {
 	
@@ -23,7 +23,7 @@ public class ImageCache {
 	public func get(_ url:URL, completion:ImageCache_CompletionBlock) {
         let imageKey = url.absoluteString
 			
-        if let memCacheImage = memoryCache.object(forKey: imageKey) as? UIImage {
+        if let memCacheImage = memoryCache.object(forKey: imageKey as NSString) as? UIImage {
             completion(memCacheImage)
             return
         }
@@ -31,7 +31,7 @@ public class ImageCache {
         if url.isFileURL {
             if let image = UIImage(contentsOfFile: imageKey) {
                 
-                memoryCache.setObject(image, forKey: imageKey)
+                memoryCache.setObject(image, forKey: imageKey as NSString)
                 completion(image)
                 
                 return
@@ -50,7 +50,7 @@ public class ImageCache {
                     if success {
                         image = UIImage(data: cacheRequest.imageData as Data)
                         if image != nil {
-                            self!.memoryCache.setObject(image!, forKey: imageKey)
+                            self!.memoryCache.setObject(image!, forKey: imageKey as NSString)
                         }
                     }
                     
@@ -121,14 +121,14 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
         connection?.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
         connection?.start()
 		if connection == nil {
-			completionBlock(success: false)
+			completionBlock(false)
 		}
 	}
 	
 	//MARK: - NSURLConnectionDelegate
 	
 	func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
-		completionBlock(success: false)
+		completionBlock(false)
 	}
 	
 	//MARK: - NSURLConnectionDataDelegate
@@ -138,7 +138,7 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
 	}
 	
 	func connectionDidFinishLoading(_ connection: NSURLConnection) {
-		completionBlock(success: true)
+		completionBlock(true)
 	}
 	
 }

@@ -13,7 +13,7 @@ public class PlanetNetworkImageView: UIImageView {
 	public var placeholderContentMode:UIViewContentMode = .scaleToFill
 	public var downloadedContentMode:UIViewContentMode = .scaleToFill
 	
-    public func setImage(_ url:URL, placeholder:UIImage? = nil, completion:((success:Bool)->Void)? = nil) {
+    public func setImage(_ url:URL, placeholder:UIImage? = nil, completion:((_ success:Bool)->Void)? = nil) {
 		
 		self.contentMode = placeholderContentMode
 		self.image = placeholder
@@ -25,10 +25,10 @@ public class PlanetNetworkImageView: UIImageView {
 					self?.contentMode = downloadedContentMode
 				}
 				self?.image = image
-                completion?(success: true)
+                completion?(true)
 			}
             else {
-                completion?(success: false)
+                completion?(false)
             }
 		}
 	}

@@ -14,7 +14,7 @@ extension PlanetUI {
     public class func configForKey(_ key: String?) -> AnyObject? {
         guard let key = key else { return nil }
         checkLoadConfig()
-        return config?.value(forKeyPath: key)
+        return config?.value(forKeyPath: key) as AnyObject
     }
     
     public class func configStringForKey(_ key: String?) -> String? {

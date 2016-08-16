@@ -22,7 +22,7 @@ public class Object: ObjectBase {
 				idMappings.removeValue(forKey: identifier)
 			}
 			
-			return value.nonretainedObjectValue
+			return value.nonretainedObjectValue as AnyObject
 		}
 		return nil
 	}

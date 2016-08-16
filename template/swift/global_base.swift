@@ -8,7 +8,7 @@ FULL_NAME_CAMEL = capitalizedString(this.namespace)
 
 import Foundation
 
-private let xmlCache = Cache<NSString, AnyObject>()
+private let xmlCache = NSCache<NSString, AnyObject>()
 
 public class <%= FULL_NAME_CAMEL %> {
 
@@ -23,7 +23,7 @@ public class <%= FULL_NAME_CAMEL %> {
 
 	public class func readFromString(_ string: String, prepare: Bool = true) -> GaxbElement? {
 
-		if let cachedElement = xmlCache.object(forKey: string) as? GaxbElement {
+		if let cachedElement = xmlCache.object(forKey: string as NSString) as? GaxbElement {
 			let copiedCache = cachedElement.copy()
 			if prepare {
 				copiedCache.visit() { $0.gaxbPrepare() }
@@ -35,7 +35,7 @@ public class <%= FULL_NAME_CAMEL %> {
 			do {
 				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
 				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
-					xmlCache.setObject(parsedElement, forKey:string)
+					xmlCache.setObject(parsedElement, forKey: string as NSString)
 					let copiedElement = parsedElement.copy()
 					if prepare {
 						copiedElement.visit() { $0.gaxbPrepare() }
@@ -60,7 +60,7 @@ public class <%= FULL_NAME_CAMEL %> {
 	public class func parseElement(_ element: AEXMLElement) -> GaxbElement? {
 		guard let entity = GaxbFactory.element(namespaceForElement(element), name:element.name) else { return nil }
 		for (attribute, value) in element.attributes {
-			if let valueString = value as? String, attributeString = attribute as? String {
+			if let valueString = value as? String, let attributeString = attribute as? String {
 				entity.setAttribute(valueString, key: attributeString)
 			}
 		}

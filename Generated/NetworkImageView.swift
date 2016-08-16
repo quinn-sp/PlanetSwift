@@ -18,7 +18,7 @@ public class NetworkImageView: NetworkImageViewBase {
 		}
 	}
     
-    public func setImageWithPath(_ path:String?, completion:((success:Bool)->Void)?) {
+    public func setImageWithPath(_ path:String?, completion:((_ success:Bool)->Void)?) {
         if let path = path, let url = URL(string: path) {
             
             var placeholder:UIImage?
@@ -29,7 +29,7 @@ public class NetworkImageView: NetworkImageViewBase {
         }
         else {
             super.setImageWithString(path)
-            completion?(success: false)
+            completion?(false)
         }
     }
 	
