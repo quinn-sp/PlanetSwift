@@ -129,9 +129,10 @@ end
 	public var <%= v.name %>: <%if (isEnumForItem(v)) then %><%= capitalizedString(this.namespace) %>.<% end %><%= typeForItem(v) %><%
 	if (v.default == nil) then %>?<% else %> = <%if (isEnumForItem(v)) then %>.<% end %><% if (typeNameForItem(v)=="String") then %>"<% end %><%= v.default %><% if (typeNameForItem(v)=="String") then %>"<% end %><%
 	end %>
+
     func <%= v.name %>AsString() -> String {<%
  if (v.type=="string") then %>
-        return <%= v.name %> ?? ""
+        return <%= v.name %><% if (v.default == nil) then %> ?? ""<% end %>
 <% elseif (isEnumForItem(v)) then %>
         return <%= v.name %><% if (v.default == nil) then %>!<% end %>.rawValue
 <% elseif (isGaxbTypeForItem(v)) then %>
@@ -140,6 +141,7 @@ end
         return <%= v.name %><% if (v.default == nil) then %>!<% end %>.toGaxbString()
 <% end
 %>    }
+
     public func set<%= capitalizedString(v.name) %>(_ value: String) {
 <%	if (typeNameForItem(v)=="Bool") then
 %>        self.<%= v.name %> = value == "true"<%
@@ -218,7 +220,7 @@ end %>
 <% if (v.default == nil) then %>            }
     <% end
 end
-%>    }
+%>        }
 <% if (hasSuperclass(this)) then
 %>        xml += super.attributesXML(useOriginalValues)
 <% end %>
