@@ -42,6 +42,8 @@
 		A9639EF71A643A0D009C818F /* SceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639EF51A643A0D009C818F /* SceneBase.swift */; };
 		A967CD931B9A07B9008DEBE5 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */; };
 		A96D92AB1A4358F800119036 /* PlanetSwiftViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */; };
+		A98FD4A61D75ECD000FD895F /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98FD4A41D75ECD000FD895F /* StackView.swift */; };
+		A98FD4A71D75ECD000FD895F /* StackViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98FD4A51D75ECD000FD895F /* StackViewBase.swift */; };
 		A9B439741A3A53C70052690A /* PlanetSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B439731A3A53C70052690A /* PlanetSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9B4397A1A3A53C70052690A /* PlanetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9B4396E1A3A53C70052690A /* PlanetSwift.framework */; };
 		A9B439811A3A53C70052690A /* PlanetSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439801A3A53C70052690A /* PlanetSwiftTests.swift */; };
@@ -188,6 +190,8 @@
 		A9639EF51A643A0D009C818F /* SceneBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneBase.swift; sourceTree = "<group>"; };
 		A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftViewTests.swift; sourceTree = "<group>"; };
+		A98FD4A41D75ECD000FD895F /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		A98FD4A51D75ECD000FD895F /* StackViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewBase.swift; sourceTree = "<group>"; };
 		A9B4396E1A3A53C70052690A /* PlanetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlanetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B439721A3A53C70052690A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9B439731A3A53C70052690A /* PlanetSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlanetSwift.h; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 				C49462441AF819F200F005B4 /* ScrollViewBase.swift */,
 				A9E8332A1A85482F004969E1 /* SegmentedControl.swift */,
 				A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */,
+				A98FD4A41D75ECD000FD895F /* StackView.swift */,
+				A98FD4A51D75ECD000FD895F /* StackViewBase.swift */,
 				796C6ACC1A6ED86300D87C38 /* TextField.swift */,
 				796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */,
 				9B77E4BF1A7975DD001DF00B /* TextView.swift */,
@@ -687,6 +693,7 @@
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				65E820081B66BD16000B27F9 /* SwitchBase.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
+				A98FD4A61D75ECD000FD895F /* StackView.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
 				796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */,
 				C4C060FC1AA37675004D39EC /* PanGestureRecognizer.swift in Sources */,
@@ -701,6 +708,7 @@
 				A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */,
 				A92E73821A4212B200B22884 /* LabelBase.swift in Sources */,
 				796C6AF11A7188F900D87C38 /* PickerViewBase.swift in Sources */,
+				A98FD4A71D75ECD000FD895F /* StackViewBase.swift in Sources */,
 				A9B4399C1A3B40B70052690A /* Object.swift in Sources */,
 				C4DCBA611D1D661B00A96F27 /* PlanetCollectionViewController.swift in Sources */,
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
