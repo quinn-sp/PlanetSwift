@@ -29,27 +29,35 @@ public class StackView: StackViewBase {
     public override func gaxbPrepare() {
         super.gaxbPrepare()
 
-        if #available(iOS 9.0, *) {
-            if let alignment = alignment {
-                stackView.alignment = UIStackViewAlignment(alignment)
-            }
-            if let axis = axis {
-                stackView.axis = UILayoutConstraintAxis(axis)
-            }
-            if let baselineRelativeArrangement = baselineRelativeArrangement {
-                stackView.baselineRelativeArrangement = baselineRelativeArrangement
-            }
-            if let distribution = distribution {
-                stackView.distribution = UIStackViewDistribution(distribution)
-            }
-            if let layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement {
-                stackView.layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement
-            }
-            if let spacing = spacing {
-                stackView.spacing = CGFloat(spacing)
-            }
+        guard #available(iOS 9.0, *) else { return }
+        if let alignment = alignment {
+            stackView.alignment = UIStackViewAlignment(alignment)
+        }
+        if let axis = axis {
+            stackView.axis = UILayoutConstraintAxis(axis)
+        }
+        if let baselineRelativeArrangement = baselineRelativeArrangement {
+            stackView.baselineRelativeArrangement = baselineRelativeArrangement
+        }
+        if let distribution = distribution {
+            stackView.distribution = UIStackViewDistribution(distribution)
+        }
+        if let layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement {
+            stackView.layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement
+        }
+        if let spacing = spacing {
+            stackView.spacing = CGFloat(spacing)
         }
     }
+    
+    override internal func addSubview(child: UIView) {
+        if #available(iOS 9.0, *) {
+            stackView.addArrangedSubview(child)
+        } else {
+            view.addSubview(child)
+        }
+    }
+
 }
 
 @available(iOS 9.0, *)

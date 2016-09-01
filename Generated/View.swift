@@ -40,8 +40,8 @@ public class View: ViewBase {
 			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.y), forAxis: .Vertical)
 		}
 		if contentCompressionResistancePriority != nil {
-			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.x), forAxis: .Horizontal)
-			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.y), forAxis: .Vertical)
+			view.setContentCompressionResistancePriority( UILayoutPriority(contentCompressionResistancePriority!.x), forAxis: .Horizontal)
+			view.setContentCompressionResistancePriority( UILayoutPriority(contentCompressionResistancePriority!.y), forAxis: .Vertical)
 		}
         if borderColor != nil {
             view.layer.borderColor = borderColor!.CGColor
@@ -75,7 +75,11 @@ public class View: ViewBase {
             view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait)
         }
         
-        findParentView()?.view.addSubview(view)
+        findParentView()?.addSubview(view)
+    }
+    
+    internal func addSubview(child: UIView) {
+        view.addSubview(child)
     }
 
 	internal func findParentView() -> View? {
