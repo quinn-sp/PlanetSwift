@@ -12,30 +12,31 @@ public class PlanetViewController: UIViewController {
 	
     public var planetViews = Array<PlanetView>()
 	var idMappings = Dictionary<String, Object>()
-	@IBInspectable var titleBundlePath:String?
+	@IBInspectable var titleBundlePath: String?
+    public var mainBundlePath: String?
     
-    var titleXmlView:View?
+    var titleXmlView: View?
 	
 	public override func loadView() {
 		super.loadView()
 		
-		if let title = self.title {
-			self.navigationItem.title = title
+        navigationItem.title = self.title
+		
+		if let titleBundlePath = titleBundlePath, titleXmlView = PlanetUI.readFromFile(String(bundlePath: titleBundlePath)) as? View {
+            navigationItem.titleView = titleXmlView.view
+            titleXmlView.visit { $0.gaxbDidPrepare() }
+            searchXMLObject(titleXmlView)
 		}
 		
-		if titleBundlePath != nil {
-			titleXmlView = PlanetUI.readFromFile(String(bundlePath: titleBundlePath!)) as! View?
-			if titleXmlView != nil {
-				self.navigationItem.titleView = titleXmlView!.view
-				titleXmlView!.visit({ (element) -> () in
-					element.gaxbDidPrepare()
-				})
-				searchXMLObject(titleXmlView!)
-			}
-		}
-		
-		//overriding loadView because we need a function where the view exists, but child view controllers have not been loaded yet
-		searchForPlanetView(self.view)
+        if let mainBundlePath = mainBundlePath, mainXmlView = PlanetUI.readFromFile(String(bundlePath: mainBundlePath)) as? View {
+            view.addSubview(mainXmlView.view)
+            mainXmlView.visit { $0.gaxbDidPrepare() }
+            searchXMLObject(mainXmlView)
+        }
+        
+		// Overriding loadView because we need a function where the view exists
+        // but child view controllers have not been loaded yet
+		searchForPlanetView(view)
 		for planetView in planetViews {
 			if let xmlObj = planetView.xmlView {
 				searchXMLObject(xmlObj)
@@ -45,23 +46,19 @@ public class PlanetViewController: UIViewController {
 	}
 	
 	func searchXMLObject(xmlObj:Object) {
-		xmlObj.visit({ [unowned self] (element:GaxbElement) -> () in
-			
+		xmlObj.visit{ [unowned self] (element:GaxbElement) -> () in
 			if let xmlController = element as? Controller {
 				xmlController.controllerObject = self
 			}
-			
-			if let xmlObject = element as? Object {
-				
-				if xmlObject.id != nil {
-					self.idMappings[xmlObject.id!] = xmlObject
-				}
+			if let xmlObject = element as? Object, objectId = xmlObject.id {
+                self.idMappings[objectId] = xmlObject
 			}
-		})
+		}
 	}
     
     public func decorate(element: GaxbElement) {
-        //Override decorate in your controller class if you need a handle on the XML views from your PlanetView
+        // Override decorate in your controller class if you need a 
+        // handle on the XML views from your PlanetView
     }
 	
 	func searchForPlanetView(searchedView:UIView) {
@@ -74,10 +71,8 @@ public class PlanetViewController: UIViewController {
 	}
 	
 	public func objectForId<T>(id:String) -> T? {
-		if let foundObj = idMappings[id] as? T {
-			return foundObj
-		}
-		return nil
+        guard let foundObj = idMappings[id] as? T else { return nil }
+        return foundObj
 	}
 	
 }
