@@ -350,9 +350,9 @@
 			<extension base="ui:View">
 				<attribute name="alignment" type="ui:StackViewAlignment"/>
 				<attribute name="axis" type="ui:LayoutConstraintAxis"/>
-				<attribute name="isBaselineRelativeArrangement" type="boolean"/>
+				<attribute name="baselineRelativeArrangement" type="boolean"/>
 				<attribute name="distribution" type="ui:StackViewDistribution"/>
-				<attribute name="isLayoutMarginsRelativeArrangement" type="boolean"/>
+				<attribute name="layoutMarginsRelativeArrangement" type="boolean"/>
 				<attribute name="spacing" type="decimal"/>
 			</extension>
 		</complexContent>
@@ -752,6 +752,7 @@
 			<enumeration value="center"/>
 			<enumeration value="trailing"/>
 			<enumeration value="bottom"/>
+			<enumeration value="top"/>
 			<enumeration value="lastBaseline"/>
 		</restriction>
 	</simpleType>
