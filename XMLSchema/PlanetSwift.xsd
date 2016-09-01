@@ -341,6 +341,23 @@
 		</complexContent>
 	</complexType>
 
+	<element name="StackView" type="ui:StackView"/>
+	<complexType name="StackView">
+		<annotation>
+			<appinfo><![CDATA[StackView attributes map to <a href="https://developer.apple.com/reference/uikit/uistackview" target="_blank">UIStackView</a>]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:View">
+				<attribute name="alignment" type="ui:StackViewAlignment"/>
+				<attribute name="axis" type="ui:LayoutConstraintAxis"/>
+				<attribute name="baselineRelativeArrangement" type="boolean"/>
+				<attribute name="distribution" type="ui:StackViewDistribution"/>
+				<attribute name="layoutMarginsRelativeArrangement" type="boolean"/>
+				<attribute name="spacing" type="decimal"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
 	<!-- Object descendents -->
 
 	<element name="Notification" type="ui:Notification" />
@@ -721,6 +738,46 @@
 			<enumeration value="Default" />
 			<enumeration value="no" />
 			<enumeration value="yes" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StackViewAlignment">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="fill"/>
+			<enumeration value="leading"/>
+			<enumeration value="fistBaseline"/>
+			<enumeration value="center"/>
+			<enumeration value="trailing"/>
+			<enumeration value="bottom"/>
+			<enumeration value="top"/>
+			<enumeration value="lastBaseline"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LayoutConstraintAxis">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="horizontal"/>
+			<enumeration value="vertical"/>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="StackViewDistribution">
+		<annotation>
+			<appinfo>NAMED_ENUM</appinfo>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="fill"/>
+			<enumeration value="fillEqually"/>
+			<enumeration value="fillProportionally"/>
+			<enumeration value="equalSpacing"/>
+			<enumeration value="equalCentering"/>
 		</restriction>
 	</simpleType>
 
