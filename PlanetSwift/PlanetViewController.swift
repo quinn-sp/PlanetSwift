@@ -12,10 +12,11 @@ public class PlanetViewController: UIViewController {
 	
     public var planetViews = Array<PlanetView>()
 	var idMappings = Dictionary<String, Object>()
-	@IBInspectable var titleBundlePath: String?
+	@IBInspectable public var titleBundlePath: String?
     public var mainBundlePath: String?
     
-    var titleXmlView: View?
+    public var titleXmlView: View?
+    public var mainXmlView: View?
 	
 	public override func loadView() {
 		super.loadView()
@@ -26,12 +27,14 @@ public class PlanetViewController: UIViewController {
             navigationItem.titleView = titleXmlView.view
             titleXmlView.visit { $0.gaxbDidPrepare() }
             searchXMLObject(titleXmlView)
+            self.titleXmlView = titleXmlView
 		}
 		
         if let mainBundlePath = mainBundlePath, mainXmlView = PlanetUI.readFromFile(String(bundlePath: mainBundlePath)) as? View {
             view.addSubview(mainXmlView.view)
             mainXmlView.visit { $0.gaxbDidPrepare() }
             searchXMLObject(mainXmlView)
+            self.mainXmlView = mainXmlView
         }
         
 		// Overriding loadView because we need a function where the view exists
