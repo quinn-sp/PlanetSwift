@@ -75,7 +75,9 @@ public class View: ViewBase {
             view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait)
         }
         
-        findParentView()?.addSubview(view)
+        if view.superview == nil {
+            findParentView()?.addSubview(view)
+        }
     }
     
     internal func addSubview(child: UIView) {
