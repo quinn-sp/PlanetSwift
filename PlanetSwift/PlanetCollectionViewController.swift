@@ -55,7 +55,6 @@ public extension PlanetCollectionViewCell where Self: UICollectionViewCell {
     
     func loadView() {
         guard xmlView == nil else { return }
-        
         xmlView = PlanetUI.readFromFile(String(bundlePath: bundlePath)) as? View
         guard let xmlView = xmlView else {
             // failed to create xml view from bundlePath \(bundlePath)
@@ -70,6 +69,11 @@ public extension PlanetCollectionViewCell where Self: UICollectionViewCell {
         addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: contentView, equalAttribute: .Top))
         xmlView.view.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        addConstraint(NSLayoutConstraint(item: self, toItem: contentView, equalAttribute: .Width))
+        addConstraint(NSLayoutConstraint(item: self, toItem: contentView, equalAttribute: .Height))
+        addConstraint(NSLayoutConstraint(item: self, toItem: contentView, equalAttribute: .Left))
+        addConstraint(NSLayoutConstraint(item: self, toItem: contentView, equalAttribute: .Top))
     }
 }
 
@@ -108,11 +112,15 @@ public class PlanetCollectionViewController: PlanetViewController {
     // MARK: - Collection View Cell Handling
     
     public func configure(cell: PlanetCollectionViewCell?, atIndexPath indexPath: NSIndexPath) {
+        guard cell?.xmlView == nil else { return } // only configure each cell once
+        
         cell?.loadView()
         guard let xmlView = cell?.xmlView,
             template = cellObject(indexPath),
             cell = cell as? UICollectionViewCell
-            else { return }
+            else {
+                return
+        }
         
         switch template.size.width {
         case .Unconstrained: break
