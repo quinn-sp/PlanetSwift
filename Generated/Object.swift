@@ -5,19 +5,19 @@
 import UIKit
 
 var styles: Object? = nil
-private var attemptedStylesLoad = false //workaround for inability to specify the XML load call inline here
-
+// workaround for inability to specify the XML load call inline here
+private var attemptedStylesLoad = false
 public class Object: ObjectBase {
 	
-	//MARK: - ID mappings
+	// MARK: - ID mappings
 	
-	private lazy var idMappings:Dictionary<String,NSValue> = Dictionary<String,NSValue>()
+	private lazy var idMappings: Dictionary<String,NSValue> = Dictionary<String,NSValue>()
 	
-	public func objectForId(identifier:String) -> AnyObject? {
+	public func objectForId(identifier: String) -> AnyObject? {
 		
 		if let value = idMappings[identifier] {
 			
-			//clean out this object if the weak reference was zeroed
+			// clean out this object if the weak reference was zeroed
 			if value.nonretainedObjectValue == nil {
 				idMappings.removeValueForKey(identifier)
 			}
@@ -26,13 +26,16 @@ public class Object: ObjectBase {
 		}
 		return nil
 	}
+    
+    public func elementForId(identifier: String) -> GaxbElement? {
+        return objectForId(identifier) as? GaxbElement
+    }
 	
 	public func setObjectForId(identifier:String, object:AnyObject) {
-		
 		idMappings[identifier] = NSValue(nonretainedObject: object)
 	}
 	
-	//MARK: - scoping
+	// MARK: - scoping
 	
     public func isScopeContainer() -> Bool {
         return false
@@ -83,17 +86,13 @@ public class Object: ObjectBase {
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
-        if styleId != nil {
-            if let styleElement = Object.styleForId(styleId!) {
-                styleElement.imprintAttributes(self)
-            }
+        if let styleId = styleId, styleElement = Object.styleForId(styleId) {
+            styleElement.imprintAttributes(self)
         }
         
-		if id != nil {
-			if let scopeObj  = scope() as? Object {
-				scopeObj.setObjectForId(id!, object: self)
-			}
-		}
+        if let id = id, scopeObj  = scope() as? Object {
+            scopeObj.setObjectForId(id, object: self)
+        }
 	}
     
     public func updateStyleId(newStyle: String?) {
@@ -104,17 +103,15 @@ public class Object: ObjectBase {
     //MARK: - style handling
     
     public class func styleForId(_id: String) -> GaxbElement? {
-		
 		if styles == nil && !attemptedStylesLoad {
-			
 			attemptedStylesLoad = true
 			if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_stylesheetPathKey) as? String {
 				styles = PlanetUI.readFromFile(String(bundlePath: path), prepare:false) as? Object
 			}
 		}
 		
-        if styles != nil {
-            for child in styles!.anys {
+        if let styles = styles {
+            for child in styles.anys {
                 if let childObject = child as? Object {
                     if childObject.styleId == _id {
                         return childObject
