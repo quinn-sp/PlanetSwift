@@ -35,6 +35,8 @@
 		9BCF35F21A6EE7AF00E8418B /* ImageViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */; };
 		9BCF35F51A6EE7BB00E8418B /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F31A6EE7BB00E8418B /* NetworkImageView.swift */; };
 		9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F41A6EE7BB00E8418B /* NetworkImageViewBase.swift */; };
+		A907F44D1D78B35C00BE6B89 /* StackViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F44B1D78B35C00BE6B89 /* StackViewBase.swift */; };
+		A907F44E1D78B35C00BE6B89 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F44C1D78B35C00BE6B89 /* StackView.swift */; };
 		A92E73811A4212B200B22884 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
 		A92E73821A4212B200B22884 /* LabelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73801A4212B200B22884 /* LabelBase.swift */; };
 		A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */; };
@@ -181,6 +183,8 @@
 		9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewBase.swift; sourceTree = "<group>"; };
 		9BCF35F31A6EE7BB00E8418B /* NetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 		9BCF35F41A6EE7BB00E8418B /* NetworkImageViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageViewBase.swift; sourceTree = "<group>"; };
+		A907F44B1D78B35C00BE6B89 /* StackViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewBase.swift; sourceTree = "<group>"; };
+		A907F44C1D78B35C00BE6B89 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		A92E737F1A4212B200B22884 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		A92E73801A4212B200B22884 /* LabelBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelBase.swift; sourceTree = "<group>"; };
 		A92E73831A423F1700B22884 /* PlanetSwiftLabelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftLabelTests.swift; sourceTree = "<group>"; };
@@ -393,12 +397,14 @@
 				C4C5DCE61A4F7B4700BE7271 /* PlanetUIBase.swift */,
 				A9639EF41A643A0D009C818F /* Scene.swift */,
 				A9639EF51A643A0D009C818F /* SceneBase.swift */,
-				65E820051B66BD16000B27F9 /* Switch.swift */,
-				65E820061B66BD16000B27F9 /* SwitchBase.swift */,
 				C49462431AF819F200F005B4 /* ScrollView.swift */,
 				C49462441AF819F200F005B4 /* ScrollViewBase.swift */,
 				A9E8332A1A85482F004969E1 /* SegmentedControl.swift */,
 				A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */,
+				A907F44C1D78B35C00BE6B89 /* StackView.swift */,
+				A907F44B1D78B35C00BE6B89 /* StackViewBase.swift */,
+				65E820051B66BD16000B27F9 /* Switch.swift */,
+				65E820061B66BD16000B27F9 /* SwitchBase.swift */,
 				796C6ACC1A6ED86300D87C38 /* TextField.swift */,
 				796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */,
 				9B77E4BF1A7975DD001DF00B /* TextView.swift */,
@@ -696,6 +702,7 @@
 				9BCF35F61A6EE7BB00E8418B /* NetworkImageViewBase.swift in Sources */,
 				9B9AC0981A6EBA190098F7E4 /* ImageCache.swift in Sources */,
 				C4C060FA1AA37675004D39EC /* GestureRecognizer.swift in Sources */,
+				A907F44D1D78B35C00BE6B89 /* StackViewBase.swift in Sources */,
 				A9639EF61A643A0D009C818F /* Scene.swift in Sources */,
 				796C6AF01A7188F900D87C38 /* PickerView.swift in Sources */,
 				C4C060FF1AA37675004D39EC /* PinchGestureRecognizerBase.swift in Sources */,
@@ -707,6 +714,7 @@
 				A9B4399D1A3B40B70052690A /* ObjectBase.swift in Sources */,
 				C4C060FD1AA37675004D39EC /* PanGestureRecognizerBase.swift in Sources */,
 				C494624A1AF819F200F005B4 /* ScrollViewBase.swift in Sources */,
+				A907F44E1D78B35C00BE6B89 /* StackView.swift in Sources */,
 				A9B439A61A3B40F70052690A /* Gaxb.swift in Sources */,
 				796C6AE41A7063A100D87C38 /* WebViewBase.swift in Sources */,
 				A9B439DC1A3B714E0052690A /* AEXML.swift in Sources */,

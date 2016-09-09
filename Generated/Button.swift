@@ -5,7 +5,7 @@
 import UIKit
 
 public class Button: ButtonBase {
-    
+
     lazy public var button: PlanetButton = self.makeButton()
     override public var control: UIControl? {
         get {
@@ -17,21 +17,33 @@ public class Button: ButtonBase {
             }
         }
     }
-    
-    public func updateTitle(_ text: String?, forState state: UIControlState = UIControlState()) {
-        button.setTitle(text.map{NSLocalizedString($0, comment:"")}, for:state)
+
+
+    public func updateBackgroundColor(_ color: UIColor?, forstate state: UIControlState) {
+        switch state {
+        case UIControlState.normal: button.backgroundColor = color
+        case UIControlState.selected: button.backgroundColorSelected = color
+        case UIControlState.highlighted: button.backgroundColorHighlighted = color
+        case UIControlState.disabled: button.backgroundColorDisabled = color
+        case [UIControlState.selected, UIControlState.highlighted]: button.backgroundColorSelectedHighlighted = color
+        default: break
+        }
     }
-    
+
+    public func updateTitle(_ text: String?, forState state: UIControlState = .normal) {
+        button.setTitle(text.map{ NSLocalizedString($0, comment:"") }, for:state)
+    }
+
     public func makeButton() -> PlanetButton {
         if let type = type {
             return PlanetButton(type: UIButtonType(withPlanetButtonType: type))
         }
         return PlanetButton()
     }
-    
+
     public override func gaxbPrepare() {
         super.gaxbPrepare()
-        
+
         if onTouchUp != nil {
             button.addTarget(self, action: #selector(Button.buttonOnTouchUp(_:)), for: .touchUpInside)
         }
@@ -39,19 +51,19 @@ public class Button: ButtonBase {
             button.addTarget(self, action: #selector(Button.buttonOnTouchDown(_:)), for: .touchDown)
         }
         button.tintColor = tintColor
-        
+
         updateTitle(title, forState: UIControlState())
         updateTitle(titleHighlighted, forState: .highlighted)
         updateTitle(titleSelected, forState: .selected)
         updateTitle(titleSelectedHighlighted, forState: [.selected, .highlighted])
         updateTitle(titleDisabled, forState: .disabled)
-        
+
         button.setTitleColor(titleFontColor, for: UIControlState())
         button.setTitleColor(titleFontColorHighlighted, for: .highlighted)
         button.setTitleColor(titleFontColorSelected, for: .selected)
         button.setTitleColor(titleFontColorSelectedHighlighted, for: [.selected, .highlighted])
         button.setTitleColor(titleFontColorDisabled, for: .disabled)
-        
+
         if titleFont != nil {
 #if os(iOS)
             button.titleLabel?.font = UIFont(name: titleFont!, size: UIFont.systemFontSize)
@@ -62,7 +74,7 @@ public class Button: ButtonBase {
         if titleFontSize != nil {
             button.titleLabel?.font = button.titleLabel?.font.withSize(CGFloat(titleFontSize!))
         }
-        
+
         if backgroundImage != nil {
             let img = UIImage(gaxbString: backgroundImage)
             button.setBackgroundImage(img, for: UIControlState())
@@ -83,7 +95,7 @@ public class Button: ButtonBase {
             let img = UIImage(gaxbString: backgroundImageDisabled)
             button.setBackgroundImage(img, for: .disabled)
         }
-        
+
         if image != nil {
             let img = UIImage(gaxbString: image)
             button.setImage(img, for: UIControlState())
@@ -104,18 +116,18 @@ public class Button: ButtonBase {
             let img = UIImage(gaxbString: imageDisabled)
             button.setImage(img, for: .disabled)
         }
-        
+
         if let imageSet = imageSet {
             let pathLength = imageSet.characters.count
             let extensionLength = imageSet.components(separatedBy: ".").last?.characters.count ?? 0
             let insertPosition = pathLength - extensionLength - ( extensionLength > 0 ? 1 : 0 )
-            
+
             let normalPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_normal" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
             let highlightedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_highlighted" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
             let selectedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_selected" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
             let selectedHighlightedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_selected_highlighted" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
             let disabledPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_disabled" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
-            
+
             var img = UIImage(contentsOfFile: String(bundlePath: normalPath)) ?? UIImage(contentsOfFile: String(bundlePath: imageSet))
             button.setImage(img, for: UIControlState())
             img = UIImage(contentsOfFile: String(bundlePath: highlightedPath))
@@ -127,18 +139,18 @@ public class Button: ButtonBase {
             img = UIImage(contentsOfFile: String(bundlePath: disabledPath))
             button.setImage(img, for: .disabled)
         }
-        
+
         if let backgroundImageSet = backgroundImageSet {
             let pathLength = backgroundImageSet.characters.count
             let extensionLength = backgroundImageSet.components(separatedBy: ".").last?.characters.count ?? 0
             let insertPosition = pathLength - extensionLength - (extensionLength > 0 ? 1 : 0)
-            
+
             let normalPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_normal" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
             let highlightedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_highlighted" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
             let selectedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_selected" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
             let selectedHighlightedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_selected_highlighted" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
             let disabledPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_disabled" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
-            
+
             var img = UIImage(contentsOfFile: String(bundlePath: normalPath)) ?? UIImage(contentsOfFile: String(bundlePath: backgroundImageSet))
             button.setBackgroundImage(img, for: UIControlState())
             img = UIImage(contentsOfFile: String(bundlePath: highlightedPath))
@@ -150,13 +162,13 @@ public class Button: ButtonBase {
             img = UIImage(contentsOfFile: String(bundlePath: disabledPath))
             button.setBackgroundImage(img, for: .disabled)
         }
-		
+
         button.backgroundColorNormal = backgroundColor
         button.backgroundColorHighlighted = backgroundColorHighlighted
         button.backgroundColorSelected = backgroundColorSelected
         button.backgroundColorSelectedHighlighted = backgroundColorSelectedHighlighted
         button.backgroundColorDisabled = backgroundColorDisabled
-        
+
         button.isToggle = isToggle
         if contentEdgeInsets != nil {
             button.contentEdgeInsets = contentEdgeInsets!
@@ -168,7 +180,7 @@ public class Button: ButtonBase {
             button.imageEdgeInsets = imageEdgeInsets!
         }
     }
-    
+
     @objc func buttonOnTouchUp(_ sender:UIButton!)
     {
         if onTouchUp != nil {
@@ -178,7 +190,7 @@ public class Button: ButtonBase {
             }
         }
     }
-    
+
     @objc func buttonOnTouchDown(_ sender:UIButton!)
     {
         if onTouchDown != nil {

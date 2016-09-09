@@ -16,15 +16,18 @@ public class ImageView: ImageViewBase {
             }
         }
     }
-    
+
     public override func gaxbPrepare() {
         super.gaxbPrepare()
         setImageWithString(image)
     }
-	
+
     public func setImageWithString(_ image: String?) {
-        guard let image = image else { return }
+        guard let image = image else {
+            imageView.image = nil
+            return
+        }
         imageView.image = UIImage(gaxbString: image)
     }
-    
+
 }

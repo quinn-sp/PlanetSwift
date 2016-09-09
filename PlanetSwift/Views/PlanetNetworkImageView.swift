@@ -9,28 +9,39 @@
 import UIKit
 
 public class PlanetNetworkImageView: UIImageView {
-
-	public var placeholderContentMode:UIViewContentMode = .scaleToFill
-	public var downloadedContentMode:UIViewContentMode = .scaleToFill
-	
-    public func setImage(_ url:URL, placeholder:UIImage? = nil, completion:((_ success:Bool)->Void)? = nil) {
-		
-		self.contentMode = placeholderContentMode
-		self.image = placeholder
-		
-		ImageCache.sharedInstance.get(url) { [weak self] (image:UIImage?) in
-			
-			if image != nil {
-				if let downloadedContentMode = self?.downloadedContentMode {
-					self?.contentMode = downloadedContentMode
-				}
-				self?.image = image
+    
+    public var placeholderContentMode:UIViewContentMode = .scaleToFill
+    public var downloadedContentMode:UIViewContentMode = .scaleToFill
+    
+    public func setImageWithPath(_ path: String?, placeholder:UIImage? = nil, completion:((_ success:Bool)->Void)? = nil) {
+        guard let urlPath = path, let url = NSURL(string: urlPath) else {
+            setImage(nil, placeholder: placeholder, completion: completion)
+            return
+        }
+        
+        setImage(url as URL, placeholder: placeholder, completion: completion)
+    }
+    
+    public func setImage(_ imageUrl: URL?, placeholder: UIImage? = nil, completion: ((_ success:Bool)->Void)? = nil) {
+        contentMode = placeholderContentMode
+        image = placeholder
+        
+        guard let imageUrl = imageUrl else {
+            completion?(false)
+            return
+        }
+        
+        ImageCache.sharedInstance.get(imageUrl) { [weak self] (image: UIImage?) in
+            if let image = image {
+                if let downloadedContentMode = self?.downloadedContentMode {
+                    self?.contentMode = downloadedContentMode
+                }
+                self?.image = image
                 completion?(true)
-			}
-            else {
+            } else {
                 completion?(false)
             }
-		}
-	}
-	
+        }
+    }
+    
 }

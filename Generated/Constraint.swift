@@ -10,11 +10,11 @@ public class Constraint: ConstraintBase {
 
 	internal(set) public var constraints = [NSLayoutConstraint]()
     public var constraint: NSLayoutConstraint? { return constraints.first }
-	
+
 	//MARK: - enum conversion
-	
+
 	public class func layoutAttributeFromEnum(_ attribute:PlanetUI.LayoutAttribute) -> NSLayoutAttribute {
-		
+
 		switch(attribute) {
 		case .left:
 			return .left
@@ -46,9 +46,9 @@ public class Constraint: ConstraintBase {
 			return .notAnAttribute
 		}
 	}
-	
+
 	public class func layoutRelationFromEnum(_ relation:PlanetUI.LayoutRelation) -> NSLayoutRelation {
-		
+
 		switch(relation) {
 		case .lessThanOrEqual:
 			return .lessThanOrEqual
@@ -58,13 +58,13 @@ public class Constraint: ConstraintBase {
 			return .equal
 		}
 	}
-	
+
 	//MARK: - convenience view accessors
-	
+
 	internal func firstView() -> UIView? {
 		if let item = self.firstItem {
 			if item == Constraint_parentKeyword {
-				
+
 				//avoid an infinite loop if both are looking for super view
 				if self.secondItem != nil && self.secondItem! == Constraint_parentKeyword {
 					return nil
@@ -80,11 +80,11 @@ public class Constraint: ConstraintBase {
 		}
 		return nil
 	}
-	
+
 	internal func secondView() -> UIView? {
 		if let item = self.secondItem {
 			if item == Constraint_parentKeyword {
-				
+
 				//avoid an infinite loop if both are looking for super view
 				if self.firstItem != nil && self.firstItem! == Constraint_parentKeyword {
 					return nil
@@ -100,39 +100,36 @@ public class Constraint: ConstraintBase {
 		}
 		return nil
 	}
-	
+
 	//MARK: - loading
-	
+
 	public override func gaxbDidPrepare() {
 		super.gaxbDidPrepare()
-		
-		if constraint == nil {
-			
-			if let first = firstView() {
-				
-				let second = secondView()
-				
-                constraints = makeConstraints()
-                if constraints.count == 1 {
-                    constraint?.identifier = id
-                }
-                
-                first.translatesAutoresizingMaskIntoConstraints = false
-                second?.translatesAutoresizingMaskIntoConstraints = false
-                
-                constraints.forEach { $0.priority = priority }
-				
-				//attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
-				if second != nil && first.isDescendant(of: second!) {
-					second!.addConstraints(constraints)
-				}
-				else {
-					first.superview?.addConstraints(constraints)
-				}
+
+        guard constraint == nil else { return }
+
+        if let first = firstView() {
+            let second = secondView()
+
+            constraints = makeConstraints()
+            if constraints.count == 1 {
+                constraint?.identifier = id
+            }
+
+            first.translatesAutoresizingMaskIntoConstraints = false
+            second?.translatesAutoresizingMaskIntoConstraints = false
+
+            constraints.forEach { $0.priority = priority }
+
+            // attempt to figure out which view to add the constraint to, iOS will crash if we pick the wrong one
+            if second != nil && first.isDescendant(of: second!) {
+                second!.addConstraints(constraints)
+            } else {
+                first.superview?.addConstraints(constraints)
+            }
 			}
-		}
 	}
-    
+
     public func makeConstraints() -> [NSLayoutConstraint] {
         guard let first = firstView() else { return [] }
         let second = secondView()
@@ -153,16 +150,21 @@ public class Constraint: ConstraintBase {
             return [NSLayoutConstraint(item: first, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(constant)),
                 NSLayoutConstraint(item: first, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(constant))]
         default:
-            return [NSLayoutConstraint(item: first,
-                attribute: Constraint.layoutAttributeFromEnum(firstAttribute),
+            let firstLayoutAttribute = Constraint.layoutAttributeFromEnum(firstAttribute)
+            if firstLayoutAttribute == .notAnAttribute {
+                assertionFailure("First layout attribute invalid: \(firstAttribute)")
+            }
+            let secondLayoutAttribute = Constraint.layoutAttributeFromEnum(secondAttribute)
+           return [NSLayoutConstraint(item: first,
+                attribute: firstLayoutAttribute,
                 relatedBy: Constraint.layoutRelationFromEnum(relation),
                 toItem: second,
-                attribute: Constraint.layoutAttributeFromEnum(secondAttribute),
+                attribute: secondLayoutAttribute,
                 multiplier: CGFloat(multiplier),
                 constant: CGFloat(constant))]
         }
     }
-    
+
 }
 
 extension NSLayoutConstraint {

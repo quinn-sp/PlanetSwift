@@ -20,35 +20,33 @@ public class NetworkImageView: NetworkImageViewBase {
     
     public func setImageWithPath(_ path:String?, completion:((_ success:Bool)->Void)?) {
         if let path = path, let url = URL(string: path) {
-            
-            var placeholder:UIImage?
-            if placeholderPath != nil {
-                placeholder = UIImage(contentsOfFile: String(bundlePath: placeholderPath!))
+            var placeholder: UIImage?
+            if let placeholderPath = placeholderPath {
+                placeholder = UIImage(gaxbString: placeholderPath)
             }
             networkImageView.setImage(url, placeholder: placeholder, completion: completion)
-        }
-        else {
+        } else {
             super.setImageWithString(path)
             completion?(false)
         }
     }
 	
     public override func setImageWithString(_ image: String?) {
-		self.setImageWithPath(image, completion: nil)
+		setImageWithPath(image, completion: nil)
 	}
 	
 	public override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
-        if placeholderPath != nil {
-            networkImageView.image = UIImage(contentsOfFile: String(bundlePath: placeholderPath!))
+        if let placeholderPath = placeholderPath {
+            networkImageView.image = UIImage(contentsOfFile: String(bundlePath: placeholderPath))
         }
         
-		if placeholderContentMode != nil {
-			networkImageView.placeholderContentMode = UIViewContentMode.fromPlanetUIContentMode(placeholderContentMode!)
+		if let placeholderContentMode = placeholderContentMode {
+			networkImageView.placeholderContentMode = UIViewContentMode.fromPlanetUIContentMode(placeholderContentMode)
 		}
-		if contentMode != nil {
-			networkImageView.downloadedContentMode = UIViewContentMode.fromPlanetUIContentMode(contentMode!)
+		if let contentMode = contentMode {
+			networkImageView.downloadedContentMode = UIViewContentMode.fromPlanetUIContentMode(contentMode)
 		}
 	}
 }

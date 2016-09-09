@@ -179,10 +179,10 @@ extension UIImage {
             self.init(named: gaxbString)
         }
     }
-    
+
     convenience init?(validateAndLoad name: String!) {
         self.init(named: name)
-        
+
         // need to assert here if self.init fails
     }
 }
@@ -192,7 +192,7 @@ extension UIColor {
         let newRed   = CGFloat(Double(red) / 255.0)
         let newGreen = CGFloat(Double(green) / 255.0)
         let newBlue  = CGFloat(Double(blue) / 255.0)
-        
+
         self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
     }
     public convenience init(gaxbString: String) {
@@ -396,6 +396,50 @@ extension UIViewContentMode {
 			self = .bottomLeft
 		case .bottomRight:
 			self = .bottomRight
+		}
+	}
+}
+
+extension UIAccessibilityTraits {
+	public static func fromPlanetUIAccessibilityTraits(trait:PlanetUI.AccessibilityTraits) -> UIAccessibilityTraits {
+        return self.init(withPlanetAccessibilityTraits: trait)
+    }
+    public init(withPlanetAccessibilityTraits trait: PlanetUI.AccessibilityTraits) {
+		switch trait {
+		case .none:
+			self = UIAccessibilityTraitNone
+		case .button:
+			self = UIAccessibilityTraitButton
+		case .link:
+			self = UIAccessibilityTraitLink
+		case .searchField:
+			self = UIAccessibilityTraitSearchField
+		case .image:
+			self = UIAccessibilityTraitImage
+		case .selected:
+			self = UIAccessibilityTraitSelected
+		case .playsSound:
+			self = UIAccessibilityTraitPlaysSound
+		case .keyboardKey:
+			self = UIAccessibilityTraitKeyboardKey
+		case .staticText:
+			self = UIAccessibilityTraitStaticText
+		case .summaryElement:
+			self = UIAccessibilityTraitSummaryElement
+		case .notEnabled:
+			self = UIAccessibilityTraitNotEnabled
+		case .updatesFrequently:
+			self = UIAccessibilityTraitUpdatesFrequently
+		case .startsMediaSession:
+			self = UIAccessibilityTraitStartsMediaSession
+        case .adjustable:
+			self = UIAccessibilityTraitAdjustable
+		case .allowsDirectInteraction:
+			self = UIAccessibilityTraitAllowsDirectInteraction
+		case .causesPageTurn:
+			self = UIAccessibilityTraitCausesPageTurn
+        case .header:
+			self = UIAccessibilityTraitHeader
 		}
 	}
 }

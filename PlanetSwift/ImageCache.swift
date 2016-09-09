@@ -20,7 +20,7 @@ public class ImageCache {
 		return ImageCache_shared
 	}
 	
-	public func get(_ url:URL, completion:ImageCache_CompletionBlock) {
+	public func get(_ url:URL, completion:@escaping ImageCache_CompletionBlock) {
         let imageKey = url.absoluteString
 			
         if let memCacheImage = memoryCache.object(forKey: imageKey as NSString) as? UIImage {
@@ -108,7 +108,7 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
 	let completionBlock:ImageCache_DownloadBlock
 	let imageData:NSMutableData
 	
-	init(url:URL, completion:ImageCache_DownloadBlock) {
+	init(url:URL, completion:@escaping ImageCache_DownloadBlock) {
 		
 		completionBlock = completion
 		request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 60)
@@ -127,7 +127,7 @@ internal class ImageCacheRequest : NSObject, NSURLConnectionDelegate, NSURLConne
 	
 	//MARK: - NSURLConnectionDelegate
 	
-	func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
+	private func connection(_ connection: NSURLConnection, didFailWithError error: NSError) {
 		completionBlock(false)
 	}
 	

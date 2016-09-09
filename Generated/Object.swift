@@ -5,40 +5,43 @@
 import UIKit
 
 var styles: Object? = nil
-private var attemptedStylesLoad = false //workaround for inability to specify the XML load call inline here
-
+// workaround for inability to specify the XML load call inline here
+private var attemptedStylesLoad = false
 public class Object: ObjectBase {
-	
-	// MARK: - ID mappings
-	
-	private lazy var idMappings = Dictionary<String,NSValue>()
-	
-	public func objectForId(_ identifier:String) -> AnyObject? {
-		
-		if let value = idMappings[identifier] {
-			
-			//clean out this object if the weak reference was zeroed
-			if value.nonretainedObjectValue == nil {
-				idMappings.removeValue(forKey: identifier)
-			}
-			
-			return value.nonretainedObjectValue as AnyObject
-		}
-		return nil
-	}
-	
-	public func setObjectForId(_ identifier:String, object:AnyObject) {
-		idMappings[identifier] = NSValue(nonretainedObject: object)
-	}
-	
-	// MARK: - scoping
-	
+    
+    // MARK: - ID mappings
+    
+    private lazy var idMappings = Dictionary<String,NSValue>()
+    
+    public func objectForId(_ identifier:String) -> AnyObject? {
+        if let value = idMappings[identifier] {
+            
+            // clean out this object if the weak reference was zeroed
+            if value.nonretainedObjectValue == nil {
+                idMappings.removeValue(forKey: identifier)
+            }
+            
+            return value.nonretainedObjectValue as AnyObject
+        }
+        return nil
+    }
+    
+    public func elementForId(identifier: String) -> GaxbElement? {
+        return objectForId(identifier) as? GaxbElement
+    }
+    
+    public func setObjectForId(_ identifier:String, object:AnyObject) {
+        idMappings[identifier] = NSValue(nonretainedObject: object)
+    }
+    
+    // MARK: - scoping
+    
     public func isScopeContainer() -> Bool {
         return false
     }
     
     public func scope() -> AnyObject? {
-        if self.isScopeContainer() {
+        if isScopeContainer() {
             return self
         }
         if let object = parent as? Object {
@@ -46,9 +49,9 @@ public class Object: ObjectBase {
         }
         return nil
     }
-	
-	// MARK: - notification
-	
+    
+    // MARK: - notification
+    
     // notification strings are one of the following:
     //  LOCAL::handleSomething  (local scope)
     //  handleSomething (same as above, local scope)
@@ -69,7 +72,7 @@ public class Object: ObjectBase {
                 case "LOCAL":
                     scopeObject = self.scope()
                 default:
-					break;
+                    break;
                 }
                 name = components[1]
             default:
@@ -78,18 +81,18 @@ public class Object: ObjectBase {
         }
         return (scopeObject, name)
     }
-	
-	public override func gaxbPrepare() {
-		super.gaxbPrepare()
-		
+    
+    public override func gaxbPrepare() {
+        super.gaxbPrepare()
+        
         if let styleId = styleId, let styleElement = Object.styleForId(styleId) {
             _ = styleElement.imprintAttributes(self)
         }
         
-		if let id = id , let scopeObj = scope() as? Object {
+        if let id = id , let scopeObj = scope() as? Object {
             scopeObj.setObjectForId(id, object: self)
-		}
-	}
+        }
+    }
     
     public func updateStyleId(_ newStyle: String?) {
         styleId = newStyle
@@ -99,13 +102,13 @@ public class Object: ObjectBase {
     // MARK: - style handling
     
     public class func styleForId(_ _id: String) -> GaxbElement? {
-		if styles == nil && !attemptedStylesLoad {
-			attemptedStylesLoad = true
-			if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_stylesheetPathKey) as? String {
-				styles = PlanetUI.readFromFile(String(bundlePath: path), prepare:false) as? Object
-			}
-		}
-		
+        if styles == nil && !attemptedStylesLoad {
+            attemptedStylesLoad = true
+            if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_stylesheetPathKey) as? String {
+                styles = PlanetUI.readFromFile(String(bundlePath: path), prepare:false) as? Object
+            }
+        }
+        
         guard let styles = styles else { return nil }
         for child in styles.anys {
             if let childObject = child as? Object, childObject.styleId == _id {

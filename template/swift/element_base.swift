@@ -8,7 +8,8 @@ SUPERCLASS_OVERRIDE = ""; if (hasSuperclass(this)) then SUPERCLASS_OVERRIDE="ove
 //
 
 import UIKit
-
+<% if (this.namespace ~= "PlanetUI") then %>import PlanetSwift
+<% end %>
 public class <%= CAP_NAME %>Base<% if (hasSuperclass(this)) then %> : <%= superclassForItem(this) %><% else %> : GaxbElement<% end %> {
 <% if (hasSuperclass(this) == false) then %>
     public var xmlns: String = "<%= this.namespaceURL %>"

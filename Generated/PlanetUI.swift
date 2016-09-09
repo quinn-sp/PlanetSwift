@@ -4,7 +4,7 @@
 
 import UIKit
 
-private var config:NSDictionary?
+private var config: NSDictionary?
 private var attemptedConfigLoad = false
 
 extension PlanetUI {
@@ -49,7 +49,7 @@ extension PlanetUI {
         return UIImage(gaxbString: bundlePath)
 	}
 	
-	public class func configRemoteImageForKey(_ key: String, completion: ImageCache_CompletionBlock) {
+	public class func configRemoteImageForKey(_ key: String, completion: @escaping ImageCache_CompletionBlock) {
         guard let urlString = PlanetUI.configStringForKey(key), let url = URL(string: urlString) else { return }
         ImageCache.sharedInstance.get(url, completion: completion)
 	}
@@ -83,8 +83,8 @@ extension PlanetUI {
 		
 		let expressionSearchString = "@\(expressionName)("
 		var searchRange = NSMakeRange(0, stringToSearch.length)
+        
 		while true {
-			
 			let startRange = stringToSearch.range(of: expressionSearchString, options: NSString.CompareOptions(), range: searchRange)
 			if startRange.location != NSNotFound {
 				
@@ -109,12 +109,10 @@ extension PlanetUI {
 						searchRange.location += adjustNum
 						searchRange.length = stringToSearch.length-searchRange.location
 					}
-				}
-				else {
+				} else {
 					return
 				}
-			}
-			else {
+			} else {
 				return
 			}
 		}
@@ -132,8 +130,7 @@ extension PlanetUI {
         }
         return names
     }
-	
-	public class func GCDDelay(_ delayAmount:Double, block:((Void)->Void)) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delayAmount, execute: block)
+	public class func GCDDelay(_ delayAmount:Double, block:@escaping ((Void)->Void)) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayAmount, execute: block)
 	}
 }

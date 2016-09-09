@@ -9,7 +9,7 @@ public class View: ViewBase {
 
     public override func gaxbPrepare() {
 		super.gaxbPrepare()
-		
+
         if frame != nil {
             view.bounds = CGRect(x: 0, y: 0, width: frame!.size.width, height: frame!.size.height)
             view.center = CGPoint(x: frame!.midX, y: frame!.midY)
@@ -64,25 +64,36 @@ public class View: ViewBase {
         if shadowOpacity != nil {
             view.layer.shadowOpacity = Float(shadowOpacity!)
         }
-		if masksToBounds != nil {
-			view.layer.masksToBounds = masksToBounds!
+		if let masksToBounds = masksToBounds {
+			view.layer.masksToBounds = masksToBounds
 		}
         view.accessibilityIdentifier = id
+        view.accessibilityLabel = accessibilityLabel
+        view.accessibilityHint = accessibilityHint
+        if let trait = accessibilityTraits {
+            view.accessibilityTraits = UIAccessibilityTraits.fromPlanetUIAccessibilityTraits(trait: trait)
+        }
 
-		findParentView()?.view.addSubview(view)
+        if view.superview == nil {
+            findParentView()?.addSubview(view)
+        }
     }
-	
+
+    internal func addSubview(_ child: UIView) {
+        view.addSubview(child)
+    }
+
 	internal func findParentView() -> View? {
 		var parent:GaxbElement? = self.parent
 		while parent != nil {
-			
+
 			if let view = parent as? View {
 				return view
 			}
-			
+
 			parent = parent!.parent
 		}
 		return nil
 	}
-	
+
 }
