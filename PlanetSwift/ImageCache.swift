@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 private let ImageCache_shared = ImageCache()
 
 public typealias ImageCache_CompletionBlock = ((UIImage?) -> Void)

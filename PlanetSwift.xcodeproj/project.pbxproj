@@ -215,7 +215,6 @@
 		C49462421AF819F200F005B4 /* PageControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlBase.swift; sourceTree = "<group>"; };
 		C49462431AF819F200F005B4 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		C49462441AF819F200F005B4 /* ScrollViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewBase.swift; sourceTree = "<group>"; };
-		C4A28F8D1BDD101B00D4713C /* PlanetSwift-tvOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PlanetSwift-tvOS-Info.plist"; path = "/Users/qmchenry/Development/BoB/Bake or Break/PlanetSwift/PlanetSwift-tvOS-Info.plist"; sourceTree = "<absolute>"; };
 		C4A28FA11BDD208300D4713C /* PlanetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlanetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A28FA31BDD208300D4713C /* PlanetSwift tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlanetSwift tvOS.h"; sourceTree = "<group>"; };
 		C4A28FA51BDD208300D4713C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -298,7 +297,6 @@
 				C4A28FA21BDD208300D4713C /* PlanetSwift tvOS */,
 				C4A28FAE1BDD208300D4713C /* PlanetSwift tvOSTests */,
 				A9B4396F1A3A53C70052690A /* Products */,
-				C4A28F8D1BDD101B00D4713C /* PlanetSwift-tvOS-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Small Planet Digital. All rights reserved.
 //
 
+import UIKit
 
 public protocol PlanetCollectionViewTemplate {
     var reuseId: String { get }
