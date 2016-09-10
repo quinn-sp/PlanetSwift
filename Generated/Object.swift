@@ -13,7 +13,7 @@ public class Object: ObjectBase {
     
     private lazy var idMappings = Dictionary<String,NSValue>()
     
-    public func objectForId(_ identifier:String) -> AnyObject? {
+    public func objectForId(_ identifier:String) -> Object? {
         if let value = idMappings[identifier] {
             
             // clean out this object if the weak reference was zeroed
@@ -21,16 +21,16 @@ public class Object: ObjectBase {
                 idMappings.removeValue(forKey: identifier)
             }
             
-            return value.nonretainedObjectValue as AnyObject
+            return value.nonretainedObjectValue as? Object
         }
         return nil
     }
     
-    public func elementForId(identifier: String) -> GaxbElement? {
+    public func elementForId(_ identifier: String) -> GaxbElement? {
         return objectForId(identifier) as? GaxbElement
     }
     
-    public func setObjectForId(_ identifier:String, object:AnyObject) {
+    public func setObjectForId(_ identifier:String, object:Object) {
         idMappings[identifier] = NSValue(nonretainedObject: object)
     }
     

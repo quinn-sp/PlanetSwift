@@ -8,17 +8,17 @@
 
 import UIKit
 
-public class PlanetViewController: UIViewController {
+open class PlanetViewController: UIViewController {
     
-    public var planetViews = Array<PlanetView>()
+    open var planetViews = Array<PlanetView>()
     var idMappings = Dictionary<String, Object>()
-    @IBInspectable public var titleBundlePath: String?
-    public var mainBundlePath: String?
+    @IBInspectable open var titleBundlePath: String?
+    open var mainBundlePath: String?
     
-    public var titleXmlView: View?
-    public var mainXmlView: View?
+    open var titleXmlView: View?
+    open var mainXmlView: View?
     
-    public override func loadView() {
+    open override func loadView() {
         super.loadView()
         
         navigationItem.title = self.title
@@ -59,7 +59,7 @@ public class PlanetViewController: UIViewController {
         }
     }
     
-    public func decorate(_ element: GaxbElement) {
+    open func decorate(_ element: GaxbElement) {
         // Override decorate in your controller class if you need a
         // handle on the XML views from your PlanetView
     }
@@ -73,7 +73,7 @@ public class PlanetViewController: UIViewController {
         }
     }
     
-    public func objectForId<T>(_ id:String) -> T? {
+    open func objectForId<T>(_ id:String) -> T? {
         guard let foundObj = idMappings[id] as? T else { return nil }
         return foundObj
     }

@@ -79,13 +79,13 @@ public extension PlanetCollectionViewCell where Self: UICollectionViewCell {
 }
 
 
-public class PlanetCollectionViewController: PlanetViewController {
+open class PlanetCollectionViewController: PlanetViewController {
     
-    @IBOutlet weak public var collectionView: UICollectionView!
-    public var cellReferences = [String: PlanetCollectionViewCell]()
-    public var cellMapping: [String: PlanetCollectionViewCell.Type] { return [:] }
-    public var cellSizes: [[CGSize]] = []
-    public var objects: [[PlanetCollectionViewTemplate]] = [] {
+    @IBOutlet weak open var collectionView: UICollectionView!
+    open var cellReferences = [String: PlanetCollectionViewCell]()
+    open var cellMapping: [String: PlanetCollectionViewCell.Type] { return [:] }
+    open var cellSizes: [[CGSize]] = []
+    open var objects: [[PlanetCollectionViewTemplate]] = [] {
         didSet {
             cellSizes.removeAll(keepingCapacity: false)
             for subarray in objects {
@@ -94,13 +94,13 @@ public class PlanetCollectionViewController: PlanetViewController {
         }
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         collectionView.contentOffset = CGPoint.zero
     }
     
-    public func configureCollectionView() {
+    open func configureCollectionView() {
         for (cellId, cellClass) in cellMapping {
             collectionView?.register(cellClass, forCellWithReuseIdentifier: cellId)
         }
@@ -112,7 +112,7 @@ public class PlanetCollectionViewController: PlanetViewController {
     
     // MARK: - Collection View Cell Handling
     
-    public func configure(_ cell: PlanetCollectionViewCell?, atIndexPath indexPath: IndexPath) {
+    open func configure(_ cell: PlanetCollectionViewCell?, atIndexPath indexPath: IndexPath) {
         guard cell?.xmlView == nil else { return } // only configure each cell once
         
         cell?.loadView()
@@ -152,42 +152,42 @@ public class PlanetCollectionViewController: PlanetViewController {
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    public func cellMapping(_ reuseId: String) -> PlanetCollectionViewCell.Type? {
+    open func cellMapping(_ reuseId: String) -> PlanetCollectionViewCell.Type? {
         return cellMapping[reuseId]
     }
     
-    public func reuseIdentifier(_ indexPath:IndexPath) -> String {
+    open func reuseIdentifier(_ indexPath:IndexPath) -> String {
         return cellObject(indexPath)?.reuseId ?? "invalidReuseId"
     }
     
-    public func cellObject(_ indexPath: IndexPath) -> PlanetCollectionViewTemplate? {
+    open func cellObject(_ indexPath: IndexPath) -> PlanetCollectionViewTemplate? {
         guard objects.count > indexPath.section && objects[indexPath.section].count > indexPath.row else { return nil }
         return objects[indexPath.section][indexPath.row]
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     
-    public func cellSize(_ indexPath: IndexPath) -> CGSize? {
+    open func cellSize(_ indexPath: IndexPath) -> CGSize? {
         guard cellSizes.count > indexPath.section && cellSizes[indexPath.section].count > indexPath.row else { return nil }
         return cellSizes[indexPath.section][indexPath.row]
     }
     
-    public func setCellSize(_ size: CGSize, forIndexPath indexPath:IndexPath) {
+    open func setCellSize(_ size: CGSize, forIndexPath indexPath:IndexPath) {
         guard cellSizes.count > indexPath.section && cellSizes[indexPath.section].count > indexPath.row else { return }
         cellSizes[indexPath.section][indexPath.row] = size
     }
     
-    public func cellHeight(_ indexPath: IndexPath) -> CGFloat? {
+    open func cellHeight(_ indexPath: IndexPath) -> CGFloat? {
         return (cellSize(indexPath) ?? CGSize.zero).height
     }
     
-    public func setCellHeight(_ height: CGFloat, forIndexPath indexPath: IndexPath) {
+    open func setCellHeight(_ height: CGFloat, forIndexPath indexPath: IndexPath) {
         if let size = cellSize(indexPath) {
             setCellSize(CGSize(width: size.width, height: height), forIndexPath:indexPath)
         }
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         var size = cellSize(indexPath) ?? CGSize.zero
         if let template = cellObject(indexPath), size == CGSize.zero {
             let reuseId = reuseIdentifier(indexPath)
@@ -214,7 +214,7 @@ public class PlanetCollectionViewController: PlanetViewController {
         return size
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: section == 0 ? 64 : 0, left: 0, bottom: 0, right: 0)
     }
     
@@ -222,15 +222,15 @@ public class PlanetCollectionViewController: PlanetViewController {
 
 extension PlanetCollectionViewController: UICollectionViewDataSource {
     
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return objects.count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return objects[section].count
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier(indexPath), for: indexPath)
         configure(cell as? PlanetCollectionViewCell, atIndexPath: indexPath)
         cellObject(indexPath)?.decorate(cell)
@@ -241,11 +241,11 @@ extension PlanetCollectionViewController: UICollectionViewDataSource {
 
 extension PlanetCollectionViewController: UICollectionViewDelegate {
     
-    public func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         collectionView.cellForItem(at: indexPath)?.isHighlighted = true
     }
     
-    public func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         collectionView.cellForItem(at: indexPath)?.isHighlighted = false
     }
     
