@@ -3,5 +3,7 @@
     <pages>
         <page name='Introduction'/>
         <page name='ImageView'/>
+        <page name='Label'/>
+        <page name='StackView'/>
     </pages>
 </playground>
