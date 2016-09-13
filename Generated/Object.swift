@@ -101,11 +101,15 @@ public class Object: ObjectBase {
     
     // MARK: - style handling
     
+    public class func loadStyles(_ bundlePath: String) {
+        styles = PlanetUI.readFromFile(String(bundlePath: bundlePath), prepare: false) as? Object
+    }
+    
     public class func styleForId(_ _id: String) -> GaxbElement? {
         if styles == nil && !attemptedStylesLoad {
             attemptedStylesLoad = true
             if let path = PlanetSwiftConfiguration.valueForKey(PlanetSwiftConfiguration_stylesheetPathKey) as? String {
-                styles = PlanetUI.readFromFile(String(bundlePath: path), prepare:false) as? Object
+                    loadStyles(path)
             }
         }
         
