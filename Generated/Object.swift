@@ -84,11 +84,6 @@ public class Object: ObjectBase {
     
     public override func gaxbPrepare() {
         super.gaxbPrepare()
-        
-        if let styleId = styleId, let styleElement = Object.styleForId(styleId) {
-            _ = styleElement.imprintAttributes(self)
-        }
-        
         if let id = id , let scopeObj = scope() as? Object {
             scopeObj.setObjectForId(id, object: self)
         }
@@ -100,6 +95,14 @@ public class Object: ObjectBase {
     }
     
     // MARK: - style handling
+
+    public class func loadStylesFromString(_ string: String) {
+        styles = PlanetUI.readFromString(string, prepare: false) as? Object
+    }
+    
+    public class func loadStyles(_ file: URL) {
+        styles = PlanetUI.readFromFile(file.absoluteString, prepare: false) as? Object
+    }
     
     public class func loadStyles(_ bundlePath: String) {
         styles = PlanetUI.readFromFile(String(bundlePath: bundlePath), prepare: false) as? Object

@@ -5,5 +5,6 @@
         <page name='ImageView'/>
         <page name='Label'/>
         <page name='StackView'/>
+        <page name='Styles'/>
     </pages>
 </playground>

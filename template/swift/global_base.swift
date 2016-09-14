@@ -14,10 +14,10 @@ public class <%= FULL_NAME_CAMEL %> {
 
 	public class func readFromFile(_ filePath: String, prepare: Bool = true) -> GaxbElement? {
 		do {
-			let xmlString = try String(contentsOfFile: filePath, encoding: String.Encoding.utf8)
-			return <%= FULL_NAME_CAMEL %>.readFromString(xmlString)
+			let xmlString = try String(contentsOfFile: filePath, encoding: .utf8)
+			return <%= FULL_NAME_CAMEL %>.readFromString(xmlString, prepare: prepare)
 		} catch {
-				return nil
+			return nil
 		}
 	}
 
@@ -31,7 +31,7 @@ public class <%= FULL_NAME_CAMEL %> {
 			return copiedCache
 		}
 
-		if let xmlData = <%= FULL_NAME_CAMEL %>.processExpressions(string).data(using: String.Encoding.utf8, allowLossyConversion: false) {
+		if let xmlData = <%= FULL_NAME_CAMEL %>.processExpressions(string).data(using: .utf8, allowLossyConversion: false) {
 			do {
 				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
 				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
@@ -59,6 +59,10 @@ public class <%= FULL_NAME_CAMEL %> {
 
 	public class func parseElement(_ element: AEXMLElement) -> GaxbElement? {
 		guard let entity = GaxbFactory.element(namespaceForElement(element), name:element.name) else { return nil }
+		if let styleId = element.attributes["styleId" as NSObject] as? String,
+			let styleElement = Object.styleForId(styleId) {
+			_ = styleElement.imprintAttributes(entity)
+		}
 		for (attribute, value) in element.attributes {
 			if let valueString = value as? String, let attributeString = attribute as? String {
 				entity.setAttribute(valueString, key: attributeString)
