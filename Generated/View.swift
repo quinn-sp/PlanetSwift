@@ -4,7 +4,7 @@
 
 import UIKit
 
-public class View: ViewBase {
+public class View: ViewBase, CustomPlaygroundQuickLookable {
     lazy public var view = UIView()
 
     public override func gaxbPrepare() {
@@ -96,4 +96,7 @@ public class View: ViewBase {
 		return nil
 	}
 
+    public var customPlaygroundQuickLook: PlaygroundQuickLook {
+        return .view(view)
+    }
 }
