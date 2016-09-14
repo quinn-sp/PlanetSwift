@@ -7,8 +7,7 @@ import PlaygroundSupport
 let hostView = setupHostView()
 
 // Set system styles
-let styles = "<?xml version='1.0' encoding='UTF-8'?>" +
-"<Object id='styles' xmlns='http://schema.smallplanet.com/PlanetUI'>" +
+let styles = "<Object id='styles' xmlns='http://schema.smallplanet.com/PlanetUI'>" +
 "<Label styleId='LabelLight' fontName='AppleSDGothicNeo-UltraLight' fontSize='30' textAlignment='center' />" +
 "<Label styleId='LabelBold' fontName='AppleSDGothicNeo-Bold' fontSize='30' textColor='#4444BBFF' textAlignment='center'/>" +
 "</Object>"

@@ -16,3 +16,5 @@ let v = PlanetUI.readFromString(xml)?.asView
 
 hostView.addSubview(v!.view)
 PlaygroundPage.current.liveView = hostView
+
+//: [Next](@next)
