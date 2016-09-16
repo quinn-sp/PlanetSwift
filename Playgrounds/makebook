@@ -40,7 +40,7 @@ cp ../PlanetSwift/*.swift ${SOURCES}
 cp ../PlanetSwift/GaxbTypes/*.swift ${SOURCES}/GaxbTypes
 cp ../PlanetSwift/Views/*.swift ${SOURCES}/Views
 cp ../AEXML/*.swift ${SOURCES}
-cp PlaneyPlayground.playground/Resources/* ${BOOK}/Contents/Resources
+cp PlanetPlayground.playground/Resources/* ${BOOK}/Contents/Resources
 
 
 cat > ${BOOK}/Contents/Manifest.plist << EOF

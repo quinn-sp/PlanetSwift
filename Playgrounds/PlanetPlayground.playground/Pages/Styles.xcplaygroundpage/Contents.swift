@@ -1,11 +1,11 @@
-//: [Previous](@previous)
-
+//#-hidden-code
 import UIKit
 import PlanetSwift
 import PlaygroundSupport
 
 let hostView = setupHostView()
 
+//#-end-hidden-code
 // Set system styles
 let styles = "<Object id='styles' xmlns='http://schema.smallplanet.com/PlanetUI'>" +
 "<Label styleId='LabelLight' fontName='AppleSDGothicNeo-UltraLight' fontSize='30' textAlignment='center' />" +
@@ -20,11 +20,11 @@ let xml = "<StackView axis='vertical' distribution='fillEqually' frame='0,0,300,
     "<Label text='Bottom' fontName='AmericanTypewriter-Light' styleId='LabelLight' textColor='#ff0000ff' />" +
     "</StackView>"
 
+//#-hidden-code
 let view = PlanetUI.readFromString(xml, prepare: true)?.asView
 view?.visit { $0.gaxbDidPrepare() }
 
 hostView.addSubview(view!.view)
 PlaygroundPage.current.liveView = hostView
 
-
-//: [Next](@next)
+//#-end-hidden-code
