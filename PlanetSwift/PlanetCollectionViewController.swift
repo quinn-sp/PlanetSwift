@@ -218,6 +218,20 @@ open class PlanetCollectionViewController: PlanetViewController {
         return UIEdgeInsets(top: section == 0 ? 64 : 0, left: 0, bottom: 0, right: 0)
     }
     
+    public init(frame: CGRect) {
+        super.init(nibName: nil, bundle: nil)
+        let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.delegate = self
+        cv.dataSource = self
+        self.collectionView = cv
+        self.view = cv
+        self.configureCollectionView()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 
 extension PlanetCollectionViewController: UICollectionViewDataSource {
