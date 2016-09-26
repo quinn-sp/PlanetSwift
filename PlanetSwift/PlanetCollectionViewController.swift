@@ -78,6 +78,25 @@ public extension PlanetCollectionViewCell where Self: UICollectionViewCell {
     }
 }
 
+public extension PlanetCollectionViewCell where Self: UICollectionReusableView {
+
+    func loadView() {
+        guard xmlView == nil else { return }
+        xmlView = PlanetUI.readFromFile(String(bundlePath: bundlePath)) as? View
+        guard let xmlView = xmlView else {
+            // failed to create xml view from bundlePath \(bundlePath)
+            return
+        }
+        addSubview(xmlView.view)
+        xmlView.visit() { $0.gaxbDidPrepare() }
+
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: self, equalAttribute: .width))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: self, equalAttribute: .height))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: self, equalAttribute: .left))
+        addConstraint(NSLayoutConstraint(item: xmlView.view, toItem: self, equalAttribute: .top))
+        xmlView.view.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
 
 open class PlanetCollectionViewController: PlanetViewController {
     
@@ -250,7 +269,11 @@ extension PlanetCollectionViewController: UICollectionViewDataSource {
         cellObject(indexPath)?.decorate(cell)
         return cell
     }
-    
+
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "", for: indexPath)
+        return cell
+    }
 }
 
 extension PlanetCollectionViewController: UICollectionViewDelegate {
