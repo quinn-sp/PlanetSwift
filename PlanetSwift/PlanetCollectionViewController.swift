@@ -246,6 +246,10 @@ open class PlanetCollectionViewController: PlanetViewController {
         self.view = cv
         self.configureCollectionView()
     }
+
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
