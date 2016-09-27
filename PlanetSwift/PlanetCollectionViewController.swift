@@ -289,5 +289,7 @@ extension PlanetCollectionViewController: UICollectionViewDelegate {
     open func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         collectionView.cellForItem(at: indexPath)?.isHighlighted = false
     }
-    
+
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
 }
