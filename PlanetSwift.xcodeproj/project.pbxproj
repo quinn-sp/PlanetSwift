@@ -64,60 +64,6 @@
 		C49462481AF819F200F005B4 /* PageControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462421AF819F200F005B4 /* PageControlBase.swift */; };
 		C49462491AF819F200F005B4 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462431AF819F200F005B4 /* ScrollView.swift */; };
 		C494624A1AF819F200F005B4 /* ScrollViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462441AF819F200F005B4 /* ScrollViewBase.swift */; };
-		C4A28FA41BDD208300D4713C /* PlanetSwift tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C4A28FA31BDD208300D4713C /* PlanetSwift tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C4A28FAB1BDD208300D4713C /* PlanetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A28FA11BDD208300D4713C /* PlanetSwift.framework */; };
-		C4A28FB01BDD208300D4713C /* PlanetSwift_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A28FAF1BDD208300D4713C /* PlanetSwift_tvOSTests.swift */; };
-		C4A2908A1BDD247000D4713C /* PlanetUIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A290321BDD246200D4713C /* PlanetUIBase.swift */; };
-		C4A290991BDD248000D4713C /* AEXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439DB1A3B714E0052690A /* AEXML.swift */; };
-		C4A2909A1BDD248500D4713C /* GaxbTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */; };
-		C4A2909B1BDD248500D4713C /* Gaxb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439A31A3B40F70052690A /* Gaxb.swift */; };
-		C4A2909C1BDD248500D4713C /* String+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB342E51A65AC80004C12B7 /* String+Bundle.swift */; };
-		C4A2909D1BDD249200D4713C /* PlanetSwiftConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */; };
-		C4A2909E1BDD249200D4713C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0971A6EBA190098F7E4 /* ImageCache.swift */; };
-		C4A2909F1BDD249200D4713C /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E9A781A70036800D64615 /* PlanetViewController.swift */; };
-		C4A290A01BDD249200D4713C /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967CD921B9A07B9008DEBE5 /* NotificationHandler.swift */; };
-		C4A290A11BDD249800D4713C /* PlanetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */; };
-		C4A290A21BDD249800D4713C /* PlanetNetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AC0941A6EB5D00098F7E4 /* PlanetNetworkImageView.swift */; };
-		C4A290A31BDD249800D4713C /* PlanetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6AD91A70356D00D87C38 /* PlanetButton.swift */; };
-		C4A290A41BDD268200D4713C /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494623F1AF819F200F005B4 /* ActivityIndicatorView.swift */; };
-		C4A290A51BDD268200D4713C /* ActivityIndicatorViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462401AF819F200F005B4 /* ActivityIndicatorViewBase.swift */; };
-		C4A290A61BDD268200D4713C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
-		C4A290A71BDD268200D4713C /* ButtonBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE91A6383ED0094F56A /* ButtonBase.swift */; };
-		C4A290A81BDD268200D4713C /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060EC1AA37675004D39EC /* CollectionView.swift */; };
-		C4A290A91BDD268200D4713C /* CollectionViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060ED1AA37675004D39EC /* CollectionViewBase.swift */; };
-		C4A290AA1BDD268200D4713C /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B851A66D52200BD0CC5 /* Constraint.swift */; };
-		C4A290AB1BDD268200D4713C /* ConstraintBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B972B861A66D52200BD0CC5 /* ConstraintBase.swift */; };
-		C4A290AC1BDD268200D4713C /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060EE1AA37675004D39EC /* Control.swift */; };
-		C4A290AD1BDD268200D4713C /* ControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060EF1AA37675004D39EC /* ControlBase.swift */; };
-		C4A290AE1BDD268200D4713C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9743C1A7022FC002F0295 /* Controller.swift */; };
-		C4A290AF1BDD268200D4713C /* ControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC9743D1A7022FC002F0295 /* ControllerBase.swift */; };
-		C4A290B01BDD269100D4713C /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F01AA37675004D39EC /* GestureRecognizer.swift */; };
-		C4A290B11BDD269100D4713C /* GestureRecognizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F11AA37675004D39EC /* GestureRecognizerBase.swift */; };
-		C4A290B21BDD269100D4713C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35EF1A6EE7AF00E8418B /* ImageView.swift */; };
-		C4A290B31BDD269100D4713C /* ImageViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F01A6EE7AF00E8418B /* ImageViewBase.swift */; };
-		C4A290B41BDD269100D4713C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E737F1A4212B200B22884 /* Label.swift */; };
-		C4A290B51BDD269100D4713C /* LabelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92E73801A4212B200B22884 /* LabelBase.swift */; };
-		C4A290B61BDD269100D4713C /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F31A6EE7BB00E8418B /* NetworkImageView.swift */; };
-		C4A290B71BDD269100D4713C /* NetworkImageViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCF35F41A6EE7BB00E8418B /* NetworkImageViewBase.swift */; };
-		C4A290B81BDD269100D4713C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD71A60D9290094F56A /* Notification.swift */; };
-		C4A290B91BDD269100D4713C /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
-		C4A290BA1BDD269100D4713C /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439971A3B40B70052690A /* Object.swift */; };
-		C4A290BB1BDD269100D4713C /* ObjectBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439981A3B40B70052690A /* ObjectBase.swift */; };
-		C4A290BE1BDD269100D4713C /* PanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F21AA37675004D39EC /* PanGestureRecognizer.swift */; };
-		C4A290BF1BDD269100D4713C /* PanGestureRecognizerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C060F31AA37675004D39EC /* PanGestureRecognizerBase.swift */; };
-		C4A290C01BDD269500D4713C /* PlanetUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5DCE51A4F7B4700BE7271 /* PlanetUI.swift */; };
-		C4A290C11BDD269B00D4713C /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639EF41A643A0D009C818F /* Scene.swift */; };
-		C4A290C21BDD269B00D4713C /* SceneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639EF51A643A0D009C818F /* SceneBase.swift */; };
-		C4A290C51BDD26A700D4713C /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332A1A85482F004969E1 /* SegmentedControl.swift */; };
-		C4A290C61BDD26A700D4713C /* SegmentedControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */; };
-		C4A290C71BDD26A700D4713C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6ACC1A6ED86300D87C38 /* TextField.swift */; };
-		C4A290C81BDD26A700D4713C /* TextFieldBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796C6ACD1A6ED86300D87C38 /* TextFieldBase.swift */; };
-		C4A290C91BDD26A700D4713C /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4BF1A7975DD001DF00B /* TextView.swift */; };
-		C4A290CA1BDD26A700D4713C /* TextViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4C01A7975DD001DF00B /* TextViewBase.swift */; };
-		C4A290CB1BDD26A700D4713C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4399A1A3B40B70052690A /* View.swift */; };
-		C4A290CC1BDD26A700D4713C /* ViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B4399B1A3B40B70052690A /* ViewBase.swift */; };
-		C4A290CD1BDD26A700D4713C /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3951A72E6A3006B76E4 /* VisualEffectView.swift */; };
-		C4A290CE1BDD26A700D4713C /* VisualEffectViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */; };
 		C4AA9CDB1A60D9290094F56A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD71A60D9290094F56A /* Notification.swift */; };
 		C4AA9CDC1A60D9290094F56A /* NotificationBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CD81A60D9290094F56A /* NotificationBase.swift */; };
 		C4AA9CEA1A6383ED0094F56A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AA9CE81A6383ED0094F56A /* Button.swift */; };
@@ -144,13 +90,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A9B4396D1A3A53C70052690A;
 			remoteInfo = PlanetSwift;
-		};
-		C4A28FAC1BDD208300D4713C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A9B439651A3A53C70052690A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C4A28FA01BDD208300D4713C;
-			remoteInfo = "PlanetSwift tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -215,10 +154,8 @@
 		C49462421AF819F200F005B4 /* PageControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlBase.swift; sourceTree = "<group>"; };
 		C49462431AF819F200F005B4 /* ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 		C49462441AF819F200F005B4 /* ScrollViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewBase.swift; sourceTree = "<group>"; };
-		C4A28FA11BDD208300D4713C /* PlanetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PlanetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A28FA31BDD208300D4713C /* PlanetSwift tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlanetSwift tvOS.h"; sourceTree = "<group>"; };
 		C4A28FA51BDD208300D4713C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4A28FAA1BDD208300D4713C /* PlanetSwift tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PlanetSwift tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A28FAF1BDD208300D4713C /* PlanetSwift_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSwift_tvOSTests.swift; sourceTree = "<group>"; };
 		C4A28FB11BDD208300D4713C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A290321BDD246200D4713C /* PlanetUIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetUIBase.swift; sourceTree = "<group>"; };
@@ -257,21 +194,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4A28F9D1BDD208300D4713C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C4A28FA71BDD208300D4713C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C4A28FAB1BDD208300D4713C /* PlanetSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -305,8 +227,6 @@
 			children = (
 				A9B4396E1A3A53C70052690A /* PlanetSwift.framework */,
 				A9B439791A3A53C70052690A /* PlanetSwiftTests.xctest */,
-				C4A28FA11BDD208300D4713C /* PlanetSwift.framework */,
-				C4A28FAA1BDD208300D4713C /* PlanetSwift tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,14 +386,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4A28F9E1BDD208300D4713C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C4A28FA41BDD208300D4713C /* PlanetSwift tvOS.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -514,43 +426,6 @@
 			productReference = A9B439791A3A53C70052690A /* PlanetSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C4A28FA01BDD208300D4713C /* PlanetSwift tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C4A28FB21BDD208300D4713C /* Build configuration list for PBXNativeTarget "PlanetSwift tvOS" */;
-			buildPhases = (
-				C4A28FB81BDD208F00D4713C /* GAXB */,
-				C4A28F9F1BDD208300D4713C /* Resources */,
-				C4A28F9C1BDD208300D4713C /* Sources */,
-				C4A28F9E1BDD208300D4713C /* Headers */,
-				C4A28F9D1BDD208300D4713C /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "PlanetSwift tvOS";
-			productName = "PlanetSwift tvOS";
-			productReference = C4A28FA11BDD208300D4713C /* PlanetSwift.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C4A28FA91BDD208300D4713C /* PlanetSwift tvOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C4A28FB51BDD208300D4713C /* Build configuration list for PBXNativeTarget "PlanetSwift tvOSTests" */;
-			buildPhases = (
-				C4A28FA61BDD208300D4713C /* Sources */,
-				C4A28FA71BDD208300D4713C /* Frameworks */,
-				C4A28FA81BDD208300D4713C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C4A28FAD1BDD208300D4713C /* PBXTargetDependency */,
-			);
-			name = "PlanetSwift tvOSTests";
-			productName = "PlanetSwift tvOSTests";
-			productReference = C4A28FAA1BDD208300D4713C /* PlanetSwift tvOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -570,12 +445,6 @@
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 0800;
 					};
-					C4A28FA01BDD208300D4713C = {
-						CreatedOnToolsVersion = 7.1;
-					};
-					C4A28FA91BDD208300D4713C = {
-						CreatedOnToolsVersion = 7.1;
-					};
 				};
 			};
 			buildConfigurationList = A9B439681A3A53C70052690A /* Build configuration list for PBXProject "PlanetSwift" */;
@@ -592,8 +461,6 @@
 			targets = (
 				A9B4396D1A3A53C70052690A /* PlanetSwift */,
 				A9B439781A3A53C70052690A /* PlanetSwiftTests */,
-				C4A28FA01BDD208300D4713C /* PlanetSwift tvOS */,
-				C4A28FA91BDD208300D4713C /* PlanetSwift tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -607,20 +474,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A9B439771A3A53C70052690A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C4A28F9F1BDD208300D4713C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C4A28FA81BDD208300D4713C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -643,20 +496,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p \"$PROJECT_DIR/Generated\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated\"";
-		};
-		C4A28FB81BDD208F00D4713C /* GAXB */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = GAXB;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "GAXB_EXEC=\"$PROJECT_DIR/Tools/gaxb\"\nmkdir -p \"$PROJECT_DIR/Generated\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated\"\n\nmkdir -p \"$PROJECT_DIR/Generated_tvOS\"\n\"$GAXB_EXEC\" swift \"$PROJECT_DIR/XMLSchema/PlanetSwift_tvOS.xsd\" -t \"$PROJECT_DIR/template\" -o \"$PROJECT_DIR/Generated_tvOS\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -746,72 +585,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4A28F9C1BDD208300D4713C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C4A290CE1BDD26A700D4713C /* VisualEffectViewBase.swift in Sources */,
-				C4A290CB1BDD26A700D4713C /* View.swift in Sources */,
-				C4A2909F1BDD249200D4713C /* PlanetViewController.swift in Sources */,
-				C4A2908A1BDD247000D4713C /* PlanetUIBase.swift in Sources */,
-				C4A290C71BDD26A700D4713C /* TextField.swift in Sources */,
-				C4A290AC1BDD268200D4713C /* Control.swift in Sources */,
-				C4A290CC1BDD26A700D4713C /* ViewBase.swift in Sources */,
-				C4A290BE1BDD269100D4713C /* PanGestureRecognizer.swift in Sources */,
-				C4A290B61BDD269100D4713C /* NetworkImageView.swift in Sources */,
-				C4A290A71BDD268200D4713C /* ButtonBase.swift in Sources */,
-				C4A290B91BDD269100D4713C /* NotificationBase.swift in Sources */,
-				C4A2909E1BDD249200D4713C /* ImageCache.swift in Sources */,
-				C4A290C61BDD26A700D4713C /* SegmentedControlBase.swift in Sources */,
-				C4A290A21BDD249800D4713C /* PlanetNetworkImageView.swift in Sources */,
-				C4A290C21BDD269B00D4713C /* SceneBase.swift in Sources */,
-				C4A290BF1BDD269100D4713C /* PanGestureRecognizerBase.swift in Sources */,
-				C4A290AD1BDD268200D4713C /* ControlBase.swift in Sources */,
-				C4A290B81BDD269100D4713C /* Notification.swift in Sources */,
-				C4A290BA1BDD269100D4713C /* Object.swift in Sources */,
-				C4A290A91BDD268200D4713C /* CollectionViewBase.swift in Sources */,
-				C4A290A51BDD268200D4713C /* ActivityIndicatorViewBase.swift in Sources */,
-				C4A290B51BDD269100D4713C /* LabelBase.swift in Sources */,
-				C4A290C51BDD26A700D4713C /* SegmentedControl.swift in Sources */,
-				C4A290AB1BDD268200D4713C /* ConstraintBase.swift in Sources */,
-				C4A290A31BDD249800D4713C /* PlanetButton.swift in Sources */,
-				C4A290B31BDD269100D4713C /* ImageViewBase.swift in Sources */,
-				C4A290B01BDD269100D4713C /* GestureRecognizer.swift in Sources */,
-				C4A290A01BDD249200D4713C /* NotificationHandler.swift in Sources */,
-				C4A290C01BDD269500D4713C /* PlanetUI.swift in Sources */,
-				C4A290CA1BDD26A700D4713C /* TextViewBase.swift in Sources */,
-				C4A290991BDD248000D4713C /* AEXML.swift in Sources */,
-				C4A290B41BDD269100D4713C /* Label.swift in Sources */,
-				C4A290A81BDD268200D4713C /* CollectionView.swift in Sources */,
-				C4A2909C1BDD248500D4713C /* String+Bundle.swift in Sources */,
-				C4A2909D1BDD249200D4713C /* PlanetSwiftConfiguration.swift in Sources */,
-				C4A290A61BDD268200D4713C /* Button.swift in Sources */,
-				C4A2909A1BDD248500D4713C /* GaxbTypes.swift in Sources */,
-				C4A290AE1BDD268200D4713C /* Controller.swift in Sources */,
-				C4A290B71BDD269100D4713C /* NetworkImageViewBase.swift in Sources */,
-				C4A290C11BDD269B00D4713C /* Scene.swift in Sources */,
-				C4A290C91BDD26A700D4713C /* TextView.swift in Sources */,
-				C4A290B11BDD269100D4713C /* GestureRecognizerBase.swift in Sources */,
-				C4A290BB1BDD269100D4713C /* ObjectBase.swift in Sources */,
-				C4A290A11BDD249800D4713C /* PlanetView.swift in Sources */,
-				C4A290A41BDD268200D4713C /* ActivityIndicatorView.swift in Sources */,
-				C4A290CD1BDD26A700D4713C /* VisualEffectView.swift in Sources */,
-				C4A290C81BDD26A700D4713C /* TextFieldBase.swift in Sources */,
-				C4A290AA1BDD268200D4713C /* Constraint.swift in Sources */,
-				C4A290B21BDD269100D4713C /* ImageView.swift in Sources */,
-				C4A290AF1BDD268200D4713C /* ControllerBase.swift in Sources */,
-				C4A2909B1BDD248500D4713C /* Gaxb.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C4A28FA61BDD208300D4713C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C4A28FB01BDD208300D4713C /* PlanetSwift_tvOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -819,11 +592,6 @@
 			isa = PBXTargetDependency;
 			target = A9B4396D1A3A53C70052690A /* PlanetSwift */;
 			targetProxy = A9B4397B1A3A53C70052690A /* PBXContainerItemProxy */;
-		};
-		C4A28FAD1BDD208300D4713C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C4A28FA01BDD208300D4713C /* PlanetSwift tvOS */;
-			targetProxy = C4A28FAC1BDD208300D4713C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1007,82 +775,6 @@
 			};
 			name = Release;
 		};
-		C4A28FB31BDD208300D4713C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "PlanetSwift tvOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smallplanet.PlanetSwift-tvOS";
-				PRODUCT_NAME = PlanetSwift;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		C4A28FB41BDD208300D4713C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "PlanetSwift tvOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smallplanet.PlanetSwift-tvOS";
-				PRODUCT_NAME = PlanetSwift;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		C4A28FB61BDD208300D4713C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "PlanetSwift tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smallplanet.PlanetSwift-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		C4A28FB71BDD208300D4713C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "PlanetSwift tvOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.smallplanet.PlanetSwift-tvOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1109,24 +801,6 @@
 			buildConfigurations = (
 				A9B439881A3A53C70052690A /* Debug */,
 				A9B439891A3A53C70052690A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C4A28FB21BDD208300D4713C /* Build configuration list for PBXNativeTarget "PlanetSwift tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C4A28FB31BDD208300D4713C /* Debug */,
-				C4A28FB41BDD208300D4713C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C4A28FB51BDD208300D4713C /* Build configuration list for PBXNativeTarget "PlanetSwift tvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C4A28FB61BDD208300D4713C /* Debug */,
-				C4A28FB71BDD208300D4713C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
