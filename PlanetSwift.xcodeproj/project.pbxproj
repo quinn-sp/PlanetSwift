@@ -20,6 +20,7 @@
 		79AEF3981A72E6A3006B76E4 /* VisualEffectViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */; };
 		7F01F2321B4344970075D7A7 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01F2301B4344970075D7A7 /* DatePicker.swift */; };
 		7F01F2331B4344970075D7A7 /* DatePickerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01F2311B4344970075D7A7 /* DatePickerBase.swift */; };
+		957DE1E91DE3884A005859B8 /* PlanetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DE1E81DE3884A005859B8 /* PlanetLabel.swift */; };
 		9B77E4C11A7975DD001DF00B /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4BF1A7975DD001DF00B /* TextView.swift */; };
 		9B77E4C21A7975DD001DF00B /* TextViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B77E4C01A7975DD001DF00B /* TextViewBase.swift */; };
 		9B8E9A791A70036800D64615 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E9A781A70036800D64615 /* PlanetViewController.swift */; };
@@ -107,6 +108,7 @@
 		79AEF3961A72E6A3006B76E4 /* VisualEffectViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectViewBase.swift; sourceTree = "<group>"; };
 		7F01F2301B4344970075D7A7 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		7F01F2311B4344970075D7A7 /* DatePickerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerBase.swift; sourceTree = "<group>"; };
+		957DE1E81DE3884A005859B8 /* PlanetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetLabel.swift; sourceTree = "<group>"; };
 		9B77E4BF1A7975DD001DF00B /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		9B77E4C01A7975DD001DF00B /* TextViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewBase.swift; sourceTree = "<group>"; };
 		9B8E9A781A70036800D64615 /* PlanetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				9B9AC0921A6EB55C0098F7E4 /* PlanetView.swift */,
 				9B9AC0941A6EB5D00098F7E4 /* PlanetNetworkImageView.swift */,
 				796C6AD91A70356D00D87C38 /* PlanetButton.swift */,
+				957DE1E81DE3884A005859B8 /* PlanetLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */,
 				65E820081B66BD16000B27F9 /* SwitchBase.swift in Sources */,
 				A9B439A01A3B40B70052690A /* ViewBase.swift in Sources */,
+				957DE1E91DE3884A005859B8 /* PlanetLabel.swift in Sources */,
 				9BC9743F1A7022FC002F0295 /* ControllerBase.swift in Sources */,
 				796C6ADA1A70356D00D87C38 /* PlanetButton.swift in Sources */,
 				C4C060FC1AA37675004D39EC /* PanGestureRecognizer.swift in Sources */,

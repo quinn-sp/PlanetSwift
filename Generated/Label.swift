@@ -12,14 +12,14 @@ private var _localizable = Set<String>()
 
 public class Label: LabelBase {
     
-    lazy public var label = UILabel()
+    lazy public var label: PlanetLabel = PlanetLabel()
     override public var view: UIView {
         get {
             return label
         }
         set {
-            if newValue is UILabel {
-                label = newValue as! UILabel
+            if newValue is PlanetLabel {
+                label = newValue as! PlanetLabel
             }
         }
     }
