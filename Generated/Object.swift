@@ -27,7 +27,7 @@ public class Object: ObjectBase {
     }
     
     public func elementForId(_ identifier: String) -> GaxbElement? {
-        return objectForId(identifier) as? GaxbElement
+        return objectForId(identifier)
     }
     
     public func setObjectForId(_ identifier:String, object:Object) {
