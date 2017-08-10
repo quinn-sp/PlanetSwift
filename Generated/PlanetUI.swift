@@ -130,7 +130,7 @@ extension PlanetUI {
         }
         return names
     }
-	public class func GCDDelay(_ delayAmount:Double, block:@escaping ((Void)->Void)) {
+	public class func GCDDelay(_ delayAmount:Double, block:@escaping (()->Void)) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayAmount, execute: block)
 	}
 }

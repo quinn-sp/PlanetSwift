@@ -10,7 +10,7 @@ import UIKit
 
 public class PlanetButton: UIButton {
     
-    public var touchUpInsideHandler: ((Void) -> Void)?
+    public var touchUpInsideHandler: (() -> Void)?
     
 	var isToggle = false
     
