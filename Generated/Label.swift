@@ -84,7 +84,7 @@ public class Label: LabelBase {
         
         if _paragraphStyle != nil {
             let attributedString = NSMutableAttributedString(string: localizedText)
-            let attributes = [NSParagraphStyleAttributeName : paragraphStyle]
+            let attributes = [NSAttributedStringKey.paragraphStyle : paragraphStyle]
             attributedString.setAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
             label.attributedText = attributedString
         } else {

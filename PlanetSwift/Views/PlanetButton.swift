@@ -84,7 +84,7 @@ public class PlanetButton: UIButton {
         }
     }
     
-    func touchUpInside(_ sender: UIButton!) {
+    @objc func touchUpInside(_ sender: UIButton!) {
         if isToggle {
             isSelected = !isSelected
         }

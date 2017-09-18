@@ -36,12 +36,12 @@ public class View: ViewBase, CustomPlaygroundQuickLookable {
             view.contentMode = UIViewContentMode.fromPlanetUIContentMode(contentMode!)
         }
 		if contentHuggingPriority != nil {
-			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.x), for: .horizontal)
-			view.setContentHuggingPriority(UILayoutPriority(contentHuggingPriority!.y), for: .vertical)
+            view.setContentHuggingPriority(UILayoutPriority(Float(contentHuggingPriority!.x)), for: .horizontal)
+            view.setContentHuggingPriority(UILayoutPriority(Float(contentHuggingPriority!.y)), for: .vertical)
 		}
 		if contentCompressionResistancePriority != nil {
-			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.x), for: .horizontal)
-			view.setContentCompressionResistancePriority(UILayoutPriority(contentCompressionResistancePriority!.y), for: .vertical)
+            view.setContentCompressionResistancePriority(UILayoutPriority(Float(contentCompressionResistancePriority!.x)), for: .horizontal)
+            view.setContentCompressionResistancePriority(UILayoutPriority(Float(contentCompressionResistancePriority!.y)), for: .vertical)
 		}
         if borderColor != nil {
             view.layer.borderColor = borderColor!.cgColor

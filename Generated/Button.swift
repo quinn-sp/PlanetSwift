@@ -21,11 +21,11 @@ public class Button: ButtonBase {
 
     public func updateBackgroundColor(_ color: UIColor?, forstate state: UIControlState) {
         switch state {
-        case UIControlState.normal: button.backgroundColor = color
-        case UIControlState.selected: button.backgroundColorSelected = color
-        case UIControlState.highlighted: button.backgroundColorHighlighted = color
-        case UIControlState.disabled: button.backgroundColorDisabled = color
-        case [UIControlState.selected, UIControlState.highlighted]: button.backgroundColorSelectedHighlighted = color
+        case .normal: button.backgroundColor = color
+        case .selected: button.backgroundColorSelected = color
+        case .highlighted: button.backgroundColorHighlighted = color
+        case .disabled: button.backgroundColorDisabled = color
+        case [.selected, .highlighted]: button.backgroundColorSelectedHighlighted = color
         default: break
         }
     }
@@ -122,11 +122,18 @@ public class Button: ButtonBase {
             let extensionLength = imageSet.components(separatedBy: ".").last?.characters.count ?? 0
             let insertPosition = pathLength - extensionLength - ( extensionLength > 0 ? 1 : 0 )
 
-            let normalPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_normal" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
-            let highlightedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_highlighted" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
-            let selectedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_selected" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
-            let selectedHighlightedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_selected_highlighted" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
-            let disabledPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_disabled" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
+           
+            //let normalPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_normal" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
+            //let highlightedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_highlighted" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
+            let normalPath = String(imageSet[..<imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)]) + "_normal" + String(imageSet[imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)...])
+            let highlightedPath = String(imageSet[..<imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)]) + "_highlighted" + String(imageSet[imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)...])
+            let selectedPath = String(imageSet[..<imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)]) + "_selected" + String(imageSet[imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)...])
+            let selectedHighlightedPath = String(imageSet[..<imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)]) + "_selected_highlighted" + String(imageSet[imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)...])
+            let disabledPath = String(imageSet[..<imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)]) + "_disabled" + String(imageSet[imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)...])
+            
+//            let selectedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_selected" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
+//            let selectedHighlightedPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_selected_highlighted" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
+//            let disabledPath = imageSet.substring(to: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition)) + "_disabled" + imageSet.substring(from: imageSet.characters.index(imageSet.startIndex, offsetBy: insertPosition))
 
             var img = UIImage(contentsOfFile: String(bundlePath: normalPath)) ?? UIImage(contentsOfFile: String(bundlePath: imageSet))
             button.setImage(img, for: UIControlState())
@@ -145,11 +152,17 @@ public class Button: ButtonBase {
             let extensionLength = backgroundImageSet.components(separatedBy: ".").last?.characters.count ?? 0
             let insertPosition = pathLength - extensionLength - (extensionLength > 0 ? 1 : 0)
 
-            let normalPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_normal" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
-            let highlightedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_highlighted" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
-            let selectedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_selected" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
-            let selectedHighlightedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_selected_highlighted" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
-            let disabledPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_disabled" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
+            let normalPath = String(backgroundImageSet[..<backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)]) + "_normal" + String(backgroundImageSet[backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)...])
+            let highlightedPath = String(backgroundImageSet[..<backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)]) + "_highlighted" + String(backgroundImageSet[backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)...])
+            let selectedPath = String(backgroundImageSet[..<backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)]) + "_selected" + String(backgroundImageSet[backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)...])
+            let selectedHighlightedPath = String(backgroundImageSet[..<backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)]) + "_selected_highlighted" + String(backgroundImageSet[backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)...])
+            let disabledPath = String(backgroundImageSet[..<backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)]) + "_disabled" + String(backgroundImageSet[backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)...])
+
+//            let normalPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_normal" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
+//            let highlightedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_highlighted" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
+//            let selectedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_selected" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
+//            let selectedHighlightedPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_selected_highlighted" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
+//            let disabledPath = backgroundImageSet.substring(to: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)) + "_disabled" + backgroundImageSet.substring(from: backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition))
 
             var img = UIImage(contentsOfFile: String(bundlePath: normalPath)) ?? UIImage(contentsOfFile: String(bundlePath: backgroundImageSet))
             button.setBackgroundImage(img, for: UIControlState())

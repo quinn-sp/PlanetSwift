@@ -55,7 +55,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 class GestureRecognizerHelper: NSObject {
 	weak var delegate: GestureRecognizer?
 	
-	func recognizerStateDidChange(_ recognizer:UIGestureRecognizer) {
+    @objc func recognizerStateDidChange(_ recognizer:UIGestureRecognizer) {
 		delegate?.recognizerStateDidChange(recognizer)
 	}
 }

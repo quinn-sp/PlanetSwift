@@ -198,7 +198,8 @@ extension UIColor {
     public convenience init(gaxbString: String) {
         var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
         if gaxbString.hasPrefix("#") {
-            let substring = gaxbString.substring(from: gaxbString.characters.index(gaxbString.startIndex, offsetBy: 1))
+            // let substring = gaxbString.substring(from: gaxbString.characters.index(gaxbString.startIndex, offsetBy: 1))
+            let substring = String(gaxbString[gaxbString.characters.index(gaxbString.startIndex, offsetBy: 1)...])
             var hexNumber:UInt32 = 0;
             let _ = Scanner(string: substring).scanHexInt32(&hexNumber)
             switch substring.characters.count {

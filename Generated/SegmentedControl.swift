@@ -29,21 +29,21 @@ public class SegmentedControl: SegmentedControlBase {
         var attributes: [NSObject : AnyObject] = Dictionary()
         if state == UIControlState() {
             if textColorNormal != nil {
-                attributes.updateValue(textColorNormal!, forKey: NSForegroundColorAttributeName as NSObject)
+                attributes.updateValue(textColorNormal!, forKey: NSAttributedStringKey.foregroundColor as NSObject)
             }
             if fontNormal != nil {
                 let font = UIFont(name: fontNormal!, size:CGFloat(fontSizeNormal))!
-                attributes.updateValue(font, forKey: NSFontAttributeName as NSObject)
+                attributes.updateValue(font, forKey: NSAttributedStringKey.font as NSObject)
             }
             return attributes
         }
         if state == UIControlState.selected {
             if textColorSelected != nil {
-                attributes.updateValue(textColorSelected!, forKey: NSForegroundColorAttributeName as NSObject)
+                attributes.updateValue(textColorSelected!, forKey: NSAttributedStringKey.foregroundColor as NSObject)
             }
             if fontSelected != nil {
                 let font = UIFont(name: fontSelected!, size:CGFloat(fontSizeSelected))!
-                attributes.updateValue(font, forKey: NSFontAttributeName as NSObject)
+                attributes.updateValue(font, forKey: NSAttributedStringKey.font as NSObject)
             }
             return attributes
         }
