@@ -98,7 +98,7 @@ public extension PlanetCollectionViewCell where Self: UICollectionReusableView {
     }
 }
 
-open class PlanetCollectionViewController: PlanetViewController {
+open class PlanetCollectionViewController: PlanetViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak open var collectionView: UICollectionView!
     open var cellReferences = [String: PlanetCollectionViewCell]()
@@ -143,11 +143,11 @@ open class PlanetCollectionViewController: PlanetViewController {
         switch template.size.width {
         case .Unconstrained: break
         case .Full:
-            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
+            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAt: indexPath.section)
             let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: collectionView.frame.size.width - insets.left - insets.right)
             xmlView.view.addConstraint(constraint)
         case .Half:
-            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
+            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAt: indexPath.section)
             let constant = (collectionView.frame.size.width - insets.left - insets.right - max(insets.right, insets.left)) / 2
             let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: floor(constant))
             xmlView.view.addConstraint(constraint)
@@ -159,7 +159,7 @@ open class PlanetCollectionViewController: PlanetViewController {
         switch template.size.height {
         case .Unconstrained: break
         case .Full:
-            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAtIndex: indexPath.section)
+            let insets = collectionView(collectionView, layout: collectionView.collectionViewLayout, insetForSectionAt: indexPath.section)
             let constraint = NSLayoutConstraint(item: xmlView.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: collectionView.frame.size.height - insets.top - insets.bottom)
             xmlView.view.addConstraint(constraint)
         case .Half:  // FIXME:
@@ -206,7 +206,7 @@ open class PlanetCollectionViewController: PlanetViewController {
         }
     }
     
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var size = cellSize(indexPath) ?? CGSize.zero
         if let template = cellObject(indexPath), size == CGSize.zero {
             let reuseId = reuseIdentifier(indexPath)
@@ -233,7 +233,7 @@ open class PlanetCollectionViewController: PlanetViewController {
         return size
     }
     
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: section == 0 ? 64 : 0, left: 0, bottom: 0, right: 0)
     }
     
