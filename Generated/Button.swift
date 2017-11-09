@@ -118,8 +118,8 @@ public class Button: ButtonBase {
         }
 
         if let imageSet = imageSet {
-            let pathLength = imageSet.characters.count
-            let extensionLength = imageSet.components(separatedBy: ".").last?.characters.count ?? 0
+            let pathLength = imageSet.count
+            let extensionLength = imageSet.components(separatedBy: ".").last?.count ?? 0
             let insertPosition = pathLength - extensionLength - ( extensionLength > 0 ? 1 : 0 )
 
            
@@ -148,8 +148,8 @@ public class Button: ButtonBase {
         }
 
         if let backgroundImageSet = backgroundImageSet {
-            let pathLength = backgroundImageSet.characters.count
-            let extensionLength = backgroundImageSet.components(separatedBy: ".").last?.characters.count ?? 0
+            let pathLength = backgroundImageSet.count
+            let extensionLength = backgroundImageSet.components(separatedBy: ".").last?.count ?? 0
             let insertPosition = pathLength - extensionLength - (extensionLength > 0 ? 1 : 0)
 
             let normalPath = String(backgroundImageSet[..<backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)]) + "_normal" + String(backgroundImageSet[backgroundImageSet.characters.index(backgroundImageSet.startIndex, offsetBy: insertPosition)...])

@@ -199,10 +199,10 @@ extension UIColor {
         var (r,g,b,a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 1.0)
         if gaxbString.hasPrefix("#") {
             // let substring = gaxbString.substring(from: gaxbString.characters.index(gaxbString.startIndex, offsetBy: 1))
-            let substring = String(gaxbString[gaxbString.characters.index(gaxbString.startIndex, offsetBy: 1)...])
+            let substring = String(gaxbString[gaxbString.index(gaxbString.startIndex, offsetBy: 1)...])
             var hexNumber:UInt32 = 0;
             let _ = Scanner(string: substring).scanHexInt32(&hexNumber)
-            switch substring.characters.count {
+            switch substring.count {
             case 8:
                 r = CGFloat((hexNumber & 0xFF000000) >> 24) / 255.0
                 g = CGFloat((hexNumber & 0x00FF0000) >> 16) / 255.0

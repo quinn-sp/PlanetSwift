@@ -98,7 +98,7 @@ public class Label: LabelBase {
     }
     
     func checkUnlocalized(_ text: String?, localized: String) {
-        guard let text = text, text.characters.count > 0 && _findLocalizable else { return }
+        guard let text = text, text.count > 0 && _findLocalizable else { return }
         guard text == localized else { return }
         let output = "\"\(text)\" = \"\(localized)\";"
         _localizable.insert(output)
