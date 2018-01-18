@@ -182,6 +182,7 @@
                 <attribute name="onRightButton" type="string" use="optional"/>
                 <attribute name="maxCount" type="decimal" use="optional"/>
                 <attribute name="showMaxCount" type="boolean" use="optional"/>
+                <attribute name="keyboardType" type="string" use="optional"/>
 			</extension>
 		</complexContent>
 	</complexType>

@@ -32,7 +32,6 @@ public class TextView: TextViewBase {
 		if let text = text {
 			textView.text = text
 		}
-        print("tv gaxb")
 		if let fontName = fontName {
             #if os(iOS)
                 textView.font = UIFont(name: fontName, size: UIFont.systemFontSize)
@@ -66,6 +65,12 @@ public class TextView: TextViewBase {
         if leftButtonText != nil  || rightButtonText != nil {
             attachToolBar()
         }
+        
+        // keyboard type
+        
+        if let keyboardType = keyboardType {
+            updateKeyboardType(keyboardType)
+        }
 	}
 	
 	func textViewDidChange(_ textView: UITextView) {
@@ -93,8 +98,8 @@ public class TextView: TextViewBase {
         // Logic here to compute if there's a max count and if the text has exceeded it,
         // do not allow any more editing.
         
-        if let maxCount = maxCount {
-            if text.count > Int(maxCount)-1 {
+        if hasReachedMaxCount() {
+            if text.count > Int(maxCount!)-1 {
                 return false
             }
         }
@@ -102,10 +107,14 @@ public class TextView: TextViewBase {
         return true
     }
 	
-	func doNotification(_ note: String) {
+    func doNotification(_ note: String, _ userInfo: [String:String]? = nil) {
 		let (scopeObject, name) = self.parseNotification(note)
 		if name != nil {
-			NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
+            if userInfo == nil {
+                NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject)
+            } else {
+                NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject, userInfo: userInfo)
+            }
 		}
 	}
     
@@ -150,21 +159,77 @@ public class TextView: TextViewBase {
 // Toolbar Action Methods
     
     @objc func leftButtonAction() {
-        
         if onLeftButton != nil {
-            doNotification(onLeftButton!)
+            let userInfo : [String:String] = ["value":leftButtonText!]
+            doNotification(onLeftButton!,userInfo)
         }
-        
     }
     
     @objc func rightButtonAction() {
-        
         if onRightButton != nil {
-            doNotification(onRightButton!)
+            let userInfo : [String:String]? = hasReachedMaxCount() ? ["value":textView.text] : nil
+            doNotification(onRightButton!,userInfo)
         }
     }
     
+// Helper Methods
     
+// will check if there is a max count specified (that's non trivial) and if the current text
+// has reached the max.
+    
+    func hasReachedMaxCount() -> Bool {
+        
+        if let maxCount = maxCount, maxCount > 0 {
+            if textView.text.count == Int(maxCount) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+// Update keyboard Type
+    
+    public func updateKeyboardType(_ newKeyboardType: String?) {
+        if let newKeyboardType = newKeyboardType {
+            
+            switch(newKeyboardType) {
+            case "default":
+                textView.keyboardType = UIKeyboardType.default
+            case "asciiCapable":
+                textView.keyboardType = UIKeyboardType.asciiCapable
+            case "numbersAndPunctuation":
+                textView.keyboardType = UIKeyboardType.numbersAndPunctuation
+            case "URL":
+                textView.keyboardType = UIKeyboardType.URL
+            case "numberPad":
+                textView.keyboardType = UIKeyboardType.numberPad
+            case "phonePad":
+                textView.keyboardType = UIKeyboardType.phonePad
+            case "namePhonePad":
+                textView.keyboardType = UIKeyboardType.namePhonePad
+            case "emailAddress":
+                textView.keyboardType = UIKeyboardType.emailAddress
+            case "decimalPad":
+                textView.keyboardType = UIKeyboardType.decimalPad
+            case "twitter":
+                textView.keyboardType = UIKeyboardType.twitter
+            case "webSearch":
+                textView.keyboardType = UIKeyboardType.webSearch
+            case "asciiCapableNumberPad":
+                if #available(iOS 10.0, *) {
+                    textView.keyboardType = UIKeyboardType.asciiCapableNumberPad
+                } else {
+                    // Fallback on default
+                    textView.keyboardType = UIKeyboardType.default
+                }
+            default:
+                textView.keyboardType = UIKeyboardType.default
+            }
+            
+        }
+    }
+
     
 // Toolbar Update Methods
     
@@ -179,6 +244,8 @@ public class TextView: TextViewBase {
     public func updateLeftButtonText(_ newText: String?) {
     
         if let barButtonItems = textViewToolbar.items, let newText = newText {
+            
+            leftButtonText = newText
             
             var updatedBarButtonItems : [UIBarButtonItem] = []
             let leftBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(leftButtonAction))
@@ -203,6 +270,8 @@ public class TextView: TextViewBase {
     public func updateRightButtonText(_ newText: String?) {
         
         if let barButtonItems = textViewToolbar.items, let newText = newText {
+            
+            rightButtonText = newText
             
             var updatedBarButtonItems : [UIBarButtonItem] = []
             let rightBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(rightButtonAction))
