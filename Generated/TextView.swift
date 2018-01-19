@@ -65,7 +65,8 @@ public class TextView: TextViewBase {
         if leftButtonText != nil  || rightButtonText != nil {
             attachToolBar()
         }
-        
+	}
+	
         // keyboard type
         
         if let keyboardType = keyboardType {
@@ -115,9 +116,9 @@ public class TextView: TextViewBase {
             } else {
                 NotificationCenter.`default`.post(name: Foundation.Notification.Name(rawValue: name!), object: scopeObject, userInfo: userInfo)
             }
-		}
+        }
 	}
-    
+        
     public func updateText(_ newText: String?) {
         text = newText
         gaxbPrepare()
@@ -290,10 +291,95 @@ public class TextView: TextViewBase {
 }
 
 private class TextViewDelegateHelper : NSObject, UITextViewDelegate {
+        
+        if let rightButtonText = rightButtonText {
+            let rightBarButton: UIBarButtonItem = UIBarButtonItem(title: rightButtonText, style: .done, target: self, action:#selector(rightButtonAction))
+            barButtonItems.append(rightBarButton)
+        }
+        
+	@objc func textViewDidChange(_ textView: UITextView) {
+        
+        textView.inputAccessoryView = textViewToolbar
+    }
+    
+// Toolbar Action Methods
+    
+    @objc func leftButtonAction() {
+        
+        if onLeftButton != nil {
+            doNotification(onLeftButton!)
+        }
+        
+    }
+    
+    @objc func rightButtonAction() {
+        
+        if onRightButton != nil {
+            doNotification(onRightButton!)
+        }
+    }
+    
+    
+    
+// Toolbar Update Methods
+    
+    public func updateMaxCount(_ newMaxCount: Double?) {
+        maxCount = newMaxCount
+    }
+    
+    public func updateShowMaxCount(_ newShowMaxCount: Bool?) {
+        showMaxCount = newShowMaxCount
+    }
+    
+    public func updateLeftButtonText(_ newText: String?) {
+    
+        if let barButtonItems = textViewToolbar.items, let newText = newText {
+            
+            var updatedBarButtonItems : [UIBarButtonItem] = []
+            let leftBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(leftButtonAction))
+            
+            if showMaxCount ?? false {
+                leftBarButton.isEnabled = false
+            } else {
+                leftBarButton.isEnabled = true
+            }
+            
+            updatedBarButtonItems.append(leftBarButton)
+            updatedBarButtonItems.append(barButtonItems[1])
+            updatedBarButtonItems.append(barButtonItems[2])
+            
+            textViewToolbar.items = updatedBarButtonItems
+            textViewToolbar.sizeToFit()
+            
+            // gaxbPrepare()
+        }
+    }
+    
+    public func updateRightButtonText(_ newText: String?) {
+        
+        if let barButtonItems = textViewToolbar.items, let newText = newText {
+            
+            var updatedBarButtonItems : [UIBarButtonItem] = []
+            let rightBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(rightButtonAction))
+            
+            updatedBarButtonItems.append(barButtonItems[0])
+            updatedBarButtonItems.append(barButtonItems[1])
+            updatedBarButtonItems.append(rightBarButton)
+            
+            textViewToolbar.items = updatedBarButtonItems
+            textViewToolbar.sizeToFit()
+            
+            // gaxbPrepare()
+        }
+    }
+    
+}
+
+private class TextViewDelegateHelper : NSObject, UITextViewDelegate {
 	
 	weak var delegate:TextView?
 	
-	@objc func textViewDidChange(_ textView: UITextView) {
+	@objc func textViewDidChange(textView: UITextView) {
 		
 		if delegate != nil {
 			delegate?.textViewDidChange(textView)
