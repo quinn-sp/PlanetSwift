@@ -240,6 +240,10 @@ public class TextView: TextViewBase {
     
     public func updateShowMaxCount(_ newShowMaxCount: Bool?) {
         showMaxCount = newShowMaxCount
+        
+        if showMaxCount! {
+            self.updateLeftButtonText(String(Int(maxCount!)))
+        }
     }
     
     public func updateLeftButtonText(_ newText: String?) {
