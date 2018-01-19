@@ -168,12 +168,31 @@ public class TextView: TextViewBase {
     
     @objc func rightButtonAction() {
         if onRightButton != nil {
-            let userInfo : [String:String]? = hasReachedMaxCount() ? ["value":textView.text] : nil
+            let userInfo : [String:String]? = shouldAttachTextToNotification() ? ["value":textView.text] : nil
             doNotification(onRightButton!,userInfo)
         }
     }
     
 // Helper Methods
+    
+// checks if text value should be included in notification., only check if max count has been met if the max count is required
+// to attach, if the max count is NOT required, then just ensure the text has at least one character.
+    
+    func shouldAttachTextToNotification() -> Bool {
+        
+        if let requireMaxCount = requireMaxCount {
+            if requireMaxCount && hasReachedMaxCount() {
+                return true
+            }
+            
+            if !requireMaxCount && textView.text.count > 0 {
+                return true
+            }
+        }
+    
+        return false
+    }
+    
     
 // will check if there is a max count specified (that's non trivial) and if the current text
 // has reached the max.
@@ -244,6 +263,10 @@ public class TextView: TextViewBase {
         if showMaxCount! {
             self.updateLeftButtonText(String(Int(maxCount!)))
         }
+    }
+    
+    public func updateRequireMaxCount(_ newRequireMaxCount: Bool?) {
+        requireMaxCount = newRequireMaxCount
     }
     
     public func updateLeftButtonText(_ newText: String?) {
