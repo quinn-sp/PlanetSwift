@@ -71,6 +71,10 @@ public class TextView: TextViewBase {
         if let keyboardType = keyboardType {
             updateKeyboardType(keyboardType)
         }
+        
+        if forceKeyboard ?? false {
+            textView.becomeFirstResponder()
+        }
 	}
     
 	

@@ -184,6 +184,7 @@
         <attribute name="showMaxCount" type="boolean" use="optional"/>
 				<attribute name="requireMaxCount" type="boolean" use="optional"/>
         <attribute name="keyboardType" type="string" use="optional"/>
+				<attribute name="forceKeyboard" type="boolean" use="optional"/>
 			</extension>
 		</complexContent>
 	</complexType>
