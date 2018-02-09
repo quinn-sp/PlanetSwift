@@ -135,11 +135,15 @@ public class TextView: TextViewBase {
         var barButtonItems : [UIBarButtonItem] = []
     
         textViewToolbar.barStyle = .default
+        textViewToolbar.barTintColor = UIColor.white
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         if let leftButtonText = leftButtonText {
-            let leftBarButton: UIBarButtonItem = UIBarButtonItem(title: leftButtonText, style: .done, target: self, action:#selector(leftButtonAction))
+            let leftBarButton = generateLeftBarButton(leftButtonText)
+            
+            // Logic to control the enabled/disabled state depending on whether we are showing a counter
+            // or a proper button.
             
             if showMaxCount ?? false {
                 leftBarButton.isEnabled = false
@@ -151,7 +155,7 @@ public class TextView: TextViewBase {
         }
         
         if let rightButtonText = rightButtonText {
-            let rightBarButton: UIBarButtonItem = UIBarButtonItem(title: rightButtonText, style: .done, target: self, action:#selector(rightButtonAction))
+            let rightBarButton = generateRightBarButton(rightButtonText)
             barButtonItems.append(rightBarButton)
         }
         
@@ -159,6 +163,27 @@ public class TextView: TextViewBase {
         textViewToolbar.sizeToFit()
         
         textView.inputAccessoryView = textViewToolbar
+    }
+    
+// Bar Button Generation
+    
+    func generateLeftBarButton(_ title: String) -> UIBarButtonItem {
+        let leftBarButton = UIBarButtonItem()
+        leftBarButton.target = self
+        leftBarButton.action = #selector(leftButtonAction)
+        leftBarButton.title = title
+        
+        return leftBarButton
+    }
+    
+    func generateRightBarButton(_ title: String) -> UIBarButtonItem {
+
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.target = self
+        rightBarButton.action = #selector(rightButtonAction)
+        rightBarButton.title = title
+        
+        return rightBarButton
     }
     
 // Toolbar Action Methods
@@ -280,18 +305,24 @@ public class TextView: TextViewBase {
             leftButtonText = newText
             
             var updatedBarButtonItems : [UIBarButtonItem] = []
-            let leftBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(leftButtonAction))
+            // let leftBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(leftButtonAction))
             
-            if showMaxCount ?? false {
-                leftBarButton.isEnabled = false
-            } else {
-                leftBarButton.isEnabled = true
+            var leftBarButton : UIBarButtonItem? = UIBarButtonItem()
+            if let leftButtonText = leftButtonText {
+                leftBarButton = generateLeftBarButton(leftButtonText)
+            
+                if showMaxCount ?? false {
+                    leftBarButton?.isEnabled = false
+                } else {
+                    leftBarButton?.isEnabled = true
+                }
             }
             
-            updatedBarButtonItems.append(leftBarButton)
+            updatedBarButtonItems.append(leftBarButton!)
             updatedBarButtonItems.append(barButtonItems[1])
             updatedBarButtonItems.append(barButtonItems[2])
             
+            textViewToolbar.items = nil;
             textViewToolbar.items = updatedBarButtonItems
             textViewToolbar.sizeToFit()
             
@@ -301,15 +332,31 @@ public class TextView: TextViewBase {
     
     public func updateRightButtonText(_ newText: String?) {
         
+        
+        
         if let barButtonItems = textViewToolbar.items, let newText = newText {
             
-            rightButtonText = newText
-            
             var updatedBarButtonItems : [UIBarButtonItem] = []
-            let rightBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(rightButtonAction))
-            
             updatedBarButtonItems.append(barButtonItems[0])
             updatedBarButtonItems.append(barButtonItems[1])
+            
+            // clear current toolbar.
+            textViewToolbar.items = nil;
+            
+            // build the updated right hand button.
+            rightButtonText = newText
+            
+            //let rightBarButton: UIBarButtonItem = UIBarButtonItem(title: newText, style: .done, target: self, action:#selector(rightButtonAction))
+            var rightBarButton: UIBarButtonItem = UIBarButtonItem()
+            
+            if let rightButtonText = rightButtonText {
+                rightBarButton = generateRightBarButton(rightButtonText)
+            }
+            
+//            rightBarButton.target = self
+//            rightBarButton.action = #selector(rightButtonAction)
+//
+            
             updatedBarButtonItems.append(rightBarButton)
             
             textViewToolbar.items = updatedBarButtonItems
