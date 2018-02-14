@@ -176,16 +176,18 @@
 				<attribute name="editable" type="boolean"/>
 				<attribute name="onChange" type="string"/>
 				<attribute name="onEndEditing" type="string"/>
-        <attribute name="leftButtonText" type="string" use="optional"/>
-        <attribute name="rightButtonText" type="string" use="optional"/>
-        <attribute name="onLeftButton" type="string" use="optional"/>
-        <attribute name="onRightButton" type="string" use="optional"/>
-        <attribute name="maxCount" type="decimal" use="optional"/>
-        <attribute name="showMaxCount" type="boolean" use="optional"/>
-				<attribute name="requireMaxCount" type="boolean" use="optional"/>
-        <attribute name="keyboardType" type="string" use="optional"/>
-				<attribute name="forceKeyboard" type="boolean" use="optional"/>
-			</extension>
+                <attribute name="leftButtonText" type="string" use="optional"/>
+                <attribute name="rightButtonText" type="string" use="optional"/>
+                <attribute name="onLeftButton" type="string" use="optional"/>
+                <attribute name="onRightButton" type="string" use="optional"/>
+                <attribute name="maxCount" type="decimal" use="optional"/>
+                <attribute name="showMaxCount" type="boolean" use="optional"/>
+                <attribute name="requireMaxCount" type="boolean" use="optional"/>
+                <attribute name="keyboardType" type="string" use="optional"/>
+                <attribute name="forceKeyboard" type="boolean" use="optional"/>
+                <attribute name="rightButtonColor" type="ui:color" use="optional"/>
+                <attribute name="leftButtonColor"  type="ui:color" use="optional"/>
+ 			</extension>
 		</complexContent>
 	</complexType>
 
