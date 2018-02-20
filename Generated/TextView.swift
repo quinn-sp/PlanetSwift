@@ -187,7 +187,7 @@ public class TextView: TextViewBase {
         // Button is a "legit" button, check to see if there is a color
         // specified.
         
-        if let leftBarButtonColor = leftButtonColor {
+        if let leftBarButtonColor = leftButtonColor, #available(iOS 11, *) {
             
             // left bar button is a legit button, not a counter
         
@@ -224,7 +224,7 @@ public class TextView: TextViewBase {
         // If a right bar button color is specified, build the bar button as
         // a custom view.
         
-        if let rightBarButtonColor = rightButtonColor {
+        if let rightBarButtonColor = rightButtonColor, #available(iOS 11, *) {
             
             let innerButton = UIButton(type: .custom)
             innerButton.setTitle(title, for: .normal)
