@@ -165,13 +165,10 @@ public class TextView: TextViewBase {
         textView.inputAccessoryView = textViewToolbar
     }
     
-// Bar Button Generation
-    
     func generateLeftBarButton(_ title: String) -> UIBarButtonItem {
+        
         var leftBarButton : UIBarButtonItem
         
-        // If the showMaxCount is set to true, then create a system
-        // UIBarButton
         
         if let showMaxCount = showMaxCount {
             if showMaxCount {
@@ -179,78 +176,131 @@ public class TextView: TextViewBase {
                 leftBarButton.target = self
                 leftBarButton.action = #selector(leftButtonAction)
                 leftBarButton.title = title
-                
+
                 return leftBarButton
             }
         }
         
-        // Button is a "legit" button, check to see if there is a color
-        // specified.
-        
-        if let leftBarButtonColor = leftButtonColor, #available(iOS 11, *) {
+        if let leftBarButtonColor = leftButtonColor {
             
-            // left bar button is a legit button, not a counter
-        
-            let innerButton = UIButton(type: .custom)
-            innerButton.setTitle(title, for: .normal)
-            innerButton.setTitleColor(leftBarButtonColor , for: .normal)
+            // A left bar button color has been specified, if we are running iOS 11 or above, create the button from the custom view
+            // if iOS 9 or above, then create the button from custom view, but set the frame explicitly.
             
-            // Determine 30% opacity and use as the highlighted (depressed) color
-            // of the button.
-            var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0, a:CGFloat=0;
-            if (leftBarButtonColor.getRed(&r, green: &g, blue: &b, alpha: &a)) {
-                let highlightedColor = UIColor(red: r, green: g, blue: b, alpha: a * 0.30)
-                innerButton.setTitleColor(highlightedColor, for: .highlighted)
+            if let innerButton = createInnerButton(buttonColor: leftBarButtonColor, title: title, isLeft: true) {
+                
+                leftBarButton = UIBarButtonItem.init(customView: innerButton)
+                
+                return leftBarButton
+                
             }
-            innerButton.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
-            innerButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
-            
-            leftBarButton = UIBarButtonItem.init(customView: innerButton)
-        } else {
-            leftBarButton = UIBarButtonItem()
-            leftBarButton.title = title
         }
         
+        leftBarButton = UIBarButtonItem()
+        leftBarButton.title = title
         leftBarButton.target = self
-        leftBarButton.action = #selector(leftButtonAction)
-       
+        leftBarButton.action = #selector(rightButtonAction)
+        
         return leftBarButton
     }
+    
     
     func generateRightBarButton(_ title: String) -> UIBarButtonItem {
 
         var rightBarButton : UIBarButtonItem
         
-        // If a right bar button color is specified, build the bar button as
-        // a custom view.
+
+        if let rightBarButtonColor = rightButtonColor {
+            
+            // A right bar button color has been specified, if we are running iOS 11 or above, create the button from the custom view
+            // if iOS 9 or above, then create the button from custom view, but set the frame explicitly.
+            
+            if let innerButton = createInnerButton(buttonColor: rightBarButtonColor, title: title, isLeft: false) {
+                
+                rightBarButton = UIBarButtonItem.init(customView: innerButton)
+                
+                return rightBarButton
+
+            }
+        }
         
-        if let rightBarButtonColor = rightButtonColor, #available(iOS 11, *) {
+        rightBarButton = UIBarButtonItem()
+        rightBarButton.title = title
+        rightBarButton.target = self
+        rightBarButton.action = #selector(rightButtonAction)
+        
+        return rightBarButton
+    }
+    
+    func createInnerButton(buttonColor: UIColor,  title: String, isLeft: Bool) -> UIButton? {
+        
+        if #available(iOS 11, *) {
             
             let innerButton = UIButton(type: .custom)
             innerButton.setTitle(title, for: .normal)
-            innerButton.setTitleColor(rightBarButtonColor , for: .normal)
+            innerButton.setTitleColor(buttonColor , for: .normal)
             
             // Determine 30% opacity and use as the highlighted (depressed) color
             // of the button.
             var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0, a:CGFloat=0;
-            if(rightBarButtonColor.getRed(&r, green: &g, blue: &b, alpha: &a)) {
+            if(buttonColor.getRed(&r, green: &g, blue: &b, alpha: &a)) {
                 let highlightedColor = UIColor(red: r, green: g, blue: b, alpha: a * 0.30)
                 innerButton.setTitleColor(highlightedColor, for: .highlighted)
             }
             innerButton.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 17)
-            innerButton.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
             
-            rightBarButton = UIBarButtonItem.init(customView: innerButton)
-
-        } else {
-            rightBarButton = UIBarButtonItem()
-            rightBarButton.title = title
-            rightBarButton.target = self
-            rightBarButton.action = #selector(rightButtonAction)
+            if isLeft {
+                innerButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
+            } else {
+                innerButton.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
+            }
+            
+            return innerButton
+            
+        } else if #available(iOS 9, *) {
+            
+            let innerButton = UIButton(type: .custom)
+            
+            
+            
+            
+            innerButton.frame = CGRect(x: 0, y:0, width: 165 , height: 36)
+            innerButton.setTitle(title, for: .normal)
+            innerButton.setTitleColor(buttonColor , for: .normal)
+            
+            // Determine 30% opacity and use as the highlighted (depressed) color
+            // of the button.
+            var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0, a:CGFloat=0;
+            if(buttonColor.getRed(&r, green: &g, blue: &b, alpha: &a)) {
+                let highlightedColor = UIColor(red: r, green: g, blue: b, alpha: a * 0.30)
+                innerButton.setTitleColor(highlightedColor, for: .highlighted)
+            }
+            
+            
+            
+            innerButton.titleLabel?.font = title.count > 13 ? UIFont(name: "AvenirNext-DemiBold", size: 16) :  UIFont(name: "AvenirNext-DemiBold", size: 17)
+            
+            if isLeft {
+                innerButton.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
+                innerButton.contentHorizontalAlignment = .left
+            } else {
+                innerButton.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
+                innerButton.contentHorizontalAlignment = .right
+            }
+            
+            // set constraints manually. for iOS 10 support
+            innerButton.widthAnchor.constraint(equalToConstant: innerButton.frame.size.width).isActive = true
+            innerButton.heightAnchor.constraint(equalToConstant: innerButton.frame.size.height).isActive = true
+            
+            
+            return innerButton
         }
         
-        return rightBarButton
+        // We're running iOS 8 or below, should never happen, but just for safety.
+        
+        return nil
     }
+    
+    
     
 // Toolbar Action Methods
     
@@ -398,8 +448,6 @@ public class TextView: TextViewBase {
     
     public func updateRightButtonText(_ newText: String?) {
         
-        
-        
         if let barButtonItems = textViewToolbar.items, let newText = newText {
             
             var updatedBarButtonItems : [UIBarButtonItem] = []
@@ -418,11 +466,7 @@ public class TextView: TextViewBase {
             if let rightButtonText = rightButtonText {
                 rightBarButton = generateRightBarButton(rightButtonText)
             }
-            
-//            rightBarButton.target = self
-//            rightBarButton.action = #selector(rightButtonAction)
-//
-            
+
             updatedBarButtonItems.append(rightBarButton)
             
             textViewToolbar.items = updatedBarButtonItems
