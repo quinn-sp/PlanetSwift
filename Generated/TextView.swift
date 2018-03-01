@@ -169,6 +169,10 @@ public class TextView: TextViewBase {
         
         var leftBarButton : UIBarButtonItem
         
+        // The left hand keyboard button, if configured to be a counter, will
+        // not be an active button rather just a label. this will then be set up
+        // as a "regular system" button that is not enabled.
+        
         
         if let showMaxCount = showMaxCount {
             if showMaxCount {
@@ -180,6 +184,9 @@ public class TextView: TextViewBase {
                 return leftBarButton
             }
         }
+        
+        // If left hand button is not a counter (showMaxCount = false) then check if a color has been configured, if so,
+        // generate the custom button and return it, if not, then create a system button and return it.
         
         if let leftBarButtonColor = leftButtonColor {
             
