@@ -18,7 +18,7 @@ public class SegmentedControl: SegmentedControlBase {
         }
     }
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         segmentedControl.tintColor = tintColor
         segmentedControl.setTitleTextAttributes(textAttributes(UIControlState()), for: UIControlState())

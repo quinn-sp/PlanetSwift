@@ -35,7 +35,7 @@ public class NetworkImageView: NetworkImageViewBase {
 		setImageWithPath(image, completion: nil)
 	}
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
         if let placeholderPath = placeholderPath {

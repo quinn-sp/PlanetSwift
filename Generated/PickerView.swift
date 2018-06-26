@@ -18,7 +18,7 @@ public class PickerView: PickerViewBase {
         }
     }
     
-    override public var view: UIView {
+    override open var view: UIView {
         get {
             return picker
         }
@@ -29,7 +29,7 @@ public class PickerView: PickerViewBase {
         }
     }
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         
         //See below

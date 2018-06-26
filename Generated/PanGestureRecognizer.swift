@@ -18,7 +18,7 @@ public class PanGestureRecognizer: PanGestureRecognizerBase {
 		}
 	}
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
         #if os(iOS)

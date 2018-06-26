@@ -6,7 +6,7 @@ import UIKit
 
 public class PageControl: PageControlBase {
 	lazy public var pageControl = UIPageControl(frame: CGRect.zero)
-	override public var view: UIView {
+	override open var view: UIView {
 		get {
 			return pageControl
 		}
@@ -17,7 +17,7 @@ public class PageControl: PageControlBase {
 		}
 	}
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
 		if hidesForSinglePage != nil {

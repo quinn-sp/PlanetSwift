@@ -8,7 +8,7 @@ public class StackView: StackViewBase {
     @available(iOS 9.0, *)
     lazy public var stackView = UIStackView(frame: CGRect.zero)
     
-    override public var view: UIView {
+    override open var view: UIView {
         get {
             if #available(iOS 9.0, *) {
                 return stackView
@@ -26,7 +26,7 @@ public class StackView: StackViewBase {
         }
     }
 
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
 
         guard #available(iOS 9.0, *) else { return }

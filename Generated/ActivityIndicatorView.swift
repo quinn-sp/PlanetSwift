@@ -6,7 +6,7 @@ import UIKit
 
 public class ActivityIndicatorView: ActivityIndicatorViewBase {
     lazy public var activityIndicator = UIActivityIndicatorView()
-    override public var view: UIView {
+    override open var view: UIView {
         get {
             return activityIndicator
         }
@@ -17,7 +17,7 @@ public class ActivityIndicatorView: ActivityIndicatorViewBase {
         }
     }
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         
         if startAnimating != nil {

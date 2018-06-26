@@ -7,7 +7,7 @@ import UIKit
 var styles: Object? = nil
 // workaround for inability to specify the XML load call inline here
 private var attemptedStylesLoad = false
-public class Object: ObjectBase {
+open class Object: ObjectBase {
     
     // MARK: - ID mappings
     
@@ -82,7 +82,7 @@ public class Object: ObjectBase {
         return (scopeObject, name)
     }
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         if let id = id , let scopeObj = scope() as? Object {
             scopeObj.setObjectForId(id, object: self)

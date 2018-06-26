@@ -18,7 +18,7 @@ public class Switch: SwitchBase {
         }
     }
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         switch_.tintColor = tintColor
         switch_.onTintColor = onTintColor

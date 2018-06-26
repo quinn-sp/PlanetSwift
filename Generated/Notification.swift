@@ -8,7 +8,7 @@ public class Notification: NotificationBase {
     public weak var scopeObject: AnyObject?
     public var name: String?
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         if scopedName != nil {
             (self.scopeObject, self.name) = self.parseNotification(scopedName)

@@ -10,7 +10,7 @@ public class TextView: TextViewBase {
     lazy public var textViewToolbar : UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
 	lazy private var textViewDelegate = TextViewDelegateHelper()
     
-	override public var view: UIView {
+	override open var view: UIView {
 		get {
             if textView.delegate == nil {
                 textView.delegate = textViewDelegate
@@ -24,7 +24,7 @@ public class TextView: TextViewBase {
 		}
 	}
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
 		textViewDelegate.delegate = self

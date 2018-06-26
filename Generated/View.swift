@@ -4,12 +4,48 @@
 
 import UIKit
 
-public class View: ViewBase, CustomPlaygroundQuickLookable {
-    lazy public var view = UIView()
+public protocol PlanetExternalView {
+    func setAttribute(_ value: String, key: String)
+    func gaxbPrepare()
+}
 
-    public override func gaxbPrepare() {
+open class View: ViewBase, CustomPlaygroundQuickLookable {
+    lazy open var view = UIView()
+    open var externalView : PlanetExternalView? = nil
+    
+    open override func customCopyTo(_ other:View) {
+        if self.externalView != nil {
+            other.view = self.view
+            other.externalView = self.externalView
+        }
+    }
+        
+    private func swiftClassFromString(_ className: String) -> AnyClass! {
+        if  let appName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String? {
+            return NSClassFromString("\(appName).\(className)")
+        }
+        return nil;
+    }
+    
+    open override func setAttribute(_ value: String, key: String) {
+        super.setAttribute(value, key: key)
+        
+        if key == "externalClass" {
+            let viewClass = swiftClassFromString(externalClass!) as! UIView.Type
+            if let viewObject = viewClass.init() as UIView? {
+                self.view = viewObject
+                self.externalView = view as? PlanetExternalView
+            }
+        }
+        
+        if externalView != nil {
+            externalView?.setAttribute(value, key: key)
+        }
+    }
+
+    open override func gaxbPrepare() {
 		super.gaxbPrepare()
-
+        
         if frame != nil {
             view.bounds = CGRect(x: 0, y: 0, width: frame!.size.width, height: frame!.size.height)
             view.center = CGPoint(x: frame!.midX, y: frame!.midY)
@@ -76,6 +112,10 @@ public class View: ViewBase, CustomPlaygroundQuickLookable {
 
         if view.superview == nil {
             findParentView()?.addSubview(view)
+        }
+        
+        if externalView != nil {
+            externalView?.gaxbPrepare()
         }
     }
 

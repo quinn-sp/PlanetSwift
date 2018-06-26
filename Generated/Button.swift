@@ -41,7 +41,7 @@ public class Button: ButtonBase {
         return PlanetButton()
     }
 
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
 
         if onTouchUp != nil {

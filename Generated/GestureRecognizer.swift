@@ -4,12 +4,12 @@
 
 import UIKit
 
-public class GestureRecognizer: GestureRecognizerBase {
+open class GestureRecognizer: GestureRecognizerBase {
 	
 	public var recognizer:UIGestureRecognizer?
 	private lazy var helper = GestureRecognizerHelper()
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
 		if let recognizer = recognizer {
@@ -31,7 +31,7 @@ public class GestureRecognizer: GestureRecognizerBase {
 		}
 	}
 	
-	public override func gaxbDidPrepare() {
+	open override func gaxbDidPrepare() {
 		super.gaxbDidPrepare()
 		
 		if let recognizer = recognizer,

@@ -13,7 +13,7 @@ private var _localizable = Set<String>()
 public class Label: LabelBase {
     
     lazy public var label: PlanetLabel = PlanetLabel()
-    override public var view: UIView {
+    override open var view: UIView {
         get {
             return label
         }
@@ -24,7 +24,7 @@ public class Label: LabelBase {
         }
     }
 	
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         var _paragraphStyle: NSMutableParagraphStyle?
         var paragraphStyle: NSMutableParagraphStyle {

@@ -4,10 +4,10 @@
 
 import UIKit
 
-public class Control: ControlBase {
+open class Control: ControlBase {
 	
 	public var control:UIControl?
-	override public var view: UIView {
+	override open var view: UIView {
 		get {
 			if control != nil {
 				return control!
@@ -21,7 +21,7 @@ public class Control: ControlBase {
 		}
 	}
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
 		if let control = control {

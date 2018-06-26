@@ -7,7 +7,7 @@ import UIKit
 public class WebView: WebViewBase {
     lazy public var webview = UIWebView()
     
-    override public var view: UIView {
+    override open var view: UIView {
         get {
             return webview
         }
@@ -18,7 +18,7 @@ public class WebView: WebViewBase {
         }
     }
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         
         if url != nil {

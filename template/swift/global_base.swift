@@ -11,9 +11,9 @@ import Foundation
 <% end %>
 private let xmlCache = NSCache<NSString, AnyObject>()
 
-public class <%= FULL_NAME_CAMEL %> {
+open class <%= FULL_NAME_CAMEL %> {
 
-	public class func readFromFile(_ filePath: String, prepare: Bool = true) -> GaxbElement? {
+	open class func readFromFile(_ filePath: String, prepare: Bool = true) -> GaxbElement? {
 		do {
 			let xmlString = try String(contentsOfFile: filePath, encoding: .utf8)
 			return <%= FULL_NAME_CAMEL %>.readFromString(xmlString, prepare: prepare)
@@ -22,7 +22,7 @@ public class <%= FULL_NAME_CAMEL %> {
 		}
 	}
 
-	public class func readFromString(_ string: String, prepare: Bool = true) -> GaxbElement? {
+	open class func readFromString(_ string: String, prepare: Bool = true) -> GaxbElement? {
 
 		if let cachedElement = xmlCache.object(forKey: string as NSString) as? GaxbElement {
 			let copiedCache = cachedElement.copy()
@@ -51,14 +51,14 @@ public class <%= FULL_NAME_CAMEL %> {
 	}
 
 
-	public class func namespaceForElement(_ element: AEXMLElement) -> String {
+	open class func namespaceForElement(_ element: AEXMLElement) -> String {
 		if let namespaceURI = element.namespaceURI {
 			return NSString(string: namespaceURI).lastPathComponent
 		}
 		return "<%= FULL_NAME_CAMEL %>"
 	}
 
-	public class func parseElement(_ element: AEXMLElement) -> GaxbElement? {
+	open class func parseElement(_ element: AEXMLElement) -> GaxbElement? {
 		guard let entity = GaxbFactory.element(namespaceForElement(element), name:element.name) else { return nil }
 		if let styleId = element.attributes["styleId" as NSObject] as? String,
 			let styleElement = Object.styleForId(styleId) {
@@ -100,7 +100,7 @@ public class <%= FULL_NAME_CAMEL %> {
 				end
 		--		if(appinfo == "ENUM_MASK") then
 		--			local i = 1
-		--			gaxb_print("\tpublic enum\n{\n")
+		--			gaxb_print("\topen enum\n{\n")
 		--			for k,v in pairs(enums) do
 		--				gaxb_print("\t\t"..v.attributes.value.." = "..i..",\n")
 		--				i = i * 2;

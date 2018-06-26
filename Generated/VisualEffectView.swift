@@ -7,7 +7,7 @@ import UIKit
 public class VisualEffectView: VisualEffectViewBase {
     public var effectView: UIVisualEffectView?
     
-    override public var view: UIView {
+    override open var view: UIView {
         get {
             if NSClassFromString("UIVisualEffectView") != nil {
                 if effectView != nil {
@@ -40,7 +40,7 @@ public class VisualEffectView: VisualEffectViewBase {
     }
     
     
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
     }
 }

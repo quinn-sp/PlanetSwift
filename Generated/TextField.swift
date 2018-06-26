@@ -22,7 +22,7 @@ public class TextField: TextFieldBase {
         }
     }
 
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
 
         textFieldDelegate.textDelegate = self

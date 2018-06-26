@@ -446,7 +446,7 @@
 					};
 					A9B439781A3A53C70052690A = {
 						CreatedOnToolsVersion = 6.2;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};

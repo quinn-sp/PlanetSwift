@@ -6,7 +6,7 @@ import UIKit
 
 public class ScrollView: ScrollViewBase {
 	lazy public var scrollView = UIScrollView(frame: CGRect.zero)
-	override public var view: UIView {
+	override open var view: UIView {
 		get {
 			return scrollView
 		}
@@ -17,7 +17,7 @@ public class ScrollView: ScrollViewBase {
 		}
 	}
 	
-	public override func gaxbPrepare() {
+	open override func gaxbPrepare() {
 		super.gaxbPrepare()
 		
 		if contentSize != nil {

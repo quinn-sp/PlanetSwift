@@ -4,9 +4,9 @@
 
 import UIKit
 
-public class ImageView: ImageViewBase {
+open class ImageView: ImageViewBase {
 	lazy public var imageView = UIImageView()
-	override public var view: UIView {
+	override open var view: UIView {
         get {
             return imageView
         }
@@ -17,7 +17,7 @@ public class ImageView: ImageViewBase {
         }
     }
 
-    public override func gaxbPrepare() {
+    open override func gaxbPrepare() {
         super.gaxbPrepare()
         setImageWithString(image)
     }
