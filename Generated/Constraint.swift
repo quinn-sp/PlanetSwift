@@ -136,6 +136,36 @@ public class Constraint: ConstraintBase {
         switch ruleSet {
         case .fillSuperview:
             let superview = first.superview
+            
+            if ruleSetInfo != nil {
+                // ruleSetInfo should contain top,left,bottom,right insets
+                let ruleSetInfoParts = ruleSetInfo?.split(separator: ",")
+
+                if ruleSetInfoParts != nil && ruleSetInfoParts!.count == 4 {
+                    let top = Double(ruleSetInfoParts![0])!
+                    let left = Double(ruleSetInfoParts![1])!
+                    let bottom = Double(ruleSetInfoParts![2])!
+                    let right = Double(ruleSetInfoParts![3])!
+                    
+                    let viewsDictionary = ["view":first]
+                    let horizontalConstraint = NSLayoutConstraint.constraints(
+                        withVisualFormat: "H:|-\(left)-[view]-\(right)-|",
+                        options: NSLayoutFormatOptions(rawValue: 0),
+                        metrics: nil,
+                        views: viewsDictionary)
+                    let verticalConstraint = NSLayoutConstraint.constraints(
+                        withVisualFormat: "V:|-\(top)-[view]-\(bottom)-|",
+                        options: NSLayoutFormatOptions(rawValue:0),
+                        metrics: nil,
+                        views: viewsDictionary)
+                    
+                    var allConstraints:[NSLayoutConstraint] = []
+                    allConstraints.append(contentsOf:horizontalConstraint)
+                    allConstraints.append(contentsOf:verticalConstraint)
+                    return allConstraints
+                }
+            }
+            
             return [NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .top),
                 NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .right),
                 NSLayoutConstraint(item: first, toItem: superview, equalAttribute: .bottom),

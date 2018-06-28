@@ -7,6 +7,7 @@ import UIKit
 public protocol PlanetExternalView {
     func setAttribute(_ value: String, key: String)
     func gaxbPrepare()
+    func gaxbDidPrepare()
 }
 
 open class View: ViewBase, CustomPlaygroundQuickLookable {
@@ -116,6 +117,12 @@ open class View: ViewBase, CustomPlaygroundQuickLookable {
         
         if externalView != nil {
             externalView?.gaxbPrepare()
+        }
+    }
+    
+    open override func gaxbDidPrepare() {
+        if externalView != nil {
+            externalView?.gaxbDidPrepare()
         }
     }
 

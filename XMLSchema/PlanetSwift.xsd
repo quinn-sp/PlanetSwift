@@ -415,6 +415,7 @@
 				<attribute name="multiplier" type="float" default="1" />
 				<attribute name="constant" type="float" default="0" />
 				<attribute name="ruleSet" type="ui:LayoutRuleSet" default="none"/>
+				<attribute name="ruleSetInfo" type="string" use="optional" />
 			</extension>
 		</complexContent>
 	</complexType>
