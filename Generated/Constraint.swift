@@ -147,22 +147,10 @@ public class Constraint: ConstraintBase {
                     let bottom = Double(ruleSetInfoParts![2])!
                     let right = Double(ruleSetInfoParts![3])!
                     
-                    let viewsDictionary = ["view":first]
-                    let horizontalConstraint = NSLayoutConstraint.constraints(
-                        withVisualFormat: "H:|-\(left)-[view]-\(right)-|",
-                        options: NSLayoutFormatOptions(rawValue: 0),
-                        metrics: nil,
-                        views: viewsDictionary)
-                    let verticalConstraint = NSLayoutConstraint.constraints(
-                        withVisualFormat: "V:|-\(top)-[view]-\(bottom)-|",
-                        options: NSLayoutFormatOptions(rawValue:0),
-                        metrics: nil,
-                        views: viewsDictionary)
-                    
-                    var allConstraints:[NSLayoutConstraint] = []
-                    allConstraints.append(contentsOf:horizontalConstraint)
-                    allConstraints.append(contentsOf:verticalConstraint)
-                    return allConstraints
+                    return [NSLayoutConstraint(item: first, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: CGFloat(top)),
+                            NSLayoutConstraint(item: first, attribute: .left, relatedBy: .equal, toItem: superview, attribute: .left, multiplier: 1, constant: CGFloat(left)),
+                            NSLayoutConstraint(item: first, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottom, multiplier: 1, constant: CGFloat(-bottom)),
+                            NSLayoutConstraint(item: first, attribute: .right, relatedBy: .equal, toItem: superview, attribute: .right, multiplier: 1, constant: CGFloat(-right))]
                 }
             }
             
