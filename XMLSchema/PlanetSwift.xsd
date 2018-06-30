@@ -383,6 +383,18 @@
 			</extension>
 		</complexContent>
 	</complexType>
+	
+	<element name="Code" type="ui:Code" />
+	<complexType name="Code">
+		<annotation>
+			<appinfo><![CDATA[Instantiates a class of the supplied type and providing it access to elements in the current scope]]></appinfo>
+		</annotation>
+		<complexContent>
+			<extension base="ui:Object">
+				<attribute name="className" type="string"/>
+			</extension>
+		</complexContent>
+	</complexType>
 
 	<element name="Controller" type="ui:Controller" />
 	<complexType name="Controller">
