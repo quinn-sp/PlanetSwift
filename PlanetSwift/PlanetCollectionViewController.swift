@@ -100,7 +100,7 @@ public extension PlanetCollectionViewCell where Self: UICollectionReusableView {
 
 open class PlanetCollectionViewController: PlanetViewController, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak open var collectionView: UICollectionView!
+    @IBOutlet open var collectionView: UICollectionView!
     open var cellReferences = [String: PlanetCollectionViewCell]()
     open var cellMapping: [String: PlanetCollectionViewCell.Type] { return [:] }
     open var cellSizes: [[CGSize]] = []
