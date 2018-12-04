@@ -14,6 +14,7 @@ open class PlanetViewController: UIViewController {
     var idMappings = Dictionary<String, Object>()
     @IBInspectable open var titleBundlePath: String?
     open var mainBundlePath: String?
+    open var navigationBarHidden = false
     
     open var titleXmlView: View?
     open var mainXmlView: View?
@@ -76,6 +77,20 @@ open class PlanetViewController: UIViewController {
     open func objectForId<T>(_ id:String) -> T? {
         guard let foundObj = idMappings[id] as? T else { return nil }
         return foundObj
+    }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if navigationBarHidden {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if navigationBarHidden {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        }
     }
     
 }
