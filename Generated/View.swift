@@ -31,7 +31,7 @@ open class View: ViewBase, CustomPlaygroundQuickLookable {
     open override func setAttribute(_ value: String, key: String) {
         super.setAttribute(value, key: key)
         
-        if key == "externalClass" {
+        if key == "externalClass" && self.externalView == nil {
             let viewClass = swiftClassFromString(externalClass!) as! UIView.Type
             if let viewObject = viewClass.init() as UIView? {
                 self.view = viewObject
@@ -39,9 +39,7 @@ open class View: ViewBase, CustomPlaygroundQuickLookable {
             }
         }
         
-        if externalView != nil {
-            externalView?.setAttribute(value, key: key)
-        }
+        externalView?.setAttribute(value, key: key)
     }
 
     open override func gaxbPrepare() {
@@ -115,15 +113,11 @@ open class View: ViewBase, CustomPlaygroundQuickLookable {
             findParentView()?.addSubview(view)
         }
         
-        if externalView != nil {
-            externalView?.gaxbPrepare()
-        }
+        externalView?.gaxbPrepare()
     }
     
     open override func gaxbDidPrepare() {
-        if externalView != nil {
-            externalView?.gaxbDidPrepare()
-        }
+        externalView?.gaxbDidPrepare()
     }
 
     internal func addSubview(_ child: UIView) {

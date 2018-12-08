@@ -36,12 +36,12 @@ open class <%= FULL_NAME_CAMEL %> {
 			do {
 				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
 				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
-					xmlCache.setObject(parsedElement, forKey: string as NSString)
-					let copiedElement = parsedElement.copy()
+                    let copiedElement = parsedElement.copy()
+                    xmlCache.setObject(copiedElement, forKey: string as NSString)
 					if prepare {
-						copiedElement.visit() { $0.gaxbPrepare() }
+						parsedElement.visit() { $0.gaxbPrepare() }
 					}
-					return copiedElement
+					return parsedElement
 				}
 			} catch {
 				return nil
@@ -64,11 +64,23 @@ open class <%= FULL_NAME_CAMEL %> {
 			let styleElement = Object.styleForId(styleId) {
 			_ = styleElement.imprintAttributes(entity)
 		}
+        // Note: the ordering of the attributes are not gauranteed, so check if externalClass exists first
+        // and set it if it does, so the external class can have access to all of the attributes
+        for (attribute, value) in element.attributes {
+            if let valueString = value as? String, let attributeString = attribute as? String {
+                if attributeString == "externalClass" {
+                    entity.setAttribute(valueString, key: attributeString)
+                    break
+                }
+            }
+        }
+        
 		for (attribute, value) in element.attributes {
 			if let valueString = value as? String, let attributeString = attribute as? String {
 				entity.setAttribute(valueString, key: attributeString)
 			}
 		}
+		
 		for child in element.children {
 			if let subEntity = <%= FULL_NAME_CAMEL %>.parseElement(child) {
 				entity.setElement(subEntity, key: child.name)
