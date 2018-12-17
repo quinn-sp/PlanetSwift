@@ -4,9 +4,15 @@
 
 import UIKit
 
+public typealias TextFieldAction = ((TextField) -> Void)
+
 public class TextField: TextFieldBase {
     lazy public var textField = UITextField()
     lazy private var textFieldDelegate = TextFieldHelper()
+    
+    public var actionBeginEditing:TextFieldAction? = nil
+    public var actionEndEditing:TextFieldAction? = nil
+    public var actionReturnPressed:TextFieldAction? = nil
 
     override public var control: UIControl? {
         get {
@@ -78,16 +84,25 @@ public class TextField: TextFieldBase {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let actionBeginEditing = actionBeginEditing {
+            actionBeginEditing(self)
+        }
         guard let onBeginEditing = onBeginEditing else { return }
         doNotification(onBeginEditing)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let actionEndEditing = actionEndEditing {
+            actionEndEditing(self)
+        }
         guard let onEndEditing = onEndEditing else { return }
         doNotification(onEndEditing)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let actionReturnPressed = actionReturnPressed {
+            actionReturnPressed(self)
+        }
         if let onReturnPressed = onReturnPressed {
             doNotification(onReturnPressed)
         }

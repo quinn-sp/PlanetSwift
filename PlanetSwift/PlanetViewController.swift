@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias AnchorageAction = ((String, UIView, UIView, UIView?, UIView?, Dictionary<String, Object>) -> Void)
+
 open class PlanetViewController: UIViewController {
     
     open var planetViews = Array<PlanetView>()
@@ -18,6 +20,26 @@ open class PlanetViewController: UIViewController {
     
     open var titleXmlView: View?
     open var mainXmlView: View?
+    
+    open func loadView(_ anchorage:AnchorageAction) {
+        self.loadView()
+        
+        for (key,mapping) in self.idMappings {
+            if let m = (mapping as? View) {
+                let v = m.view
+                if let p = v.superview {
+                    if let idx = p.subviews.firstIndex(of: v) {
+                        let prev:UIView? = idx > 0 ? p.subviews[idx-1] : nil
+                        let next:UIView? = idx < p.subviews.count-1 ? p.subviews[idx+1] : nil
+                        anchorage(key, v, p, prev, next, idMappings)
+                    } else {
+                        anchorage(key, v, p, nil, nil, idMappings)
+                    }
+                }
+                
+            }
+        }
+    }
     
     open override func loadView() {
         super.loadView()
