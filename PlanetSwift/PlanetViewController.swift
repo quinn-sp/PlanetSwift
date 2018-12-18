@@ -17,12 +17,38 @@ open class PlanetViewController: UIViewController {
     @IBInspectable open var titleBundlePath: String?
     open var mainBundlePath: String?
     open var navigationBarHidden = false
+    open var persistentViews = false
     
     open var titleXmlView: View?
     open var mainXmlView: View?
     
-    open func loadView(_ anchorage:AnchorageAction) {
+    private var anchorageAction:AnchorageAction? = nil
+    
+    open func reloadViews() {
+        if idMappings.count == 0 {
+            if let anchorageAction = self.anchorageAction {
+                loadView(anchorageAction)
+            } else {
+                loadView()
+            }
+        }
+    }
+    
+    open func unloadViews() {
+        for child in view.subviews {
+            child.removeFromSuperview()
+        }
+        
+        titleXmlView = nil
+        mainXmlView = nil
+        idMappings.removeAll()
+        planetViews.removeAll()
+    }
+    
+    open func loadView(_ anchorage:@escaping AnchorageAction) {
         self.loadView()
+        
+        self.anchorageAction = anchorage
         
         for (key,mapping) in self.idMappings {
             if let m = (mapping as? View) {
@@ -106,12 +132,22 @@ open class PlanetViewController: UIViewController {
         if navigationBarHidden {
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
+        
+        if persistentViews == false {
+            // Reload all views
+            reloadViews()
+        }
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         if navigationBarHidden {
             navigationController?.setNavigationBarHidden(false, animated: true)
+        }
+        
+        if persistentViews == false {
+            // Unload all exisiting views
+            unloadViews()
         }
     }
     

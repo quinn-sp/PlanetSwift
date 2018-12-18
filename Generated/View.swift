@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol PlanetExternalView {
+public protocol PlanetExternalView : class {
     func setAttribute(_ value: String, key: String)
     func gaxbPrepare()
     func gaxbDidPrepare()
@@ -12,13 +12,10 @@ public protocol PlanetExternalView {
 
 open class View: ViewBase, CustomPlaygroundQuickLookable {
     lazy open var view = UIView()
-    open var externalView : PlanetExternalView? = nil
+    open weak var externalView : PlanetExternalView? = nil
     
     open override func customCopyTo(_ other:View) {
-        if self.externalView != nil {
-            other.view = self.view
-            other.externalView = self.externalView
-        }
+        
     }
         
     private func swiftClassFromString(_ className: String) -> AnyClass! {
@@ -32,10 +29,11 @@ open class View: ViewBase, CustomPlaygroundQuickLookable {
         super.setAttribute(value, key: key)
         
         if key == "externalClass" && self.externalView == nil {
-            let viewClass = swiftClassFromString(externalClass!) as! UIView.Type
-            if let viewObject = viewClass.init() as UIView? {
-                self.view = viewObject
-                self.externalView = view as? PlanetExternalView
+            if let viewClass = swiftClassFromString(externalClass!) as? UIView.Type {
+                if let viewObject = viewClass.init() as UIView? {
+                    self.view = viewObject
+                    self.externalView = view as? PlanetExternalView
+                }
             }
         }
         

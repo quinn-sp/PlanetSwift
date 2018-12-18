@@ -9,7 +9,7 @@ FULL_NAME_CAMEL = capitalizedString(this.namespace)
 import Foundation
 <% if (this.namespace ~= "PlanetUI") then %>import PlanetSwift
 <% end %>
-private let xmlCache = NSCache<NSString, AnyObject>()
+//private let xmlCache = NSCache<NSString, AnyObject>()
 
 open class <%= FULL_NAME_CAMEL %> {
 
@@ -24,20 +24,21 @@ open class <%= FULL_NAME_CAMEL %> {
 
 	open class func readFromString(_ string: String, prepare: Bool = true) -> GaxbElement? {
 
+		/*
 		if let cachedElement = xmlCache.object(forKey: string as NSString) as? GaxbElement {
 			let copiedCache = cachedElement.copy()
 			if prepare {
 				copiedCache.visit() { $0.gaxbPrepare() }
 			}
 			return copiedCache
-		}
+		}*/
 
 		if let xmlData = <%= FULL_NAME_CAMEL %>.processExpressions(string).data(using: .utf8, allowLossyConversion: false) {
 			do {
 				let xmlDoc = try AEXMLDocument(xmlData: xmlData, processNamespaces: true)
 				if let parsedElement = <%= FULL_NAME_CAMEL %>.parseElement(xmlDoc.root) {
-                    let copiedElement = parsedElement.copy()
-                    xmlCache.setObject(copiedElement, forKey: string as NSString)
+                    //let copiedElement = parsedElement.copy()
+                    //xmlCache.setObject(copiedElement, forKey: string as NSString)
 					if prepare {
 						parsedElement.visit() { $0.gaxbPrepare() }
 					}
