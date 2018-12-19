@@ -50,21 +50,27 @@ open class PlanetViewController: UIViewController {
         
         self.anchorageAction = anchorage
         
-        for (key,mapping) in self.idMappings {
-            if let m = (mapping as? View) {
-                let v = m.view
-                if let p = v.superview {
-                    if let idx = p.subviews.firstIndex(of: v) {
-                        let prev:UIView? = idx > 0 ? p.subviews[idx-1] : nil
-                        let next:UIView? = idx < p.subviews.count-1 ? p.subviews[idx+1] : nil
-                        anchorage(key, v, p, prev, next, idMappings)
-                    } else {
-                        anchorage(key, v, p, nil, nil, idMappings)
+        // we cannot just iterate over the idMappings because the ordering is
+        // not garaunteed, therefor we walk over them in XML order
+        if let mainXmlView = mainXmlView {
+            mainXmlView.visit {
+                if let m = ($0 as? View) {
+                    if let objectID = m.id {
+                        let v = m.view
+                        if let p = v.superview {
+                            if let idx = p.subviews.firstIndex(of: v) {
+                                let prev:UIView? = idx > 0 ? p.subviews[idx-1] : nil
+                                let next:UIView? = idx < p.subviews.count-1 ? p.subviews[idx+1] : nil
+                                anchorage(objectID, v, p, prev, next, idMappings)
+                            } else {
+                                anchorage(objectID, v, p, nil, nil, idMappings)
+                            }
+                        }
                     }
                 }
-                
             }
         }
+        
     }
     
     open override func loadView() {
@@ -139,15 +145,17 @@ open class PlanetViewController: UIViewController {
         }
     }
     
+    open override func viewDidDisappear(_ animated: Bool) {
+        if persistentViews == false {
+            // Unload all exisiting views
+            unloadViews()
+        }
+    }
+    
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         if navigationBarHidden {
             navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-        
-        if persistentViews == false {
-            // Unload all exisiting views
-            unloadViews()
         }
     }
     
