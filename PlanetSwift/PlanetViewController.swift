@@ -26,9 +26,12 @@ open class PlanetViewController: UIViewController {
     
     open var safeAreaInsets:UIEdgeInsets {
         get {
-            if let navController = self.navigationController {
-                if #available(iOS 11.0, *) {
+            if #available(iOS 11.0, *) {
+                if let navController = self.navigationController {
                     return navController.view.safeAreaInsets
+                }
+                if let window = UIApplication.shared.windows.first {
+                    return window.safeAreaInsets
                 }
             }
             return UIEdgeInsets.zero
