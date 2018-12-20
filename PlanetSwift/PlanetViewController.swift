@@ -24,6 +24,17 @@ open class PlanetViewController: UIViewController {
     
     private var anchorageAction:AnchorageAction? = nil
     
+    open var safeAreaInsets:UIEdgeInsets {
+        get {
+            if let navController = self.navigationController {
+                if #available(iOS 11.0, *) {
+                    return navController.view.safeAreaInsets
+                }
+            }
+            return UIEdgeInsets.zero
+        }
+    }
+    
     open func reloadViews() {
         if idMappings.count == 0 {
             if let anchorageAction = self.anchorageAction {
