@@ -160,7 +160,7 @@ elseif (typeNameForItem(v)=="Float") then
 elseif (typeNameForItem(v)=="Double") then
 %>        self.<%= v.name %> = (value as NSString).doubleValue<%
 elseif (typeNameForItem(v)=="String") then
-%>        self.<%= v.name %> = value<%
+%>        self.<%= v.name %> = String(gaxbString: value)<%
 elseif (isEnumForItem(v)) then
 %>        if let tmp = <%= capitalizedString(this.namespace) %>.<%= typeForItem(v) %>(rawValue: value) {
             <%= v.name %> = tmp

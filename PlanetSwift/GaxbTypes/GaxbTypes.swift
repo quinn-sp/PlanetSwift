@@ -7,6 +7,36 @@ import UIKit
 
 // MARK: - XSD datatypes
 
+extension String: GaxbType {
+    public init(gaxbString: String) {
+        self.init()
+        self.setWithGaxbString(gaxbString)
+    }
+    
+    public mutating func setWithGaxbString(_ gaxbString: String) {
+        self = gaxbString
+        
+        if gaxbString.starts(with: "@localization") {
+            let key = extractParens(gaxbString)
+            self = NSLocalizedString(key, comment: "")
+        }
+        
+    }
+    public func toGaxbString() -> String {
+        return self
+    }
+    
+    private func extractParens(_ gaxbString:String) -> String {
+        if let start = gaxbString.firstIndex(of: "(") {
+            if let end = gaxbString.lastIndex(of: ")") {
+                return String(gaxbString[start...end].trimmingCharacters(in: CharacterSet(charactersIn:"()")))
+            }
+        }
+        return gaxbString
+    }
+
+}
+
 extension Bool: GaxbType {
     public init(gaxbString: String) {
         self.init()
