@@ -455,6 +455,7 @@
 			<extension base="ui:Control">
 				<attribute name="on" type="boolean" />
 				<attribute name="tintColor" type="ui:color" />
+				<attribute name="thumbTintColor" type="ui:color" />
 				<attribute name="onTintColor" type="ui:color" />
 			</extension>
 		</complexContent>
