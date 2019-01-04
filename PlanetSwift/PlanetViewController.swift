@@ -149,9 +149,7 @@ open class PlanetViewController: UIViewController {
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if navigationBarHidden {
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        }
+        navigationController?.setNavigationBarHidden(navigationBarHidden, animated: true)
         
         if persistentViews == false {
             // Reload all views
@@ -168,9 +166,6 @@ open class PlanetViewController: UIViewController {
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        if navigationBarHidden {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-        }
     }
     
 }
