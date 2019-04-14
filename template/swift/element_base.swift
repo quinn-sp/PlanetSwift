@@ -185,11 +185,11 @@ end %>
     }
 
     <%= SUPERCLASS_OVERRIDE %>open func imprintAttributes(_ receiver: GaxbElement?) -> GaxbElement? {
-<% if (hasAttributes == true) then
-%>       if let obj = receiver as? <%= CAP_NAME %> {
+<% if (hasAttributes == true) then %>       
+	if let obj = receiver as? ObjectBase {
 <% for k,v in pairs(this.attributes) do
-%>            if <%if (v.default == nil) then %><%= v.name %> != nil && <% end %>obj.originalValues["<%= v.name %>"] == nil {
-                obj.<%= v.name %> = <%= v.name %>
+%>            if originalValues["<%= v.name %>"] != nil && obj.originalValues["<%= v.name %>"] == nil {
+				obj.setAttribute(originalValues["<%= v.name %>"]!, key: "<%= v.name %>")
             }
 <% end
 %>       }

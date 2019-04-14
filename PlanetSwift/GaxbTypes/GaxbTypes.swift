@@ -201,7 +201,8 @@ extension CGPoint: GaxbType {
 // MARK: - UIKit data types
 
 extension UIImage {
-    convenience init?(gaxbString: String?) {
+   
+    public convenience init?(gaxbString: String?) {
         guard let gaxbString = gaxbString else { return nil }
         if gaxbString.range(of: ":/") != nil {
             self.init(contentsOfFile:(String(bundlePath: gaxbString)))
@@ -210,7 +211,7 @@ extension UIImage {
         }
     }
 
-    convenience init?(validateAndLoad name: String!) {
+    public convenience init?(validateAndLoad name: String!) {
         self.init(named: name)
 
         // need to assert here if self.init fails
@@ -218,7 +219,7 @@ extension UIImage {
 }
 
 extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
+    public convenience init(red: Int, green: Int, blue: Int) {
         let newRed   = CGFloat(Double(red) / 255.0)
         let newGreen = CGFloat(Double(green) / 255.0)
         let newBlue  = CGFloat(Double(blue) / 255.0)
