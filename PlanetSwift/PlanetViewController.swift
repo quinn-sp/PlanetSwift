@@ -18,6 +18,7 @@ open class PlanetViewController: UIViewController {
     open var mainBundlePath: String?
     open var navigationBarHidden = false
     open var persistentViews = false
+    open var statusBarStyle:UIStatusBarStyle = .default
     
     open var titleXmlView: View?
     open var mainXmlView: View?
@@ -150,11 +151,16 @@ open class PlanetViewController: UIViewController {
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(navigationBarHidden, animated: true)
+        self.setNeedsStatusBarAppearanceUpdate()
         
         if persistentViews == false {
             // Reload all views
             reloadViews()
         }
+    }
+    
+    open override var preferredStatusBarStyle : UIStatusBarStyle {
+        return statusBarStyle
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
