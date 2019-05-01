@@ -38,30 +38,46 @@ open class PlanetViewController: UIViewController {
             return UIEdgeInsets.zero
         }
     }
-    
-    open func reloadViews() {
-        if idMappings.count == 0 {
-            if let anchorageAction = self.anchorageAction {
-                loadView(anchorageAction)
-            } else {
-                loadView()
-            }
-        }
-    }
-    
-    open func unloadViews() {
-        for child in view.subviews {
-            child.removeFromSuperview()
-        }
         
+    open func unloadViews() {
+        view.removeFromSuperview()
+        
+        view = nil
         titleXmlView = nil
         mainXmlView = nil
         idMappings.removeAll()
         planetViews.removeAll()
     }
     
-    open func loadView(_ anchorage:@escaping AnchorageAction) {
-        self.loadView()
+    open func loadPlanetViews(_ anchorage:@escaping AnchorageAction) {
+        
+        navigationItem.title = self.title
+        
+        if let titleBundlePath = titleBundlePath, let titleXmlView = PlanetUI.readFromFile(String(bundlePath: titleBundlePath)) as? View {
+            navigationItem.titleView = titleXmlView.view
+            titleXmlView.visit { $0.gaxbDidPrepare() }
+            searchXMLObject(titleXmlView)
+            self.titleXmlView = titleXmlView
+        }
+        
+        if let mainBundlePath = mainBundlePath, let mainXmlView = PlanetUI.readFromFile(String(bundlePath: mainBundlePath)) as? View {
+            view.addSubview(mainXmlView.view)
+            mainXmlView.visit { $0.gaxbDidPrepare() }
+            searchXMLObject(mainXmlView)
+            self.mainXmlView = mainXmlView
+        }
+        
+        if self.mainXmlView != nil || self.titleXmlView != nil {
+            // Overriding loadView because we need a function where the view exists
+            // but child view controllers have not been loaded yet
+            searchForPlanetView(view)
+            for planetView in planetViews {
+                if let xmlObj = planetView.xmlView {
+                    searchXMLObject(xmlObj)
+                    xmlObj.visit(decorate)
+                }
+            }
+        }
         
         self.anchorageAction = anchorage
         
@@ -83,37 +99,6 @@ open class PlanetViewController: UIViewController {
                         }
                     }
                 }
-            }
-        }
-        
-    }
-    
-    open override func loadView() {
-        super.loadView()
-        
-        navigationItem.title = self.title
-        
-        if let titleBundlePath = titleBundlePath, let titleXmlView = PlanetUI.readFromFile(String(bundlePath: titleBundlePath)) as? View {
-            navigationItem.titleView = titleXmlView.view
-            titleXmlView.visit { $0.gaxbDidPrepare() }
-            searchXMLObject(titleXmlView)
-            self.titleXmlView = titleXmlView
-        }
-        
-        if let mainBundlePath = mainBundlePath, let mainXmlView = PlanetUI.readFromFile(String(bundlePath: mainBundlePath)) as? View {
-            view.addSubview(mainXmlView.view)
-            mainXmlView.visit { $0.gaxbDidPrepare() }
-            searchXMLObject(mainXmlView)
-            self.mainXmlView = mainXmlView
-        }
-        
-        // Overriding loadView because we need a function where the view exists
-        // but child view controllers have not been loaded yet
-        searchForPlanetView(view)
-        for planetView in planetViews {
-            if let xmlObj = planetView.xmlView {
-                searchXMLObject(xmlObj)
-                xmlObj.visit(decorate)
             }
         }
     }
@@ -152,11 +137,6 @@ open class PlanetViewController: UIViewController {
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(navigationBarHidden, animated: true)
         self.setNeedsStatusBarAppearanceUpdate()
-        
-        if persistentViews == false {
-            // Reload all views
-            reloadViews()
-        }
     }
     
     open override var preferredStatusBarStyle : UIStatusBarStyle {
