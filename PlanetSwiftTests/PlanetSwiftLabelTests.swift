@@ -11,7 +11,30 @@ import PlanetSwift
 import XCTest
 
 class PlanetSwiftLabelTests: XCTestCase {
-    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='0.0,0.0,768.0,1024.0' title='scene'><Label text='Some text' fontName='Avenir-Light' fontSize='20.00000' textColor='#FF0000FF' textAlignment='center' minimumScaleFactor='0.5' numberOfLines='2' frame='0.0,300.0,320.0,100.0' color='#2266FF22'/><Label text='A very very very very Merry Swiftmas!' fontName='Avenir-Light' fontSize='20.00000' textColor='#FF0000FF' textAlignment='right' adjustsFontSizeToFitWidth='true' minimumScaleFactor='0.00000' numberOfLines='1' frame='50.0,400.0,240.0,100.0'/></View>"
+    let testXMLString = """
+<View xmlns='http://schema.smallplanet.com/PlanetUI'
+    frame='0.0,0.0,768.0,1024.0'
+    title='scene'>
+    <Label text='Some text'
+        fontName='Avenir-Light'
+        fontSize='20.00000'
+        textColor='#FF0000FF'
+        textAlignment='center'
+        minimumScaleFactor='0.5'
+        numberOfLines='2'
+        frame='0.0,300.0,320.0,100.0'
+        color='#2266FF22'/>
+    <Label text='A very very very very Merry Swiftmas!'
+        fontName='Avenir-Light'
+        fontSize='20.00000'
+        textColor='#FF0000FF'
+        textAlignment='right'
+        adjustsFontSizeToFitWidth='true'
+        minimumScaleFactor='0.00000'
+        numberOfLines='1'
+        frame='50.0,400.0,240.0,100.0'/>
+</View>
+"""
     var element: GaxbElement?
     var label0: Label?
     var label1: Label?
@@ -36,13 +59,13 @@ class PlanetSwiftLabelTests: XCTestCase {
 
     func testLabelsParse() {
         // This is an example of a functional test case.
-        XCTAssert(label0 != nil, "Label #0 is nil")
-        XCTAssert(label1 != nil, "Label #1 is nil")
+        XCTAssertNotNil(label0, "Label #0 is nil")
+        XCTAssertNotNil(label1, "Label #1 is nil")
     }
     
     func testLabelViews() {
-        XCTAssert(label0!.label.isKind(UILabel), "label0 does not have a UILabel")
-        XCTAssert(label1!.label.isKind(UILabel), "label1 does not have a UILabel")
+        XCTAssert(label0!.label.isKind(of: UILabel.self), "label0 does not have a UILabel")
+        XCTAssert(label1!.label.isKind(of: UILabel.self), "label1 does not have a UILabel")
     }
     
     func testLabelTextAlignmentEnum() {

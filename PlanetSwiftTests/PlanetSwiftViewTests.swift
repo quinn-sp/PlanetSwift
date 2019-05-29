@@ -36,9 +36,9 @@ class PlanetSwiftViewTests: XCTestCase {
     
     func testUIView() {
         if let view = element as? View {
-            XCTAssert(view.view.isKind(of: UIView), "element.view is not a UIView")
-            XCTAssert(subview0!.view.isKind(UIView), "element subview0 is not a UIView")
-            XCTAssert(subview1!.view.isKind(UIView), "element subview0 is not a UIView")
+            XCTAssert(view.view.isKind(of: UIView.self), "element.view is not a UIView")
+            XCTAssert(subview0!.view.isKind(of: UIView.self), "element subview0 is not a UIView")
+            XCTAssert(subview1!.view.isKind(of: UIView.self), "element subview0 is not a UIView")
         }
     }
 

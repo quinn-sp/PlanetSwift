@@ -14,11 +14,13 @@ let styles = "<Object id='styles' xmlns='http://schema.smallplanet.com/PlanetUI'
 
 Object.loadStylesFromString(styles)
 
-let xml = "<StackView axis='vertical' distribution='fillEqually' frame='0,0,300,400' xmlns='http://schema.smallplanet.com/PlanetUI'>" +
-    "<Label text='Top' styleId='LabelLight' />" +
-    "<Label text='Hello planet!' styleId='LabelBold' />" +
-    "<Label text='Bottom' fontName='AmericanTypewriter-Light' styleId='LabelLight' textColor='#ff0000ff' />" +
-    "</StackView>"
+let xml = """
+<StackView axis='vertical' distribution='fillEqually' frame='0,0,300,400' xmlns='http://schema.smallplanet.com/PlanetUI'>
+    <Label text='Top' styleId='LabelLight' />
+    <Label text='Hello planet!' styleId='LabelBold' />
+    <Label text='Bottom' fontName='AmericanTypewriter-Light' styleId='LabelLight' textColor='#ff0000ff' />
+</StackView>
+"""
 
 //#-hidden-code
 let view = PlanetUI.readFromString(xml, prepare: true)?.asView
