@@ -11,7 +11,12 @@ import XCTest
 import PlanetSwift
 
 class PlanetSwiftViewTests: XCTestCase {
-    let testXMLString = "<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='100.0,66.5,200.0,190.0' backgroundColor='#FF8040F8' contentCompressionResistancePriority='1,2' contentHuggingPriority='3,4' clipsToBounds='true' id='something'><View frame='120.0,100.0,30.0,30.0' color='#C8EA00FF' alpha='0.9' clipsToBounds='false'/><View frame='-50.0,10.0,80.0,80.0' color='#2266FF88' hidden='false' clipsToBounds='false' tag='3'/></View>"
+    let testXMLString = """
+<View xmlns='http://schema.smallplanet.com/PlanetSwift' frame='100.0,66.5,200.0,190.0' backgroundColor='#FF8040F8' contentCompressionResistancePriority='1,2' contentHuggingPriority='3,4' clipsToBounds='true' id='something'>
+    <View frame='120.0,100.0,30.0,30.0' color='#C8EA00FF' alpha='0.9' clipsToBounds='false'/>
+    <View frame='-50.0,10.0,80.0,80.0' color='#2266FF88' hidden='false' clipsToBounds='false' tag='3'/>
+</View>
+"""
     var element: GaxbElement?
     var subview0: View?
     var subview1: View?

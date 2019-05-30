@@ -58,6 +58,7 @@
 		A9B439DE1A3B7CBE0052690A /* GaxbTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */; };
 		A9E8332C1A85482F004969E1 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332A1A85482F004969E1 /* SegmentedControl.swift */; };
 		A9E8332D1A85482F004969E1 /* SegmentedControlBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */; };
+		A9EA4CBD229F2459000AA360 /* PlanetSwiftConstraintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EA4CBC229F2459000AA360 /* PlanetSwiftConstraintTests.swift */; };
 		C48FCA411A95866100063633 /* PlanetSwiftConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */; };
 		C49462451AF819F200F005B4 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C494623F1AF819F200F005B4 /* ActivityIndicatorView.swift */; };
 		C49462461AF819F200F005B4 /* ActivityIndicatorViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49462401AF819F200F005B4 /* ActivityIndicatorViewBase.swift */; };
@@ -149,6 +150,7 @@
 		A9B439DD1A3B7CBE0052690A /* GaxbTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GaxbTypes.swift; sourceTree = "<group>"; };
 		A9E8332A1A85482F004969E1 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 		A9E8332B1A85482F004969E1 /* SegmentedControlBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlBase.swift; sourceTree = "<group>"; };
+		A9EA4CBC229F2459000AA360 /* PlanetSwiftConstraintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSwiftConstraintTests.swift; sourceTree = "<group>"; };
 		C48FCA401A95866100063633 /* PlanetSwiftConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetSwiftConfiguration.swift; sourceTree = "<group>"; };
 		C494623F1AF819F200F005B4 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		C49462401AF819F200F005B4 /* ActivityIndicatorViewBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorViewBase.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				A9B439801A3A53C70052690A /* PlanetSwiftTests.swift */,
 				A96D92AA1A4358F800119036 /* PlanetSwiftViewTests.swift */,
 				A9B4397E1A3A53C70052690A /* Supporting Files */,
+				A9EA4CBC229F2459000AA360 /* PlanetSwiftConstraintTests.swift */,
 			);
 			path = PlanetSwiftTests;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9EA4CBD229F2459000AA360 /* PlanetSwiftConstraintTests.swift in Sources */,
 				A96D92AB1A4358F800119036 /* PlanetSwiftViewTests.swift in Sources */,
 				A92E73841A423F1700B22884 /* PlanetSwiftLabelTests.swift in Sources */,
 				A9B439811A3A53C70052690A /* PlanetSwiftTests.swift in Sources */,

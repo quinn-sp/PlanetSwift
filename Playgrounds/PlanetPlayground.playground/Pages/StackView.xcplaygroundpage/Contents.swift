@@ -25,12 +25,31 @@ let hostView = setupHostView()
 
 let distribution = "fillEqually"
 
-let xml = "<StackView axis='vertical' distribution='\(distribution)' frame='0,0,400,600' xmlns='http://schema.smallplanet.com/PlanetUI'>" +
-    "<Label text='Top' fontName='AppleSDGothicNeo-UltraLight' textAlignment='center' fontSize='60' backgroundColor='#eeeeeeff' />" +
-    "<Label text='Hello planet!' fontName='AppleSDGothicNeo-UltraLight' textAlignment='center' fontSize='30' backgroundColor='#ddddddff' />" +
-    "<ImageView image='logo.png' contentMode='scaleAspectFit' backgroundColor='#ccccccff' />" +
-    "<Label text='Bottom' fontName='AppleSDGothicNeo-UltraLight' textAlignment='center' fontSize='30' backgroundColor='#bbbbbbff' />" +
-"</StackView>"
+let xml = """
+<StackView axis='vertical'
+    distribution='\(distribution)'
+    frame='0,0,400,600'
+    xmlns='http://schema.smallplanet.com/PlanetUI'>
+    <Label text='Top'
+        fontName='AppleSDGothicNeo-UltraLight'
+        textAlignment='center'
+        fontSize='60'
+        backgroundColor='#eeeeeeff' />
+    <Label text='Hello planet!'
+        fontName='AppleSDGothicNeo-UltraLight'
+        textAlignment='center'
+        fontSize='30'
+        backgroundColor='#ddddddff' />
+    <ImageView image='logo.png'
+        contentMode='scaleAspectFit'
+        backgroundColor='#ccccccff' />
+    <Label text='Bottom'
+        fontName='AppleSDGothicNeo-UltraLight'
+        textAlignment='center'
+        fontSize='30'
+        backgroundColor='#bbbbbbff' />
+</StackView>
+"""
 
 //#-hidden-code
 
