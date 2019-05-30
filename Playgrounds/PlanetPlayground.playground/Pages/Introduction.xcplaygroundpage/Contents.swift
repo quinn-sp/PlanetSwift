@@ -1,3 +1,4 @@
+//: [Next page](@next)
 //#-hidden-code
 import UIKit
 import PlanetSwift

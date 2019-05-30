@@ -1,5 +1,4 @@
-//: [Previous](@previous)
-
+//: [Previous page](@previous) 
 //#-hidden-code
 
 import UIKit
@@ -20,27 +19,30 @@ let hostView = setupHostView()
 
 
 let xml = """
-<Scene id="root" backgroundColor="purple"
+<Scene id="root" backgroundColor="#05C2FC"
     xmlns='http://schema.smallplanet.com/PlanetUI'>
 
     <Constraint firstItem="root" ruleSet="fillSuperview"/>
 
-    <Label id="label1" text="Top" fontSize="60" fontName="AppleSDGothicNeo-UltraLight" textAlignment="center" backgroundColor="#0eeeeeff" />
+    <Label id="label1" text="Top" fontSize="60" fontName="AppleSDGothicNeo-UltraLight" textAlignment="center" backgroundColor="darkGray" textColor="white" />
     <Constraint firstItem="label1" firstAttribute="centerX" secondItem="root" secondAttribute="centerX" constant="-80"/>
     <Constraint firstItem="label1" firstAttribute="top" secondItem="root" secondAttribute="top" constant="40"/>
 
-    <Label id="label2" text="Trailing" fontSize="60" fontName="AppleSDGothicNeo-UltraLight" textAlignment="center" backgroundColor="#0eeeeeff" />
+    <Label id="label2" text="Trailing" fontSize="60" fontName="AppleSDGothicNeo-UltraLight" textAlignment="center" backgroundColor="darkGrey" textColor="white"/>
     <Constraint firstItem="label2" firstAttribute="leading" secondItem="label1" secondAttribute="trailing"/>
     <Constraint firstItem="label2" firstAttribute="top" secondItem="label1" secondAttribute="baseline"/>
 
-    <View id="box" backgroundColor="gray" borderColor="darkGrey" borderWidth="5" />
+    <View id="box" backgroundColor="gray" borderColor="white" borderWidth="5" />
     <Constraint firstItem="box" firstAttribute="width" secondItem="root" secondAttribute="width" multiplier="0.5"/>
     <Constraint firstItem="box" firstAttribute="height" secondItem="circle" secondAttribute="width" multiplier="0.5"/>
     <Constraint firstItem="box" firstAttribute="centerX" secondItem="root" secondAttribute="centerX"/>
     <Constraint firstItem="box" firstAttribute="top" secondItem="label2" secondAttribute="bottom" constant="30"/>
 
+    <ImageView id="logo" image='logo.png' contentMode='aspectFit'/>
+    <Constraint firstItem="logo" secondItem="box" ruleSet="equalCenter"/>
+
     <View id="circle" backgroundColor="lightGrey" cornerRadius="100">
-        <Label id="labelSP" text="SP" fontSize="120" backgroundColor="clear" fontName="AvenirNext-Bold"/>
+        <Label id="labelSP" text="SP" fontSize="120" textColor="#FC15BB" backgroundColor="clear" fontName="AvenirNext-Bold"/>
         <Constraint firstItem="labelSP" secondItem="parent" ruleSet="equalCenter"/>
     </View>
     <Constraint firstItem="circle" firstAttribute="width" constant="200"/>
@@ -65,6 +67,3 @@ if let view = PlanetUI.readFromString(xml) as? View {
 PlaygroundPage.current.liveView = hostView
 
 //#-end-hidden-code
-
-//: [Next](@next)
-

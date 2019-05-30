@@ -1,5 +1,6 @@
 //#-hidden-code
-
+//: [Previous page](@previous) - [Next page](@next)
+//#-hidden-code
 import UIKit
 import PlanetSwift
 import PlaygroundSupport
@@ -51,12 +52,9 @@ let xml = """
 </StackView>
 """
 
-//#-hidden-code
-
 let view = PlanetUI.readFromString(xml)?.asView
-
-
 hostView.addSubview(view!.view)
-PlaygroundPage.current.liveView = hostView
 
+//#-hidden-code
+PlaygroundPage.current.liveView = hostView
 //#-end-hidden-code
