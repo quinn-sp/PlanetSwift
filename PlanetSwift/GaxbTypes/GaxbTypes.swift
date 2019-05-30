@@ -246,11 +246,16 @@ extension UIColor {
             default: break
             }
         } else {
-            switch gaxbString {
+            switch gaxbString.lowercased() {
             case "red": r = 1.0
             case "green": g = 1.0
             case "blue": b = 1.0
             case "white": r = 1.0; g = 1.0; b = 1.0
+            case "lightgray", "lightgrey": r = 0.827; g = r; b = r
+            case "gray", "grey": r = 0.5; g = r; b = r
+            case "darkgray", "darkgrey": r = 0.333; g = r; b = r
+            case "purple": r = 0.5; b = 0.5
+            case "clear": a = 0
             default: break
             }
         }

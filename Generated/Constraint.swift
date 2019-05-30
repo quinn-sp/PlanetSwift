@@ -127,7 +127,9 @@ public class Constraint: ConstraintBase {
             } else {
                 first.superview?.addConstraints(constraints)
             }
-			}
+        } else {
+            print("Unable to create Constratint: firstItem not found")
+        }
 	}
 
     public func makeConstraints() -> [NSLayoutConstraint] {

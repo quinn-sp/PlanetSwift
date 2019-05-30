@@ -1,10 +1,10 @@
+//: [Next page](@next)
 //#-hidden-code
 import UIKit
 import PlanetSwift
 import PlaygroundSupport
 
 let hostView = setupHostView()
-
 //#-end-hidden-code
 
 /*:
@@ -14,11 +14,16 @@ let hostView = setupHostView()
  Using simple XML files, you can create complex view hierarchies. This playground book allows you to explore the capabilities of PlanetSwift, learn the basics, and play!
 */
 
-let xml = "<View frame='100,100,100,100' backgroundColor='red' xmlns='http://schema.smallplanet.com/PlanetUI' />"
+let xml = """
+<View frame='100,100,100,100'
+    backgroundColor='red'
+    xmlns='http://schema.smallplanet.com/PlanetUI' />
+"""
+
+if let view = PlanetUI.readFromString(xml)?.asView {
+    hostView.addSubview(view.view)
+}
 
 //#-hidden-code
-let v = PlanetUI.readFromString(xml)?.asView
-
-hostView.addSubview(v!.view)
 PlaygroundPage.current.liveView = hostView
 //#-end-hidden-code
