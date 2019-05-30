@@ -11,14 +11,10 @@ public class CollectionView: CollectionViewBase {
             return collectionView
         }
         set {
-            if newValue is UICollectionView {
-                collectionView = newValue as! UICollectionView
+            if let newValue = newValue as? UICollectionView {
+                collectionView = newValue
             }
         }
-    }
-    
-    public override func gaxbPrepare() {
-        super.gaxbPrepare()
     }
     
     // MARK: - Layout

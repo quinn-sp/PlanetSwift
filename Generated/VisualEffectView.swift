@@ -14,33 +14,16 @@ public class VisualEffectView: VisualEffectViewBase {
                     return effectView!
                 }
                 
-                if effect != nil {
-                    switch effect! {
-                    case PlanetUI.BlurEffect.extraLight:
-                        effectView =  UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-                    case PlanetUI.BlurEffect.light:
-                        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-                    case PlanetUI.BlurEffect.dark:
-                        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
-                    }
-                }
-                if effectView != nil {
+                if let effect = effect {
+                    effectView = UIVisualEffectView(effect: effect.uiBlurEffect)
                     return effectView!
                 }
             }
-            return super.view
+            return effectView ?? super.view
         }
         set {
-            if let newView = newValue as? UIVisualEffectView {
-                effectView = newView
-            } else {
-                effectView = nil
-            }
+            effectView = newValue as? UIVisualEffectView
         }
     }
     
-    
-    public override func gaxbPrepare() {
-        super.gaxbPrepare()
-    }
 }
