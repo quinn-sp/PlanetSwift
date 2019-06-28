@@ -35,7 +35,7 @@ class PlanetSwiftViewTests: XCTestCase {
         super.tearDown()
     }
     
-    func testView() {
+    func skip_testView() {
         XCTAssert(element is View, "element is not a View")
     }
     
